@@ -86,7 +86,10 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         <tr><td><strong>Territory</strong></td><td>US EAST</td></tr>
         <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
         <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
-        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year (new spin-off entity)</td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>&lt;1 Year — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this contradicts the engagement data below:</strong> The model tracks Org <code>00Dhm000000pqXf</code> as a "&lt;1 Year" entity, but this is a corporate spin-off effect — not a new customer. DuPont's 2023 three-way split created "DuPont Specialty Products USA LLC" as a new legal entity with a new Salesforce org, while the underlying Salesforce relationship is multi-year. OrgCS confirms rich engagement on this org: 4 Health Check assessments (Jan–Mar 2026), a MuleSoft case with an active Red Account flag (Aug 2026), CSAL/Pardot evaluation (Jun 2025), and an Agentforce SE request. The "&lt;1 Year" label reflects the entity's age in the model dataset — not the age of the DuPont-Salesforce relationship.
+        </td></tr>
         <tr><td><strong>Industry</strong></td><td>Chemicals &amp; Materials</td></tr>
         <tr><td><strong>Prior DuPont Org</strong></td><td>Existing — longer-tenured Salesforce relationship</td></tr>
       </tbody></table>
@@ -117,12 +120,19 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">Active</div><div class="kpi-label">Engagement Level</div><div class="kpi-sub">Some technical activity</div></div>
   </div>
   <div class="info-box">
-    <strong>Active But Not Deeply Engaged</strong>
-    DuPont Specialty Products shows active case history (health check cases, some technical support) with 1 open Red Account flag in OrgCS. The prior DuPont org (00D300000006XFs) has an even longer case history. The spin-off structure means the OrgCS relationship is split across two account records — the full engagement picture requires querying both. The Red Account flag should be investigated urgently.
+    <strong>OrgCS Deep Dive — Active Engagement Confirmed on Org <code>00Dhm000000pqXf</code></strong>
+    OrgCS queried 20+ cases on this org. Key findings:
+    <ul class="signal-list">
+      <li><strong>4 Health Check Assessments</strong> (Jan–Mar 2026): Three consecutive "Sales: Health Check" cases under a Success Program, plus a follow-up "Health Check assessment II" in March 2026 — CSM team is actively engaging on success metrics.</li>
+      <li><strong>Red Account case active</strong>: Aug 2026, "IDP Automation tab issue" (MuleSoft-Anypoint Control Plane) with <code>Open_Red_Account__c = true</code>. This is a MuleSoft technical issue, not a Sales Cloud relationship issue — but it generates the Red Account flag.</li>
+      <li><strong>Agentforce SE request</strong>: April 2025 — an Agentforce Success Engineer was requested but the case was canceled. DuPont has expressed Agentforce interest but it was not followed through.</li>
+      <li><strong>CSAL Pardot evaluation</strong>: June 2025 — a "Reverse Demo Review with CSAL and Recommendations" was completed. Potential Marketing Cloud/Pardot expansion opportunity.</li>
+      <li><strong>Recent billing activity</strong>: November 2026 — three invoice-related cases (closed as resolved/duplicate), suggesting procurement/admin activity around the account.</li>
+    </ul>
   </div>
   <div class="risk-box">
-    <strong>Split Account Risk — Two OrgCS Records for DuPont</strong>
-    DuPont appears as two separate OrgCS account records: the new "DuPont Specialty Products USA LLC" (ID: 0013000001qlUJGAA2) and a prior "DuPont" entity (ID: 0013000001qlUI9AAI). This split creates risk that CSM ownership, case history, and renewal tracking are fragmented. The Red Account flag on the new entity may reflect confusion about which record is current.
+    <strong>Red Account: MuleSoft IDP Automation Issue (August 2026 — Still Flagged)</strong>
+    The open Red Account flag traces to Case ID <code>500hi000003Yv5OAAS</code>: "IDP Automation tab issue" on MuleSoft-Anypoint Control Plane (created Aug 12, 2026, Status: Closed). Despite the case being closed, the Red Account flag remains open — this needs to be cleared explicitly. The issue was a MuleSoft/IDP integration tab rendering problem, not a Sales Cloud relationship issue, but the open flag creates attrition risk signal.
   </div>
 </div>
 
@@ -221,14 +231,15 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="opp-box">
-    <strong>Recommended Actions</strong>
+    <strong>Recommended Actions — Based on OrgCS Deep Dive</strong>
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Consolidate the two DuPont OrgCS records (0013000001qlUJGAA2 and 0013000001qlUI9AAI) into a unified view. Assign a single CSM owner responsible for the full DuPont relationship.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Investigate and resolve the 1 open Red Account record. Determine root cause, assign resolution timeline, and document recovery plan.</td><td>CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Contact DuPont IT/procurement to understand the spin-off's Salesforce strategy. Is "DuPont Specialty Products LLC" the ongoing entity or a transitional structure? Who is the renewal decision-maker?</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Build a DuPont-specific Agentforce pitch for the technical sales and proposal process — DuPont's B2B specialty materials commercial team is a strong Agentforce use case.</td><td>SE + AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Clear the open Red Account flag</strong>: Case <code>500hi000003Yv5OAAS</code> (MuleSoft IDP automation tab) is Closed but Red Account flag is still open. Confirm the issue is resolved and explicitly close the Red Account record — this flag is artificially depressing the account's health signal going into renewal.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Clarify the November 2026 invoice activity</strong>: Three invoice cases were raised Nov 19, 2026 (two closed as duplicates, one resolved). This billing activity immediately before renewal cycle could signal a procurement review or contract dispute. Confirm with the DuPont admin contact what triggered the invoice inquiry.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Re-engage on the canceled Agentforce SE request</strong> (Apr 2025, Case <code>500Hx00000nN8blIAE</code>): DuPont explicitly requested an Agentforce Success Engineer but the case was canceled. Re-open the conversation — the CSAL Pardot demo (Jun 2025) shows they are evaluating expansion. A fresh Agentforce scoping for DuPont's B2B specialty materials sales team is a strong retention play.</td><td>AE + SE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Build on the Health Check momentum</strong>: 4 consecutive Health Check assessments (Nov 2025–Mar 2026) demonstrate CSM active engagement and a willing DuPont contact. Use the most recent Health Check findings to anchor the renewal conversation — position improvements since the last assessment as renewal value evidence.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td><strong>Map DuPont Agentforce use case</strong>: The Pardot/CSAL evaluation and Agentforce SE interest point to a marketing + AI automation opportunity. Build a DuPont-specific use case for Agentforce in the specialty materials B2B commercial sales cycle, and package it as a retention + expansion proposal.</td><td>SE + AE</td></tr>
       </tbody>
     </table>
   </div>

@@ -86,7 +86,10 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         <tr><td><strong>Territory</strong></td><td>EMEA ITALY</td></tr>
         <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
         <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
-        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year (new cohort flag)</td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>&lt;1 Year — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this contradicts the engagement data below:</strong> The model's "Customer Age" field measures how long this specific Org ID (<code>00D61000003UJjU</code>) has been present in the Premier entitlement model dataset — not the age of Edison's overall Salesforce relationship. This org was recently enrolled or re-categorised in the model, hence "&lt;1 Year." However, OrgCS records show the account's last activity was <strong>February 2023</strong> — meaning the relationship itself is old and has been completely dormant for 3.5+ years. This is not a new customer; it is a long-neglected account that was recently surfaced by the attrition model.
+        </td></tr>
         <tr><td><strong>Industry</strong></td><td>Energy / Utilities</td></tr>
         <tr><td><strong>Parent Company</strong></td><td>EDF Group (Électricité de France)</td></tr>
       </tbody></table>
@@ -218,15 +221,15 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="opp-box">
-    <strong>Recommended Actions — Priority Order</strong>
+    <strong>Recommended Actions — Based on OrgCS Deep Dive (Zero Cases Confirmed)</strong>
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Assign an EMEA Italy CSM to Edison SpA immediately. Conduct a discovery call to understand current utilization, internal champions, and renewal timeline.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Run a Tableau Account Drill-Down for Edison to get License Activation % and Utilization %. If utilization is &lt;10%, escalate for executive-level intervention before the next renewal.</td><td>Analyst + CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Identify EDF Group-level Salesforce account team. Engage at the EDF IT/CIO level to understand group strategy and position Edison's Premier subscription within a broader EDF Salesforce roadmap.</td><td>AE</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Clarify customer age discrepancy in model data. Confirm whether Edison is a &lt;1 year subscriber or a longer-tenured account that underwent a contract restructure.</td><td>Analyst</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Deliver an Italian energy market relevance briefing — position Salesforce Agentforce and Energy & Utilities Cloud as directly addressing liberalization-driven customer management challenges.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Emergency outreach to identify any living contact at Edison SpA</strong>: OrgCS queried directly confirms zero cases filed since Feb 2023 — not a single support request, escalation, or health check in 3.5 years. There is no open case history to build from. First task: find who owns the Salesforce relationship at Edison today (IT director, procurement lead, or admin contact). Search CRM for the original deal contacts and confirm whether they are still at the company.</td><td>CSM Lead + AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Run Tableau Account Drill-Down</strong> for Org <code>00D61000003UJjU</code>: License Activation % and Utilization % will reveal whether users are even logging in. If utilization is &lt;10%, this is a save-or-let-go decision — not a retention play. Take the data into the first contact meeting.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Escalate to EDF Group Salesforce account team</strong>: As a wholly owned EDF subsidiary, any Salesforce renewal decision for Edison likely requires sign-off from EDF IT/procurement in Paris. Identify the EDF Group AE/CSM team and brief them on Edison's risk. A coordinated EDF-level account play (bundling Edison into an EDF Group renewal) may be the only viable retention path.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Clarify the "&lt;1 Year" model flag</strong>: Confirm whether Edison underwent a contract restructure, re-signed under a new entity, or was freshly enrolled in the Premier entitlement model. If this is a recently renewed Premier subscription on a dormant org, the renewal team needs to know urgently — an auto-renewal on a zero-usage account is both a financial risk and a poor customer experience.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td><strong>Prepare an Italian energy market relevance briefing</strong>: Italy's residential energy market was fully liberalized in 2024. Position Salesforce Agentforce and Energy & Utilities Cloud as directly addressing the customer acquisition and service management challenges Edison faces in a fully competitive market. This is the strongest possible product-market relevance case to bring to a first contact call.</td><td>CSM + SE</td></tr>
       </tbody>
     </table>
   </div>

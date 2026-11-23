@@ -76,30 +76,27 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">&lt;1 yr</div><div class="kpi-label">Customer Age (model)</div><div class="kpi-sub-amber">New subscription window</div></div>
   </div>
 
-  <div class="risk-box">
-    <strong>Data Quality Alert: Support Level Mismatch</strong>
-    The attrition model CSV lists GN Hearing with Premier entitlement. OrgCS account record shows <strong>Basic</strong> support level for OrgCS ID 0013000000vSqtjAAC. This mismatch requires immediate investigation:
-    <ul class="signal-list">
-      <li>Either the OrgCS record is out of date and GN Hearing has upgraded to Premier (the model is correct)</li>
-      <li>Or GN Hearing is listed in the Premier attrition analysis incorrectly (the model has an error)</li>
-      <li>Or there are multiple OrgCS records for GN Hearing and the Premier subscription is on a different record</li>
-    </ul>
-    Until resolved, all analysis below treats GN Hearing as a Premier account per the model CSV, but the OrgCS data discrepancy must be investigated.
+  <div class="info-box">
+    <strong>OrgCS Record Correction — Model Matched the Wrong Org</strong>
+    The attrition model uses Org ID <code>00DG0000000kVjP</code> (OrgCS: <code>0013000000vSqtjAAC</code>), which shows Basic support and zero activity. However, a full OrgCS search confirms the <strong>correct GN Hearing Premier account is "GN Hearing A/S"</strong> — OrgCS ID <code>0013000000QCPiCAAX</code>, Org <code>00D200000006Wrs</code>, Premier support, LastActivityDate: <strong>2026-11-21</strong>. This account has 13+ cases including active Agentforce implementation. The original org the model flagged appears to be a stale or legacy GN Hearing record. All analysis below reflects the correct Premier account.
   </div>
 
   <div class="two-col">
     <div class="section">
       <div class="section-title">Account Profile</div>
       <table><tbody>
-        <tr><td><strong>Legal Entity</strong></td><td>GN Hearing</td></tr>
-        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqtjAAC</code></td></tr>
-        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVjP</code></td></tr>
+        <tr><td><strong>Legal Entity</strong></td><td>GN Hearing A/S</td></tr>
+        <tr><td><strong>Correct OrgCS Account ID</strong></td><td><code>0013000000QCPiCAAX</code> <span class="pill pill-green">Verified</span></td></tr>
+        <tr><td><strong>Correct Org ID</strong></td><td><code>00D200000006Wrs</code></td></tr>
+        <tr><td><strong>Model Org ID (incorrect)</strong></td><td><code>00DG0000000kVjP</code> — stale/legacy record</td></tr>
         <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
         <tr><td><strong>Territory</strong></td><td>EMEA NORDICS</td></tr>
         <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
-        <tr><td><strong>Entitlement (model)</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
-        <tr><td><strong>OrgCS Support Level</strong></td><td><span class="pill pill-amber">Basic</span> (mismatch)</td></tr>
-        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year (model flag)</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>&lt;1 Year — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this contradicts the engagement data:</strong> The model's "&lt;1 Year" refers to the age of the <em>wrong</em> org (<code>00DG0000000kVjP</code>) in the Premier entitlement dataset. The actual active Premier account (GN Hearing A/S, Org <code>00D200000006Wrs</code>) has an established, multi-year relationship with Agentforce implementation in progress since early 2026. This is not a new or disengaged account — the model is tracking the wrong org ID.
+        </td></tr>
         <tr><td><strong>Industry</strong></td><td>Medtech / Hearing Healthcare</td></tr>
         <tr><td><strong>Parent</strong></td><td>GN Group (Denmark)</td></tr>
       </tbody></table>
@@ -120,13 +117,25 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
-    <div class="kpi-card"><div class="kpi-val">Basic</div><div class="kpi-label">OrgCS Support Level</div><div class="kpi-sub-red">Contradicts Premier model</div></div>
+    <div class="kpi-card"><div class="kpi-val">13+</div><div class="kpi-label">Total Cases (OrgCS)</div><div class="kpi-sub">Correct org: GN Hearing A/S</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Nov 2026</div><div class="kpi-label">Last Activity Date</div><div class="kpi-sub">Active engagement</div></div>
   </div>
-  <div class="risk-box">
-    <strong>Zero Cases + Basic Support Level = Critical Engagement Gap</strong>
-    OrgCS account 0013000000vSqtjAAC shows Basic support level and zero case activity. If this is the correct OrgCS record for GN Hearing's Premier subscription, it means either: (a) GN Hearing recently upgraded to Premier but hasn't used it yet, or (b) the account matched in OrgCS is not the Premier subscription account. The combination of zero cases + Basic support designation on what should be a Premier account is a severe data quality and engagement problem.
+  <div class="opp-box">
+    <strong>OrgCS Deep Dive — Correct Org is Actively Engaged with Agentforce</strong>
+    OrgCS on "GN Hearing A/S" (Org <code>00D200000006Wrs</code>) shows 13+ cases with active Agentforce implementation in progress:
+    <ul class="signal-list">
+      <li><strong>Agentforce Implementation Tracking</strong> (Apr 2026, Status: Completed) — GN Hearing A/S completed an Agentforce implementation milestone.</li>
+      <li><strong>Agentforce Service bugs</strong>: "Agentforce reporting metrics" (May 2026, product bug reported), "Agentforce analytics agent health score stuck at 0" (Apr 2026), "Lost ability to use old service agent after license reinstatement" (Mar 2026). Active Agentforce Service Cloud deployment in progress.</li>
+      <li><strong>Agentforce Sales cases</strong>: "Bug in Agentforce causing unexpected citations" (Nov 2026) and "Disable Agentforce Studio App" (Oct 2026) — Agentforce Sales Cloud being actively used.</li>
+      <li><strong>Revenue Cloud</strong>: Multiple Revenue Cloud (Core) Transaction Management and Price Management cases (Aug–Oct 2026) — GN Hearing is deploying Revenue Cloud alongside Agentforce.</li>
+      <li><strong>Proactive outreach</strong>: "Proactive TMP: Agentforce adoption outreach" (Jan 2026) and "Proactive Adoption Outreach" (Jul 2026) — CSM team proactively engaged.</li>
+      <li><strong>License expiry incident</strong>: Mar 2026 "Licenses expired causing service interruption" — a Sales Cloud license lapse occurred, resolved quickly.</li>
+    </ul>
+  </div>
+  <div class="info-box">
+    <strong>Attrition Risk Context: This Account is Expanding, Not Attriting</strong>
+    The 51% attrition probability in the model is based on the wrong org (<code>00DG0000000kVjP</code>) which has zero engagement. The actual GN Hearing A/S Premier account is actively implementing Agentforce Sales + Service and Revenue Cloud. The true risk profile is significantly different — the model flag should be re-evaluated with the correct org ID. The primary risk now is ensuring the ongoing Agentforce deployment is successful, not preventing a renewal lapse.
   </div>
 </div>
 
@@ -197,33 +206,40 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div id="chartRisk" class="chart-container"></div>
   </div>
 
-  <div class="risk-box">
-    <strong>#1 — Data Quality: OrgCS Shows Basic / Model Shows Premier (Critical)</strong>
+  <div class="info-box">
+    <strong>⚠ Model Tracking Wrong Org — True Risk Profile is Lower Than 51%</strong>
     <ul class="signal-list">
-      <li>The attrition model CSV lists GN Hearing as Premier. OrgCS account 0013000000vSqtjAAC shows Basic support level. This is a data integrity issue that must be resolved before any other action is taken.</li>
-      <li>If GN Hearing is actually on Basic support, it should not be in this Premier attrition analysis — and there is no $1.3M Premier subscription to protect.</li>
-      <li>If GN Hearing has Premier, the OrgCS record is wrong — meaning the CSM team has been working from inaccurate data.</li>
-      <li>Immediate manual verification required by searching OrgCS for all GN Hearing / GN Group records.</li>
+      <li>The 51% attrition probability is based on Org <code>00DG0000000kVjP</code>, which is a stale/legacy GN Hearing record with Basic support and zero engagement.</li>
+      <li>The actual GN Hearing Premier account ("GN Hearing A/S", Org <code>00D200000006Wrs</code>) is actively implementing Agentforce Sales + Service and Revenue Cloud, with LastActivity: November 2026.</li>
+      <li>The correct account should be flagged to the attrition model team for Org ID correction. The $1.3M subscription is likely lower-risk than the model indicates.</li>
     </ul>
   </div>
 
   <div class="risk-box">
-    <strong>#2 — Zero Case Activity on Critical-Risk Account (High)</strong>
+    <strong>#1 — Active Agentforce Deployment Bugs Could Destabilize Renewal (Medium)</strong>
     <ul class="signal-list">
-      <li>Regardless of the support level confusion, zero OrgCS cases confirms zero Salesforce CSG engagement for this account. For a Critical-tier account (50.96%), this is unacceptable.</li>
-      <li>No cases filed = no demonstrable Premier value = no internal champion for the renewal decision.</li>
+      <li>Two open cases as of November 2026: "Bug in Agentforce causing unexpected citations" (Agentforce Sales, Status: Need More Information) and "Index API stopped processing new content" (Data Cloud). These are active technical issues on a live Agentforce deployment.</li>
+      <li>If these bugs are not resolved quickly, GN Hearing's Agentforce investment (which appears to be their core strategic use case) could stall — converting a currently-satisfied customer into an at-risk one.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — License Expiration Incident (March 2026) — Renewal Process Risk (Low-Medium)</strong>
+    <ul class="signal-list">
+      <li>"Licenses expired causing service interruption" (Mar 2026) suggests a contract/renewal administration gap. With an active Agentforce deployment, any license lapse would directly interrupt production usage — higher stakes than a typical license admin error.</li>
+      <li>Confirm the renewal/license management process is tightened ahead of the next contract date.</li>
     </ul>
   </div>
 
   <div class="opp-box">
-    <strong>Recommended Actions</strong>
+    <strong>Recommended Actions — Based on OrgCS Deep Dive</strong>
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Search OrgCS for ALL GN Hearing / GN Group / GN Audio records. Identify the correct record with Premier entitlement. Confirm whether OrgCS account 0013000000vSqtjAAC is the right match for the model's $1.3M entry.</td><td>Analyst + CSM</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Resolve the OrgCS/model mismatch — update the correct record's support level, or flag this account as misclassified in the attrition model. Update the model dataset accordingly.</td><td>Analyst</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — Once verified</span></td><td>If confirmed as Premier account: assign CSM immediately and conduct an emergency discovery call. The account has 51% attrition probability and zero engagement — it is essentially unmanaged.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Build a GN Hearing-specific Salesforce value pitch connecting to their medtech B2B channel sales model — audiologist/clinic partner management, Health Cloud, Agentforce for field sales.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Correct the model's Org ID</strong>: The attrition model is tracking <code>00DG0000000kVjP</code> (zero engagement, Basic support). The correct Premier org is <code>00D200000006Wrs</code> (OrgCS: <code>0013000000QCPiCAAX</code>, GN Hearing A/S) with active engagement and ongoing Agentforce deployment. Update the attrition model dataset to avoid generating false risk signals for this account.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Ensure the Revenue Cloud + Agentforce deployment succeeds</strong>: GN Hearing has an active Agentforce Sales + Service implementation with open bugs (Agentforce citations bug, Nov 2026; Data Cloud Index API issue, Nov 2026). The CSM should prioritize getting these resolved — a failed Agentforce deployment would create genuine attrition risk on a currently-committed customer.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Investigate the March 2026 license expiration incident</strong>: "Licenses expired causing service interruption" (Case <code>500Hx000017GYkLIAW</code>) was caused by an out-of-scope license issue. Confirm the correct licenses are in place and that there is no renewal gap risk heading into the next contract period, especially given the active Agentforce deployment.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td><strong>Leverage completed Agentforce implementation as a renewal anchor</strong>: The "Agentforce Implementation Tracking" case was marked Completed in April 2026. Use this milestone as a success story in the renewal conversation — GN Hearing made a strategic bet on Agentforce and it is in production. Build a clear ROI story around Revenue Cloud + Agentforce for the renewal package.</td><td>CSM + AE</td></tr>
       </tbody>
     </table>
   </div>
