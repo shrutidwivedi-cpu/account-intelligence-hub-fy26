@@ -86,7 +86,10 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         <tr><td><strong>Territory</strong></td><td>US WEST</td></tr>
         <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
         <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
-        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year (model flag)</td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>&lt;1 Year — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this needs investigation:</strong> OrgCS confirms Org <code>00Dhm000002APBJ</code> (OrgCS: <code>001Hx00000hF2qNIAS</code>) has only 1 case ever — a proactive outreach in Nov 2026, no Sales Cloud cases, null LastActivityDate. However, there are 10+ other "Disney Worldwide Services, Inc" Premier records in OrgCS with active Sales Cloud history. The model is tracking this specific org, which appears to be a recently-enrolled or dormant entity within a larger Disney Salesforce footprint. The engagement you may be aware of likely belongs to a sibling org. Confirm with the Disney account team which org carries the active $1.5M subscription.
+        </td></tr>
         <tr><td><strong>Industry</strong></td><td>Entertainment / Media</td></tr>
         <tr><td><strong>Parent</strong></td><td>The Walt Disney Company</td></tr>
       </tbody></table>
@@ -112,12 +115,12 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">None</div><div class="kpi-label">Last Recorded Activity</div><div class="kpi-sub-red">No OrgCS history</div></div>
   </div>
   <div class="risk-box">
-    <strong>Zero Case Activity — No Salesforce CSG Engagement Visible</strong>
-    OrgCS shows no cases filed for Disney Worldwide Services. Combined with the "&lt;1 year" customer age in the model, this may reflect a recently-renewed or recently-restructured subscription where the internal Disney Salesforce team has not yet engaged with Premier support channels. Zero cases on a Critical-tier account is a significant engagement gap.
+    <strong>Zero Sales Cloud Cases on This Org — Confirmed via OrgCS Deep Dive</strong>
+    OrgCS queried directly on Org <code>00Dhm000002APBJ</code>: only 1 case total — a proactive outreach case (Nov 18, 2026, Status: New, no Cloud assigned). Zero Sales Cloud cases ever filed. This is not a data gap — this specific org has never raised a Sales Cloud support case.
   </div>
   <div class="info-box">
-    <strong>Disney Shared Services Context</strong>
-    "Disney Worldwide Services Inc" is likely the shared services entity for The Walt Disney Company, procuring technology on behalf of corporate functions. The Walt Disney Company as a whole is a major Salesforce enterprise customer across its parks, studios, streaming, and consumer products divisions — this entity is likely one specific subscription in a larger Disney Salesforce footprint, not Disney's total Salesforce relationship.
+    <strong>Important: Multiple Disney Worldwide Services Orgs Exist in OrgCS</strong>
+    OrgCS contains 10+ Premier records named "Disney Worldwide Services, Inc" across different Org IDs. Several have active Sales Cloud case history (MFA compliance, Developer Support, CRM Analytics, Security). The cases you may be seeing in OrgCS belong to those sibling orgs — not this specific Org ID. To find this account in OrgCS, search by Org ID <code>00Dhm000002APBJ</code> or navigate directly to Account ID <code>001Hx00000hF2qNIAS</code>. The key question for the CSM: which of the Disney Worldwide Services orgs actually holds the $1.5M Premier subscription being tracked in the attrition model?
   </div>
 </div>
 
@@ -205,14 +208,14 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="opp-box">
-    <strong>Recommended Actions</strong>
+    <strong>Recommended Actions — Based on OrgCS Deep Dive</strong>
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Map all Disney-entity Salesforce subscriptions across OrgCS (search for "Disney" by name). Identify whether Worldwide Services is standalone or part of a broader Disney portfolio.</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Contact the Disney Worldwide Services Salesforce admin/sponsor. Establish or re-establish the relationship before the next renewal cycle. Zero cases = no current relationship.</td><td>CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a Disney-specific value realization case. If utilization is confirmed as minimal, propose a right-sizing option (smaller Premier tier) rather than losing the account entirely.</td><td>AE</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Engage Disney at the enterprise level — this subscription may be subordinate to a larger Disney strategic account. Align with the Disney AE to protect at portfolio level.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Confirm the correct org for this $1.5M subscription.</strong> OrgCS has 10+ "Disney Worldwide Services" Premier records. Org <code>00Dhm000002APBJ</code> (this model's target) has zero Sales Cloud cases. Identify whether this is the active org or a dormant/legacy record — search OrgCS by Org ID or navigate to Account <code>001Hx00000hF2qNIAS</code> and check with the Disney account team.</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Find the living contact at Disney Worldwide Services.</strong> With null LastActivityDate and zero cases, there is no active CSM relationship on this specific org. Identify the Salesforce admin or IT procurement contact from the original contract and confirm whether the subscription is in active use.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Run Tableau Account Drill-Down for Org <code>00Dhm000002APBJ</code>.</strong> License activation % and utilization will reveal whether users are actively logging in. If &lt;10% utilization, this subscription is at high risk of non-renewal on cost grounds regardless of product quality. Take the data into the first contact meeting.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Align with the Disney enterprise AE</strong> on the broader Disney Salesforce portfolio. If this is a corporate overhead org within a larger Disney footprint, the renewal decision may be coordinated at the enterprise level — protecting it requires engaging at The Walt Disney Company level, not just the Worldwide Services entity.</td><td>AE</td></tr>
       </tbody>
     </table>
   </div>
