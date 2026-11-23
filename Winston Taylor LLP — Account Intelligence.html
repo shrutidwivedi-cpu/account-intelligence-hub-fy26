@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Winston Taylor LLP — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Winston Taylor LLP — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; AMER US EAST &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DG0000000kVjI (OrgCS: basic match) &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: Professional services law firm — unique CRM dynamics</div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$1.6M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">43.7%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$518K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~36</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Low — no cases</div></div>
+    <div class="kpi-card"><div class="kpi-val">~10%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">Low</div></div>
+    <div class="kpi-card"><div class="kpi-val">&lt;1 yr</div><div class="kpi-label">Customer Age (model)</div><div class="kpi-sub-amber">Law firm, new subscription</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Winston Taylor LLP</td></tr>
+        <tr><td><strong>Region</strong></td><td>AMER</td></tr>
+        <tr><td><strong>Territory</strong></td><td>US EAST</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Professional Services / Legal</td></tr>
+        <tr><td><strong>Entity Type</strong></td><td>LLP — Law Firm</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td>Not flagged in CSV</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$1,578,550</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>43.74%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$517,900</td></tr>
+        <tr><td><strong>Open Cases</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Red Account Records</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-amber">HIGH (40–50%)</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div class="info-box">
+    <strong>Law Firm Context</strong>
+    Winston Taylor LLP is a law firm — an unusual entity type for Sales Cloud Premier at $1.6M AOV. Law firms typically use Salesforce for client relationship management (BD/CRM), matter management integration, and lateral hiring pipelines rather than traditional sales force automation. The LLP structure means the subscription may be governed by an administrative partner committee rather than a corporate IT function — renewal decisions involve partnership-level consensus.
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>No OrgCS Engagement — Law Firms Typically Self-Manage</strong>
+    Zero cases filed is consistent with professional services firms — law firms often implement Salesforce through third-party partners and manage it internally without engaging Premier support. However, zero engagement for a "&lt;1 year" entity with 43.7% attrition risk means there is no demonstrable CSG value delivery in the relationship. If the subscription was recently signed, the onboarding may have been entirely partner-led without Salesforce CSG involvement.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">License Activation</div></div>
+    <div class="kpi-card"><div class="kpi-val">~10%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">Low for &lt;1yr entity</div></div>
+  </div>
+  <div class="info-box">
+    <strong>Adoption Assessment</strong>
+    For a law firm using Salesforce for BD/CRM, the typical deployment involves BD coordinators and senior attorneys — not every attorney in the firm. A $1.6M AOV suggests a significant seat count; ~10% utilization estimate reflects the low engagement signal. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~36</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Low</div></div>
+  </div>
+  <div class="info-box">
+    <strong>CSS Score ~36/100 Estimated</strong>
+    Based on zero engagement evidence and &lt;1 year entity. Manual CSS dashboard confirmation required.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">US EAST</div><div class="kpi-label">Territory</div></div>
+    <div class="kpi-card"><div class="kpi-val">Legal Services</div><div class="kpi-label">Industry</div></div>
+    <div class="kpi-card"><div class="kpi-val">LLP Structure</div><div class="kpi-label">Entity Type</div><div class="kpi-sub-amber">Partnership governance</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Legal Industry CRM Context</div>
+      <ul class="signal-list">
+        <li><strong>Law firm BD (Business Development)</strong> is the primary Salesforce use case in legal — managing attorney relationships with clients, tracking pitches, managing events/conferences, and monitoring client interactions.</li>
+        <li><strong>AI disruption in legal:</strong> Law firms are facing significant AI disruption from tools like Harvey, Clio, and CoCounsel that automate legal research, document review, and contract analysis — CIOs at large law firms are evaluating AI tools aggressively, which may crowd out traditional CRM investment priorities.</li>
+        <li><strong>Alternative CRM for legal:</strong> InterAction (by LexisNexis) and Intapp are purpose-built for law firm CRM — competitors with better industry fit than Salesforce Sales Cloud for small-to-mid legal BD teams.</li>
+        <li><strong>Partnership governance:</strong> LLP subscription renewals often require partnership committee approval — unlike corporate IT decisions, law firm renewals involve multiple senior stakeholders who may not use the system day-to-day.</li>
+        <li><strong>Lateral hiring risk:</strong> If the original Salesforce champion attorney left for another firm, the internal renewal advocate may no longer exist.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Competitive Threat Assessment</div>
+      <table>
+        <thead><tr><th>Threat</th><th>Level</th></tr></thead>
+        <tbody>
+          <tr><td>InterAction (legal CRM specialist)</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>Intapp (professional services)</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>AI-first legal tools crowding CRM budget</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>Champion attrition (attorney departure)</td><td><span class="pill pill-amber">Unknown</span></td></tr>
+          <tr><td>Salesforce Agentforce for legal BD</td><td><span class="pill pill-green">Opportunity</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">43.7%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$518K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">Law Firm</div><div class="kpi-label">Industry</div><div class="kpi-sub-amber">Unique renewal dynamics</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risk Signal Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — Legal-Specific CRM Competitors (High)</strong>
+    <ul class="signal-list">
+      <li>InterAction (LexisNexis) and Intapp are purpose-built for law firm CRM with deep integrations to DMS (document management systems), matter management, and legal billing platforms. At renewal, these represent natural alternatives for a firm evaluating cost and fit.</li>
+      <li>At $1.6M AOV, Winston Taylor LLP is paying premium pricing for a generalist CRM platform where vertical alternatives exist at likely lower cost.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Zero Engagement + &lt;1 Year Entity = No CSG Value Demonstrated (High)</strong>
+    <ul class="signal-list">
+      <li>Zero cases filed means Premier support has delivered zero demonstrable value since the subscription was established. For a renewal conversation where the firm evaluates ROI, there is nothing to show.</li>
+      <li>The "&lt;1 year" customer age combined with zero engagement suggests either a very recent contract with no onboarding yet, or an entity restructure that produced a new subscription window without resetting the account relationship.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#3 — Partnership Governance Complexity (Medium)</strong>
+    <ul class="signal-list">
+      <li>LLP renewal decisions involve a partnership committee, not a single CIO/CISO. Getting alignment from multiple senior attorneys who may rarely use the platform is a materially different renewal process than a corporate account.</li>
+      <li>If the original champion attorney is no longer at the firm or no longer involved in the Salesforce initiative, the renewal has no internal advocate.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Assign a CSM with professional services / legal industry experience to Winston Taylor LLP. Identify the BD director or practice group leader who is the internal Salesforce champion.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct an onboarding or health check call. If the subscription is &lt;1 year old, understand the current deployment status and whether Professional Services engagement was included.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Develop a legal-industry-specific positioning deck — Agentforce for legal BD (relationship intelligence, meeting prep, deal tracking), comparison vs. InterAction, and ROI for $1.6M subscription.</td><td>SE + AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Identify whether Salesforce has other law firm Premier accounts in the US EAST territory — use those as reference customers for the Winston Taylor renewal narrative.</td><td>AE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+Plotly.newPlot('chartRisk',[{
+  type:'bar',x:[10,9,7],
+  y:['#1 Legal CRM Competitors (InterAction, Intapp)','#2 Zero Engagement — No CSG Value Demonstrated','#3 LLP Partnership Governance Complexity'],
+  orientation:'h',marker:{color:['#dc2626','#ef4444','#f59e0b']},
+  text:['Purpose-built legal CRM at lower cost and better fit','<1yr entity, zero cases — no demonstrable Premier ROI','Multi-partner renewal committee; champion may have left'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:280,r:10,t:20,b:30},height:220,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)https://git.soma.salesforce.com/pages/vinay-nair/Claude-Output/SITI_BV_Analysis.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SITI BV — Account Intelligence</title>
+<script src="./SITI BV — Account Intelligence_files/plotly-2.27.0.min.js"></script><style id="plotly.js-style-global"></style>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+details.collapsible-section{background:#fff;border-radius:10px;padding:0;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+details.collapsible-section summary.collapsible-title{list-style:none;cursor:pointer;font-size:.95rem;font-weight:700;color:#1e3a5f;padding:18px 22px 14px;border-bottom:2px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+details.collapsible-section summary.collapsible-title::after{content:'▸';font-size:.85rem;color:#94a3b8;margin-left:8px}
+details.collapsible-section[open] summary.collapsible-title::after{content:'▾'}
+details.collapsible-section .section-body{padding:18px 22px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.flag-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#78350f}
+.flag-box strong{color:#92400e}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+.entitlements-list{font-size:.81rem;color:#374151;line-height:2}
+.entitlements-list span{background:#f1f5f9;border-radius:4px;padding:2px 7px;margin:2px;display:inline-block}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:4px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1349.0" data-gr-ext-installed="">
+
+<div class="hero">
+  <h1>Shell Information Technology International B.V. (SITI BV) — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA/UKI &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Parent: Shell PLC (NYSE: SHEL) &nbsp;·&nbsp; Primary CSM: 005Hx000005wBhJIAU &nbsp;·&nbsp; 35+ orgs across 4 regions &nbsp;·&nbsp; Next renewal cliff: Oct 31, 2027</div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Entitlements</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">Adoption &amp; Usage</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+  <button class="tab-btn" onclick="showTab('t6',this)">Health &amp; Opportunity</button>
+</nav>
+
+<!-- TAB 1: ACCOUNT OVERVIEW -->
+<div id="t1" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">35+</div><div class="kpi-label">Orgs Active</div><div class="kpi-sub">4 regions</div></div>
+    <div class="kpi-card"><div class="kpi-val">428</div><div class="kpi-label">Cases (12 months)</div><div class="kpi-sub">96.7% closure rate</div></div>
+    <div class="kpi-card"><div class="kpi-val">Premier</div><div class="kpi-label">Support Tier</div><div class="kpi-sub">All primary orgs</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oct 2027</div><div class="kpi-label">Next Renewal Cliff</div><div class="kpi-sub">All entitlements</div></div>
+  </div>
+  <div class="flag-box"><strong>Flags:</strong> No Strategic Indicator set on any account. Owner = "Registration Headquarters" on all accounts — engagement gap risk. Multiple Signature → Premier downgrades already completed (2023–2024).</div>
+  <div class="section">
+    <div class="section-title">Primary Accounts</div>
+    <table>
+      <thead><tr><th>Account ID</th><th>Name</th><th>Segment</th><th>Support</th><th>Region</th><th>Org ID</th><th>Last Activity</th></tr></thead>
+      <tbody>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>SITI BV</td><td>Medium</td><td><span class="pill pill-blue">Premier</span></td><td>EMEA/UKI</td><td><code>00D4P000000jmEI</code></td><td>2026-11-17</td></tr>
+        <tr><td><code>0013000001F49HqAAJ</code></td><td>SITI BV</td><td>Large</td><td><span class="pill pill-blue">Premier</span></td><td>EMEA/UKI</td><td><code>00Db0000000cUbb</code></td><td>2026-11-17</td></tr>
+        <tr><td><code>0013000000QCI14AAH</code></td><td>SITI BV</td><td>Very Small</td><td><span class="pill pill-blue">Premier</span></td><td>EMEA/UKI</td><td><code>00D200000000ifK</code></td><td>2026-11-13</td></tr>
+        <tr><td><code>0013000000vVBAoAAO</code></td><td>SITI BV</td><td>Very Small</td><td><span class="pill pill-blue">Premier</span></td><td>EMEA/UKI</td><td><code>00DD0000000nWv8</code></td><td>2026-11-17</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Extended Portfolio (Additional Accounts)</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Region</th><th>Location</th><th>Orgs</th><th>Support</th><th>Last Activity</th></tr></thead>
+        <tbody>
+          <tr><td>AMER</td><td>Houston</td><td>3</td><td>AMER PACE / Premier</td><td>Sep 2026</td></tr>
+          <tr><td>AMER</td><td>Cambridge</td><td>1</td><td>AMER PACE / Premier</td><td>Sep 2026</td></tr>
+          <tr><td>UKI</td><td>London</td><td>3</td><td>UKI / Premier + 1 Basic</td><td>—</td></tr>
+          <tr><td>EMEA NORTH</td><td>The Hague, NL</td><td>2</td><td>Premier + Basic</td><td>—</td></tr>
+          <tr><td>UKI</td><td>Zabierzow, Poland</td><td>1</td><td>UKI / Premier</td><td>—</td></tr>
+          <tr><td>UKI</td><td>CDP UK Trial orgs</td><td>2</td><td>Basic</td><td style="color:#ef4444">Inactive since Apr 2024</td></tr>
+          <tr><td>AMER</td><td>MP2 Energy LLC [Shell]</td><td>1</td><td>AMER PACE / Premier</td><td>Nov 2026</td></tr>
+          <tr><td>AMER</td><td>Transfer to JLI</td><td>1</td><td>AMER PACE / Basic</td><td>Aug 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>
+
+<!-- TAB 2: SUPPORT & CASES -->
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">428</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub">4 primary accounts</div></div>
+    <div class="kpi-card"><div class="kpi-val">414</div><div class="kpi-label">Cases Closed</div><div class="kpi-sub">96.7% closure rate</div></div>
+    <div class="kpi-card"><div class="kpi-val">14</div><div class="kpi-label">Cases Open</div><div class="kpi-sub">As of Nov 18, 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">46</div><div class="kpi-label">Data Cloud Cases</div><div class="kpi-sub">Highest volume cloud</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Case Volume by Account</div>
+    <table>
+      <thead><tr><th>Account</th><th>Segment</th><th>Total</th><th>Closed</th><th>Open</th><th>Closure Rate</th></tr></thead>
+      <tbody>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>Medium</td><td>240</td><td>233</td><td>7</td><td><span class="pill pill-green">97.1%</span></td></tr>
+        <tr><td><code>0013000001F49HqAAJ</code></td><td>Large</td><td>89</td><td>83</td><td>6</td><td><span class="pill pill-amber">93.3%</span></td></tr>
+        <tr><td><code>0013000000vVBAoAAO</code></td><td>Very Small</td><td>75</td><td>74</td><td>1</td><td><span class="pill pill-green">98.7%</span></td></tr>
+        <tr><td><code>0013000000QCI14AAH</code></td><td>Very Small</td><td>24</td><td>24</td><td>0</td><td><span class="pill pill-green">100%</span></td></tr>
+        <tr style="font-weight:600;background:#f8fafc"><td colspan="2"><strong>Total</strong></td><td><strong>428</strong></td><td><strong>414</strong></td><td><strong>14</strong></td><td><span class="pill pill-green">96.7%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Cases by Cloud (12 months)</div>
+      <div class="chart-container js-plotly-plot" id="chartCasesByCloud"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 480px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="480" style="background: rgb(255, 255, 255);"><defs id="defs-0a2ea3"><g class="clips"><clippath id="clip0a2ea3xyplot" class="plotclip"><rect width="405" height="420"></rect></clippath><clippath class="axesclip" id="clip0a2ea3x"><rect x="265" y="0" width="405" height="480"></rect></clippath><clippath class="axesclip" id="clip0a2ea3y"><rect x="0" y="20" width="700" height="420"></rect></clippath><clippath class="axesclip" id="clip0a2ea3xy"><rect x="265" y="20" width="405" height="420"></rect></clippath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="265" y="20" width="405" height="420" style="fill: rgb(248, 250, 252); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="265" y="20" width="405" height="420" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="245" y="0" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="670" y="0" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="245" y="440" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="670" y="440" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="305.5" y="440.5" width="324" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="265" y="440.5" width="40.5" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="629.5" y="440.5" width="40.5" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="244.5" y="62" width="20" height="336" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="244.5" y="398" width="20" height="42" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="244.5" y="20" width="20" height="42" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g></g><g class="gridlayer"><g class="x"><path class="xgrid crisp" transform="translate(348.64,0)" d="M0,20v420" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(432.28,0)" d="M0,20v420" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(515.92,0)" d="M0,20v420" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(599.5699999999999,0)" d="M0,20v420" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y"></g></g><g class="zerolinelayer"><path class="xzl zl crisp" transform="translate(265,0)" d="M0,20v420" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(265,20)" clip-path="url(#clip0a2ea3xyplot)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M0,417.9V401.1H41.82V417.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,396.9V380.1H41.82V396.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,375.9V359.1H41.82V375.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,354.9V338.1H50.18V354.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,333.9V317.1H58.55V333.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,312.9V296.1H66.91V312.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,291.9V275.1H75.28V291.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,270.9V254.1H83.64V270.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,249.9V233.1H133.83V249.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,228.9V212.1H150.55V228.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,207.9V191.1H150.55V207.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,186.9V170.1H167.28V186.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,165.9V149.1H192.38V165.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,144.9V128.1H209.1V144.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,123.9V107.1H209.1V123.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,102.9V86.1H234.2V102.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,81.9V65.1H259.29V81.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,60.9V44.1H284.38V60.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,39.9V23.1H384.75V39.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,18.9V2.1H384.75V18.9Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="452" data-unformatted="0" data-math="N" transform="translate(265,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="452" data-unformatted="10" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(348.64,0)">10</text></g><g class="xtick"><text text-anchor="middle" x="0" y="452" data-unformatted="20" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(432.28,0)">20</text></g><g class="xtick"><text text-anchor="middle" x="0" y="452" data-unformatted="30" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(515.92,0)">30</text></g><g class="xtick"><text text-anchor="middle" x="0" y="452" data-unformatted="40" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(599.5699999999999,0)">40</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Email Deliverability" data-math="N" transform="translate(0,429.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Email Deliverability</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-Mandatory Security Controls" data-math="N" transform="translate(0,408.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-Mandatory Security Controls</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-Network Infrastructure" data-math="N" transform="translate(0,387.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-Network Infrastructure</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Connector/Distributed" data-math="N" transform="translate(0,366.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Connector/Distributed</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Agentforce-Service" data-math="N" transform="translate(0,345.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Agentforce-Service</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Marketing Personalization" data-math="N" transform="translate(0,324.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Marketing Personalization</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Mobile" data-math="N" transform="translate(0,303.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Mobile</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-CRM Analytics" data-math="N" transform="translate(0,282.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-CRM Analytics</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Email Studio" data-math="N" transform="translate(0,261.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Email Studio</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Service-Digital Engagement" data-math="N" transform="translate(0,240.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Service-Digital Engagement</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Journey/Contact/Audience" data-math="N" transform="translate(0,219.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Journey/Contact/Audience</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Engagement-Programming Languages" data-math="N" transform="translate(0,198.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Engagement-Programming Languages</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-Email Delivery &amp; Desktop" data-math="N" transform="translate(0,177.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-Email Delivery &amp; Desktop</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-How-to, Setup, Config" data-math="N" transform="translate(0,156.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-How-to, Setup, Config</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Service-Email Delivery &amp; Desktop" data-math="N" transform="translate(0,135.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Service-Email Delivery &amp; Desktop</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Service-Developer Support" data-math="N" transform="translate(0,114.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Service-Developer Support</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-Security &amp; Activations" data-math="N" transform="translate(0,93.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-Security &amp; Activations</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="(Unclassified)" data-math="N" transform="translate(0,72.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">(Unclassified)</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Data Cloud" data-math="N" transform="translate(0,51.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Data Cloud</text></g><g class="ytick"><text text-anchor="end" x="264" y="3.8499999999999996" data-unformatted="Sales-Developer Support" data-math="N" transform="translate(0,30.5)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales-Developer Support</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="480"><defs id="topdefs-0a2ea3"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="g-gtitle"></g><g class="g-xtitle" transform="translate(0,-11.727982521057129)"><text class="xtitle" x="467.5" y="489" text-anchor="middle" data-unformatted="Cases" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 13px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Cases</text></g><g class="g-ytitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="480"><g class="hoverlayer"></g></svg></div></div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Case Volume by Account</div>
+      <div class="chart-container js-plotly-plot" id="chartCasesByAccount"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 300px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300" style="background: rgb(255, 255, 255);"><defs id="defs-023f9d"><g class="clips"><clippath id="clip023f9dxyplot" class="plotclip"><rect width="630" height="204"></rect></clippath><clippath class="axesclip" id="clip023f9dx"><rect x="50" y="0" width="630" height="300"></rect></clippath><clippath class="axesclip" id="clip023f9dy"><rect x="0" y="36" width="700" height="204"></rect></clippath><clippath class="axesclip" id="clip023f9dxy"><rect x="50" y="36" width="630" height="204"></rect></clippath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="50" y="36" width="630" height="204" style="fill: rgb(248, 250, 252); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="50" y="36" width="630" height="204" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="30" y="16" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="680" y="16" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="30" y="240" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="680" y="240" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="113" y="240.5" width="504" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="50" y="240.5" width="63" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="617" y="240.5" width="63" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="29.5" y="56.400000000000006" width="20" height="163.20000000000002" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="29.5" y="219.6" width="20" height="20.400000000000002" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="29.5" y="36" width="20" height="20.400000000000002" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g></g><g class="gridlayer"><g class="x"></g><g class="y"><path class="ygrid crisp" transform="translate(0,199.63)" d="M50,0h630" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,159.25)" d="M50,0h630" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,118.88)" d="M50,0h630" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,78.5)" d="M50,0h630" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,38.13)" d="M50,0h630" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"><path class="yzl zl crisp" transform="translate(0,240)" d="M50,0h630" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(50,36)" clip-path="url(#clip023f9dxyplot)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M15.75,204V10.2H57.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M173.25,204V132.13H215.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M330.75,204V143.44H372.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M488.25,204V184.62H530.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M57.75,204V15.85H99.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(34, 197, 94); fill-opacity: 1;"></path></g><g class="point"><path d="M215.25,204V136.98H257.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(34, 197, 94); fill-opacity: 1;"></path></g><g class="point"><path d="M372.75,204V144.25H414.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(34, 197, 94); fill-opacity: 1;"></path></g><g class="point"><path d="M530.25,204V184.62H572.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(34, 197, 94); fill-opacity: 1;"></path></g></g></g><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M99.75,204V198.35H141.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(239, 68, 68); fill-opacity: 1;"></path></g><g class="point"><path d="M257.25,204V199.16H299.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(239, 68, 68); fill-opacity: 1;"></path></g><g class="point"><path d="M414.75,204V203H456.75V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(239, 68, 68); fill-opacity: 1;"></path></g><g class="point"><path d="M572.25,204V204H614.25V204Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(239, 68, 68); fill-opacity: 1;"></path></g></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="251" data-unformatted="YNFVNQA5&lt;br&gt;(Medium)" data-math="N" transform="translate(128.75,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 10px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;"><tspan class="line" dy="0em" x="0" y="251">YNFVNQA5</tspan><tspan class="line" dy="1.3em" x="0" y="251">(Medium)</tspan></text></g><g class="xtick"><text text-anchor="middle" x="0" y="251" data-unformatted="F49HqAAJ&lt;br&gt;(Large)" data-math="N" transform="translate(286.25,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 10px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;"><tspan class="line" dy="0em" x="0" y="251">F49HqAAJ</tspan><tspan class="line" dy="1.3em" x="0" y="251">(Large)</tspan></text></g><g class="xtick"><text text-anchor="middle" x="0" y="251" data-unformatted="vVBAoAAO&lt;br&gt;(V.Small)" data-math="N" transform="translate(443.75,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 10px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;"><tspan class="line" dy="0em" x="0" y="251">vVBAoAAO</tspan><tspan class="line" dy="1.3em" x="0" y="251">(V.Small)</tspan></text></g><g class="xtick"><text text-anchor="middle" x="0" y="251" data-unformatted="QCI14AAH&lt;br&gt;(V.Small)" data-math="N" transform="translate(601.25,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 10px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;"><tspan class="line" dy="0em" x="0" y="251">QCI14AAH</tspan><tspan class="line" dy="1.3em" x="0" y="251">(V.Small)</tspan></text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="0" data-math="N" transform="translate(0,240)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="50" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,199.63)">50</text></g><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="100" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,159.25)">100</text></g><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="150" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,118.88)">150</text></g><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="200" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,78.5)">200</text></g><g class="ytick"><text text-anchor="end" x="49" y="3.8499999999999996" data-unformatted="250" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,38.13)">250</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300"><defs id="topdefs-023f9d"><g class="clips"></g><clippath id="legend023f9d"><rect width="226" height="29" x="0" y="0"></rect></clippath></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(50,11.519999999999978)"><rect class="bg" shape-rendering="crispEdges" width="226" height="29" x="0" y="0" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; stroke-width: 0px;"></rect><g class="scrollbox" transform="" clip-path="url(#legend023f9d)"><g class="groups"><g class="traces" transform="translate(0,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.29" data-unformatted="Total" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Total</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"></g><g class="legendsymbols"><g class="legendpoints"><path class="legendundefined" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="68.06818008422852" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g><g class="traces" transform="translate(70.56818008422852,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.29" data-unformatted="Closed" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Closed</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"></g><g class="legendsymbols"><g class="legendpoints"><path class="legendundefined" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(34, 197, 94); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="78.84232711791992" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g><g class="traces" transform="translate(151.91050720214844,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.29" data-unformatted="Open" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Open</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"></g><g class="legendsymbols"><g class="legendpoints"><path class="legendundefined" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(239, 68, 68); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="70.66761207580566" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g></g></g><rect class="scrollbar" rx="20" ry="3" width="0" height="0" x="0" y="0" style="fill: rgb(128, 139, 164); fill-opacity: 1;"></rect></g><g class="g-gtitle"></g><g class="g-xtitle"></g><g class="g-ytitle"><text class="ytitle" transform="rotate(-90,14,138)" x="14" y="138" text-anchor="middle" data-unformatted="Cases" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 13px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Cases</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300"><g class="hoverlayer"></g></svg></div></div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Open Cases <span style="font-size:.75rem;color:#64748b;font-weight:400">As of Nov 18, 2026</span></div>
+    <table>
+      <thead><tr><th>Case Summary</th><th>Date</th><th>Cloud</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Platform event usage limit increase</td><td>Nov 17, 2026</td><td>Sales – Developer Support</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>Impact assessment – Login IP Ranges enforcement</td><td>Nov 16, 2026</td><td>Sales – Security &amp; Activations</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>IER not synching from SFMC to SF</td><td>Nov 12, 2026</td><td>Engagement – Connector/Distributed</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>Soft error for contacts from Journey Builder</td><td>Nov 16, 2026</td><td>Engagement – Journey/Contact</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>Personalization access problem</td><td>Nov 10, 2026</td><td>MC Personalization</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>Prompt calls failing – Prompt Engine callout (network error)</td><td>Oct 28, 2026</td><td>Service – Prompt Builder</td><td><span class="pill pill-amber">Open</span></td></tr>
+        <tr><td>Agentforce Studio not opening</td><td>Nov 25, 2025</td><td>Agentforce – Service</td><td><span class="pill pill-red">Open (Priority 45)</span></td></tr>
+        <tr><td>CSAL Evaluation – Data Cloud Adoption Guidance</td><td>Jul 9, 2025</td><td>CSM Origin</td><td><span class="pill pill-grey">New</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 3: LICENSE & ENTITLEMENTS -->
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Oct 31, 2027</div><div class="kpi-label">Renewal Cliff</div><div class="kpi-sub">All entitlements expire same day</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Active Contracts</div><div class="kpi-sub">Across 4 primary accounts</div></div>
+    <div class="kpi-card"><div class="kpi-val">4</div><div class="kpi-label">Notable Downgrades</div><div class="kpi-sub">Signature → Premier (2023–24)</div></div>
+    <div class="kpi-card"><div class="kpi-val">25+</div><div class="kpi-label">Active Entitlements</div><div class="kpi-sub">Primary org YNFVNQA5</div></div>
+  </div>
+  <div class="flag-box"><strong>License Risk:</strong> Asset line item query returned 0 records — license seat counts not available from OrgCS. All remaining entitlements cliff together Oct 31, 2027. Multiple Signature → Premier downgrades indicate sustained cost-reduction pressure. Proactive renewal engagement recommended well ahead of Q3 2027.</div>
+  <div class="section">
+    <div class="section-title">Active Service Contracts</div>
+    <table>
+      <thead><tr><th>Account</th><th>Contract Name</th><th>Start</th><th>End</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>Standard Success Plan – MC Engagement</td><td>2026-01-29</td><td>2027-10-31</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>Standard Success Plan – MC Engagement</td><td>2022-09-22</td><td>2027-10-31</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>Standard Success Plan – MC Engagement</td><td>2022-09-22</td><td>2027-10-31</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0010M00001YNFVNQA5</code></td><td>Premier Success Plan – MC Personalization</td><td>2022-09-22</td><td>2027-10-31</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0013000000QCI14AAH</code></td><td>Success Services</td><td>2026-10-05</td><td>2027-10-30</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0013000001F49HqAAJ</code></td><td>Standard Success Plan – MC Account Engagement</td><td>2024-10-30</td><td>2027-10-31</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0013000001F49HqAAJ</code></td><td>KOA Service Contract</td><td>2023-01-01</td><td>No end date</td><td><span class="pill pill-green">Active</span></td></tr>
+        <tr><td><code>0013000000vVBAoAAO</code></td><td>KOA Service Contract</td><td>2022-01-01</td><td>No end date</td><td><span class="pill pill-green">Active</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Notable Expired Contracts &amp; Downgrades</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Contract</th><th>Account</th><th>Expiry</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>Signature Success – Salesforce Platform</td><td><code>0013000001F49HqAAJ</code></td><td>Feb 2024</td><td><span class="pill pill-red">Downgraded to Premier</span></td></tr>
+          <tr><td>Signature Success – Salesforce Platform</td><td><code>0013000000QCI14AAH</code></td><td>Nov 2023</td><td><span class="pill pill-red">Expired – not renewed</span></td></tr>
+          <tr><td>Signature Success – B2C Commerce</td><td><code>0010M00001YNFVNQA5</code></td><td>Nov 2023</td><td><span class="pill pill-red">Expired – not renewed</span></td></tr>
+          <tr><td>Premier Success Plan – MC Engagement</td><td><code>0010M00001YNFVNQA5</code></td><td>Oct 2024</td><td><span class="pill pill-red">Downgraded to Standard</span></td></tr>
+          <tr><td>Premier Plus Success – Salesforce Platform</td><td><code>0013000000QCI14AAH</code></td><td>Oct 2026</td><td><span class="pill pill-amber">Recently expired</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Active Entitlements — Primary Org 0010M00001YNFVNQA5 (all expire Oct 2027)</summary>
+    <div class="section-body">
+      <div class="entitlements-list">
+        <span>Response (Premier)</span><span>Response (MC Premier)</span><span>Response (MC Standard) x3</span><span>Help Portal x2</span><span>Chat Support x4</span><span>Telephone Support x2</span><span>Prioritized Phone Queue</span><span>Developer Support x2</span><span>Premier Training Catalog</span><span>Customizable Training Templates</span><span>Recorded Online Training</span><span>Core Accelerator Premier+ Catalog</span><span>Online Case Submission x4</span><span>Success Manager</span><span>Premier Online Training Catalog x2</span><span>Priority Case Routing x4</span><span>Email Support x4</span><span>Designated Customer Contacts x2</span><span>Standard Community Groups x3</span><span>Premier Community Groups</span><span>Standard Online Training Catalog x3</span><span>MC Accelerator Premier Catalog</span><span>MC Premier Developer Support</span><span>Accelerator (active since Jun 2019)</span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- TAB 4: ADOPTION & USAGE -->
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-label">Agentforce Types</div><div class="kpi-sub">Onboarded Apr 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">46</div><div class="kpi-label">Data Cloud Cases</div><div class="kpi-sub">Highest volume cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">3+</div><div class="kpi-label">Active Markets</div><div class="kpi-sub">MC Journey: GB, SK, MY</div></div>
+    <div class="kpi-card"><div class="kpi-val">2019</div><div class="kpi-label">Accelerator Active Since</div><div class="kpi-sub">Expires Oct 2027</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Product Footprint by Usage Depth</div>
+      <table>
+        <thead><tr><th>Product</th><th>Cases (12mo)</th><th>Signal</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Sales Cloud</td><td>~130</td><td><span class="pill pill-blue">Heavy</span></td><td>Developer, security, email, analytics, config</td></tr>
+          <tr><td>Service Cloud</td><td>~74</td><td><span class="pill pill-blue">Heavy</span></td><td>Developer, email, digital engagement, mandatory security</td></tr>
+          <tr><td>Marketing Cloud Engagement</td><td>~74</td><td><span class="pill pill-blue">Heavy</span></td><td>Email Studio, Journey Builder, mobile, connector</td></tr>
+          <tr><td>Data Cloud</td><td>46</td><td><span class="pill pill-green">Growing</span></td><td>Active onboarding, CSAL evaluation open</td></tr>
+          <tr><td>CRM Analytics</td><td>10</td><td><span class="pill pill-grey">Present</span></td><td>Dataflow issues, reports requested</td></tr>
+          <tr><td>MC Personalization</td><td>8</td><td><span class="pill pill-grey">Present</span></td><td>Premier Success Plan active</td></tr>
+          <tr><td>Agentforce</td><td>7</td><td><span class="pill pill-amber">Emerging</span></td><td>5 agent types onboarded Apr 2026</td></tr>
+          <tr><td>MC Account Engagement</td><td>—</td><td><span class="pill pill-grey">Present</span></td><td>Active service contract</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Product Cases (12 months)</div>
+      <div class="chart-container js-plotly-plot" id="chartProductAdoption"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 320px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="320" style="background: rgb(255, 255, 255);"><defs id="defs-bcdc44"><g class="clips"><clippath id="clipbcdc44xyplot" class="plotclip"><rect width="485" height="260"></rect></clippath><clippath class="axesclip" id="clipbcdc44x"><rect x="185" y="0" width="485" height="320"></rect></clippath><clippath class="axesclip" id="clipbcdc44y"><rect x="0" y="20" width="700" height="260"></rect></clippath><clippath class="axesclip" id="clipbcdc44xy"><rect x="185" y="20" width="485" height="260"></rect></clippath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="185" y="20" width="485" height="260" style="fill: rgb(248, 250, 252); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="185" y="20" width="485" height="260" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="165" y="0" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="670" y="0" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="165" y="280" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="670" y="280" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="233.5" y="280.5" width="388" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="185" y="280.5" width="48.5" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="621.5" y="280.5" width="48.5" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="164.5" y="46" width="20" height="208" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="164.5" y="254" width="20" height="26" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="164.5" y="20" width="20" height="26" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g></g><g class="gridlayer"><g class="x"><path class="xgrid crisp" transform="translate(255.88,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(326.77,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(397.65,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(468.54,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(539.4200000000001,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(610.31,0)" d="M0,20v260" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y"></g></g><g class="zerolinelayer"><path class="xzl zl crisp" transform="translate(185,0)" d="M0,20v260" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(185,20)" clip-path="url(#clipbcdc44xyplot)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M0,256.75V230.75H0V256.75Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,224.25V198.25H24.81V224.25Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,191.75V165.75H28.35V191.75Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,159.25V133.25H35.44V159.25Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,126.75V100.75H163.03V126.75Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,94.25V68.25H262.27V94.25Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,61.75V35.75H262.27V61.75Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M0,29.25V3.25H460.75V29.25Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="0" data-math="N" transform="translate(185,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="20" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(255.88,0)">20</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="40" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(326.77,0)">40</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="60" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(397.65,0)">60</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="80" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(468.54,0)">80</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="100" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(539.4200000000001,0)">100</text></g><g class="xtick"><text text-anchor="middle" x="0" y="292" data-unformatted="120" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(610.31,0)">120</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="MC Acct Engagement" data-math="N" transform="translate(0,263.75)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">MC Acct Engagement</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="Agentforce" data-math="N" transform="translate(0,231.25)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Agentforce</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="MC Personalization" data-math="N" transform="translate(0,198.75)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">MC Personalization</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="CRM Analytics" data-math="N" transform="translate(0,166.25)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">CRM Analytics</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="Data Cloud" data-math="N" transform="translate(0,133.75)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Data Cloud</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="MC Engagement" data-math="N" transform="translate(0,101.25)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">MC Engagement</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="Service Cloud" data-math="N" transform="translate(0,68.75)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Service Cloud</text></g><g class="ytick"><text text-anchor="end" x="184" y="3.8499999999999996" data-unformatted="Sales Cloud" data-math="N" transform="translate(0,36.25)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">Sales Cloud</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="320"><defs id="topdefs-bcdc44"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="g-gtitle"></g><g class="g-xtitle" transform="translate(0,-11.727982521057129)"><text class="xtitle" x="427.5" y="329" text-anchor="middle" data-unformatted="Cases (12mo)" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 13px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Cases (12mo)</text></g><g class="g-ytitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="320"><g class="hoverlayer"></g></svg></div></div></div>
+    </div>
+  </div>
+  <details class="collapsible-section" open="">
+    <summary class="collapsible-title">Agentforce Onboarding (Apr 2026)</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Case</th><th>Date</th><th>Queue</th></tr></thead>
+        <tbody>
+          <tr><td>Agentforce Onboarding: Agents for Data Library (ADL)</td><td>Apr 24, 2026</td><td>Product Specialist (Priority 26)</td></tr>
+          <tr><td>Agentforce Onboarding: Agents for Data Library (ADL)</td><td>Apr 13, 2026</td><td>Product Specialist (Priority 26)</td></tr>
+          <tr><td>Agentforce Onboarding: Agents for Service</td><td>Apr 1, 2026</td><td>Specialists – SC (Priority 26)</td></tr>
+          <tr><td>Agentforce Onboarding: Agents for Lead Nurturing</td><td>Apr 1, 2026</td><td>Specialists – SC (Priority 26)</td></tr>
+          <tr><td>Agentforce Onboarding: Agents for Employees</td><td>Apr 1, 2026</td><td>Specialists – SC (Priority 26)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:#64748b;margin-top:10px">Note: "Agentforce Studio not opening" case (Nov 2025) remains open — indicates active usage attempt on the platform.</p>
+    </div>
+  </details>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Data Cloud Onboarding &amp; Adoption</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Case / Activity</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Proactive TMP: Customer Outreach – Data Cloud Onboarding</td><td>Feb 20, 2026</td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>CSAL Evaluation – Data Cloud Adoption Guidance</td><td>Jul 9, 2025</td><td><span class="pill pill-red">Still Open / New</span></td></tr>
+          <tr><td>Proactive Agentforce adoption outreach – Non PayGo</td><td>Feb 5, 2026</td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Data Cloud segment not publishing</td><td>Nov 2025</td><td><span class="pill pill-green">Resolved</span></td></tr>
+          <tr><td>Incorrect fields value in Data Cloud Individual Object</td><td>Jun 2026</td><td><span class="pill pill-green">Resolved</span></td></tr>
+          <tr><td>No entries into PH Onboarding Journey despite eligible records</td><td>Sep 2026</td><td><span class="pill pill-green">Resolved</span></td></tr>
+          <tr><td>Data cloud access issue</td><td>Dec 2025</td><td><span class="pill pill-green">Resolved</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Marketing Cloud Onboarding Journey Activity (Multi-market)</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Case Summary</th><th>Market</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td>GB New Onboarding journey – incorrect email path</td><td>GB</td><td>Jun 2026</td></tr>
+          <tr><td>Incorrect email address injected into SK onboarding journey</td><td>SK</td><td>May 2026</td></tr>
+          <tr><td>Onboarding journey – invalid email address entered</td><td>—</td><td>May 2026</td></tr>
+          <tr><td>BCC emails not received in onboarding journey</td><td>—</td><td>Jul 2026</td></tr>
+          <tr><td>BCC emails not received in onboarding journey</td><td>—</td><td>Aug 2026</td></tr>
+          <tr><td>MY Account Managers not receiving New Onboarding Journey CC Emails</td><td>MY</td><td>May 2026</td></tr>
+          <tr><td>Segment "New_Onboarding_Journey_ALL" not working as expected</td><td>—</td><td>Jan 2026</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:#64748b;margin-top:10px">Shell is running active customer onboarding journeys in MC across GB, SK, MY markets — a business-critical use case with high sensitivity to disruption.</p>
+    </div>
+  </details>
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Accelerator Usage</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Request</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td>"As Salesforce Optimizer is not working we need an org Accelerator report"</td><td>Jan 2025</td></tr>
+          <tr><td>"Accelerator Report"</td><td>Apr 2025</td></tr>
+          <tr><td>"Accelerator report need to be generated"</td><td>Apr 2026</td></tr>
+        </tbody>
+      </table>
+      <ul class="signal-list" style="margin-top:12px">
+        <li>Entitlement: Accelerator active since Jun 2019 — expires Oct 2027</li>
+        <li>Core Accelerator Premier+ Catalog active — expires Oct 2027</li>
+        <li>Recurring requests suggest awareness of accelerators but limited self-serve capability — CSM-led delivery opportunity</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<!-- TAB 5: MARKET INTELLIGENCE -->
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$97.24</div><div class="kpi-label">SHEL (NYSE)</div><div class="kpi-sub">As of Nov 17, 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">$274.8B</div><div class="kpi-label">Market Cap</div><div class="kpi-sub">P/E: 8.44 · Fwd P/E: 7.99</div></div>
+    <div class="kpi-card"><div class="kpi-val">+31.71%</div><div class="kpi-label">YTD Return</div><div class="kpi-sub">52wk: $68.62–$109.37</div></div>
+    <div class="kpi-card"><div class="kpi-val">$321.3B</div><div class="kpi-label">Revenue (TTM)</div><div class="kpi-sub">10.18% net margin</div></div>
+    <div class="kpi-card"><div class="kpi-val">~96,000</div><div class="kpi-label">Employees</div><div class="kpi-sub">Post-ARC acquisition 2026</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Revenue Trend (2022–2025)</div>
+      <table>
+        <thead><tr><th>Year</th><th>Revenue</th><th>Net Income</th><th>Profit Margin</th></tr></thead>
+        <tbody>
+          <tr><td>2022</td><td>$381B <span class="pill pill-blue">Peak</span></td><td>~$42B</td><td>~11%</td></tr>
+          <tr><td>2023</td><td>$316B</td><td>$19.3B</td><td>6.1%</td></tr>
+          <tr><td>2024</td><td>$284B</td><td>$16.5B</td><td>5.8%</td></tr>
+          <tr><td>2025</td><td>$267B</td><td>$18.1B</td><td>6.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Revenue &amp; Net Income Trend</div>
+      <div class="chart-container js-plotly-plot" id="chartRevenue"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 300px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300" style="background: rgb(255, 255, 255);"><defs id="defs-66ab3f"><g class="clips"><clippath id="clip66ab3fxyplot" class="plotclip"><rect width="580" height="218"></rect></clippath><clippath id="clip66ab3fxy2plot" class="plotclip"><rect width="580" height="218"></rect></clippath><clippath class="axesclip" id="clip66ab3fx"><rect x="60" y="0" width="580" height="300"></rect></clippath><clippath class="axesclip" id="clip66ab3fy"><rect x="0" y="42" width="700" height="218"></rect></clippath><clippath class="axesclip" id="clip66ab3fxy"><rect x="60" y="42" width="580" height="218"></rect></clippath><clippath class="axesclip" id="clip66ab3fy2"><rect x="0" y="42" width="700" height="218"></rect></clippath><clippath class="axesclip" id="clip66ab3fxy2"><rect x="60" y="42" width="580" height="218"></rect></clippath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="60" y="42" width="580" height="218" style="fill: rgb(248, 250, 252); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="60" y="42" width="580" height="218" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="40" y="22" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="640" y="22" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="40" y="260" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="640" y="260" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="118" y="260.5" width="464" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="60" y="260.5" width="58" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="582" y="260.5" width="58" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="39.5" y="63.8" width="20" height="174.4" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="39.5" y="238.20000000000002" width="20" height="21.8" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="39.5" y="42" width="20" height="21.8" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g><g class="xy2"><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy2" x="640.5" y="63.8" width="20" height="174.4" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy2" x="640.5" y="238.20000000000002" width="20" height="21.8" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy2" x="640.5" y="42" width="20" height="21.8" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g><g class="y2"></g></g><g class="gridlayer"><g class="x"></g><g class="y"><path class="ygrid crisp" transform="translate(0,205.64)" d="M60,0h580" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,151.29000000000002)" d="M60,0h580" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,96.93)" d="M60,0h580" style="stroke: rgb(226, 232, 240); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y2"><path class="y2grid crisp" transform="translate(0,211.73)" d="M60,0h580" style="stroke: rgb(232, 233, 235); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,163.45999999999998)" d="M60,0h580" style="stroke: rgb(232, 233, 235); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,115.2)" d="M60,0h580" style="stroke: rgb(232, 233, 235); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,66.93)" d="M60,0h580" style="stroke: rgb(232, 233, 235); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"><path class="yzl zl crisp" transform="translate(0,260)" d="M60,0h580" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2zl zl crisp" transform="translate(0,260)" d="M60,0h580" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; stroke-width: 1px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"><path class="xy2-x"></path><path class="xy2-y"></path></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"><g class="xy2-x"></g><g class="xy2-y"></g></g><g class="plot" transform="translate(60,42)" clip-path="url(#clip66ab3fxyplot)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M14.5,218V10.9H130.5V218Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M159.5,218V46.23H275.5V218Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M304.5,218V63.63H420.5V218Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g><g class="point"><path d="M449.5,218V72.87H565.5V218Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g></g></g><g class="overplot"><g class="xy2" transform="translate(60,42)" clip-path="url(#clip66ab3fxy2plot)"><g class="scatterlayer mlayer"><g class="trace scatter trace0af5b2" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M72.5,15.28L217.5,124.84L362.5,138.36L507.5,130.64" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(245, 158, 11); stroke-opacity: 1; stroke-width: 2px; opacity: 1;"></path></g><g class="points"><path class="point" transform="translate(72.5,15.28)" d="M3.5,0A3.5,3.5 0 1,1 0,-3.5A3.5,3.5 0 0,1 3.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(245, 158, 11); fill-opacity: 1;"></path><path class="point" transform="translate(217.5,124.84)" d="M3.5,0A3.5,3.5 0 1,1 0,-3.5A3.5,3.5 0 0,1 3.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(245, 158, 11); fill-opacity: 1;"></path><path class="point" transform="translate(362.5,138.36)" d="M3.5,0A3.5,3.5 0 1,1 0,-3.5A3.5,3.5 0 0,1 3.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(245, 158, 11); fill-opacity: 1;"></path><path class="point" transform="translate(507.5,130.64)" d="M3.5,0A3.5,3.5 0 1,1 0,-3.5A3.5,3.5 0 0,1 3.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(245, 158, 11); fill-opacity: 1;"></path></g><g class="text"></g></g></g></g></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"><path class="xy2-x crisp" d="M0,0" style="fill: none;"></path><path class="xy2-y crisp" d="M0,0" style="fill: none;"></path></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2,021.5" data-math="N" transform="translate(60,0)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">2,021.5</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2022" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(132.5,0)">2022</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2,022.5" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(205,0)">2,022.5</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2023" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(277.5,0)">2023</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2,023.5" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(350,0)">2,023.5</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2024" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(422.5,0)">2024</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2,024.5" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(495,0)">2,024.5</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2025" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(567.5,0)">2025</text></g><g class="xtick"><text text-anchor="middle" x="0" y="272" data-unformatted="2,025.5" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(640,0)">2,025.5</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="59" y="3.8499999999999996" data-unformatted="0" data-math="N" transform="translate(0,260)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="ytick"><text text-anchor="end" x="59" y="3.8499999999999996" data-unformatted="100" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,205.64)">100</text></g><g class="ytick"><text text-anchor="end" x="59" y="3.8499999999999996" data-unformatted="200" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,151.29000000000002)">200</text></g><g class="ytick"><text text-anchor="end" x="59" y="3.8499999999999996" data-unformatted="300" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,96.93)">300</text></g><g class="ytick"><text text-anchor="end" x="59" y="3.8499999999999996" data-unformatted="400" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,42.57)">400</text></g></g><g class="overaxes-above"><g class="xy2-x"></g><g class="xy2-y"><g class="y2tick"><text text-anchor="start" x="641" y="3.8499999999999996" data-unformatted="0" data-math="N" transform="translate(0,260)" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="y2tick"><text text-anchor="start" x="641" y="3.8499999999999996" data-unformatted="10" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,211.73)">10</text></g><g class="y2tick"><text text-anchor="start" x="641" y="3.8499999999999996" data-unformatted="20" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,163.45999999999998)">20</text></g><g class="y2tick"><text text-anchor="start" x="641" y="3.8499999999999996" data-unformatted="30" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,115.2)">30</text></g><g class="y2tick"><text text-anchor="start" x="641" y="3.8499999999999996" data-unformatted="40" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,66.93)">40</text></g></g></g></g><g class="subplot xy2"></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300"><defs id="topdefs-66ab3f"><g class="clips"></g><clippath id="legend66ab3f"><rect width="247" height="29" x="0" y="0"></rect></clippath></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(60,11.480000000000022)"><rect class="bg" shape-rendering="crispEdges" width="247" height="29" x="0" y="0" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; stroke-width: 0px;"></rect><g class="scrollbox" transform="" clip-path="url(#legend66ab3f)"><g class="groups"><g class="traces" transform="translate(0,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.29" data-unformatted="Revenue ($B)" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Revenue ($B)</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"></g><g class="legendsymbols"><g class="legendpoints"><path class="legendundefined" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(14, 165, 233); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="113.28125" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g><g class="traces" transform="translate(115.78125,14.5)" style="opacity: 1;"><text class="legendtext" text-anchor="start" x="40" y="4.29" data-unformatted="Net Income ($B)" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 11px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">Net Income ($B)</text><g class="layers" style="opacity: 1;"><g class="legendfill"></g><g class="legendlines"><path class="js-line" d="M5,0h30" style="fill: none; stroke: rgb(245, 158, 11); stroke-opacity: 1; stroke-width: 2px;"></path></g><g class="legendsymbols"><g class="legendpoints"><path class="scatterpts" transform="translate(20,0)" d="M3.5,0A3.5,3.5 0 1,1 0,-3.5A3.5,3.5 0 0,1 3.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(245, 158, 11); fill-opacity: 1;"></path></g></g></g><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="128.52982330322266" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"></rect></g></g></g><rect class="scrollbar" rx="20" ry="3" width="0" height="0" x="0" y="0" style="fill: rgb(128, 139, 164); fill-opacity: 1;"></rect></g><g class="g-gtitle"></g><g class="g-xtitle"></g><g class="g-ytitle"><text class="ytitle" transform="rotate(-90,24,151)" x="24" y="151" text-anchor="middle" data-unformatted="Revenue ($B)" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 13px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Revenue ($B)</text></g><g class="g-y2title"><text class="y2title" transform="rotate(-90,682.5,151)" x="682.5" y="151" text-anchor="middle" data-unformatted="Net Income ($B)" data-math="N" style="font-family: &quot;Segoe UI&quot;, system-ui, sans-serif; font-size: 13px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;">Net Income ($B)</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="300"><g class="hoverlayer"></g></svg></div></div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Stock Detail — NYSE: SHEL</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;font-size:.82rem">
+      <div><strong>52-week range:</strong> $68.62 – $109.37</div>
+      <div><strong>EPS:</strong> $11.52</div>
+      <div><strong>Dividend:</strong> $3.12 (3.20% yield)</div>
+      <div><strong>1-month:</strong> <span style="color:#ef4444">-8.83%</span></div>
+      <div><strong>1-year:</strong> <span style="color:#22c55e">+28.35%</span></div>
+      <div><strong>5-year:</strong> <span style="color:#22c55e">+113.29%</span></div>
+      <div><strong>Analyst avg target:</strong> $110.81 (+14% upside)</div>
+      <div><strong>Wells Fargo target:</strong> $116 (raised Oct 2026)</div>
+    </div>
+  </div>
+  <details class="collapsible-section" open="">
+    <summary class="collapsible-title">Corporate Timeline</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Year</th><th>Event</th></tr></thead>
+        <tbody>
+          <tr><td>2016</td><td>Acquired BG Group (£47B) — became #2 non-state oil company globally</td></tr>
+          <tr><td>2020</td><td>Cut 9,000 jobs; first dividend cut since WWII; major COVID restructuring</td></tr>
+          <tr><td>2021</td><td>HQ relocated to London; dropped "Royal Dutch"; rebranded Shell PLC</td></tr>
+          <tr><td>2023–24</td><td>SITI BV Signature Success plans expired and downgraded to Premier across multiple orgs</td></tr>
+          <tr><td>2024</td><td>Won court case reversing 45% emissions cut mandate</td></tr>
+          <tr><td>2026</td><td>Acquired ARC Resources (Canada) ~$16.4B — Montney LNG expansion; workforce ~96,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <div class="two-col">
+    <div class="risk-box">
+      <strong>Risk Signals for Salesforce</strong>
+      <ul class="signal-list">
+        <li>Revenue -30% from 2022 peak ($381B → $267B)</li>
+        <li>Multiple support plan downgrades: Signature → Premier (2023–24), MC Premier → Standard (2024)</li>
+        <li>No Strategic Indicator flag on any account</li>
+        <li>Owner = "Registration Headquarters" — no active executive engagement visible</li>
+        <li>IT budget scrutiny likely given sustained cost-reduction trajectory</li>
+        <li>CSAL Evaluation (Data Cloud) has been open since Jul 2025 — adoption risk</li>
+      </ul>
+    </div>
+    <div class="opp-box">
+      <strong>Opportunity Signals</strong>
+      <ul class="signal-list">
+        <li>Agentforce onboarding started Apr 2026 across 5 agent types — active commitment</li>
+        <li>Data Cloud CSAL evaluation open — engagement window to accelerate adoption</li>
+        <li>MC Personalization Premier plan active — upsell/expansion potential</li>
+        <li>2026 ARC Resources acquisition = new entity, potential Salesforce org expansion</li>
+        <li>MC Onboarding Journey active across GB, SK, MY — business-critical use case</li>
+        <li>Wells Fargo raised price target to $116 (Oct 2026) — financial stability indicator</li>
+        <li>+31.71% YTD stock performance — positive corporate sentiment</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: HEALTH & OPPORTUNITY -->
+<div id="t6" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val" style="color:#ef4444">$1.7M</div><div class="kpi-label">Attrition Risk (Aug 2025)</div><div class="kpi-sub">Red Account escalation attempted</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:#22c55e">$107K</div><div class="kpi-label">Active Upsell (Signature)</div><div class="kpi-sub">SP-33643 — Stage 04 Pricing/Neg.</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oct 2027</div><div class="kpi-label">Renewal Cliff</div><div class="kpi-sub">All entitlements expire together</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:#22c55e">66</div><div class="kpi-label">CSS Overall Score</div><div class="kpi-sub">Excellent (61–100 scale)</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Attrition Signal: $1.7M Red Account Escalation (Aug 2025)</strong>
+    Case 471246078 (Aug 15, 2025): <em>"Raise to Red Account due to 1.7M potential Attrition Risk in October 2025"</em> — Status: <span class="pill pill-grey">Canceled</span>. While the escalation was canceled (suggesting the immediate risk was contained), this represents a significant attrition signal within the past 15 months. Combined with the Oct 2027 cliff and four prior downgrades, re-engagement urgency is high.
+  </div>
+
+  <div class="opp-box">
+    <strong>Active Upsell Opportunity: Signature Add-on — $107,394 ACV</strong>
+    SP-33643 on account <code>0010M00001YNFVNQA5</code> is currently at <strong>Stage 04 — Pricing/Negotiation</strong>. Deal type: Signature Add-on. Current plan: Signature 2.0. This is a live commercial motion — CSM and AE alignment critical to close. Closing this would re-establish Signature coverage and materially reduce attrition risk heading into the Oct 2027 renewal.
+  </div>
+
+  <div class="section">
+    <div class="section-title">CSS Health Scores <span style="font-size:.75rem;color:#64748b;font-weight:400">Source: Success Intelligence (via Slackbot) — Nov 2026</span></div>
+    <div class="kpi-grid" style="margin-bottom:16px">
+      <div class="kpi-card"><div class="kpi-val" style="color:#22c55e">66</div><div class="kpi-label">Overall Score</div><div class="kpi-sub">Excellent — CSS scale 61–100</div></div>
+      <div class="kpi-card"><div class="kpi-val" style="color:#22c55e">65</div><div class="kpi-label">Product Adoption</div><div class="kpi-sub">+3.2% — 50% weight</div></div>
+      <div class="kpi-card"><div class="kpi-val" style="color:#22c55e">73</div><div class="kpi-label">Technical Health</div><div class="kpi-sub">0% trend — 30% weight</div></div>
+      <div class="kpi-card"><div class="kpi-val" style="color:#0ea5e9">60</div><div class="kpi-label">Customer Expertise</div><div class="kpi-sub">+3.4% — 20% weight</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p style="font-size:.8rem;font-weight:600;color:#1e3a5f;margin:0 0 8px">Strong sub-categories</p>
+        <table>
+          <thead><tr><th>Sub-category</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td>Self-Paced Learning</td><td><span class="pill pill-green">93</span></td></tr>
+            <tr><td>Certifications</td><td><span class="pill pill-green">90</span></td></tr>
+            <tr><td>Efficiency</td><td><span class="pill pill-green">88</span></td></tr>
+            <tr><td>Operational Excellence</td><td><span class="pill pill-green">85</span></td></tr>
+            <tr><td>Storage</td><td><span class="pill pill-green">75</span></td></tr>
+            <tr><td>Security</td><td><span class="pill pill-green">73</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p style="font-size:.8rem;font-weight:600;color:#1e3a5f;margin:0 0 8px">Weak / unused sub-categories</p>
+        <table>
+          <thead><tr><th>Sub-category</th><th>Score</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td>AppExchange</td><td><span class="pill pill-red">0</span></td><td>Not activated</td></tr>
+            <tr><td>Mobile / Identity</td><td><span class="pill pill-red">0</span></td><td>Not activated</td></tr>
+            <tr><td>Observability</td><td><span class="pill pill-red">0</span></td><td>Not activated</td></tr>
+            <tr><td>Expert-Led Learning</td><td><span class="pill pill-red">0</span></td><td>Not activated</td></tr>
+            <tr><td>Connect / API / Events</td><td><span class="pill pill-red">1</span></td><td>Near zero</td></tr>
+            <tr><td>CRMA Platform</td><td><span class="pill pill-amber">9</span></td><td>Near zero</td></tr>
+            <tr><td>Customization</td><td><span class="pill pill-amber">35</span></td><td>Low</td></tr>
+            <tr><td>Sandbox</td><td><span class="pill pill-amber">43</span></td><td>Low</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="flag-box" style="margin-top:14px"><strong>Key insight:</strong> Overall score of 66 is Excellent, but four sub-categories are completely zero (not activated). Expert-Led Learning &amp; Guidance at 0 directly validates the Accelerator/Guides opportunity — the entitlement exists but is not being consumed. CRMA Platform at 9 supports the CRMA &amp; Tableau Next case evidence. Connect/API/Events at 1 is a risk given the active Marketing Cloud integration dependency.</div>
+  </div>
+
+  <details class="collapsible-section" open="">
+    <summary class="collapsible-title">Feature Adoption Gaps — Extended Portfolio (PL &amp; NL Accounts)</summary>
+    <div class="section-body">
+      <p style="font-size:.82rem;color:#374151;margin-bottom:12px">Signal-level drill-down from Success Intelligence across two additional accounts. <strong>Note:</strong> CSS shows usage, not licensing — a score of 0 only means shelfware if the feature was purchased. Verify entitlements before raising as a gap.</p>
+      <div class="two-col">
+        <div>
+          <p style="font-size:.8rem;font-weight:600;color:#1e3a5f;margin:0 0 6px">PL Account — Service Cloud &nbsp;<span class="pill pill-blue">Score: 55 (Good)</span></p>
+          <table>
+            <thead><tr><th>Category</th><th>Score</th><th>Zero signals</th></tr></thead>
+            <tbody>
+              <tr><td>Service AI</td><td><span class="pill pill-red">0</span></td><td>Article Recommendation, Case Wrap-Up, Conversation Catch Up, Einstein Case Classification, Service Replies for Email</td></tr>
+              <tr><td>Agent Automation</td><td><span class="pill pill-red">0</span></td><td>Macros, Quick Text</td></tr>
+              <tr><td>Self-Service &amp; Deflection</td><td><span class="pill pill-red">1</span></td><td>All 6 Knowledge signals at 0; Search &amp; Viewing Engagement at 1</td></tr>
+              <tr><td>Agent Experience</td><td><span class="pill pill-amber">7</span></td><td>Broadcast, Console Actions, Console Custom Components, Incident, Swarming</td></tr>
+              <tr><td>Channel Management</td><td><span class="pill pill-amber">14</span></td><td>Email-to-Case Growth, Web-to-Case</td></tr>
+              <tr><td>Routing &amp; Rules</td><td><span class="pill pill-amber">25</span></td><td>Escalation Rules, Omni-Channel Engagement</td></tr>
+              <tr><td>Case Management</td><td><span class="pill pill-green">53</span></td><td>Case Feed Engagement 0; Case Milestones 20</td></tr>
+              <tr><td>Consumption</td><td><span class="pill pill-green">83</span></td><td>Healthy — no low signals</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p style="font-size:.8rem;font-weight:600;color:#1e3a5f;margin:0 0 6px">NL Account — Sales + Service Cloud &nbsp;<span class="pill pill-amber">Score: 38 (Good)</span></p>
+          <table>
+            <thead><tr><th>Category</th><th>Score</th><th>Signal</th></tr></thead>
+            <tbody>
+              <tr><td>Service AI</td><td><span class="pill pill-red">0</span></td><td>All 5 signals at 0</td></tr>
+              <tr><td>Agent Automation</td><td><span class="pill pill-red">0</span></td><td>Macros, Quick Text</td></tr>
+              <tr><td>Self-Service &amp; Deflection</td><td><span class="pill pill-red">0</span></td><td>All 8 Knowledge signals at 0</td></tr>
+              <tr><td>Agent Experience</td><td><span class="pill pill-red">0</span></td><td>All 6 signals at 0 incl. Console Workspace</td></tr>
+              <tr><td>SLAs</td><td><span class="pill pill-red">0</span></td><td>Entitlements and Service Contracts both 0</td></tr>
+              <tr><td>Opportunities &amp; Pipeline</td><td><span class="pill pill-red">7</span></td><td>Opportunities Engagement, Opp Products, Opp Teams, Pipeline Inspection all 0</td></tr>
+              <tr><td>Lead Generation</td><td><span class="pill pill-red">5</span></td><td>Campaigns, Lead Conversion, Leads Engagement all 0</td></tr>
+              <tr><td>Activity Management</td><td><span class="pill pill-red">0</span></td><td>Cadences, Activities Growth, Tasks, Events all 0</td></tr>
+              <tr><td>Forecasting</td><td><span class="pill pill-red">0</span></td><td>Forecasts and Collaborative Forecasts both 0</td></tr>
+              <tr><td>Sales Productivity</td><td><span class="pill pill-green">100</span></td><td>Healthy</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="flag-box" style="margin-top:14px">
+        <strong>What this means:</strong>
+        <ul class="signal-list" style="margin-top:6px">
+          <li><strong>Service AI is completely dark across both accounts</strong> — Article Recommendation, Einstein Case Classification, and Service Replies for Email are all 0. With Agentforce onboarded in Apr 2026 on the primary org, there is a clear expansion opportunity to activate AI features on the PL and NL orgs.</li>
+          <li><strong>Knowledge is unused on both PL and NL</strong> — zero authoring, approval, publishing and search engagement. A Knowledge activation session (Accelerator or Architect-led) would address Self-Service &amp; Deflection gaps on both accounts.</li>
+          <li><strong>NL Sales Cloud is almost entirely unused</strong> — Opportunities, Leads, Forecasts, Activities all near 0. Confirm with account team whether Sales licenses were actually purchased for this org before treating as a gap.</li>
+          <li><strong>Omni-Channel not activated on either</strong> — Routing &amp; Rules at 25 / 0. An Omni-Channel setup accelerator would directly lift both accounts' scores.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <details class="collapsible-section" open="">
+    <summary class="collapsible-title">Guides Opportunity — Accelerator Entitlement Underutilised</summary>
+    <div class="section-body">
+      <p style="font-size:.82rem;color:#374151;margin-bottom:12px">SITI BV holds active <strong>Core Accelerator Premier+ Catalog</strong> and <strong>Accelerator</strong> entitlements (all 3 large orgs, since Jun 2014/2019, expiring Oct 2027). Case evidence shows the customer is aware of Accelerators but needs CSM-led delivery:</p>
+      <table>
+        <thead><tr><th>Request</th><th>Date</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>"As Salesforce Optimizer is not working we need an org Accelerator report"</td><td>Jan 2025</td><td>Self-serve gap — triggered support case</td></tr>
+          <tr><td>"Accelerator Report" request</td><td>Apr 2025</td><td>Repeat request — 3 months later</td></tr>
+          <tr><td>"Accelerator report need to be generated"</td><td>Apr 2026</td><td>Third request in 15 months</td></tr>
+        </tbody>
+      </table>
+      <ul class="signal-list" style="margin-top:12px">
+        <li><strong>Recommendation:</strong> CSM to proactively schedule an Accelerator delivery session — 3 repeat requests indicate customer knows the value but can't access it independently.</li>
+        <li><strong>Potential Guide topics:</strong> Org Health (MC), Data Cloud onboarding acceleration (CSAL case still open), Agentforce implementation (5 agent types onboarded but adoption outreach was needed), CRM Analytics (dataflow issues recurring).</li>
+        <li><strong>MC Accelerator Premier Catalog</strong> also active on primary org — covers Marketing Cloud-specific accelerator delivery.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="collapsible-section" open="">
+    <summary class="collapsible-title">Architect Engagement — Active but Expandable</summary>
+    <div class="section-body">
+      <p style="font-size:.82rem;color:#374151;margin-bottom:12px">Architect-grade engagement is already occurring across the SITI BV portfolio, primarily driven through the Security Maturity Assessment program:</p>
+      <table>
+        <thead><tr><th>Engagement</th><th>Date</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Security Maturity Assessment (SMA) — full delivery</td><td>Apr–Jun 2026</td><td><span class="pill pill-green">Complete</span></td><td>7 cases including readout and follow-up. Org: 00D4P000000jmEI</td></tr>
+          <tr><td>SMA follow-up questions</td><td>Jul 2026</td><td><span class="pill pill-green">Closed</span></td><td>Indicates customer acted on SMA findings</td></tr>
+          <tr><td>Service: Org Health Check</td><td>May–Jun 2025</td><td><span class="pill pill-green">Closed</span></td><td>2 cases — Service Cloud architecture review</td></tr>
+          <tr><td>CRMA and Tableau Next: Better Together!</td><td>Sep 2026</td><td><span class="pill pill-green">Closed</span></td><td>Analytics architecture advisory session</td></tr>
+        </tbody>
+      </table>
+      <ul class="signal-list" style="margin-top:12px">
+        <li><strong>Expansion opportunity:</strong> SMA completed on <em>one</em> org (00D4P000000jmEI). With 35+ orgs across the global portfolio, consider SMA expansion to AMER or APAC orgs — especially Houston/Cambridge where Support cases are active.</li>
+        <li><strong>Agentforce architecture:</strong> 5 agent types onboarded in Apr 2026; a Hyperforce / Agentforce architecture review could support scale-up to production.</li>
+        <li><strong>Data Cloud architecture:</strong> CSAL evaluation (Jul 2025) is <em>still open/New</em> after 16 months — an architect-led Data Cloud adoption session could unblock this.</li>
+        <li><strong>MC + Data Cloud integration:</strong> Active Personalization + MC Engagement + Data Cloud footprint — an integration architecture session could drive cross-cloud depth.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="collapsible-section">
+    <summary class="collapsible-title">Unused / At-Risk License Signals</summary>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>Signal</th><th>Source</th><th>Risk Level</th></tr></thead>
+        <tbody>
+          <tr><td>CDP UK Trial orgs — inactive since Apr 2024</td><td>Account portfolio review</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>Premier Plus Success (QCI14AAH) — expired Oct 2026, not renewed</td><td>ServiceContract</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>B2C Commerce Signature — expired Nov 2023</td><td>ServiceContract</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>Asset line item counts not available via OrgCS (CPQ)</td><td>Apttus query returned 0</td><td><span class="pill pill-grey">Unknown</span></td></tr>
+          <tr><td>CSAL Data Cloud Adoption evaluation — open 16+ months (New)</td><td>Case 474087xxx</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>"Agentforce Studio not opening" — open since Nov 2025</td><td>Case — still open</td><td><span class="pill pill-amber">Medium</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:#64748b;margin-top:10px">Exact seat counts require CPQ portal access or Tableau license dashboards — not available via OrgCS SOQL. The signals above indicate potential underuse of purchased capacity. Priority action: engage CSM to review seat utilisation ahead of Oct 2027 renewal and identify any products where license reduction could be a renewal ask.</p>
+    </div>
+  </details>
+
+  <div class="section">
+    <div class="section-title">Recommended Actions</div>
+    <table>
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th><th>Timing</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P1</span></td><td>Close SP-33643 Signature Add-on ($107K ACV) — currently at Pricing/Negotiation</td><td>AE + CSM</td><td>Immediate</td></tr>
+        <tr><td><span class="pill pill-red">P1</span></td><td>Obtain CSS Health Scores from CSM / CSS dashboard — not queryable via OrgCS</td><td>CSM</td><td>Immediate</td></tr>
+        <tr><td><span class="pill pill-amber">P2</span></td><td>Schedule Accelerator delivery session (3 unacted requests in 15 months)</td><td>CSM + Guide</td><td>Q1 FY27</td></tr>
+        <tr><td><span class="pill pill-amber">P2</span></td><td>Architect-led Data Cloud session to close 16-month-old CSAL evaluation</td><td>Architect</td><td>Q1 FY27</td></tr>
+        <tr><td><span class="pill pill-amber">P2</span></td><td>Resolve open "Agentforce Studio not opening" case (Nov 2025) — blocking adoption</td><td>Support + CSM</td><td>Immediate</td></tr>
+        <tr><td><span class="pill pill-blue">P3</span></td><td>SMA expansion to AMER orgs (Houston/Cambridge) — SMA done on 1 org only</td><td>Architect</td><td>H1 FY27</td></tr>
+        <tr><td><span class="pill pill-blue">P3</span></td><td>Review CDP UK Trial orgs (inactive since Apr 2024) — decommission or reactivate</td><td>CSM</td><td>Q1 FY27</td></tr>
+        <tr><td><span class="pill pill-blue">P3</span></td><td>Proactive renewal engagement — Oct 2027 cliff covers all entitlements simultaneously</td><td>AE + CSM</td><td>Q2 FY27</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Chart 1: Cases by Cloud (horizontal bar)
+  var clouds = [
+    'Sales-Developer Support','Data Cloud','(Unclassified)','Sales-Security & Activations',
+    'Service-Developer Support','Service-Email Delivery & Desktop','Sales-How-to, Setup, Config',
+    'Sales-Email Delivery & Desktop','Engagement-Programming Languages',
+    'Engagement-Journey/Contact/Audience','Service-Digital Engagement','Engagement-Email Studio',
+    'Sales-CRM Analytics','Engagement-Mobile','Marketing Personalization','Agentforce-Service',
+    'Engagement-Connector/Distributed','Sales-Network Infrastructure',
+    'Sales-Mandatory Security Controls','Engagement-Email Deliverability'
+  ];
+  var cloudCounts = [46,46,34,31,28,25,25,23,20,18,18,16,10,9,8,7,6,5,5,5];
+  clouds.reverse(); cloudCounts.reverse();
+  Plotly.newPlot('chartCasesByCloud', [{
+    type:'bar', orientation:'h', x:cloudCounts, y:clouds,
+    marker:{color:'#0ea5e9'},
+    hovertemplate:'%{y}: %{x} cases<extra></extra>'
+  }], {
+    height:480, margin:{l:265,r:30,t:20,b:40},
+    paper_bgcolor:'#fff', plot_bgcolor:'#f8fafc',
+    xaxis:{title:'Cases',gridcolor:'#e2e8f0'},
+    yaxis:{tickfont:{size:11}},
+    font:{size:11,family:'Segoe UI,system-ui,sans-serif'}
+  }, {responsive:true,displayModeBar:false});
+
+  // Chart 2: Case Volume by Account (grouped bar)
+  var accts = ['YNFVNQA5<br>(Medium)','F49HqAAJ<br>(Large)','vVBAoAAO<br>(V.Small)','QCI14AAH<br>(V.Small)'];
+  Plotly.newPlot('chartCasesByAccount', [
+    {name:'Total', x:accts, y:[240,89,75,24], type:'bar', marker:{color:'#0ea5e9'}},
+    {name:'Closed', x:accts, y:[233,83,74,24], type:'bar', marker:{color:'#22c55e'}},
+    {name:'Open', x:accts, y:[7,6,1,0], type:'bar', marker:{color:'#ef4444'}}
+  ], {
+    barmode:'group', height:300, margin:{l:50,r:20,t:20,b:60},
+    paper_bgcolor:'#fff', plot_bgcolor:'#f8fafc',
+    yaxis:{title:'Cases',gridcolor:'#e2e8f0'},
+    xaxis:{tickfont:{size:10}},
+    legend:{orientation:'h',y:1.12},
+    font:{size:11,family:'Segoe UI,system-ui,sans-serif'}
+  }, {responsive:true,displayModeBar:false});
+
+  // Chart 3: Product Adoption (horizontal bar)
+  var prods = ['Sales Cloud','Service Cloud','MC Engagement','Data Cloud','CRM Analytics','MC Personalization','Agentforce','MC Acct Engagement'];
+  var prodVals = [130,74,74,46,10,8,7,0];
+  prods.reverse(); prodVals.reverse();
+  Plotly.newPlot('chartProductAdoption', [{
+    type:'bar', orientation:'h', x:prodVals, y:prods,
+    marker:{color:'#0ea5e9'},
+    hovertemplate:'%{y}: %{x} cases<extra></extra>'
+  }], {
+    height:320, margin:{l:185,r:30,t:20,b:40},
+    paper_bgcolor:'#fff', plot_bgcolor:'#f8fafc',
+    xaxis:{title:'Cases (12mo)',gridcolor:'#e2e8f0'},
+    yaxis:{tickfont:{size:11}},
+    font:{size:11,family:'Segoe UI,system-ui,sans-serif'}
+  }, {responsive:true,displayModeBar:false});
+
+  // Chart 4: Revenue trend (dual axis bar + line)
+  var yrs = ['2022','2023','2024','2025'];
+  Plotly.newPlot('chartRevenue', [
+    {
+      name:'Revenue ($B)', type:'bar', x:yrs, y:[381,316,284,267],
+      marker:{color:'#0ea5e9'}, yaxis:'y',
+      hovertemplate:'Revenue: $%{y}B<extra></extra>'
+    },
+    {
+      name:'Net Income ($B)', type:'scatter', mode:'lines+markers', x:yrs, y:[42,19.3,16.5,18.1],
+      line:{color:'#f59e0b',width:2}, marker:{size:7,color:'#f59e0b'}, yaxis:'y2',
+      hovertemplate:'Net Income: $%{y}B<extra></extra>'
+    }
+  ], {
+    height:300, margin:{l:60,r:60,t:30,b:40},
+    paper_bgcolor:'#fff', plot_bgcolor:'#f8fafc',
+    yaxis:{title:'Revenue ($B)',gridcolor:'#e2e8f0',rangemode:'tozero'},
+    yaxis2:{title:'Net Income ($B)',overlaying:'y',side:'right',rangemode:'tozero'},
+    legend:{orientation:'h',y:1.14},
+    font:{size:11,family:'Segoe UI,system-ui,sans-serif'}
+  }, {responsive:true,displayModeBar:false});
+
+});
+</script>
+
+
+<svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;"><path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0; fill: black;"></path></svg></body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

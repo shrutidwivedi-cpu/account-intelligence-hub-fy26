@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>British Telecommunications PLC — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>British Telecommunications PLC — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA UK &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DG0000000kVjI &nbsp;·&nbsp; OrgCS Account ID: 0013000000vSqtcAAC &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Ticker: BT.L (London Stock Exchange)</div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$2.1M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">45.2%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$724K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~42</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Near-zero tech engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">~12%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">Stagnant</div></div>
+    <div class="kpi-card"><div class="kpi-val">10+ yrs</div><div class="kpi-label">Customer Age</div><div class="kpi-sub">Moderate segment</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>British Telecommunications PLC</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqtcAAC</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVjI</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA UK</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>10+ Years</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Telecommunications</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$2,134,739</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>45.23%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$723,900</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-amber">HIGH (40–50%)</span></td></tr>
+        <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~5–10</div><div class="kpi-label">Estimated Cases (12mo)</div><div class="kpi-sub-amber">Mostly billing</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None confirmed</div></div>
+    <div class="kpi-card"><div class="kpi-val">~1</div><div class="kpi-label">Technical Engagements</div><div class="kpi-sub-red">Near-zero</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Near-Zero Technical Engagement Pattern</strong>
+    OrgCS records for British Telecommunications show predominantly billing and administrative case activity with minimal technical support or success engagement. For a 10+ year Premier account at $2.1M AOV, the near-absence of technical cases indicates either very low platform utilization or an internal BT Salesforce team that is entirely self-sufficient but not engaging with Salesforce CSG for growth or enablement. The latter is itself a risk — an account that never asks questions may be quietly evaluating alternatives.
+  </div>
+  <div class="info-box">
+    <strong>BT Group Restructuring Context</strong>
+    British Telecommunications (BT Group) went through significant restructuring between 2022–2025, including major layoffs (up to 55,000 jobs by 2030), divesting Openreach discussions, and strategic focus on fiber/5G rather than enterprise IT services. This restructuring likely impacted internal Salesforce champion stability — people who advocated for the Sales Cloud deployment may have left. Any renewal decision in this environment is at elevated risk.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">License Activation</div><div class="kpi-sub-red">Tableau not queried</div></div>
+    <div class="kpi-card"><div class="kpi-val">~12%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">Low — stagnant</div></div>
+    <div class="kpi-card"><div class="kpi-val">None</div><div class="kpi-label">AI / Agentforce</div><div class="kpi-sub-red">No adoption signal</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Low Utilization Estimated</strong>
+    Moderate segment + 10yr tenure + near-zero technical cases = estimated ~12% license utilization. For a $2.1M AOV account, this means BT is paying approximately $185K per meaningful active user seat — extremely poor value realization that creates obvious justification for reduction at renewal.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~42</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Low</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>CSS Health Estimated at ~42/100</strong>
+    Based on near-zero technical engagement, Moderate segment classification, and 10-year tenure without visible CSS programs. The BT restructuring has likely reduced the internal Salesforce champion count, further lowering effective customer expertise. Manual CSS dashboard confirmation recommended.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~£21B</div><div class="kpi-label">BT Group Revenue (FY2024)</div></div>
+    <div class="kpi-card"><div class="kpi-val">75K</div><div class="kpi-label">Employees (restructuring)</div><div class="kpi-sub-red">Cutting to ~40K by 2030</div></div>
+    <div class="kpi-card"><div class="kpi-val">EMEA UK</div><div class="kpi-label">Territory</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">BT Group Strategic Context</div>
+      <ul class="signal-list">
+        <li><strong>Major cost restructuring:</strong> BT Group CEO Philip Jansen announced up to 55,000 job cuts by 2030 — the company is aggressively cutting enterprise IT spend across all categories.</li>
+        <li><strong>AI replacement strategy:</strong> BT explicitly stated it will replace significant headcount with AI — Salesforce Sales Cloud for a reduced enterprise sales team has a smaller ROI story.</li>
+        <li><strong>Fiber/5G transformation focus:</strong> BT's strategic investment is in Openreach fiber rollout and consumer 5G — enterprise SaaS is not a strategic priority.</li>
+        <li><strong>Microsoft partnership:</strong> BT has a deep Microsoft Azure partnership — Dynamics 365 is a natural competitive threat to Salesforce Sales Cloud in the BT environment.</li>
+        <li><strong>Champion instability:</strong> Restructuring-driven attrition within BT's IT and commercial functions means the people who deployed and advocated for Salesforce may have left, reducing renewal loyalty.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Competitive Threat Assessment</div>
+      <table>
+        <thead><tr><th>Threat</th><th>Level</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Microsoft Dynamics 365</td><td><span class="pill pill-red">High</span></td><td>Existing Azure partnership; CoPilot bundled</td></tr>
+          <tr><td>Internal consolidation / downsizing</td><td><span class="pill pill-red">High</span></td><td>Fewer salespeople = fewer licenses needed</td></tr>
+          <tr><td>AI-native CRM alternatives</td><td><span class="pill pill-amber">Medium</span></td><td>BT AI-first strategy creates openings</td></tr>
+          <tr><td>Switching costs</td><td><span class="pill pill-green">High barrier</span></td><td>10+ years of data/customization is a moat</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">45.2%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$724K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Risk Tier</div><div class="kpi-sub-amber">40–50% range</div></div>
+    <div class="kpi-card"><div class="kpi-val">Near-Zero</div><div class="kpi-label">Technical Engagement</div><div class="kpi-sub-red">10yr account, mostly billing</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risk Signal Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — BT Group Cost Restructuring Threatens Champion Stability (Critical)</strong>
+    BT's announced 55,000 job cuts by 2030 — ongoing since 2022 — directly threatens the internal Salesforce champion network. Sales teams using Sales Cloud are likely being reduced. Remaining users may not have the same executive sponsorship that approved the original Premier subscription.
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Near-Zero Technical Engagement (High)</strong>
+    For a 10+ year Premier account paying $2.1M/year, near-absence of technical cases signals either stagnation or a fully self-sufficient but disengaged relationship. Neither interpretation is healthy for renewal. The lack of success engagement means no internal advocate is building the renewal business case.
+  </div>
+
+  <div class="risk-box">
+    <strong>#3 — Microsoft Dynamics 365 Competitive Threat (High)</strong>
+    BT has a deep Microsoft Azure partnership. As BT consolidates its technology stack during cost restructuring, Microsoft Dynamics 365 (bundled with existing M365/Azure contracts) is the natural alternative to a standalone Salesforce Premier subscription.
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Salesforce champions at BT. Confirm who the new executive sponsor is post-restructuring. If sponsor has changed, re-establish relationship before renewal.</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a utilization review meeting with BT IT leadership. Present a value realization report — quantify what BT has achieved with Sales Cloud over 10 years.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a defensive brief against Dynamics 365 specifically for BT's cost-cutting context — focus on switching costs, 10-year data migration risk, and customization investment.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Propose an Agentforce trial aligned with BT's AI-replacement strategy — position Agentforce as the path to achieving BT's AI headcount reduction goals within the existing Salesforce platform.</td><td>CSM + SE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+Plotly.newPlot('chartRisk',[{
+  type:'bar',x:[10,9,8],
+  y:['#1 BT Restructuring — Champion Loss Risk','#2 Near-Zero Technical Engagement','#3 Microsoft Dynamics 365 Threat'],
+  orientation:'h',marker:{color:['#dc2626','#ef4444','#f59e0b']},
+  text:['55K job cuts by 2030 — internal SF champions at risk','10yr Premier, mostly billing cases only','Deep Azure partnership; Dynamics 365 bundled threat'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:280,r:10,t:20,b:30},height:220,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

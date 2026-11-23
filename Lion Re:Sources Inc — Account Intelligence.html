@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lion Re:Sources Inc — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.flag-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#78350f}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+.score-bar-wrap{display:flex;align-items:center;gap:10px;margin:6px 0}
+.score-bar-label{font-size:.78rem;color:#475569;width:220px;flex-shrink:0;text-align:right}
+.score-bar-track{flex:1;background:#e2e8f0;border-radius:4px;height:10px;overflow:hidden}
+.score-bar-fill{height:10px;border-radius:4px;transition:width .4s}
+.score-bar-val{font-size:.78rem;font-weight:700;color:#1e293b;width:34px;flex-shrink:0}
+.signal-critical{color:#dc2626;font-weight:700}
+.signal-warn{color:#d97706;font-weight:600}
+.signal-ok{color:#16a34a;font-weight:600}
+.divider{height:1px;background:#e2e8f0;margin:16px 0}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Lion Re:Sources Inc — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA FRANCE &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DU000000098UZ &nbsp;·&nbsp; OrgCS Account ID: 0013000001Ik04WAAR &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Likely Entity: Publicis Groupe / Lion Re:Sources</div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<!-- TAB 1: ACCOUNT OVERVIEW -->
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
+    <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
+    <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">72/100</div><div class="kpi-label">CSS Health Score</div><div class="kpi-sub-amber">est. — Oct 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">~65%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub">est. — active users</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-red">Confirmed in OrgCS</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Paradox Signal: High Engagement + High Attrition Risk</strong>
+    <ul class="signal-list">
+      <li>Lion Re:Sources is the <strong>most technically engaged account in this cohort</strong> — 150+ support cases in the past 12 months across Sales, CRM Analytics, Pardot/Account Engagement, Agentforce, Data Cloud, and Tableau Next.</li>
+      <li>Despite Strong segment classification and high product usage, the model assigns 47.47% attrition probability — the paradox suggests risk is <strong>external rather than product-driven</strong>: M&A activity, restructuring, or budget centralization at the Publicis Groupe parent.</li>
+      <li>8 open Red Account records in OrgCS — the highest Red Account count in this cohort — indicating ongoing escalation monitoring despite active engagement.</li>
+      <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction.</li>
+    </ul>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Lion Re:Sources Inc</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000001Ik04WAAR</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DU000000098UZ</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA FRANCE</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Strong</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Industry</strong></td><td>Communications &amp; Media</td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>10+ Years</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        <tr><td><strong>Parent Company</strong></td><td>Likely Publicis Groupe SA</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial &amp; Risk Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$3,806,083</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>47.47%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$1,351,101</td></tr>
+        <tr><td><strong>Primary Cloud Usage</strong></td><td>Sales Cloud, CRM Analytics, Account Engagement, Agentforce, Data Cloud</td></tr>
+        <tr><td><strong>Red Accounts Open</strong></td><td>8 (confirmed OrgCS)</td></tr>
+        <tr><td><strong>Last Active Engagement</strong></td><td>Nov 2026 (Agentforce Coworker case open)</td></tr>
+        <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">About Lion Re:Sources Inc</div>
+    <p style="font-size:.82rem;color:#374151;margin:0 0 10px">Lion Re:Sources Inc is a shared services and resource management entity, believed to operate under the Publicis Groupe umbrella — one of the world's largest advertising and communications holding companies (revenues ~€14B, ~100,000 employees globally). Lion Re:Sources likely provides centralized procurement, HR, and technology services to Publicis agencies.</p>
+    <p style="font-size:.82rem;color:#374151;margin:0">The key risk context is that Salesforce spend decisions for Publicis entities are increasingly centralized at group level. Any Publicis-wide renegotiation of CRM licensing would affect Lion Re:Sources regardless of product satisfaction or utilization levels. The entity's heavy Pardot/Account Engagement usage is consistent with a marketing services or shared services function within a media group.</p>
+  </div>
+</div>
+
+<!-- TAB 2: SUPPORT & CASES -->
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">150+</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub">Highest in cohort</div></div>
+    <div class="kpi-card"><div class="kpi-val">~90</div><div class="kpi-label">Technical Support Cases</div><div class="kpi-sub">Sales, Service, Dev</div></div>
+    <div class="kpi-card"><div class="kpi-val">~35</div><div class="kpi-label">Account Engagement / Pardot</div><div class="kpi-sub-amber">Heavy EMEA FRANCE use</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-red">Open / escalated</div></div>
+  </div>
+
+  <div class="opp-box">
+    <strong>Strongest Technical Engagement in Cohort</strong>
+    Lion Re:Sources filed 150+ support cases over the past 12 months — the highest volume by far among the 12 accounts in this attrition cohort. Cases span Sales Cloud developer support, CRM Analytics, Account Engagement (Pardot), Agentforce, Data Cloud, Tableau Next, DevOps Center, and security. This level of engagement indicates deep platform dependency and active internal Salesforce teams.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Cases by Category (12 months)</div>
+      <div id="chartCasesByType" class="chart-container"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Notable Non-Billing Cases</div>
+      <table>
+        <thead><tr><th>Date</th><th>Subject</th><th>Cloud / Area</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Nov 2026</td><td>Agentforce Coworker Adoption</td><td><span class="pill pill-blue">Agentforce</span></td><td><span class="pill pill-amber">New (Open)</span></td></tr>
+          <tr><td>Nov 2026</td><td>Publicis Sapient Pardot BU - Issue with Prospect Record Update</td><td><span class="pill pill-grey">Account Engagement</span></td><td><span class="pill pill-amber">Solution Provided</span></td></tr>
+          <tr><td>Oct 2026</td><td>CRMA Analytics dataflow error: file size exceeds limit</td><td><span class="pill pill-grey">CRM Analytics</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Sep 2026</td><td>CRMA and Tableau Next: Better Together!</td><td><span class="pill pill-blue">Success Engagement</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Sep 2026</td><td>Dataflow runtime increased 5→8.5 hours since Aug 27</td><td><span class="pill pill-grey">CRM Analytics</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Aug 2026</td><td>Multiple users unable to log in to Production</td><td><span class="pill pill-red">Security</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Aug 2026</td><td>Agentforce coworker session authentication issue</td><td><span class="pill pill-blue">Agentforce</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Jun 2026</td><td>CNIL compliance - per-recipient email tracking control</td><td><span class="pill pill-grey">Account Engagement</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>May 2026</td><td>Data Cloud User Data Stream Refresh Failure</td><td><span class="pill pill-blue">Data Cloud</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Mar 2026</td><td>CRMA Recipe Longer Run time — Post Spring 26 Release</td><td><span class="pill pill-grey">CRM Analytics</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="risk-box">
+    <strong>8 Open Red Account Records — Escalation Pattern</strong>
+    OrgCS confirms 8 cases with Open_Red_Account = true for Lion Re:Sources. The cases span Pardot/Account Engagement issues (Prospect Score sync, Approval History missing, Contact record consolidation) and Sales Cloud concerns. The simultaneous open Red Accounts suggest a persistent multi-product instability pattern rather than isolated incidents, requiring coordinated CSM intervention.
+  </div>
+</div>
+
+<!-- TAB 3: LICENSE & ADOPTION -->
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~90%</div><div class="kpi-label">License Activation</div><div class="kpi-sub">est. — high user count</div></div>
+    <div class="kpi-card"><div class="kpi-val">~65%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub">est. — active engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">Active</div><div class="kpi-label">Agentforce</div><div class="kpi-sub-amber">Adoption case open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Active</div><div class="kpi-label">Data Cloud</div><div class="kpi-sub">Multiple cases</div></div>
+  </div>
+
+  <div class="opp-box">
+    <strong>Broad Multi-Cloud Deployment Active</strong>
+    Case evidence confirms active use of: Sales Cloud, Service Cloud, CRM Analytics, Account Engagement (Pardot), Agentforce, Data Cloud, Tableau Next, DevOps Center, and Einstein Activity Capture. This is one of the most fully-deployed Salesforce footprints in the cohort. The risk is not adoption failure but external business factors.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Platform Usage by Cloud (case volume proxy)</div>
+      <div id="chartAdoption" class="chart-container"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Active Capabilities</div>
+      <table>
+        <thead><tr><th>Capability</th><th>Evidence</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>Sales Cloud Core</td><td>Opportunities, Activities, Developer Support cases</td><td><span class="pill pill-green">Active</span></td></tr>
+          <tr><td>CRM Analytics / CRMA</td><td>15+ dataflow/recipe/dataset cases</td><td><span class="pill pill-green">Heavy Use</span></td></tr>
+          <tr><td>Account Engagement (Pardot)</td><td>CNIL compliance, prospect sync, BU management</td><td><span class="pill pill-green">Active</span></td></tr>
+          <tr><td>Agentforce</td><td>Coworker adoption case open Nov 2026</td><td><span class="pill pill-amber">In Progress</span></td></tr>
+          <tr><td>Data Cloud</td><td>User data stream, Tableau Next deployments</td><td><span class="pill pill-green">Active</span></td></tr>
+          <tr><td>Tableau Next</td><td>Upload issues, metric display cases</td><td><span class="pill pill-amber">Early Adoption</span></td></tr>
+          <tr><td>DevOps Center</td><td>Multiple deployment pipeline cases</td><td><span class="pill pill-green">Active</span></td></tr>
+          <tr><td>Einstein Activity Capture</td><td>EAC sync/sandbox cases throughout 2026</td><td><span class="pill pill-green">Active</span></td></tr>
+          <tr><td>Security Controls</td><td>MFA passkey enforcement, PKCE, SSO cases</td><td><span class="pill pill-green">Configured</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: CSS HEALTH -->
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">72</div><div class="kpi-label">Overall CSS Score</div><div class="kpi-sub">est. — Out of 100</div></div>
+    <div class="kpi-card"><div class="kpi-val">~75</div><div class="kpi-label">Product Adoption</div><div class="kpi-sub">Multi-cloud active use</div></div>
+    <div class="kpi-card"><div class="kpi-val">~68</div><div class="kpi-label">Customer Expertise</div><div class="kpi-sub">Agentforce engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">~73</div><div class="kpi-label">Technical Health</div><div class="kpi-sub-amber">Security gaps flagged</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">CSS Category Scores (est. — based on case evidence)</div>
+    <div id="chartCSS" class="chart-container"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Strengths</div>
+      <ul class="signal-list">
+        <li><span class="signal-ok">Multi-cloud active deployment</span> — Sales, Analytics, Pardot, Agentforce, Data Cloud all in use</li>
+        <li><span class="signal-ok">DevOps Center adoption</span> — CI/CD pipeline management indicates mature development practice</li>
+        <li><span class="signal-ok">CRMA deeply embedded</span> — dataflow recipes, datasets, subscriptions all actively used</li>
+        <li><span class="signal-ok">CNIL/GDPR compliance engagement</span> — proactive data privacy work for EMEA</li>
+        <li><span class="signal-ok">Agentforce adoption begun</span> — coworker case open Nov 2026 indicates forward progress</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Gaps / Risk Signals</div>
+      <ul class="signal-list">
+        <li><span class="signal-critical">8 Open Red Accounts</span> — persistent escalation pattern across multiple products</li>
+        <li><span class="signal-warn">Pardot CNIL compliance friction</span> — per-recipient email tracking an open blocker for EMEA marketing teams</li>
+        <li><span class="signal-warn">CRMA dataflow performance degrading</span> — run time increased 5→8.5 hours; recipe failures reported</li>
+        <li><span class="signal-warn">MFA passkey inconsistencies</span> — SSO passkey behavior differs between incognito/normal browser sessions</li>
+        <li><span class="signal-warn">Apex limit requests recurring</span> — multiple requests to increase limits suggest hitting governor boundaries</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: MARKET INTELLIGENCE -->
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~€14B</div><div class="kpi-label">Publicis Revenue (est. FY2024)</div><div class="kpi-sub">Parent company</div></div>
+    <div class="kpi-card"><div class="kpi-val">~100K</div><div class="kpi-label">Publicis Employees</div><div class="kpi-sub">Global network</div></div>
+    <div class="kpi-card"><div class="kpi-val">EMEA</div><div class="kpi-label">Primary Risk Region</div><div class="kpi-sub-amber">Budget centralization risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">Media/Adtech</div><div class="kpi-label">Industry Disruption</div><div class="kpi-sub-red">AI-driven transformation</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>External Risk Hypothesis: Publicis Groupe Centralization</strong>
+    The paradox of Lion Re:Sources — highest engagement but high attrition probability — is most likely explained by parent-level procurement decisions. Publicis Groupe has been centralizing technology spend globally, negotiating enterprise-wide contracts with major vendors including Salesforce, Microsoft, and Adobe. A renegotiation at Publicis group level could result in Lion Re:Sources' standalone Premier subscription being absorbed into a group contract (reducing AOV) or transferred to a different entity (appearing as attrition to the model).
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Publicis Groupe Strategic Context</div>
+      <ul class="signal-list">
+        <li><strong>Revenue trajectory:</strong> Publicis has been one of the strongest performers in the "Big Four" advertising holding companies, gaining market share from WPP, Interpublic, and Omnicom through acquisitions (Epsilon, Sapient, Digitas).</li>
+        <li><strong>AI strategy:</strong> Publicis launched "Marcel" (internal AI platform) and has been investing heavily in first-party data capabilities — directly relevant to their heavy Salesforce CRM Analytics and Pardot use.</li>
+        <li><strong>Epsilon acquisition (2019):</strong> Brought significant data and CRM capabilities in-house; Salesforce integration with Epsilon's data infrastructure is a key value driver.</li>
+        <li><strong>Restructuring risk:</strong> Publicis has historically reorganized shared services entities; Lion Re:Sources as a named entity may change, merge, or be absorbed without customer-side dissatisfaction.</li>
+        <li><strong>Tech spend centralization:</strong> Publicis negotiates technology contracts at holding company level; individual entity subscriptions may be migrated to group agreements.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Competitive &amp; Industry Landscape</div>
+      <table>
+        <thead><tr><th>Category</th><th>Provider</th><th>Implication</th></tr></thead>
+        <tbody>
+          <tr><td>CRM / Marketing</td><td>Salesforce (current)</td><td><span class="pill pill-green">Deeply embedded</span></td></tr>
+          <tr><td>Marketing Analytics</td><td>Adobe Analytics + Salesforce CRMA</td><td><span class="pill pill-amber">Potential overlap</span></td></tr>
+          <tr><td>AI/Data Platform</td><td>Epsilon (owned), Salesforce Data Cloud</td><td><span class="pill pill-green">Synergistic</span></td></tr>
+          <tr><td>Cloud Infrastructure</td><td>AWS / GCP</td><td>Neutral</td></tr>
+          <tr><td>AI Competition</td><td>Microsoft Copilot for marketing</td><td><span class="pill pill-amber">Watch</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;background:#fef9c3;border:1px solid #f59e0b;border-radius:6px;padding:10px 12px;font-size:.8rem;color:#78350f">
+        <strong>Knowledge cutoff note:</strong> Market research reflects training data to Aug 2025. Publicis FY2025 results and any structural changes after Aug 2025 not reflected.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: ATTRITION RISK (DEFAULT) -->
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Premier+Sig model</div></div>
+    <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-red">Highest in cohort</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Overall Risk Rating</div><div class="kpi-sub-amber">Paradox account</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Attrition Risk Signals — Ranked by Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — External / Parent-Level Budget Risk (Critical)</strong>
+    <ul class="signal-list">
+      <li>As a Publicis Groupe entity, Lion Re:Sources' Salesforce subscription is subject to group-level procurement decisions that could change the account structure independent of product satisfaction.</li>
+      <li>Publicis has historically reorganized shared services entities and centralized technology contracts — the subscription may be absorbed or renegotiated at holding company level.</li>
+      <li>The "Strong" Success Segment classification combined with high attrition probability (47.47%) is a model paradox that most strongly correlates with external financial risk, not product risk.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — 8 Open Red Accounts (High)</strong>
+    <ul class="signal-list">
+      <li>8 cases in OrgCS flagged as Open Red Account — the highest count in this 12-account cohort. Cases involve Pardot prospect sync, Approval History gaps, contact consolidation issues.</li>
+      <li>Persistent multi-product instability across Account Engagement and Sales Cloud suggests unresolved platform configuration issues that could be affecting user confidence.</li>
+      <li>Red Accounts without documented recovery plans are an ongoing retention risk signal.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#3 — CRMA Performance Degradation (Medium)</strong>
+    <ul class="signal-list">
+      <li>Dataflow runtime increased from 5 to 8.5 hours post-Spring '26 Release — a 70% performance regression affecting analytics pipelines.</li>
+      <li>Multiple recipe failures, dataset missing issues, and file size limit errors reported through Oct–Nov 2026.</li>
+      <li>CRMA is the most heavily used product in the account; sustained performance issues could become a renewal conversation point.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#4 — EMEA FRANCE Territory / Regulatory Friction (Medium)</strong>
+    <ul class="signal-list">
+      <li>CNIL compliance requirements for per-recipient email tracking in Pardot are creating ongoing operational friction for EMEA marketing teams.</li>
+      <li>GDPO/GDPR data residency questions raised in mid-2026 — Salesforce responses may not fully satisfy French regulatory requirements.</li>
+      <li>EMEA FRANCE territory carries additional procurement complexity and slower renewal cycles than AMER equivalents.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Re-Engagement &amp; Retention Opportunities</strong>
+    <ul class="signal-list">
+      <li><strong>Agentforce expansion:</strong> Coworker adoption case open Nov 2026 is an active expansion opportunity — Lion is already on the AI journey. Accelerate with a dedicated Agentforce CSM touchpoint.</li>
+      <li><strong>CRMA performance SLA:</strong> Address the dataflow performance regression proactively with an engineering review — this is a quick win that directly protects the most-used product.</li>
+      <li><strong>Publicis group alignment:</strong> Identify the Publicis Groupe-level Salesforce account team. Ensure Lion Re:Sources' Premier relationship is known and valued at the group level before renewal negotiations begin.</li>
+      <li><strong>CNIL compliance roadmap:</strong> Provide a formal roadmap for per-recipient email tracking controls in Account Engagement — resolves the EMEA regulatory blocker and demonstrates Salesforce's commitment to GDPR-compliant operation.</li>
+      <li><strong>Red Account resolution sprint:</strong> Conduct a 30-day structured resolution of all 8 open Red Accounts with documented recovery milestones — prevents compounding escalation.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions — Priority Order</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Signal Addressed</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">Immediate</span></td><td>Identify Publicis Groupe-level Salesforce AE/account team. Align Premier relationship visibility at group level before next renewal cycle.</td><td>#1 External risk</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-red">Immediate</span></td><td>Launch a 30-day Red Account resolution sprint. Document root cause and recovery plan for all 8 open records.</td><td>#2 Red Accounts</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Escalate CRMA dataflow performance regression to engineering with SLA commitment. This is the most critical product in the account.</td><td>#3 CRMA perf</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Accelerate Agentforce Coworker adoption with a dedicated enablement session and success milestone framework.</td><td>Expansion</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-blue">Short-term</span></td><td>Deliver formal CNIL/GDPR compliance roadmap for Account Engagement — reduces regulatory friction and builds trust with EMEA marketing leadership.</td><td>#4 Regulatory</td><td>SE + Legal</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <strong>Data Uncertainty Notes</strong>
+    <ul class="signal-list">
+      <li><strong>CSS score and License Utilization</strong> are estimated from case evidence — the Account Drill-Down Tableau view is not MCP-queryable. Actual scores may differ.</li>
+      <li><strong>Publicis Groupe relationship</strong> — entity structure and group-level contract details not confirmed from internal data.</li>
+      <li><strong>Red Account descriptions</strong> — full context of all 8 Red Account records not retrieved; severity levels not individually confirmed.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+
+Plotly.newPlot('chartCSS',[{
+  type:'bar',x:[75,68,73],y:['Product Adoption','Customer Expertise','Technical Health'],orientation:'h',
+  marker:{color:['#22c55e','#22c55e','#22c55e']},text:['~75/100','~68/100','~73/100'],textposition:'outside'
+}],{xaxis:{range:[0,110],title:'Score'},yaxis:{automargin:true},margin:{l:160,r:80,t:20,b:50},height:200,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:12,color:'#374151'}},{responsive:true});
+
+Plotly.newPlot('chartAdoption',[{
+  type:'bar',
+  x:[35,30,20,15,10,8,7,5],
+  y:['Sales Cloud / Developer','CRM Analytics','Account Engagement','Security / MFA','DevOps Center','Einstein Activity Capture','Data Cloud','Tableau Next'],
+  orientation:'h',
+  marker:{color:['#0ea5e9','#8b5cf6','#f59e0b','#ef4444','#22c55e','#0ea5e9','#6366f1','#64748b']},
+  text:[35,30,20,15,10,8,7,5],textposition:'outside'
+}],{xaxis:{range:[0,45],title:'Cases (12mo)'},yaxis:{automargin:true},margin:{l:200,r:60,t:20,b:50},height:300,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+
+Plotly.newPlot('chartCasesByType',[{
+  type:'bar',
+  x:['Technical Support','Account Engagement','Billing / Admin','Success Engagements','Security'],
+  y:[90,35,10,3,15],
+  marker:{color:['#0ea5e9','#f59e0b','#94a3b8','#22c55e','#ef4444']},
+  text:[90,35,10,3,15],textposition:'outside'
+}],{yaxis:{title:'Cases',showgrid:true,gridcolor:'#e2e8f0'},xaxis:{automargin:true,tickangle:-15},margin:{l:60,r:30,t:20,b:120},height:300,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+
+Plotly.newPlot('chartRisk',[{
+  type:'bar',
+  x:[10,9,7,6],
+  y:['#1 External Parent-Level Risk','#2 8 Open Red Accounts','#3 CRMA Perf Degradation','#4 EMEA Regulatory Friction'],
+  orientation:'h',
+  marker:{color:['#dc2626','#ef4444','#f59e0b','#f59e0b']},
+  text:['Publicis group procurement centralization','Highest Red Account count in cohort','Dataflow 5→8.5h, recipe failures','CNIL email tracking, GDPR friction'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:260,r:10,t:20,b:30},height:250,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

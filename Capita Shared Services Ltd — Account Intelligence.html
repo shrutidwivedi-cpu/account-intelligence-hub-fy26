@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capita Shared Services Ltd — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Capita Shared Services Ltd — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA UK &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DG0000000kVIZ &nbsp;·&nbsp; OrgCS Account ID: 0013000000vSqc5AAC &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: UK outsourcer, BPO under financial stress</div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$1.7M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">48.2%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$618K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~48</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">10yr Strong, no cases</div></div>
+    <div class="kpi-card"><div class="kpi-val">~20%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-amber">Stagnant</div></div>
+    <div class="kpi-card"><div class="kpi-val">10+ yrs</div><div class="kpi-label">Customer Age</div><div class="kpi-sub">Strong segment</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Capita Shared Services Ltd</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqc5AAC</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVIZ</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA UK</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Strong</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>10+ Years</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Business Process Outsourcing / Government Services</td></tr>
+        <tr><td><strong>Parent</strong></td><td>Capita plc (UK, LSE: CPI)</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$1,710,519</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>48.2%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$618,700</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Strong</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-amber">HIGH (40–50%)</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">No recent activity</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
+    <div class="kpi-card"><div class="kpi-val">None visible</div><div class="kpi-label">Last Engagement</div><div class="kpi-sub-red">OrgCS inactive</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>No Recent Case Activity — Strong Segment Paradox</strong>
+    Despite "Strong" Success Segment classification, OrgCS shows no case activity for Capita Shared Services in the recent period. This paradox (Strong segment + no engagement) is unusual — it may reflect historical health scores that have not been updated since Capita's financial troubles began. The absence of cases on a 10-year Strong segment account suggests either the internal team has completely stopped using Premier support, or the account's health score reflects stale data.
+  </div>
+  <div class="risk-box">
+    <strong>Capita plc Financial Distress Context</strong>
+    Capita plc (the parent) has been undergoing severe financial restructuring. In 2023, Capita attempted emergency fundraising and announced a major strategic review. Debt burden (~£1B+), contract losses, and UK government contract scrutiny have put the company under significant financial stress. Capita Shared Services as an internal services entity is at risk of being sold, restructured, or dissolved as Capita plc rationalizes its portfolio.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">License Activation</div></div>
+    <div class="kpi-card"><div class="kpi-val">~20%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-amber">Declining</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Adoption Likely Declining with Capita Headcount Cuts</strong>
+    Capita plc has been cutting headcount significantly as part of its turnaround plan. Fewer employees using the platform means lower utilization. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~48</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Stale Strong classification</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>CSS Score Likely Stale</strong>
+    "Strong" segment on a 10-year account that has had no recent case activity and whose parent company is in financial distress suggests the CSS health score may not reflect current reality. The 48% attrition probability while classified as "Strong" is a model flag for stale segmentation. Manual refresh recommended.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~£2.3B</div><div class="kpi-label">Capita Revenue (FY2024)</div><div class="kpi-sub-red">Declining</div></div>
+    <div class="kpi-card"><div class="kpi-val">LSE: CPI</div><div class="kpi-label">Public Company</div><div class="kpi-sub-red">Financial distress</div></div>
+    <div class="kpi-card"><div class="kpi-val">EMEA UK</div><div class="kpi-label">Territory</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Capita plc Strategic Context</div>
+      <ul class="signal-list">
+        <li><strong>Financial distress:</strong> Capita plc raised emergency capital in 2023 through a rights issue, issued profit warnings, and undertook a comprehensive strategic review. The company is effectively in a managed decline/turnaround phase.</li>
+        <li><strong>Government contract losses:</strong> Capita has lost several major UK government outsourcing contracts — a core part of its revenue. Sales Cloud for a BPO sales team covering shrinking government contracts has weakening ROI.</li>
+        <li><strong>Headcount reduction:</strong> Capita has been reducing its workforce from ~50,000 to ~30,000. Fewer salespeople using Sales Cloud directly reduces the license utilization and renewal value case.</li>
+        <li><strong>Potential sale/dissolution:</strong> The strategic review raised the possibility of selling business units or restructuring the entire group. Capita Shared Services as an internal entity is not immune to this — it could be sold to a competitor or dissolved.</li>
+        <li><strong>AI outsourcing threat:</strong> As a BPO company, Capita's core business is threatened by AI-driven automation. The company is simultaneously trying to develop AI capabilities while managing financial instability.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Risk Summary</div>
+      <table>
+        <thead><tr><th>Risk Factor</th><th>Level</th></tr></thead>
+        <tbody>
+          <tr><td>Capita plc corporate survival risk</td><td><span class="pill pill-red">Critical</span></td></tr>
+          <tr><td>Government contract losses</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>Headcount reduction</td><td><span class="pill pill-amber">High</span></td></tr>
+          <tr><td>Shared services entity dissolution</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>Champion stability</td><td><span class="pill pill-amber">Unknown</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">48.2%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Near Critical</div></div>
+    <div class="kpi-card"><div class="kpi-val">$618K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">Financial Distress</div><div class="kpi-label">Parent Company Status</div><div class="kpi-sub-red">Capita plc turnaround</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risk Signal Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — Capita plc Corporate Survival Risk (Critical)</strong>
+    <ul class="signal-list">
+      <li>Capita plc (parent) raised emergency capital in 2023, issued multiple profit warnings, and is undergoing a full strategic review. A company in this financial state cannot prioritize a $1.7M Premier subscription renewal.</li>
+      <li>If Capita Shared Services is sold or dissolved as part of the restructuring, the subscription disappears regardless of product satisfaction.</li>
+      <li>The 48.2% attrition probability likely understates the true risk given events after the model's training data cutoff.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Strong Segment Classification Is Stale (High)</strong>
+    <ul class="signal-list">
+      <li>"Strong" segment on a company in financial distress with zero recent case activity is almost certainly a stale data artifact. The historical health score from when Capita was a larger, more stable company is not representative of current risk.</li>
+      <li>This is a data quality issue as well as an account risk — if the segmentation data is refreshed, Capita would likely move to Weak or At-Risk, triggering different protocols.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#3 — Government Contract Losses Reduce Platform ROI (High)</strong>
+    <ul class="signal-list">
+      <li>Capita has lost significant UK government outsourcing contracts — the sales team this Sales Cloud deployment was intended to serve is managing a shrinking book of business.</li>
+      <li>Renewing a $1.7M Premier subscription to support a declining sales function is difficult to justify internally, regardless of product quality.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Conduct a Capita plc financial health check. Understand current corporate status, renewal decision-maker identity, and whether Capita Shared Services is being maintained, sold, or dissolved.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Update Capita's CSS segmentation from "Strong" to reflect current engagement and financial reality. Stale "Strong" classification prevents appropriate risk protocols from activating.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Establish direct contact with Capita's IT leadership. Determine whether the organization is still actively using Sales Cloud and who is making the renewal decision.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>If Capita is confirmed as a going concern, build a turnaround value case — position Salesforce as a tool for winning new contracts (not just managing existing ones). Agentforce for proposal automation could be compelling.</td><td>CSM + SE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+Plotly.newPlot('chartRisk',[{
+  type:'bar',x:[10,9,8],
+  y:['#1 Capita plc Corporate Survival Risk','#2 Stale "Strong" Segment Classification','#3 Government Contract Losses Shrink ROI'],
+  orientation:'h',marker:{color:['#dc2626','#ef4444','#f59e0b']},
+  text:['Emergency fundraising 2023, strategic review, restructuring','No case activity but classified Strong — data not current','Lost major UK govt contracts; sales team shrinking'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:280,r:10,t:20,b:30},height:220,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

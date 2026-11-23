@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KPMG International Services Limited — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+details.collapsible-section{background:#fff;border-radius:10px;padding:0;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+details.collapsible-section summary.collapsible-title{list-style:none;cursor:pointer;font-size:.95rem;font-weight:700;color:#1e3a5f;padding:18px 22px 14px;border-bottom:2px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+details.collapsible-section summary.collapsible-title::after{content:'▸';font-size:.85rem;color:#94a3b8;margin-left:8px}
+details.collapsible-section[open] summary.collapsible-title::after{content:'▾'}
+details.collapsible-section .section-body{padding:18px 22px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.flag-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#78350f}
+.flag-box strong{color:#92400e}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+.score-bar-wrap{display:flex;align-items:center;gap:10px;margin:6px 0}
+.score-bar-label{font-size:.78rem;color:#475569;width:220px;flex-shrink:0;text-align:right}
+.score-bar-track{flex:1;background:#e2e8f0;border-radius:4px;height:10px;overflow:hidden}
+.score-bar-fill{height:10px;border-radius:4px;transition:width .4s}
+.score-bar-val{font-size:.78rem;font-weight:700;color:#1e293b;width:34px;flex-shrink:0}
+.signal-critical{color:#dc2626;font-weight:700}
+.signal-warn{color:#d97706;font-weight:600}
+.signal-ok{color:#16a34a;font-weight:600}
+.divider{height:1px;background:#e2e8f0;margin:16px 0}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>KPMG International Services Limited — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; AMER ACC CBS ENTR &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DHu00000699dV &nbsp;·&nbsp; Account ID: 0013y00001cSjiN &nbsp;·&nbsp; AE: Stephanie DeVivo &nbsp;·&nbsp; RM: Fergus O'Brien &nbsp;·&nbsp; Global HQ: Amstelveen, Netherlands</div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<!-- TAB 1: ACCOUNT OVERVIEW -->
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$11.2M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
+    <div class="kpi-card"><div class="kpi-val">43.9%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
+    <div class="kpi-card"><div class="kpi-val">$3.3M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">29.6th percentile</div></div>
+    <div class="kpi-card"><div class="kpi-val">41/100</div><div class="kpi-label">CSS Health Score</div><div class="kpi-sub-red">Oct 2026 snapshot</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub-red">Sales/Service Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-amber">Both Adoption-type</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Critical Risk Flags</strong>
+    <ul class="signal-list">
+      <li>Sales Cloud license utilization is <strong>0%</strong> — full shelfware. Licenses activated but no active users. Zero opportunities, cases, activities, contacts, or leads engaged in the org.</li>
+      <li>Signature Success Plan Onboarding case <strong>Canceled</strong> (Mar 2026) — the only attempt to activate Sales Cloud failed. No follow-up engagement initiated.</li>
+      <li>Two open Red Account records (Oct + Nov 2026), both flagged under <strong>Adoption</strong> category, citing case volume growth and declining activity signals.</li>
+      <li>Confirmed attrition on record: <strong>−$141K</strong> realized loss (Financial &amp; Contractual / Low Perceived ROI). Packaging change risk flagged by RM.</li>
+      <li>KPMG's primary strategic technology partner is <strong>Microsoft</strong> (Azure + Copilot), with $2B+ investment. Salesforce competes directly for KPMG's internal tech budget.</li>
+    </ul>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table>
+        <tbody>
+          <tr><td><strong>Legal Entity</strong></td><td>KPMG International Services Limited</td></tr>
+          <tr><td><strong>Account ID</strong></td><td><code>0013y00001cSjiN</code></td></tr>
+          <tr><td><strong>OrgCS Account ID</strong></td><td><code>001Hx00000PR839IAD</code></td></tr>
+          <tr><td><strong>Org ID</strong></td><td><code>00DHu00000699dV</code></td></tr>
+          <tr><td><strong>Region</strong></td><td>AMER</td></tr>
+          <tr><td><strong>Territory</strong></td><td>AMER ACC CBS</td></tr>
+          <tr><td><strong>Area</strong></td><td>AMER ACC CBS ENTR</td></tr>
+          <tr><td><strong>Portfolio</strong></td><td>AMER ACC CBS ENTR PROSERV</td></tr>
+          <tr><td><strong>Success Segment</strong></td><td>Other</td></tr>
+          <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+          <tr><td><strong>Industry</strong></td><td>Professional Services</td></tr>
+          <tr><td><strong>Customer Age</strong></td><td>2–3 Years</td></tr>
+          <tr><td><strong>Macro Segment</strong></td><td>ENTR</td></tr>
+          <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial &amp; Ownership</div>
+      <table>
+        <tbody>
+          <tr><td><strong>AE</strong></td><td>Stephanie DeVivo (primary)</td></tr>
+          <tr><td><strong>AE (secondary)</strong></td><td>Richard Harding</td></tr>
+          <tr><td><strong>Renewal Manager</strong></td><td>Fergus O'Brien</td></tr>
+          <tr><td><strong>Renewal Manager (alt)</strong></td><td>Jonathan Ladov</td></tr>
+          <tr><td><strong>Sales Cloud AOV</strong></td><td>$11,153,434</td></tr>
+          <tr><td><strong>Total Salesforce AOV</strong></td><td>~$34–42M (all clouds)</td></tr>
+          <tr><td><strong>AOV Band</strong></td><td>$1M+</td></tr>
+          <tr><td><strong>Attrition Category</strong></td><td>Financial &amp; Contractual</td></tr>
+          <tr><td><strong>Risk Detail</strong></td><td>Low Perceived ROI &amp; Packaging Change</td></tr>
+          <tr><td><strong>Confirmed Attrition $</strong></td><td>−$141,029 (net −$72,322)</td></tr>
+          <tr><td><strong>On-Cycle Forecast Attrition</strong></td><td>$0 (not flagged on-cycle)</td></tr>
+          <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
+          <tr><td><strong>Attrition Probability</strong></td><td>43.89%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">About KPMG International Services Limited</div>
+    <p style="font-size:.82rem;color:#374151;margin:0 0 10px">
+      KPMG International Services Limited (registered in Netherlands, operational HQ Amstelveen) is the global coordinating entity for the KPMG network — 143+ member firms across ~145 countries, ~273,000 employees network-wide. It provides brand governance, methodology standards, risk management, and shared services to member firms. It does <strong>not deliver client services directly</strong> and does not operate as a traditional sales-driven organization.
+    </p>
+    <p style="font-size:.82rem;color:#374151;margin:0">
+      This structural reality is critical context: Sales Cloud's core value proposition (pipeline management, opportunity tracking, sales forecasting) does not map to KPMG International's primary function. The $11M+ Sales Cloud subscription was most likely initiated by a specific business unit or digital initiative — not an enterprise-wide CRM deployment.
+    </p>
+  </div>
+</div>
+
+<!-- TAB 2: SUPPORT & CASES -->
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">23</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub">All record types</div></div>
+    <div class="kpi-card"><div class="kpi-val">21</div><div class="kpi-label">Billing Cases</div><div class="kpi-sub-amber">Admin/invoice only</div></div>
+    <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">ADR Cases</div><div class="kpi-sub-red">1 canceled, 1 non-Sales Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Sales Cloud Support Cases</div><div class="kpi-sub-red">Ever — all time</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Zero Sales Cloud Engagement — Ever</strong>
+    All historical support cases (3 cases, 2023) are MuleSoft/CloudHub. The only ADR delivered was for CRM Analytics (not Sales Cloud). The Sales Cloud Onboarding ADR was canceled in March 2026 with no description or successor. This account has never raised a Sales Cloud support case in OrgCS.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Cases by Type (12 months)</div>
+      <div id="chartCasesByType" class="chart-container"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Non-Billing Cases — All Time</div>
+      <table>
+        <thead><tr><th>Date</th><th>Subject</th><th>Type</th><th>Cloud / P&amp;T</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Mar 2026</td><td>Success Engagement: Signature Success Plan Onboarding</td><td>ADR</td><td><span class="pill pill-amber">No P&amp;T — Sales Cloud?</span></td><td><span class="pill pill-red">Canceled</span></td></tr>
+          <tr><td>Nov 2025</td><td>CRM Analytics: Health Check</td><td>ADR</td><td><span class="pill pill-grey">Service – CRM Analytics</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Aug 2023</td><td>Remediation for Enterprise Security Pen testing on MuleSoft Cloudhub 1.0</td><td>Support</td><td><span class="pill pill-grey">MuleSoft – Infrastructure &amp; Networking</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>May 2023</td><td>Mixing APIs — VPC security (highly confidential vs public data)</td><td>Support</td><td><span class="pill pill-grey">MuleSoft – Infrastructure &amp; Networking</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+          <tr><td>Mar 2023</td><td>Please enable "Disable CloudHub logs" for EU org</td><td>Support</td><td><span class="pill pill-grey">MuleSoft – Anypoint Control Plane</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Billing Cases (12 months) — Summary</div>
+    <p style="font-size:.82rem;color:#374151;margin:0 0 10px">All 21 billing cases are administrative — payment advice notes, AP balance confirmations, invoice approvals, and purchase orders. These indicate active billing operations but zero technical or success engagement.</p>
+    <table>
+      <thead><tr><th>Pattern</th><th>Count</th><th>Latest</th></tr></thead>
+      <tbody>
+        <tr><td>KPMG International Payment Advice Notes</td><td>3</td><td>Oct 2026</td></tr>
+        <tr><td>AP Balance Confirmations (Vendor# 703021 – Salesforce UK)</td><td>4</td><td>Oct 2026</td></tr>
+        <tr><td>Invoice Approvals</td><td>2</td><td>Dec 2025</td></tr>
+        <tr><td>Statement of Account (Salesforce UK)</td><td>5</td><td>Jul 2026</td></tr>
+        <tr><td>Purchase Orders &amp; Invoice Cancellations</td><td>4</td><td>Dec 2025</td></tr>
+        <tr><td>Other Billing</td><td>3</td><td>Nov 2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <strong>Onboarding ADR — Canceled (Mar 2026)</strong>
+    Case ID: 500Hx000015TXurIAG — "Success Engagement: Signature Success Plan Onboarding." Status: Canceled. Description: null. This was the only attempt to activate the Sales Cloud subscription with structured onboarding. It was canceled less than 3 months after opening with no recorded reason and no follow-up ADR created. The absence of a description suggests the case was auto-generated and never properly engaged by either party.
+  </div>
+</div>
+
+<!-- TAB 3: LICENSE & ADOPTION -->
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">100%</div><div class="kpi-label">License Activation</div><div class="kpi-sub">Sales &amp; Service Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub-red">Sales &amp; Service Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">Identity License Activation</div><div class="kpi-sub-red">Identity only licenses</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">Digital Engagement Utilization</div><div class="kpi-sub-red">Einstein Bots unused</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Complete Shelfware — Sales &amp; Service Cloud</strong>
+    Licenses are provisioned (activation score 100%) but utilization is 0%. The org exists and is configured but no users are actively engaging with any Sales Cloud or Service Cloud functionality. This is confirmed by both the CSS License Utilization signal (raw=0) and every individual product adoption metric scoring 0 with declining growth trends.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Adoption Signal Scores (Sales &amp; Service Cloud)</div>
+      <div id="chartAdoption" class="chart-container"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">What Is &amp; Isn't Being Used</div>
+      <table>
+        <thead><tr><th>Capability</th><th>Score</th><th>Raw Value</th><th>Trend</th></tr></thead>
+        <tbody>
+          <tr><td>License Activation</td><td><span class="pill pill-green">100</span></td><td>1 (confirmed)</td><td>—</td></tr>
+          <tr><td>License Utilization</td><td><span class="pill pill-red">0</span></td><td>0</td><td>🔴 None</td></tr>
+          <tr><td>Lightning Email Templates</td><td><span class="pill pill-green">100</span></td><td>62 templates</td><td>✅ Active</td></tr>
+          <tr><td>Multiple Currencies</td><td><span class="pill pill-green">100</span></td><td>Enabled</td><td>✅ Configured</td></tr>
+          <tr><td>Opportunities</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+          <tr><td>Cases</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+          <tr><td>Accounts &amp; Contacts</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+          <tr><td>Activities (Tasks/Events)</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+          <tr><td>Leads</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+          <tr><td>Forecasts</td><td><span class="pill pill-red">0</span></td><td>0</td><td>🔴 None</td></tr>
+          <tr><td>Omni Channel</td><td><span class="pill pill-red">0</span></td><td>0</td><td>🔴 None</td></tr>
+          <tr><td>Einstein Activity Capture</td><td><span class="pill pill-red">0</span></td><td>0</td><td>🔴 None</td></tr>
+          <tr><td>Digital Engagement</td><td><span class="pill pill-red">0</span></td><td>0</td><td>🔴 None</td></tr>
+          <tr><td>Campaigns</td><td><span class="pill pill-red">0</span></td><td>Growth: −1</td><td>🔴 Declining</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Data Availability Note — License Seat Counts</strong>
+    The CSS Health signals confirm Sales &amp; Service Cloud License Activation = 100% and License Utilization = 0% at the signal level. The Account Drill-Down Tableau view (LUID: 3f9d0ded) which provides seat count breakdowns (e.g., "X out of Y licenses activated") is not currently MCP-queryable. The numerical seat counts are unavailable without that view being tagged for MCP access.
+  </div>
+
+  <div class="section">
+    <div class="section-title">Storage &amp; Other Entitlement Utilization</div>
+    <table>
+      <thead><tr><th>Entitlement</th><th>Score</th><th>Utilization</th></tr></thead>
+      <tbody>
+        <tr><td>File Storage</td><td><span class="pill pill-amber">1/100</span></td><td>Minimal (1%)</td></tr>
+        <tr><td>Data Storage</td><td><span class="pill pill-amber">1/100</span></td><td>Minimal (1%)</td></tr>
+        <tr><td>Einstein Bots (TTM)</td><td><span class="pill pill-red">0/100</span></td><td>0</td></tr>
+        <tr><td>Einstein Bots (Monthly)</td><td><span class="pill pill-red">0/100</span></td><td>0</td></tr>
+        <tr><td>Package Utilization (AppExchange)</td><td><span class="pill pill-red">0/100</span></td><td>0</td></tr>
+        <tr><td>Product Engagement</td><td><span class="pill pill-red">0/100</span></td><td>0</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 4: CSS HEALTH -->
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">41</div><div class="kpi-label">Overall CSS Score</div><div class="kpi-sub-red">Out of 100</div></div>
+    <div class="kpi-card"><div class="kpi-val">22</div><div class="kpi-label">Product Adoption</div><div class="kpi-sub-red">Critical — shelfware</div></div>
+    <div class="kpi-card"><div class="kpi-val">31</div><div class="kpi-label">Customer Expertise</div><div class="kpi-sub-amber">Weak — no formal learning</div></div>
+    <div class="kpi-card"><div class="kpi-val">80</div><div class="kpi-label">Technical Health</div><div class="kpi-sub">Adequate — some gaps</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">CSS Category Scores (Oct 2026 snapshot — org-wide, all clouds)</div>
+    <div id="chartCSS" class="chart-container"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Product Adoption — 22/100</div>
+      <div class="flag-box" style="margin-bottom:12px"><strong>All core Sales Cloud signals are 0 with negative growth trends.</strong> The org is configured but has no active users. Every core CRM activity — Opportunities, Cases, Leads, Activities, Contacts — is at zero and declining.</div>
+      <table>
+        <thead><tr><th>Sub-Category</th><th>Key Signals</th><th>Score</th></tr></thead>
+        <tbody>
+          <tr><td>Consumption</td><td>License Activation: 100 ✅ / License Utilization: 0 ❌</td><td><span class="pill pill-amber">Mixed</span></td></tr>
+          <tr><td>Opportunity &amp; Pipeline Mgmt</td><td>All signals: 0, growth: −1</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Account &amp; Contact Mgmt</td><td>All signals: 0, growth: −1</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Activity Management</td><td>All signals: 0, growth: −1</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Lead Generation</td><td>All signals: 0, growth: −1</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Case Management</td><td>All signals: 0, growth: −1</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Forecast Management</td><td>Forecasts: 0</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Routing &amp; Rules</td><td>Omni Channel: 0, Escalation Rules: 0</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Digital Engagement</td><td>All Einstein Bot signals: 0</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Sales Integration</td><td>Einstein Activity Capture: 0, Lightning Sync: 0</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Connect with Prospects</td><td>Email Action: 0, Send List Email: 0</td><td><span class="pill pill-red">0</span></td></tr>
+          <tr><td>Notable positives</td><td>Lightning Email Templates: 100 (62 templates) ✅ / Multiple Currencies: 100 ✅</td><td><span class="pill pill-green">100</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Customer Expertise — 31/100</div>
+      <div class="flag-box" style="margin-bottom:12px"><strong>Events attended but no structured learning or Success engagements delivered.</strong> Expert Coaching is the only formal Salesforce engagement (1 session). No Success Reviews, Onboarding, Workshops, or Courses delivered.</div>
+      <table>
+        <thead><tr><th>Signal</th><th>Score</th><th>Raw</th></tr></thead>
+        <tbody>
+          <tr><td>Success Reviews</td><td><span class="pill pill-red">0</span></td><td>0 delivered</td></tr>
+          <tr><td>Onboarding</td><td><span class="pill pill-red">0</span></td><td>0 completed</td></tr>
+          <tr><td>Workshops</td><td><span class="pill pill-red">0</span></td><td>0 delivered</td></tr>
+          <tr><td>Courses</td><td><span class="pill pill-red">0</span></td><td>0 completed</td></tr>
+          <tr><td>Expert Coaching</td><td><span class="pill pill-green">100</span></td><td>1 session</td></tr>
+          <tr><td>Salesforce Certifications</td><td><span class="pill pill-red">0</span></td><td>0</td></tr>
+          <tr><td>Agentforce Certifications</td><td><span class="pill pill-red">0</span></td><td>0</td></tr>
+          <tr><td>Trailhead Badges</td><td><span class="pill pill-red">0</span></td><td>0</td></tr>
+          <tr><td>Trailhead Rangers</td><td><span class="pill pill-amber">80</span></td><td>2 rangers</td></tr>
+          <tr><td>Knowledge Articles</td><td><span class="pill pill-red">0</span></td><td>0</td></tr>
+          <tr><td>Dreamforce</td><td><span class="pill pill-green">100</span></td><td>10 attendees</td></tr>
+          <tr><td>World Tour</td><td><span class="pill pill-green">100</span></td><td>11 attendees</td></tr>
+          <tr><td>TDX</td><td><span class="pill pill-green">100</span></td><td>1 attendee</td></tr>
+          <tr><td>Salesforce Professional Services</td><td><span class="pill pill-red">0</span></td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Technical Health — 80/100 (Adequate, with notable gaps)</div>
+    <div class="two-col" style="margin-top:0">
+      <div>
+        <p style="font-size:.82rem;color:#374151;margin:0 0 8px"><strong>Passing signals (most infrastructure/security controls are in place):</strong></p>
+        <ul class="signal-list">
+          <li>Hyperforce deployed ✅</li>
+          <li>CSRF/clickjack protections (most): ✅</li>
+          <li>Apex CPU/heap errors, callout failures, concurrent errors: all 0 ✅</li>
+          <li>Process Builder &amp; Workflow Rule executions: 0 ✅ (migrated)</li>
+          <li>Classic MAU: 0 ✅ (fully Lightning)</li>
+          <li>Average page load time: 88/100 (4.4s) ✅</li>
+          <li>Password expiry, history, lockout: mostly configured ✅</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:.82rem;color:#374151;margin:0 0 8px"><strong>Failing signals (require attention):</strong></p>
+        <ul class="signal-list">
+          <li><span class="signal-critical">Core MFA Not Enabled (score: 0)</span> — critical security gap for Premier account</li>
+          <li><span class="signal-critical">SSO Not Enabled (score: 0)</span> — enterprise security concern</li>
+          <li><span class="signal-warn">Throughput Efficiency: 0</span> (raw: 433 transactions — elevated volume)</li>
+          <tr><td>HttpOnly attribute not required (score: 0)</td></tr>
+          <li><span class="signal-warn">Scale Center Adoption: 0</span> — not monitoring org health proactively</li>
+          <li><span class="signal-warn">ApexGuru: 0</span> — no code quality observability</li>
+          <li><span class="signal-warn">Disable Formula Injection in Reports: 0</span> — data export security risk</li>
+          <li><span class="signal-warn">Password complexity &amp; assistance settings</span>: several failing or partially configured</li>
+          <li><span class="signal-warn">Clickjack protection for VF pages</span>: mixed (standard headers disabled)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: MARKET INTELLIGENCE -->
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~$38.4B</div><div class="kpi-label">Network Revenue (FY2024)</div><div class="kpi-sub-amber">Growth decelerating</div></div>
+    <div class="kpi-card"><div class="kpi-val">~273K</div><div class="kpi-label">Network Employees</div><div class="kpi-sub">143+ member firms</div></div>
+    <div class="kpi-card"><div class="kpi-val">$2B+</div><div class="kpi-label">AI Investment (3yr)</div><div class="kpi-sub-red">With Microsoft / Azure</div></div>
+    <div class="kpi-card"><div class="kpi-val">Microsoft</div><div class="kpi-label">Primary Tech Partner</div><div class="kpi-sub-red">Competing priority vs. SFDC</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Structural Explanation: Why Zero Salesforce Adoption Makes Sense for This Entity</strong>
+    KPMG International Services Limited is a governance and coordination entity — it does not sell to clients, does not manage sales pipelines, and does not run a quota-driven salesforce. Sales Cloud's primary use cases (opportunity management, pipeline forecasting, lead conversion) have no natural fit for its core function. Combined with a deep Microsoft-first technology strategy, the $11M+ Sales Cloud subscription almost certainly originated from a specific initiative (a digital innovation program or central operations project) that never achieved organizational buy-in.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Company Structure &amp; Strategy</div>
+      <ul class="signal-list">
+        <li><strong>Legal structure:</strong> Netherlands-registered coordination entity; member firms are legally separate partnerships. KPMG International does not consolidate member firm revenues.</li>
+        <li><strong>Global CEO:</strong> Bill Thomas (since 2021; reappointed through 2027)</li>
+        <li><strong>"KPMG 2030" strategy (2023):</strong> Pivot from revenue growth toward audit quality, trust, and margin improvement. Cost discipline is a stated priority.</li>
+        <li><strong>AI commitment:</strong> $2B+ over 3 years (2023–2026) in AI capabilities — primarily via Microsoft Azure OpenAI. Launched "KymChat" (internal GenAI tool) in 2024.</li>
+        <li><strong>Service lines:</strong> Audit (~40% of revenue), Tax (~25%), Advisory (~35%). Advisory contracted in 2023–2024 as M&amp;A deal volumes dropped globally.</li>
+        <li><strong>KPMG as SI partner:</strong> KPMG is a Salesforce implementation partner for clients — but uses Microsoft for its own operations. This creates internal political tension around adopting Salesforce internally.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Financial Health Signals</div>
+      <table>
+        <thead><tr><th>Year</th><th>Combined Revenue</th><th>Growth</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2022</td><td>~$35B</td><td>+12%</td><td><span class="pill pill-green">Strong</span></td></tr>
+          <tr><td>FY2023</td><td>~$36.4B</td><td>+9%</td><td><span class="pill pill-green">Healthy</span></td></tr>
+          <tr><td>FY2024</td><td>~$38.4B</td><td>~+3%</td><td><span class="pill pill-amber">Slowing</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.8rem;color:#64748b;margin:8px 0 0">Combined network revenue is not consolidated — member firms are separate entities. KPMG was weakest of the Big 4 in revenue growth in FY2024.</p>
+      <div class="divider"></div>
+      <p style="font-size:.82rem;color:#374151;margin:0 0 6px"><strong>Cost Reduction Programs (2023–2024):</strong></p>
+      <ul class="signal-list">
+        <li>KPMG US: ~700 employees cut early 2023; additional advisory reductions in 2024</li>
+        <li>KPMG UK: Partner headcount reduced 2023–2024</li>
+        <li>KPMG Australia: 200+ advisory roles cut in 2024</li>
+        <li>Pattern: Post-pandemic hiring overcorrection; cost discipline now a stated priority</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Technology Landscape — Why Microsoft Wins Internally</div>
+      <table>
+        <thead><tr><th>Category</th><th>Vendor</th><th>Implication for Salesforce</th></tr></thead>
+        <tbody>
+          <tr><td>Cloud &amp; AI</td><td><strong>Microsoft Azure + OpenAI</strong></td><td><span class="pill pill-red">Direct competitor — $2B investment</span></td></tr>
+          <tr><td>Collaboration</td><td>Microsoft 365 / Teams</td><td>Relationship mgmt done in Teams/Outlook</td></tr>
+          <tr><td>CRM (member firms)</td><td>MS Dynamics 365 or homegrown</td><td>No standardized CRM mandate globally</td></tr>
+          <tr><td>ERP</td><td>SAP S/4HANA</td><td>KPMG is a SAP partner &amp; customer</td></tr>
+          <tr><td>HR</td><td>Workday</td><td>Standard Big 4 HR platform</td></tr>
+          <tr><td>ITSM</td><td>ServiceNow (some firms)</td><td>Competing platform for workflows</td></tr>
+          <tr><td>Analytics</td><td>Tableau (via Salesforce)</td><td>✅ Positive — data analytics foothold</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">Regulatory &amp; Reputational Risk</div>
+      <ul class="signal-list">
+        <li><strong>KPMG UK fined £21M (FRC, 2023)</strong> for audit failures (Carillion and others) — significant financial and reputational pressure on UK leadership</li>
+        <li><strong>KPMG US SEC settlement (2023)</strong> for ethics training violations — compounding US compliance pressure</li>
+        <li><strong>Wirecard (2020):</strong> KPMG engaged for special audit; reputational overhang continues in EMEA</li>
+        <li><strong>KPMG South Africa:</strong> Long-tail reputational damage from Gupta/Steinhoff (2017–2019 origin)</li>
+        <li><strong>Audit reform legislation:</strong> UK, EU, and US regulators considering mandatory audit rotation and operational separation — structural risk to ~40% of revenue</li>
+        <li>These pressures drive a focus on <strong>cost discipline and core competency</strong>, not innovation technology spend — directly relevant to why a $11M Sales Cloud subscription sits unused</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Industry Trends Affecting KPMG's Technology Posture</div>
+    <div class="two-col" style="margin-top:0">
+      <div>
+        <p style="font-size:.82rem;font-weight:600;color:#1e3a5f;margin:0 0 8px">Pressures reducing Salesforce investment appetite:</p>
+        <ul class="signal-list">
+          <li>AI disruption threat to core service lines (audit testing, tax compliance, document review) — Big 4 racing to AI-augment, absorbing discretionary tech budget</li>
+          <li>M&amp;A deal volumes dropped globally in 2023–2024 — advisory revenue contracted, budget tightened</li>
+          <li>Regulatory fines and legal settlements reducing available investment capital</li>
+          <li>Microsoft-first AI strategy consuming the innovation budget that might otherwise fund Salesforce activation</li>
+          <li>Cost reduction programs across US, UK, Australia signal enterprise-wide austerity mindset</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:.82rem;font-weight:600;color:#1e3a5f;margin:0 0 8px">Potential Salesforce value angles for re-engagement:</p>
+        <ul class="signal-list">
+          <li>KPMG implements Salesforce for clients — internal proficiency on Salesforce platform could strengthen their SI practice and competitive positioning</li>
+          <li>Tableau is already in the KPMG stack — data analytics is a natural bridge conversation</li>
+          <li>Agentforce / AI on Salesforce could be positioned against their Microsoft/Azure AI investment as a complementary use case for client-facing workflows</li>
+          <li>As KPMG restructures advisory around AI services, there may be a new use case for Salesforce-based client delivery tools (e.g., client portal, project tracking)</li>
+          <li>Partner network management: Salesforce Experience Cloud could serve KPMG International's member firm coordination function</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: ATTRITION RISK -->
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">43.9%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Premier+Sig model</div></div>
+    <div class="kpi-card"><div class="kpi-val">$3.3M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $11.2M Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">−$141K</div><div class="kpi-label">Confirmed Attrition</div><div class="kpi-sub-red">Already realized</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Overall Risk Rating</div><div class="kpi-sub-red">Multiple converging signals</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Attrition Risk Signals — Ranked by Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Market Intelligence Highlights</div>
+    <div class="two-col" style="margin-top:0">
+      <div>
+        <p style="font-size:.82rem;font-weight:700;color:#991b1b;margin:0 0 8px">Signals amplifying attrition risk</p>
+        <ul class="signal-list">
+          <li><strong>Governance entity, not a sales org.</strong> KPMG International coordinates the network — it has no sales pipeline, no quota-carrying reps, and no natural use for Sales Cloud's core capabilities. The $11M subscription predates any identified internal champion.</li>
+          <li><strong>Microsoft-first at $2B+.</strong> KPMG committed $2B+ over 2023–2026 to Azure + OpenAI (launched internal "KymChat" tool). This directly competes with Salesforce for KPMG's innovation budget and C-suite attention.</li>
+          <li><strong>Revenue growth stalling.</strong> FY2024 network revenue grew only ~3% — the weakest of the Big 4. Advisory contracted as global M&amp;A deal volumes dropped. Cost discipline (US, UK, Australia layoffs) signals enterprise austerity.</li>
+          <li><strong>Regulatory &amp; legal pressure.</strong> £21M FRC fine (UK, 2023), US SEC settlement (2023) — financial and reputational overhang tightening discretionary technology spend.</li>
+          <li><strong>No internal Salesforce champion found.</strong> Canceled Onboarding ADR (Mar 2026) has no description — the original sponsor likely departed or was never formally appointed.</li>
+          <li><strong>KPMG as SI partner creates resistance.</strong> KPMG implements Salesforce for clients but uses Microsoft internally — a structurally awkward position that discourages internal adoption advocacy.</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:.82rem;font-weight:700;color:#15803d;margin:0 0 8px">Potential re-engagement angles</p>
+        <ul class="signal-list">
+          <li><strong>SI practice strengthening.</strong> KPMG is a Salesforce implementation partner. Internal platform proficiency directly improves their client delivery quality and competitive positioning — a business case that bypasses the "we don't need CRM" objection.</li>
+          <li><strong>Tableau bridge.</strong> KPMG already uses Tableau. A joint use case connecting Sales Cloud data to Tableau analytics is a low-friction entry point that shows value without requiring full CRM adoption.</li>
+          <li><strong>Agentforce as a complement to Azure AI.</strong> Position Agentforce not as competing with KymChat/Azure, but as the client-facing AI layer for KPMG's advisory services — a different use case than internal productivity.</li>
+          <li><strong>"KPMG 2030" strategy alignment.</strong> KPMG's stated pivot to audit quality and trust creates a potential angle for Salesforce as a program management and stakeholder engagement platform for large multi-jurisdictional engagements.</li>
+          <li><strong>Experience Cloud for member firm coordination.</strong> KPMG International's core function is coordinating 143+ member firms globally — Salesforce Experience Cloud is purpose-built for exactly this kind of partner/network portal use case.</li>
+        </ul>
+        <div style="margin-top:12px;background:#fef9c3;border:1px solid #f59e0b;border-radius:6px;padding:10px 12px;font-size:.8rem;color:#78350f">
+          <strong>Timing note:</strong> Market research is based on training data to Aug 2025. KPMG FY2025 results and any news after Aug 2025 not reflected — verify before an executive conversation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — Zero Product Adoption / Full Shelfware (Critical)</strong>
+    <ul class="signal-list">
+      <li>CSS Product Adoption Score: <strong>22/100</strong>. Every core Sales Cloud metric (Opportunities, Cases, Activities, Leads, Contacts, Forecasts) scores 0 with negative growth trends.</li>
+      <li>License Utilization (Sales &amp; Service Cloud): <strong>0%</strong>. Org is provisioned but no users are active.</li>
+      <li>This directly produces the AE/RM-recorded risk reason: <strong>Low Perceived ROI</strong>. KPMG is paying $11M+ for a tool generating zero measurable value.</li>
+      <li>Structural root cause: KPMG International is a governance entity, not a sales organization. Sales Cloud use cases (pipeline, forecasting, opportunity management) have no natural fit for its function.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Financial &amp; Contractual Risk (Confirmed)</strong>
+    <ul class="signal-list">
+      <li>Attrition Forecast Guidance datasource shows <strong>confirmed attrition of −$141K</strong> (Financial &amp; Contractual / Low Perceived ROI).</li>
+      <li><strong>Packaging Change</strong> risk flagged — active contract renegotiation likely in progress.</li>
+      <li>KPMG network-wide cost reduction programs (US, UK, Australia layoffs 2023–2024) and regulatory fines (£21M FRC, SEC settlement) signal austerity posture — technology spend under scrutiny.</li>
+      <li>Microsoft is absorbing $2B+ of KPMG's discretionary innovation budget (2023–2026), leaving Salesforce competing for a shrinking pool.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#3 — Failed &amp; Absent Success Engagement (High)</strong>
+    <ul class="signal-list">
+      <li>Signature Success Plan Onboarding case <strong>Canceled</strong> (Mar 2026). No description recorded. No follow-up ADR created.</li>
+      <li>CSS Expertise: Success Reviews: 0, Onboarding: 0, Workshops: 0, Courses: 0. Only 1 Expert Coaching session ever delivered.</li>
+      <li>Without successful onboarding, users cannot adopt the product — the shelfware problem is a direct downstream consequence of this failure.</li>
+      <li>Premier account with $11M+ AOV has received less post-sale success attention than a typical mid-market account.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#4 — Active Red Accounts (High — ongoing)</strong>
+    <ul class="signal-list">
+      <li>Two open Red Account records opened within the last 5 weeks: Oct 16, 2026 and Nov 9, 2026.</li>
+      <li>Both categorized <strong>Adoption</strong> — both cite case volume increasing (12 → 16) and declining activity signals between observation periods.</li>
+      <li>The Nov 9 record notes: "Indicators require discovery; they do not establish confirmed risk" — suggesting active investigation but no resolved recovery plan.</li>
+      <li>Consecutive Red Account flags indicate the signal is worsening, not stabilizing.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#5 — Microsoft-First Technology Strategy (High — structural)</strong>
+    <ul class="signal-list">
+      <li>KPMG's enterprise platform of record is <strong>Microsoft Azure + M365 + Teams</strong>. Relationship management, collaboration, and CRM-adjacent tooling runs on Microsoft.</li>
+      <li>KPMG committed $2B+ to Azure/OpenAI AI capabilities (2023–2026). This directly competes with Salesforce for technology mindshare and budget.</li>
+      <li>KPMG implements Salesforce for clients as an SI partner — but uses Microsoft internally. This creates organizational resistance to internal Salesforce adoption.</li>
+      <li>No Salesforce champion identified at KPMG International. The canceled Onboarding and absent description suggest the original sponsor may have departed.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#6 — No Sales Cloud Support History / Zero Engagement (Medium)</strong>
+    <ul class="signal-list">
+      <li>Zero Sales Cloud support cases on record — ever. All historical support (3 cases, 2023) is MuleSoft/CloudHub.</li>
+      <li>The only ADR delivered was CRM Analytics (Nov 2025, not Sales Cloud).</li>
+      <li>No NPS data available. No Success Reviews. No technical engagement with Sales Cloud at any level.</li>
+      <li>This absence of engagement makes it effectively impossible to detect user dissatisfaction or needs early — an early warning system that doesn't exist.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions — Priority Order</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Signal Addressed</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">Immediate</span></td><td>Identify whether a Sales Cloud champion exists at KPMG International. Find the original sponsor of the subscription. Understand the intended use case.</td><td>#5 Microsoft-first / No champion</td><td>AE: Stephanie DeVivo</td></tr>
+        <tr><td><span class="pill pill-red">Immediate</span></td><td>Close the open Red Accounts with a documented recovery plan. Set a 30-day review checkpoint with the RM (Fergus O'Brien).</td><td>#4 Red Accounts</td><td>CSM + RM</td></tr>
+        <tr><td><span class="pill pill-red">Immediate</span></td><td>Understand the Packaging Change risk in detail. What specifically is being renegotiated? Is this a full contract reduction or a product mix change?</td><td>#2 Financial &amp; Contractual</td><td>RM: Fergus O'Brien</td></tr>
+        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Rescue the Onboarding. Identify a new project sponsor inside KPMG International. Propose a focused Sales Cloud use case (e.g., internal business development tracking, partner management, or a specific team's workflow).</td><td>#3 Failed Onboarding</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Reframe the value narrative for KPMG's context — position Sales Cloud not as a traditional CRM but as a coordination and reporting platform for internal program management. Address the Microsoft alignment explicitly.</td><td>#1 Shelfware + #5 Microsoft</td><td>AE + SE</td></tr>
+        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Deliver MFA enablement as a quick win. Demonstrates Salesforce value, closes a real security gap, and creates a reason for a touch point with the KPMG IT team.</td><td>#6 Technical engagement</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-blue">Short-term</span></td><td>Book an Executive Business Review before Q1 2027. Use market intelligence (audit reform pressure, AI investment, Tableau opportunity) to anchor a forward-looking conversation vs. ROI defense.</td><td>#1, #2, #5</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-blue">Short-term</span></td><td>Leverage Tableau as a bridge — KPMG already uses it. Propose a joint use case connecting Salesforce data with Tableau analytics as an entry point for Sales Cloud engagement.</td><td>#1 Adoption</td><td>AE</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <strong>Data Points Flagged as Uncertain or Unavailable</strong>
+    <ul class="signal-list">
+      <li><strong>License seat counts (Activation % / Utilization %)</strong> — Account Drill-Down Tableau view (LUID: 3f9d0ded) is not MCP-queryable. CSS signals confirm utilization = 0 but seat count denominator is unknown.</li>
+      <li><strong>NPS score</strong> — No NPS data found in OrgCS. May exist in a separate NPS platform or not yet surveyed.</li>
+      <li><strong>Renewal date</strong> — Not confirmed in the data pulled. Attrition Forecast shows $0 on-cycle forecast attrition, suggesting the renewal may not be imminent.</li>
+      <li><strong>Market research</strong> — Based on training data to Aug 2025. KPMG FY2025 results and any news after Aug 2025 not reflected. Live web search was unavailable.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  // trigger resize for Plotly charts
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+
+// CSS Category Scores
+Plotly.newPlot('chartCSS',[{
+  type:'bar',
+  x:[22,31,80],
+  y:['Product Adoption','Customer Expertise','Technical Health'],
+  orientation:'h',
+  marker:{color:['#ef4444','#f59e0b','#22c55e']},
+  text:['22/100','31/100','80/100'],
+  textposition:'outside'
+}],{
+  xaxis:{range:[0,110],title:'Score',showgrid:true,gridcolor:'#e2e8f0'},
+  yaxis:{automargin:true},
+  margin:{l:160,r:80,t:20,b:50},
+  height:200,
+  paper_bgcolor:'#fff',
+  plot_bgcolor:'#f8fafc',
+  font:{family:'"Segoe UI",system-ui,sans-serif',size:12,color:'#374151'}
+},{responsive:true});
+
+// Adoption Signal Scores
+Plotly.newPlot('chartAdoption',[{
+  type:'bar',
+  x:[0,0,0,0,0,0,0,0,100,100],
+  y:['License Utilization','Opportunities','Cases','Activities','Leads','Contacts','Forecasts','Omni Channel','License Activation','Email Templates'],
+  orientation:'h',
+  marker:{color:['#ef4444','#ef4444','#ef4444','#ef4444','#ef4444','#ef4444','#ef4444','#ef4444','#22c55e','#22c55e']},
+  text:['0%','0','0','0','0','0','0','0','100%','100 (62 tmpl)'],
+  textposition:'outside'
+}],{
+  xaxis:{range:[0,130],title:'Score',showgrid:true,gridcolor:'#e2e8f0'},
+  yaxis:{automargin:true},
+  margin:{l:160,r:120,t:20,b:50},
+  height:380,
+  paper_bgcolor:'#fff',
+  plot_bgcolor:'#f8fafc',
+  font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}
+},{responsive:true});
+
+// Cases by Type
+Plotly.newPlot('chartCasesByType',[{
+  type:'bar',
+  x:['Billing (12mo)','ADR — Non-Sales Cloud','ADR — Sales Cloud (Canceled)','Support — MuleSoft (2023)','Sales Cloud Support (All time)'],
+  y:[21,1,1,3,0],
+  marker:{color:['#94a3b8','#f59e0b','#ef4444','#94a3b8','#22c55e']},
+  text:[21,1,1,3,0],
+  textposition:'outside'
+}],{
+  yaxis:{title:'Cases',showgrid:true,gridcolor:'#e2e8f0'},
+  xaxis:{automargin:true,tickangle:-15},
+  margin:{l:60,r:30,t:20,b:120},
+  height:320,
+  paper_bgcolor:'#fff',
+  plot_bgcolor:'#f8fafc',
+  font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}
+},{responsive:true});
+
+// Risk Signal Chart
+Plotly.newPlot('chartRisk',[{
+  type:'bar',
+  x:[10,9,8,7,6,5],
+  y:['#1 Zero Adoption / Shelfware','#2 Financial & Contractual Risk','#3 Failed Success Engagement','#4 Active Red Accounts','#5 Microsoft-First Strategy','#6 Zero Support Engagement'],
+  orientation:'h',
+  marker:{color:['#dc2626','#dc2626','#ef4444','#ef4444','#f59e0b','#f59e0b']},
+  text:['CSS Adoption 22/100, Utilization 0%','−$141K confirmed, Packaging Change','Onboarding Canceled, 0 Reviews/Workshops','2 open Red Accts Oct+Nov 2026','$2B Azure/OpenAI investment, no SFDC champion','0 Sales Cloud cases — ever'],
+  textposition:'outside'
+}],{
+  xaxis:{range:[0,14],showticklabels:false,showgrid:false},
+  yaxis:{automargin:true},
+  margin:{l:260,r:10,t:20,b:30},
+  height:300,
+  paper_bgcolor:'#fff',
+  plot_bgcolor:'#f8fafc',
+  font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}
+},{responsive:true});
+</script>
+</body>
+</html>

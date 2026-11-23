@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GN Hearing — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>GN Hearing — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA NORDICS &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00DG0000000kVjP &nbsp;·&nbsp; OrgCS Account ID: 0013000000vSqtjAAC &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Data Quality Flag: OrgCS shows Basic support, model shows Premier</div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$1.3M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">51.0%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Critical tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$507K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">Basic</div><div class="kpi-label">OrgCS Support Level</div><div class="kpi-sub-red">Mismatch: model says Premier</div></div>
+    <div class="kpi-card"><div class="kpi-val">~8%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">Low</div></div>
+    <div class="kpi-card"><div class="kpi-val">&lt;1 yr</div><div class="kpi-label">Customer Age (model)</div><div class="kpi-sub-amber">New subscription window</div></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>Data Quality Alert: Support Level Mismatch</strong>
+    The attrition model CSV lists GN Hearing with Premier entitlement. OrgCS account record shows <strong>Basic</strong> support level for OrgCS ID 0013000000vSqtjAAC. This mismatch requires immediate investigation:
+    <ul class="signal-list">
+      <li>Either the OrgCS record is out of date and GN Hearing has upgraded to Premier (the model is correct)</li>
+      <li>Or GN Hearing is listed in the Premier attrition analysis incorrectly (the model has an error)</li>
+      <li>Or there are multiple OrgCS records for GN Hearing and the Premier subscription is on a different record</li>
+    </ul>
+    Until resolved, all analysis below treats GN Hearing as a Premier account per the model CSV, but the OrgCS data discrepancy must be investigated.
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>GN Hearing</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqtjAAC</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVjP</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA NORDICS</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement (model)</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>OrgCS Support Level</strong></td><td><span class="pill pill-amber">Basic</span> (mismatch)</td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>&lt;1 Year (model flag)</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Medtech / Hearing Healthcare</td></tr>
+        <tr><td><strong>Parent</strong></td><td>GN Group (Denmark)</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$1,326,037</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>50.96%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$506,900</td></tr>
+        <tr><td><strong>Open Cases</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Red Account Records</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-red">CRITICAL (>50%)</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
+    <div class="kpi-card"><div class="kpi-val">Basic</div><div class="kpi-label">OrgCS Support Level</div><div class="kpi-sub-red">Contradicts Premier model</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Zero Cases + Basic Support Level = Critical Engagement Gap</strong>
+    OrgCS account 0013000000vSqtjAAC shows Basic support level and zero case activity. If this is the correct OrgCS record for GN Hearing's Premier subscription, it means either: (a) GN Hearing recently upgraded to Premier but hasn't used it yet, or (b) the account matched in OrgCS is not the Premier subscription account. The combination of zero cases + Basic support designation on what should be a Premier account is a severe data quality and engagement problem.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">License Activation</div></div>
+    <div class="kpi-card"><div class="kpi-val">~8%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">Low</div></div>
+  </div>
+  <div class="info-box">
+    <strong>Adoption Cannot Be Confirmed</strong>
+    Data quality issues (OrgCS/model mismatch) prevent reliable adoption assessment. The ~8% utilization estimate is based on &lt;1 year entity + zero case evidence. Confirm Org ID and retrieve Tableau Account Drill-Down for definitive numbers.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~33</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Low — data quality issue</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>CSS Score Unreliable Due to Data Quality Issues</strong>
+    Cannot generate a reliable CSS score when the OrgCS support level and model data are inconsistent. Manual investigation required before CSS assessment is meaningful.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~DKK 15B</div><div class="kpi-label">GN Group Revenue</div></div>
+    <div class="kpi-card"><div class="kpi-val">OMXC25</div><div class="kpi-label">Copenhagen Exchange</div></div>
+    <div class="kpi-card"><div class="kpi-val">EMEA Nordics</div><div class="kpi-label">Territory</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">GN Group Strategic Context</div>
+      <ul class="signal-list">
+        <li><strong>GN Hearing</strong> is the hearing healthcare division of GN Group (Denmark), which also includes GN Audio (Jabra brand headsets/audio). GN Hearing makes ReSound hearing aids and audiological devices.</li>
+        <li><strong>Medtech sales model:</strong> GN Hearing sells through audiologists, ENT clinics, hearing centers, and direct B2B channels in multiple markets. Sales Cloud for a medtech B2B sales team is a defensible use case.</li>
+        <li><strong>GN Group restructuring:</strong> GN Group has been restructuring, separating audio and hearing businesses, and managing competitive pressure from Sonova (Switzerland) and William Demant (Denmark). Cost management is a priority.</li>
+        <li><strong>AI hearing technology:</strong> GN Hearing and competitors have been investing in AI-powered hearing aids — the company is focused on product R&D AI rather than business operations AI.</li>
+        <li><strong>CRM needs:</strong> A B2B medical devices company with audiologist/clinic channel partners is a good Salesforce CRM use case — Health Cloud, Sales Cloud, and Partner Experience could all apply.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Risk Factors</div>
+      <table>
+        <thead><tr><th>Factor</th><th>Level</th></tr></thead>
+        <tbody>
+          <tr><td>OrgCS/Model data mismatch</td><td><span class="pill pill-red">Critical</span></td></tr>
+          <tr><td>Zero case engagement</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>GN Group restructuring</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>Medtech CRM use case strength</td><td><span class="pill pill-green">Positive</span></td></tr>
+          <tr><td>Health Cloud upsell opportunity</td><td><span class="pill pill-green">Positive</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">51.0%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Critical</div></div>
+    <div class="kpi-card"><div class="kpi-val">$507K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">CRITICAL</div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">Basic/Premier</div><div class="kpi-label">Support Level Conflict</div><div class="kpi-sub-red">OrgCS vs. model mismatch</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risk Signal Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — Data Quality: OrgCS Shows Basic / Model Shows Premier (Critical)</strong>
+    <ul class="signal-list">
+      <li>The attrition model CSV lists GN Hearing as Premier. OrgCS account 0013000000vSqtjAAC shows Basic support level. This is a data integrity issue that must be resolved before any other action is taken.</li>
+      <li>If GN Hearing is actually on Basic support, it should not be in this Premier attrition analysis — and there is no $1.3M Premier subscription to protect.</li>
+      <li>If GN Hearing has Premier, the OrgCS record is wrong — meaning the CSM team has been working from inaccurate data.</li>
+      <li>Immediate manual verification required by searching OrgCS for all GN Hearing / GN Group records.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Zero Case Activity on Critical-Risk Account (High)</strong>
+    <ul class="signal-list">
+      <li>Regardless of the support level confusion, zero OrgCS cases confirms zero Salesforce CSG engagement for this account. For a Critical-tier account (50.96%), this is unacceptable.</li>
+      <li>No cases filed = no demonstrable Premier value = no internal champion for the renewal decision.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Search OrgCS for ALL GN Hearing / GN Group / GN Audio records. Identify the correct record with Premier entitlement. Confirm whether OrgCS account 0013000000vSqtjAAC is the right match for the model's $1.3M entry.</td><td>Analyst + CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Resolve the OrgCS/model mismatch — update the correct record's support level, or flag this account as misclassified in the attrition model. Update the model dataset accordingly.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — Once verified</span></td><td>If confirmed as Premier account: assign CSM immediately and conduct an emergency discovery call. The account has 51% attrition probability and zero engagement — it is essentially unmanaged.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Build a GN Hearing-specific Salesforce value pitch connecting to their medtech B2B channel sales model — audiologist/clinic partner management, Health Cloud, Agentforce for field sales.</td><td>CSM + SE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+Plotly.newPlot('chartRisk',[{
+  type:'bar',x:[10,9,7],
+  y:['#1 OrgCS Basic vs. Model Premier Mismatch','#2 Zero Case Activity on Critical Account','#3 GN Group Restructuring / Cost Focus'],
+  orientation:'h',marker:{color:['#dc2626','#dc2626','#f59e0b']},
+  text:['Data integrity failure — cannot confirm Premier subscription','No engagement, no champion, no renewal advocacy','GN Group separating hearing/audio; cost rationalization likely'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:280,r:10,t:20,b:30},height:220,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

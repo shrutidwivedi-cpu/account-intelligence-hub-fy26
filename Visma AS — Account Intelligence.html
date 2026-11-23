@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visma AS — Account Intelligence</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.6}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:28px 40px 22px}
+.hero h1{font-size:1.5rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.88rem;opacity:.85;margin-top:6px}
+.hero-meta{font-size:.8rem;opacity:.7;margin-top:6px}
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;padding:0 40px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);flex-wrap:wrap}
+.tab-btn{padding:13px 22px;cursor:pointer;font-size:.88rem;font-weight:600;border:none;background:none;color:#64748b;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0ea5e9;border-bottom-color:#0ea5e9}
+.tab-btn:hover{color:#0284c7}
+.tab-pane{display:none;padding:28px 40px;max-width:1440px;margin:0 auto}
+.tab-pane.active{display:block}
+.section{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.section-title{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.1}
+.kpi-label{font-size:.74rem;color:#64748b;margin-top:4px}
+.kpi-sub{font-size:.78rem;color:#0ea5e9;margin-top:2px}
+.kpi-sub-red{font-size:.78rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.78rem;color:#f59e0b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.81rem}
+th{background:#f1f5f9;color:#1e3a5f;font-weight:600;padding:8px 10px;text-align:left;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:hover td{background:#f8fafc}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:600}
+.pill-green{background:#dcfce7;color:#166534}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-amber{background:#fef9c3;color:#92400e}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.risk-box{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#7f1d1d;margin-bottom:14px}
+.risk-box strong{display:block;font-size:.85rem;color:#991b1b;margin-bottom:8px}
+.opp-box{background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#14532d;margin-bottom:14px}
+.opp-box strong{display:block;font-size:.85rem;color:#15803d;margin-bottom:8px}
+.info-box{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:14px 16px;font-size:.82rem;color:#1e3a8a;margin-bottom:14px}
+.info-box strong{display:block;font-size:.85rem;color:#1d4ed8;margin-bottom:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+ul.signal-list{margin:6px 0 0;padding-left:18px;font-size:.82rem}
+ul.signal-list li{margin-bottom:5px}
+.chart-container{margin-top:10px}
+code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Visma AS — Account Intelligence</h1>
+  <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA NORDICS &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
+  <div class="hero-meta">Org ID: 00D30000000YrGy &nbsp;·&nbsp; OrgCS Account ID: 0013000001OQNmBAAX &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: Tech company using CRM it also competes with</div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">Account Overview</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">Support &amp; Cases</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">License &amp; Adoption</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">CSS Health</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">Market Intelligence</button>
+</nav>
+
+<div id="t1" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">$2.2M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">45.1%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$735K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~45</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Moderate stagnation</div></div>
+    <div class="kpi-card"><div class="kpi-val">~18%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">Low</div></div>
+    <div class="kpi-card"><div class="kpi-val">10+ yrs</div><div class="kpi-label">Customer Age</div><div class="kpi-sub">Moderate segment</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Visma AS</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000001OQNmBAAX</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00D30000000YrGy</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA NORDICS</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>10+ Years</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Technology / SaaS / ERP</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        <tr><td><strong>HQ</strong></td><td>Oslo, Norway</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$2,174,484</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>45.11%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$735,500</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-amber">HIGH (40–50%)</span></td></tr>
+        <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~5–10</div><div class="kpi-label">Total Cases (est.)</div><div class="kpi-sub-amber">Minimal support</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None confirmed</div></div>
+    <div class="kpi-card"><div class="kpi-val">Low</div><div class="kpi-label">Technical Engagement</div><div class="kpi-sub-amber">Moderate segment, 10yr</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Low Technical Engagement Pattern — Tech Company Using External CRM</strong>
+    Visma is a technology company with significant in-house software engineering capability. As a Nordics ERP/SaaS leader, Visma has the technical resources to build internal tooling or evaluate alternative CRM solutions. The pattern of minimal Salesforce support cases over a 10-year tenure suggests the platform may be used in a maintenance-only capacity by a small internal sales team, rather than deeply integrated across the enterprise.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">License Activation</div><div class="kpi-sub-amber">Tableau not queried</div></div>
+    <div class="kpi-card"><div class="kpi-val">~18%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">Low</div></div>
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">AI Adoption</div></div>
+  </div>
+  <div class="info-box">
+    <strong>Adoption Assessment</strong>
+    Visma is a CRM competitor — they build ERP and business management software. It is likely they use Salesforce Sales Cloud for specific functions (e.g., global enterprise sales team) while using their own tools for other processes. The ~18% utilization estimate reflects this selective deployment pattern. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~45</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Moderate stagnation</div></div>
+  </div>
+  <div class="info-box">
+    <strong>CSS Score ~45/100 Estimated</strong>
+    Moderate segment, 10+ year tenure, low engagement. No Red Accounts is a slight positive signal. Manual CSS dashboard confirmation recommended.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~€2.3B</div><div class="kpi-label">Visma Revenue (est. FY2024)</div></div>
+    <div class="kpi-card"><div class="kpi-val">~15,000</div><div class="kpi-label">Employees</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oslo HQ</div><div class="kpi-label">EMEA Nordics</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Visma Strategic Context</div>
+      <ul class="signal-list">
+        <li><strong>Visma is a CRM/ERP competitor:</strong> Visma builds and sells business management software (ERP, accounting, HR, CRM) across the Nordic and European markets. They are, in a sense, a Salesforce competitor in the SMB/mid-market CRM space.</li>
+        <li><strong>Private equity-backed:</strong> Visma is majority-owned by HgCapital (PE firm). PE ownership creates cost optimization pressure — every software subscription line item is under scrutiny.</li>
+        <li><strong>Acquisition-driven growth:</strong> Visma has made 200+ acquisitions. Each acquisition may bring its own Salesforce org, creating portfolio rationalization pressure — the main Visma AS entity may be consolidating CRM subscriptions.</li>
+        <li><strong>Internal tooling capability:</strong> With 15,000+ employees including significant engineering talent, Visma can build internal Salesforce alternatives. If ROI is insufficient, the technical capability to exit exists.</li>
+        <li><strong>AI strategy:</strong> Visma has been investing in AI capabilities for their product portfolio — they may be evaluating AI-powered CRM capabilities within their own product vs. Salesforce Agentforce.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Competitive Threat Assessment</div>
+      <table>
+        <thead><tr><th>Threat</th><th>Level</th></tr></thead>
+        <tbody>
+          <tr><td>Internal build capability</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>HgCapital PE cost optimization</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>CRM portfolio rationalization post-M&A</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>Microsoft Dynamics 365 (Nordic market)</td><td><span class="pill pill-amber">Medium</span></td></tr>
+          <tr><td>10yr switching costs</td><td><span class="pill pill-green">High barrier</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">45.1%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$735K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">CRM Competitor</div><div class="kpi-label">Unique Dynamic</div><div class="kpi-sub-red">Builds competing software</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risk Signal Severity</div>
+    <div id="chartRisk" class="chart-container"></div>
+  </div>
+
+  <div class="risk-box">
+    <strong>#1 — Competitor Dynamic: Visma Builds Its Own CRM (Critical)</strong>
+    <ul class="signal-list">
+      <li>Visma is a software company that builds and sells ERP and CRM products that compete with Salesforce in the European SMB/mid-market. Using Salesforce Sales Cloud while building competing products creates an inherent tension.</li>
+      <li>PE ownership (HgCapital) creates cost scrutiny on every subscription line item. A narrative of "we pay Salesforce $2.2M/year while we sell our own CRM" is difficult to defend at a board level.</li>
+      <li>Visma has made 200+ acquisitions — portfolio CRM rationalization is an ongoing process that could include replacing the Visma AS Sales Cloud subscription with an internally developed solution.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>#2 — Moderate Segment Stagnation on 10-Year Account (High)</strong>
+    <ul class="signal-list">
+      <li>10+ year tenure with Moderate segment and minimal support engagement indicates the relationship has plateaued. No new cloud adoption, no AI footprint visible.</li>
+      <li>Visma's internal engineering team means they never needed much Salesforce technical support — the low case volume does not indicate strong health, it indicates self-sufficiency without CSG engagement.</li>
+    </ul>
+  </div>
+
+  <div class="opp-box">
+    <strong>Recommended Actions</strong>
+    <table style="margin-top:8px">
+      <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Visma executive sponsor for Salesforce. Confirm whether the Sales Cloud subscription covers the Visma AS global sales team or a specific business unit.</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a "competitive coexistence" brief — articulate why Salesforce Sales Cloud complements (rather than competes with) Visma's ERP/CRM product portfolio. Focus on the global enterprise sales use case that Visma's own products don't serve.</td><td>AE + SE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct utilization review. If &lt;20% license utilization confirmed, propose a right-sizing discussion before renewal — a reduced but renewed contract is better than full attrition.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Position Agentforce as the AI capability Visma's own products don't offer yet — differentiating on AI-first CRM capabilities may justify continued Premium subscription vs. in-house replacement.</td><td>CSM + SE</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+}
+Plotly.newPlot('chartRisk',[{
+  type:'bar',x:[10,9,7],
+  y:['#1 Competitor Dynamic — Builds Own CRM','#2 Moderate Stagnation on 10yr Account','#3 PE Cost Optimization Pressure'],
+  orientation:'h',marker:{color:['#dc2626','#ef4444','#f59e0b']},
+  text:['Visma sells ERP/CRM; PE owner HgCapital scrutinizes costs','10yr Premier, Moderate segment, low support engagement','HgCapital portfolio review = all subscriptions under cost scrutiny'],
+  textposition:'outside'
+}],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:280,r:10,t:20,b:30},height:220,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
+</script>
+</body>
+</html>

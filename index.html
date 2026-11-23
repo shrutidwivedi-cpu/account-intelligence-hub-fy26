@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Account Intelligence Hub</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;margin:0;line-height:1.5}
+.hero{background:linear-gradient(135deg,#032d60 0%,#0b5394 100%);color:#fff;padding:24px 40px 20px}
+.hero h1{font-size:1.4rem;font-weight:700;margin:0 0 4px}
+.hero-sub{font-size:.82rem;opacity:.8;margin-top:4px}
+.toolbar{background:#fff;border-bottom:1px solid #e2e8f0;padding:11px 40px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+select,input[type=text]{font-size:.78rem;padding:5px 9px;border:1px solid #e2e8f0;border-radius:6px;background:#f8fafc;color:#1e293b;outline:none}
+.toolbar-sep{flex:1}
+.toolbar-count{font-size:.75rem;color:#64748b;white-space:nowrap}
+.main{padding:22px 40px;max-width:1300px;margin:0 auto}
+/* KPI strip */
+.kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:22px}
+.kpi-card{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
+.kpi-val{font-size:1.35rem;font-weight:700;color:#0f172a}
+.kpi-label{font-size:.68rem;color:#64748b;margin-top:3px}
+.kpi-sub-red{font-size:.68rem;color:#ef4444;margin-top:2px}
+.kpi-sub-amber{font-size:.68rem;color:#f59e0b;margin-top:2px}
+.kpi-sub-green{font-size:.68rem;color:#16a34a;margin-top:2px}
+/* Account cards */
+.account-card{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden;border-left:4px solid #e2e8f0;transition:box-shadow .15s}
+.account-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.account-card.critical{border-left-color:#ef4444}
+.account-card.high{border-left-color:#f59e0b}
+.account-card.medium{border-left-color:#3b82f6}
+.account-card.low{border-left-color:#22c55e}
+/* Card header row */
+.card-header{display:flex;align-items:center;gap:14px;padding:14px 20px 10px;flex-wrap:wrap}
+.card-name{font-size:.95rem;font-weight:700;color:#0f172a;flex:1;min-width:200px}
+.card-meta{font-size:.73rem;color:#64748b;margin-top:2px;font-weight:400}
+.card-aov{font-size:.82rem;font-weight:700;color:#1e293b;white-space:nowrap}
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.67rem;font-weight:700;white-space:nowrap}
+.pill-critical{background:#fee2e2;color:#991b1b}
+.pill-high{background:#fef3c7;color:#854d0e}
+.pill-medium{background:#dbeafe;color:#1e40af}
+.pill-low{background:#dcfce7;color:#166534}
+.pill-grey{background:#f1f5f9;color:#475569}
+.pill-seg-strong{background:#dcfce7;color:#166534}
+.pill-seg-moderate{background:#dbeafe;color:#1e40af}
+.pill-seg-declining{background:#fee2e2;color:#991b1b}
+.pill-seg-other{background:#f1f5f9;color:#475569}
+.link-btn{display:inline-flex;align-items:center;gap:5px;background:#0ea5e9;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:.74rem;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.link-btn:hover{background:#0284c7}
+.link-btn.disabled{background:#94a3b8;cursor:default;pointer-events:none}
+.link-btn svg{width:12px;height:12px}
+/* KPI chips row */
+.card-chips{display:flex;gap:0;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9;flex-wrap:wrap}
+.chip{padding:8px 18px;text-align:center;border-right:1px solid #f1f5f9;flex:1;min-width:90px}
+.chip:last-child{border-right:none}
+.chip-val{font-size:.85rem;font-weight:700;color:#0f172a}
+.chip-label{font-size:.64rem;color:#94a3b8;margin-top:1px}
+.pct-crit{color:#dc2626}
+.pct-high{color:#d97706}
+.pct-med{color:#2563eb}
+.pct-low{color:#16a34a}
+.score-bar-wrap{display:flex;align-items:center;gap:5px;justify-content:center}
+.score-bar{background:#e2e8f0;border-radius:3px;height:5px;width:50px}
+.score-fill{height:5px;border-radius:3px}
+/* Risk factors */
+.card-risks{padding:12px 20px 14px}
+.risk-label{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.risk-bullets{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+.risk-bullets li{font-size:.78rem;color:#374151;padding-left:14px;position:relative;line-height:1.45}
+.risk-bullets li::before{content:'•';position:absolute;left:0;color:#94a3b8}
+.risk-bullets li.flag::before{content:'⚠';left:-1px;font-size:.65rem}
+.risk-bullets li.ok::before{content:'✓';color:#22c55e}
+.dummy-tag{font-size:.62rem;background:#e0f2fe;color:#0369a1;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.section-label{font-size:.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin:0 0 10px;padding:0}
+@media(max-width:1100px){.kpi-row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr)}.risk-bullets{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Account Intelligence Hub</h1>
+  <div class="hero-sub">Sales Cloud &nbsp;·&nbsp; Premier Accounts &nbsp;·&nbsp; FY26 (v3 Regression Model) &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:1px 8px;border-radius:4px">November 2026</span></div>
+</div>
+
+<div class="toolbar">
+  <select id="filterRisk" onchange="render()"><option value="">All Risk Levels</option><option>Critical</option><option>High</option><option>Medium</option></select>
+  <select id="filterGeo" onchange="render()"><option value="">All Geos</option><option>AMER</option><option>EMEA</option></select>
+  <select id="filterSeg" onchange="render()"><option value="">All Segments</option><option>Strong</option><option>Moderate</option><option>Declining</option><option>Other</option></select>
+  <input type="text" id="filterSearch" placeholder="Search account…" oninput="render()" style="width:170px">
+  <span class="toolbar-sep"></span>
+  <span class="toolbar-count" id="countLabel">19 accounts</span>
+</div>
+
+<div class="main">
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi-val">19</div><div class="kpi-label">Accounts</div><div class="kpi-sub-red" style="color:#0ea5e9">Two cohorts</div></div>
+    <div class="kpi-card"><div class="kpi-val" id="totalAovKpi">—</div><div class="kpi-label">Total Sales Cloud AOV</div><div class="kpi-sub-red">All Premier · SELA</div></div>
+    <div class="kpi-card"><div class="kpi-val" id="totalRiskKpi">—</div><div class="kpi-label">Total $ at Risk</div><div class="kpi-sub-red">Model prediction</div></div>
+    <div class="kpi-card"><div class="kpi-val" id="critKpi">—</div><div class="kpi-label">Critical</div><div class="kpi-sub-red">Prob &gt; 50%</div></div>
+    <div class="kpi-card"><div class="kpi-val" id="highKpi">—</div><div class="kpi-label">High</div><div class="kpi-sub-amber">Prob 40–50%</div></div>
+    <div class="kpi-card"><div class="kpi-val" id="medKpi">—</div><div class="kpi-label">Medium / Low</div><div class="kpi-sub-green">Prob &lt; 40%</div></div>
+  </div>
+
+  <p class="section-label" id="sectionLabel">10 accounts — sorted by attrition probability</p>
+  <div id="cardContainer"></div>
+</div>
+
+<script>
+const A = [
+  /* ── Nov 2026 Attrition Cohort (12 accounts) ── */
+  {
+    name: "Edison SpA (Org Mercato)",
+    meta: "EMEA ITALY &nbsp;·&nbsp; 00D61000003UJjU &nbsp;·&nbsp; Premier &nbsp;·&nbsp; EDF Subsidiary",
+    geo:"EMEA", seg:"Moderate", age:"< 1 Year",
+    aov:1805025, prob:54.44, riskDollars:736500,
+    css:28, util:0, red:0, risk:"Critical",
+    reportUrl: "Edison SpA (Org Mercato) — Account Intelligence.html",
+    bullets: [
+      {t:"Highest attrition probability in cohort: 54.44% — highest single risk score", flag:true},
+      {t:"ZERO engagement: last OrgCS activity February 2023 — 3.5 years completely dormant", flag:true},
+      {t:"EDF Group parent in France may centralize tech procurement; Italian entity renewal decision uncertain", flag:true},
+      {t:"<1 year customer age flag likely reflects contract restructure, not genuine new relationship", flag:false},
+    ]
+  },
+  {
+    name: "Disney Worldwide Services Inc",
+    meta: "AMER US WEST &nbsp;·&nbsp; 00DG0000000kVH2 &nbsp;·&nbsp; Premier &nbsp;·&nbsp; The Walt Disney Co",
+    geo:"AMER", seg:"Moderate", age:"< 1 Year",
+    aov:1518405, prob:53.71, riskDollars:611700,
+    css:31, util:5, red:0, risk:"Critical",
+    reportUrl: "Disney Worldwide Services Inc — Account Intelligence.html",
+    bullets: [
+      {t:"Zero cases filed; no demonstrable CSG value delivery — no internal champion for renewal", flag:true},
+      {t:"Bob Iger $5.5B cost-cutting program targets shared services entities exactly like this one", flag:true},
+      {t:"Shared services entity may overlap other Disney Salesforce orgs — internal consolidation risk", flag:true},
+      {t:"<1 year entity flag suggests recent carve-out from larger Disney subscription structure", flag:false},
+    ]
+  },
+  {
+    name: "GN Hearing",
+    meta: "EMEA NORDICS &nbsp;·&nbsp; 00DG0000000kVjP &nbsp;·&nbsp; Premier (model) / Basic (OrgCS) &nbsp;·&nbsp; GN Group",
+    geo:"EMEA", seg:"Moderate", age:"< 1 Year",
+    aov:1326037, prob:50.96, riskDollars:506900,
+    css:33, util:8, red:0, risk:"Critical",
+    reportUrl: "GN Hearing — Account Intelligence.html",
+    bullets: [
+      {t:"CRITICAL DATA QUALITY: OrgCS shows Basic support; model shows Premier — must resolve before action", flag:true},
+      {t:"Zero case activity regardless of support level — no Salesforce CSG engagement on file", flag:true},
+      {t:"GN Group restructuring (separating audio/hearing divisions) creates procurement uncertainty", flag:true},
+      {t:"Medtech B2B sales use case is strong — if confirmed Premier, Health Cloud/Agentforce are expansion levers", flag:false},
+    ]
+  },
+  {
+    name: "Cox Corporate Services Inc",
+    meta: "AMER US WEST &nbsp;·&nbsp; Org ID missing &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA &nbsp;·&nbsp; Cox Enterprises",
+    geo:"AMER", seg:"Moderate", age:"10+ Years",
+    aov:5555179, prob:50.57, riskDollars:2108337,
+    css:44, util:15, red:0, risk:"Critical",
+    reportUrl: "Cox Corporate Services Inc — Account Intelligence.html",
+    bullets: [
+      {t:"Largest AOV in this cohort ($5.6M) — $2.1M at risk is highest dollar exposure in the analysis", flag:true},
+      {t:"Org ID blank in model CSV — OrgCS cannot be matched; account may have no active CSM owner", flag:true},
+      {t:"10+ year Moderate segment: stagnation pattern without visible new cloud adoption or AI footprint", flag:true},
+      {t:"Microsoft Dynamics 365 competitive threat via existing Cox Azure enterprise partnership", flag:false},
+    ]
+  },
+  {
+    name: "Capita Shared Services Ltd",
+    meta: "EMEA UK &nbsp;·&nbsp; 00DG0000000kVIZ &nbsp;·&nbsp; Premier &nbsp;·&nbsp; Capita plc (LSE: CPI)",
+    geo:"EMEA", seg:"Strong", age:"10+ Years",
+    aov:1710519, prob:48.20, riskDollars:618700,
+    css:48, util:20, red:0, risk:"High",
+    reportUrl: "Capita Shared Services Ltd — Account Intelligence.html",
+    bullets: [
+      {t:"Capita plc in financial distress: emergency fundraising 2023, strategic review, 50K→30K headcount cut", flag:true},
+      {t:"'Strong' segment on a company in turnaround is likely stale data — CSS may not reflect current reality", flag:true},
+      {t:"Government contract losses reduce Sales Cloud ROI — fewer salespeople, shrinking pipeline", flag:true},
+      {t:"10+ year account: switching costs are high, but financial distress can override switching cost logic", flag:false},
+    ]
+  },
+  {
+    name: "Lion Re:Sources Inc",
+    meta: "EMEA FRANCE &nbsp;·&nbsp; 00DU000000098UZ &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA &nbsp;·&nbsp; Publicis Groupe",
+    geo:"EMEA", seg:"Strong", age:"10+ Years",
+    aov:3806083, prob:47.47, riskDollars:1351101,
+    css:72, util:65, red:8, risk:"High",
+    reportUrl: "Lion Re:Sources Inc — Account Intelligence.html",
+    bullets: [
+      {t:"Paradox: highest engagement in cohort (150+ cases) but 47.5% attrition — risk is external not product-driven", flag:true},
+      {t:"8 open Red Accounts — highest escalation count in cohort; multi-product instability across Pardot + Sales Cloud", flag:true},
+      {t:"Publicis Groupe parent may centralize Salesforce spend at holding company level — override local renewal", flag:true},
+      {t:"CRMA dataflow performance regression (5→8.5 hr) is an urgent technical issue on the most-used product", flag:true},
+    ]
+  },
+  {
+    name: "British Telecommunications PLC",
+    meta: "EMEA UK &nbsp;·&nbsp; 00DG0000000kVjI &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA &nbsp;·&nbsp; BT Group (LSE: BT.L)",
+    geo:"EMEA", seg:"Moderate", age:"10+ Years",
+    aov:2134739, prob:45.23, riskDollars:723900,
+    css:42, util:12, red:0, risk:"High",
+    reportUrl: "British Telecommunications PLC — Account Intelligence.html",
+    bullets: [
+      {t:"BT cutting 55,000 jobs by 2030 — Salesforce champion instability; fewer salespeople = fewer licenses needed", flag:true},
+      {t:"Microsoft Dynamics 365 threat: BT has deep Azure partnership and cost-first IT strategy", flag:true},
+      {t:"Near-zero technical cases on 10yr Premier account — likely stagnant platform use with no growth path", flag:true},
+      {t:"10+ year switching cost moat is real, but active champion re-engagement is urgently needed", flag:false},
+    ]
+  },
+  {
+    name: "Visma AS",
+    meta: "EMEA NORDICS &nbsp;·&nbsp; 00D30000000YrGy &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA &nbsp;·&nbsp; HgCapital PE-backed",
+    geo:"EMEA", seg:"Moderate", age:"10+ Years",
+    aov:2174484, prob:45.11, riskDollars:735500,
+    css:45, util:18, red:0, risk:"High",
+    reportUrl: "Visma AS — Account Intelligence.html",
+    bullets: [
+      {t:"Competitor dynamic: Visma builds and sells ERP/CRM — using Salesforce creates cost justification conflict", flag:true},
+      {t:"PE ownership (HgCapital) scrutinizes all subscriptions; $2.2M Premier is a natural cost-cut target", flag:true},
+      {t:"10yr Moderate segment stagnation with minimal support cases — self-sufficient but not growing", flag:true},
+      {t:"Agentforce as differentiator: Salesforce AI capabilities Visma doesn't yet offer internally is the retention play", flag:false},
+    ]
+  },
+  {
+    name: "Winston Taylor LLP",
+    meta: "AMER US EAST &nbsp;·&nbsp; Premier &nbsp;·&nbsp; Law Firm — LLP governance structure",
+    geo:"AMER", seg:"Moderate", age:"< 1 Year",
+    aov:1578550, prob:43.74, riskDollars:517900,
+    css:36, util:10, red:0, risk:"High",
+    reportUrl: "Winston Taylor LLP — Account Intelligence.html",
+    bullets: [
+      {t:"Law firm using generalist CRM: InterAction (LexisNexis) and Intapp are purpose-built legal CRM alternatives", flag:true},
+      {t:"<1 year entity, zero cases — no demonstrable Premier value; no internal renewal champion visible", flag:true},
+      {t:"LLP partnership governance = multi-partner committee renewal; champion may have changed firm", flag:true},
+      {t:"Agentforce for legal BD (relationship intelligence, meeting prep) is a differentiated retention narrative", flag:false},
+    ]
+  },
+  {
+    name: "DuPont Specialty Products USA LLC",
+    meta: "AMER US EAST &nbsp;·&nbsp; 00D3h000003kv7L &nbsp;·&nbsp; Premier &nbsp;·&nbsp; DuPont de Nemours spin-off",
+    geo:"AMER", seg:"Moderate", age:"< 1 Year",
+    aov:2364726, prob:43.45, riskDollars:770900,
+    css:58, util:35, red:1, risk:"High",
+    reportUrl: "DuPont Specialty Products USA LLC — Account Intelligence.html",
+    bullets: [
+      {t:"Post-spin-off new legal entity — renewal contract review trigger; two OrgCS records not yet consolidated", flag:true},
+      {t:"1 open Red Account record — CSM ownership unclear on new spin-off entity; must be resolved", flag:true},
+      {t:"DuPont 3-way split (2023): procurement processes may not yet be established for Specialty Products entity", flag:true},
+      {t:"B2B specialty materials sales team is a strong Salesforce use case — Agentforce for technical sales", flag:false},
+    ]
+  },
+  {
+    name: "Dubai Holding Corporate LLC",
+    meta: "EMEA MIDDLE EAST &nbsp;·&nbsp; 00DG0000000kVjB &nbsp;·&nbsp; Premier &nbsp;·&nbsp; Dubai government-linked",
+    geo:"EMEA", seg:"Moderate", age:"< 1 Year",
+    aov:1641053, prob:42.94, riskDollars:528700,
+    css:38, util:8, red:0, risk:"High",
+    reportUrl: "Dubai Holding Corporate LLC — Account Intelligence.html",
+    bullets: [
+      {t:"ADR was in progress then canceled — signals active disengagement; must understand why expansion was abandoned", flag:true},
+      {t:"Government-linked entity: state procurement complexity + UAE data residency requirements may be real blockers", flag:true},
+      {t:"Agentforce non-engaged despite Jumeirah/Dubai Properties as natural use cases; GCC is a Salesforce priority market", flag:true},
+      {t:"Microsoft has strong UAE government positioning (Azure UAE) — Dynamics 365 is an active competitive threat", flag:false},
+    ]
+  },
+  {
+    name: "KPMG International Services Limited",
+    meta: "AMER ACC CBS &nbsp;·&nbsp; 00DHu00000699dV &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Other", age:"2–3 Years",
+    aov:11153434, prob:43.89, riskDollars:3300767,
+    css:41, util:0, red:2, risk:"Critical",
+    reportUrl: "KPMG International Services Limited — Account Intelligence.html",
+    bullets: [
+      {t:"Full shelfware: License Utilization 0% — no active users in Sales or Service Cloud (CSS Adoption: 22/100)", flag:true},
+      {t:"Onboarding ADR canceled Mar 2026 with no description; no champion identified, no follow-up engagement", flag:true},
+      {t:"−$141K confirmed attrition on record; Packaging Change risk flagged by RM Fergus O'Brien", flag:true},
+      {t:"Governance entity with $2B Microsoft/Azure investment — Sales Cloud use case never established", flag:true},
+    ]
+  },
+  {
+    name: "T-Mobile USA, Inc",
+    meta: "AMER ACC TMT &nbsp;·&nbsp; 00Dal00001TLN6u &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Declining", age:"< 1 Year",
+    aov:5702515, prob:39.92, riskDollars:1667344,
+    css:33, util:11, red:2, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"Newest account (<1 year) already in Declining segment — early adoption failure is the primary risk", flag:true},
+      {t:"CSS score 33/100 with 11% license utilization in first year signals onboarding has not landed", flag:true},
+      {t:"39.9% attrition prob on a brand-new account suggests structural fit issues — EBR urgently needed", flag:true},
+      {t:"AMER ACC TMT: competitive telco space; Microsoft and Oracle are active alternatives", flag:false},
+    ]
+  },
+  {
+    name: "Gartner, Inc.",
+    meta: "AMER ACC CBS &nbsp;·&nbsp; 00D4x000003yAAl &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Declining", age:"5–10 Years",
+    aov:3588329, prob:37.47, riskDollars:967890,
+    css:44, util:28, red:1, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"5–10 year account now Declining — engagement peaked and is eroding; likely champion turnover", flag:true},
+      {t:"CSS 44/100 and 28% utilization after 5+ years signals material under-adoption for tenure", flag:true},
+      {t:"Gartner advises clients on CRM strategy — internal Salesforce dissatisfaction is a reputational risk for SFDC", flag:false},
+      {t:"AMER ACC CBS: Gartner sits in same territory as KPMG and CBRE, both also showing risk", flag:false},
+    ]
+  },
+  {
+    name: "CBRE, Inc",
+    meta: "AMER ACC CBS &nbsp;·&nbsp; 00DfI00000NaUwG &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Other", age:"1–2 Years",
+    aov:4447578, prob:37.08, riskDollars:1014856,
+    css:49, util:22, red:1, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"Early-stage account (1–2 years) in 'Other' segment — no established health trajectory yet", flag:true},
+      {t:"37% attrition prob in first 1–2 years; CSS 49 and 22% utilization suggest deployment stall", flag:true},
+      {t:"Commercial real estate sector under pressure — CBRE cost discipline may tighten renewal scope", flag:false},
+      {t:"AMER ACC CBS: 3 of 4 CBS accounts in this cohort are High or Critical risk", flag:false},
+    ]
+  },
+  {
+    name: "AstraZeneca UK Limited",
+    meta: "UKI &nbsp;·&nbsp; 00Dd3000005od89 &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"EMEA", seg:"Declining", age:"< 1 Year",
+    aov:9833362, prob:36.34, riskDollars:2335084,
+    css:37, util:14, red:2, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"<1 year account already Declining — most urgent new-customer onboarding failure in the cohort", flag:true},
+      {t:"$9.8M AOV exposed in year one; CSS 37/100 and 14% utilization confirm deployment has not progressed", flag:true},
+      {t:"UKI territory: post-Brexit procurement complexity and NHS/pharma budget pressure affect tech spend decisions", flag:false},
+      {t:"Declining segment this early almost always signals stakeholder misalignment or missing executive sponsor", flag:true},
+    ]
+  },
+  {
+    name: "Wolters Kluwer Global Business Services B.V.",
+    meta: "EMEA NORTH &nbsp;·&nbsp; 00D0O000000ZevL &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"EMEA", seg:"Moderate", age:"5–10 Years",
+    aov:6069842, prob:31.26, riskDollars:1421410,
+    css:58, util:43, red:1, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"5–10 year Moderate segment: not trending toward Strong — plateau risk for established accounts", flag:true},
+      {t:"Wolters Kluwer is a legal/regulatory data provider — Salesforce may face internal tooling competition", flag:false},
+      {t:"EMEA NORTH: regional economic headwinds and tighter procurement cycles affecting enterprise renewal scope", flag:false},
+      {t:"CSS 58 and 43% utilization are mid-range but not improving — trend direction is key to watch", flag:true},
+    ]
+  },
+  {
+    name: "Medtronic Inc",
+    meta: "AMER REG &nbsp;·&nbsp; No Org ID on file &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Declining", age:"10+ Years",
+    aov:16038996, prob:30.94, riskDollars:2777313,
+    css:46, util:31, red:1, risk:"High",
+    reportUrl: null,
+    bullets: [
+      {t:"Largest AOV in cohort at $16M — $2.8M at risk is 2nd highest absolute dollar exposure", flag:true},
+      {t:"10+ year account now Declining: long-term value erosion after deep initial investment", flag:true},
+      {t:"AMER REG (not CBS) — coverage model may be different; ensure right AE/CSM team is engaged", flag:false},
+      {t:"No Org ID in model — potential account record fragmentation; verify correct Salesforce org is being tracked", flag:true},
+    ]
+  },
+  {
+    name: "AT&T Services, Inc.",
+    meta: "AMER ACC TMT &nbsp;·&nbsp; 00Di0000000ISKO &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
+    geo:"AMER", seg:"Strong", age:"10+ Years",
+    aov:17917280, prob:22.55, riskDollars:2019702,
+    css:72, util:67, red:0, risk:"Medium",
+    reportUrl: null,
+    bullets: [
+      {t:"Healthiest account in cohort: Strong segment, 10+ year tenure, lowest attrition prob at 22.6%", ok:true},
+      {t:"$17.9M AOV is the largest in the group — protecting this account is highest dollar-value retention priority", ok:true},
+      {t:"CSS 72 and 67% utilization are well above cohort average — engagement model is working", ok:true},
+      {t:"Medium risk doesn't mean no risk — watch for competitive pressure from Microsoft in AMER ACC TMT", flag:false},
+    ]
+  },
+];
+
+function fmt(n){return'$'+(n/1e6).toFixed(1)+'M'}
+function cssColor(s){return s>=65?'#16a34a':s>=50?'#d97706':'#dc2626'}
+function probClass(p){return p>40?'pct-crit':p>30?'pct-high':'pct-med'}
+function utilColor(u){return u===0?'dc2626':u<20?'dc2626':u<40?'d97706':'16a34a'}
+function riskClass(r){return r.toLowerCase()}
+function segPillClass(s){const m={Strong:'pill-seg-strong',Moderate:'pill-seg-moderate',Declining:'pill-seg-declining',Other:'pill-grey'};return m[s]||'pill-grey'}
+
+function render(){
+  const risk=document.getElementById('filterRisk').value;
+  const geo=document.getElementById('filterGeo').value;
+  const seg=document.getElementById('filterSeg').value;
+  const q=document.getElementById('filterSearch').value.toLowerCase();
+  const data=A.filter(a=>
+    (!risk||a.risk===risk)&&
+    (!geo||a.geo===geo)&&
+    (!seg||a.seg===seg)&&
+    (!q||a.name.toLowerCase().includes(q))
+  );
+  const totalAov=data.reduce((s,a)=>s+a.aov,0);
+  const totalRisk=data.reduce((s,a)=>s+a.riskDollars,0);
+  const nCrit=data.filter(a=>a.risk==='Critical').length;
+  const nHigh=data.filter(a=>a.risk==='High').length;
+  const nMed=data.filter(a=>a.risk!=='Critical'&&a.risk!=='High').length;
+  document.getElementById('countLabel').innerHTML=`${data.length} account${data.length!==1?'s':''} &nbsp;·&nbsp; ${fmt(totalAov)} AOV &nbsp;·&nbsp; ${fmt(totalRisk)} at risk`;
+  document.getElementById('sectionLabel').textContent=`${data.length} account${data.length!==1?'s':''} — sorted by attrition probability`;
+  document.getElementById('totalAovKpi').textContent=fmt(A.reduce((s,a)=>s+a.aov,0));
+  document.getElementById('totalRiskKpi').textContent=fmt(A.reduce((s,a)=>s+a.riskDollars,0));
+  document.getElementById('critKpi').textContent=A.filter(a=>a.risk==='Critical').length;
+  document.getElementById('highKpi').textContent=A.filter(a=>a.risk==='High').length;
+  document.getElementById('medKpi').textContent=A.filter(a=>a.risk!=='Critical'&&a.risk!=='High').length;
+
+  document.getElementById('cardContainer').innerHTML=data.map(a=>{
+    const btn=a.reportUrl
+      ?`<a class="link-btn" href="${a.reportUrl}" target="_blank">Open Full Report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>`
+      :`<a class="link-btn disabled">Report Pending</a>`;
+    const redTxt=a.red>0?`<span style="color:#dc2626;font-weight:700">🔴 ${a.red}</span>`:`<span style="color:#94a3b8">0</span>`;
+    const utilTxt=`<span style="color:#${utilColor(a.util)};font-weight:700">${a.util}%</span>`;
+    const bullets=a.bullets.map(b=>`<li class="${b.ok?'ok':b.flag?'flag':''}">${b.t}</li>`).join('');
+    return`
+<div class="account-card ${riskClass(a.risk)}">
+  <div class="card-header">
+    <div style="flex:1;min-width:200px">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span class="pill pill-${riskClass(a.risk)}">${a.risk}</span>
+        <span class="pill ${segPillClass(a.seg)}">${a.seg}</span>
+        <span class="pill pill-grey" style="font-weight:400;font-size:.64rem">${a.age}</span>
+      </div>
+      <div class="card-name" style="margin-top:5px">${a.name}</div>
+      <div class="card-meta">${a.meta}</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+      <div style="text-align:right">
+        <div style="font-size:.78rem;color:#64748b">Sales Cloud AOV</div>
+        <div style="font-size:1.1rem;font-weight:700;color:#0f172a">${fmt(a.aov)}</div>
+      </div>
+      ${btn}
+    </div>
+  </div>
+  <div class="card-chips">
+    <div class="chip">
+      <div class="chip-val ${probClass(a.prob)}">${a.prob.toFixed(1)}%</div>
+      <div class="chip-label">Attrition Prob.</div>
+    </div>
+    <div class="chip">
+      <div class="chip-val" style="color:#dc2626">${fmt(a.riskDollars)}</div>
+      <div class="chip-label">$ at Risk</div>
+    </div>
+    <div class="chip">
+      <div class="chip-val">
+        <div class="score-bar-wrap">
+          <div class="score-bar"><div class="score-fill" style="width:${a.css}%;background:${cssColor(a.css)}"></div></div>
+          <span style="font-size:.82rem;font-weight:700;color:${cssColor(a.css)}">${a.css}</span>
+        </div>
+      </div>
+      <div class="chip-label">CSS Score <span class="dummy-tag">est.</span></div>
+    </div>
+    <div class="chip">
+      <div class="chip-val">${utilTxt}</div>
+      <div class="chip-label">License Util. <span class="dummy-tag">est.</span></div>
+    </div>
+    <div class="chip">
+      <div class="chip-val">${redTxt}</div>
+      <div class="chip-label">Red Accounts <span class="dummy-tag">est.</span></div>
+    </div>
+    <div class="chip">
+      <div class="chip-val" style="font-size:.78rem;color:#64748b">${a.geo}</div>
+      <div class="chip-label">Geo</div>
+    </div>
+  </div>
+  <div class="card-risks">
+    <div class="risk-label">Key Risk Factors</div>
+    <ul class="risk-bullets">${bullets}</ul>
+  </div>
+</div>`}).join('');
+}
+
+render();
+</script>
+</body>
+</html>
