@@ -117,25 +117,32 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">13+</div><div class="kpi-label">Total Cases (OrgCS)</div><div class="kpi-sub">Correct org: GN Hearing A/S</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None open</div></div>
-    <div class="kpi-card"><div class="kpi-val">Nov 2026</div><div class="kpi-label">Last Activity Date</div><div class="kpi-sub">Active engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">15</div><div class="kpi-label">Sales Cloud Cases</div><div class="kpi-sub">Org <code>00D200000006Wrs</code></div></div>
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Open Red Account</div><div class="kpi-sub-red">OMS case Jan 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oct 2026</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub">Active</div></div>
   </div>
   <div class="opp-box">
-    <strong>OrgCS Deep Dive — Correct Org is Actively Engaged with Agentforce</strong>
-    OrgCS on "GN Hearing A/S" (Org <code>00D200000006Wrs</code>) shows 13+ cases with active Agentforce implementation in progress:
+    <strong>Sales Cloud — Actively Engaged Across Developer, Security &amp; Email Integrations</strong>
+    GN Hearing A/S (OrgCS <code>0013000000QCPiCAAX</code>, Org <code>00D200000006Wrs</code>) has 15 Sales Cloud cases spanning Oct 2026 back to Jan 2026, confirming active technical engagement:
     <ul class="signal-list">
-      <li><strong>Agentforce Implementation Tracking</strong> (Apr 2026, Status: Completed) — GN Hearing A/S completed an Agentforce implementation milestone.</li>
-      <li><strong>Agentforce Service bugs</strong>: "Agentforce reporting metrics" (May 2026, product bug reported), "Agentforce analytics agent health score stuck at 0" (Apr 2026), "Lost ability to use old service agent after license reinstatement" (Mar 2026). Active Agentforce Service Cloud deployment in progress.</li>
-      <li><strong>Agentforce Sales cases</strong>: "Bug in Agentforce causing unexpected citations" (Nov 2026) and "Disable Agentforce Studio App" (Oct 2026) — Agentforce Sales Cloud being actively used.</li>
-      <li><strong>Revenue Cloud</strong>: Multiple Revenue Cloud (Core) Transaction Management and Price Management cases (Aug–Oct 2026) — GN Hearing is deploying Revenue Cloud alongside Agentforce.</li>
-      <li><strong>Proactive outreach</strong>: "Proactive TMP: Agentforce adoption outreach" (Jan 2026) and "Proactive Adoption Outreach" (Jul 2026) — CSM team proactively engaged.</li>
-      <li><strong>License expiry incident</strong>: Mar 2026 "Licenses expired causing service interruption" — a Sales Cloud license lapse occurred, resolved quickly.</li>
+      <li><strong>Oct 2026 — Case Creation (Sales Cloud, Need More Info)</strong> (<code>500hi000008xR62AAE</code>) — most recent Sales Cloud case.</li>
+      <li><strong>Sep 2026 — Email/Primary Designated Person Update</strong> (<code>500hi000005B0eXAAS</code>) — admin setup, Closed.</li>
+      <li><strong>Jul 2026 — Passkeys not available</strong> (<code>500hi0000020EjNAAU</code>) — Sales-Security &amp; Activations, Closed.</li>
+      <li><strong>Jul 2026 — Einstein Activity Capture migration (3 cases)</strong> (<code>500hi000001lvGoAAI</code>, <code>500hi0000014hVdAAI</code>, <code>500hi000000rnLxAAI</code>) — Lightning Sync → EAC migration issues, all Closed. Indicates active email integration work.</li>
+      <li><strong>Jun 2026 — Notification banners appearing despite being disabled</strong> (<code>500Hx00001HrGPJIA3</code>) — Sales-Email Delivery, Closed.</li>
+      <li><strong>May 2026 — Unable to delete Flow version</strong> (<code>500Hx00001FLwJBIA1</code>) — Sales-Developer Support, Closed. Active development work.</li>
+      <li><strong>May 2026 — Suspicious login activity</strong> (<code>500Hx00001CnWFSIA3</code>) — Sales-Mandatory Security Controls, Closed. <code>dbanerjee@gnhearing.com</code> flagged.</li>
+      <li><strong>Apr 2026 — OAuth 2.0 Username-Password Flow Retirement impact on Amazon CTI</strong> (<code>500Hx00001C5rAjIAJ</code>) — Sales-Developer Support, Closed. Amazon CTI integration active.</li>
+      <li><strong>Jan 2026 — OMS Inventory Futures Update Skipped</strong> (<code>500Hx000011nCWoIAM</code>) — Sales-How-to, Closed but <code>Open_Red_Account__c = true</code>.</li>
     </ul>
   </div>
+  <div class="risk-box">
+    <strong>Open Red Account Flag: OMS Inventory Case (Jan 2026 — Closed Case, Flag Not Cleared)</strong>
+    Case <code>500Hx000011nCWoIAM</code> ("OMS Inventory Futures 0 Update Skipped", Jan 2026, Sales-How-to, Closed) has <code>Open_Red_Account__c = true</code>. The case is closed but the Red Account flag was never cleared. This represents a data quality issue — if a renewal conversation is imminent, an open Red Account flag needs to be explicitly resolved.
+  </div>
   <div class="info-box">
-    <strong>Attrition Risk Context: This Account is Expanding, Not Attriting</strong>
-    The 51% attrition probability in the model is based on the wrong org (<code>00DG0000000kVjP</code>) which has zero engagement. The actual GN Hearing A/S Premier account is actively implementing Agentforce Sales + Service and Revenue Cloud. The true risk profile is significantly different — the model flag should be re-evaluated with the correct org ID. The primary risk now is ensuring the ongoing Agentforce deployment is successful, not preventing a renewal lapse.
+    <strong>Attrition Risk Context: This Account is Expanding (Agentforce + Revenue Cloud), Not Attriting</strong>
+    The 51% attrition model probability is based on the wrong org (<code>00DG0000000kVjP</code>). The actual GN Hearing A/S Premier account has 15 Sales Cloud cases + active Agentforce Sales/Service/Revenue Cloud deployment (tracked in separate cloud cases). The true renewal risk is ensuring the ongoing Agentforce deployment succeeds — not preventing attrition.
   </div>
 </div>
 
@@ -238,6 +245,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
       <tbody>
         <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Correct the model's Org ID</strong>: The attrition model is tracking <code>00DG0000000kVjP</code> (zero engagement, Basic support). The correct Premier org is <code>00D200000006Wrs</code> (OrgCS: <code>0013000000QCPiCAAX</code>, GN Hearing A/S) with active engagement and ongoing Agentforce deployment. Update the attrition model dataset to avoid generating false risk signals for this account.</td><td>Analyst</td></tr>
         <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Ensure the Revenue Cloud + Agentforce deployment succeeds</strong>: GN Hearing has an active Agentforce Sales + Service implementation with open bugs (Agentforce citations bug, Nov 2026; Data Cloud Index API issue, Nov 2026). The CSM should prioritize getting these resolved — a failed Agentforce deployment would create genuine attrition risk on a currently-committed customer.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Clear the stale Red Account flag on the OMS Inventory case</strong> (Jan 2026, Case <code>500Hx000011nCWoIAM</code>, Closed). The flag is open on a closed case — verify with the account that the OMS Inventory Futures issue was fully resolved and explicitly close the Red Account record.</td><td>CSM</td></tr>
         <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Investigate the March 2026 license expiration incident</strong>: "Licenses expired causing service interruption" (Case <code>500Hx000017GYkLIAW</code>) was caused by an out-of-scope license issue. Confirm the correct licenses are in place and that there is no renewal gap risk heading into the next contract period, especially given the active Agentforce deployment.</td><td>CSM</td></tr>
         <tr><td><span class="pill pill-blue">P2 — This month</span></td><td><strong>Leverage completed Agentforce implementation as a renewal anchor</strong>: The "Agentforce Implementation Tracking" case was marked Completed in April 2026. Use this milestone as a success story in the renewal conversation — GN Hearing made a strategic bet on Agentforce and it is in production. Build a clear ROI story around Revenue Cloud + Agentforce for the renewal package.</td><td>CSM + AE</td></tr>
       </tbody>

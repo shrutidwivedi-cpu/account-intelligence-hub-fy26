@@ -107,17 +107,24 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">~5–10</div><div class="kpi-label">Estimated Cases (12mo)</div><div class="kpi-sub-amber">Mostly billing</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None confirmed</div></div>
-    <div class="kpi-card"><div class="kpi-val">~1</div><div class="kpi-label">Technical Engagements</div><div class="kpi-sub-red">Near-zero</div></div>
+    <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">Sales Cloud Cases Found</div><div class="kpi-sub-red">Very low for 10yr Premier</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Aug 2026</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub-amber">3+ months ago</div></div>
   </div>
   <div class="risk-box">
-    <strong>Near-Zero Technical Engagement Pattern</strong>
-    OrgCS records for British Telecommunications show predominantly billing and administrative case activity with minimal technical support or success engagement. For a 10+ year Premier account at $2.1M AOV, the near-absence of technical cases indicates either very low platform utilization or an internal BT Salesforce team that is entirely self-sufficient but not engaging with Salesforce CSG for growth or enablement. The latter is itself a risk — an account that never asks questions may be quietly evaluating alternatives.
+    <strong>Near-Zero Sales Cloud Support Engagement — Only 2 Cases Confirmed</strong>
+    OrgCS (Org <code>00DQH00000LWlcP</code>) returns only 2 Sales Cloud cases in the full case history: an Aug 2026 account deletion test scenario mismatch and a Feb 2025 Enablement Admin Resources Manager issue. For a 10+ year Premier account at $2.1M AOV, 2 lifetime technical cases is an extreme disengagement signal. Either BT has a highly self-sufficient internal Salesforce team with no need for Premier support, or the platform is in maintenance-only mode with minimal active use.
+  </div>
+  <div class="info-box">
+    <strong>Sales Cloud Case Detail</strong>
+    <ul class="signal-list">
+      <li><strong>Aug 2026 — Mismatch in account deletion test scenario</strong> — Sales-Own (Sales Cloud core), Closed. A QA/testing scenario — suggests BT has an internal Salesforce development/testing team.</li>
+      <li><strong>Feb 2025 — Enablement Admin Resources Manager cannot add in-app guidance link</strong> — Sales-Enablement, Closed. Relates to Salesforce Enablement (formerly myTrailhead) administration — indicates some internal training/enablement program.</li>
+    </ul>
   </div>
   <div class="info-box">
     <strong>BT Group Restructuring Context</strong>
-    British Telecommunications (BT Group) went through significant restructuring between 2022–2025, including major layoffs (up to 55,000 jobs by 2030), divesting Openreach discussions, and strategic focus on fiber/5G rather than enterprise IT services. This restructuring likely impacted internal Salesforce champion stability — people who advocated for the Sales Cloud deployment may have left. Any renewal decision in this environment is at elevated risk.
+    BT Group went through significant restructuring 2022–2025 (up to 55,000 job cuts by 2030), focusing on fiber/5G rather than enterprise IT. This restructuring likely reduced the internal Salesforce champion count. The 2 Sales Cloud cases confirm the platform is still in use but signals minimal expansion intent.
   </div>
 </div>
 
@@ -208,10 +215,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Salesforce champions at BT. Confirm who the new executive sponsor is post-restructuring. If sponsor has changed, re-establish relationship before renewal.</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a utilization review meeting with BT IT leadership. Present a value realization report — quantify what BT has achieved with Sales Cloud over 10 years.</td><td>CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a defensive brief against Dynamics 365 specifically for BT's cost-cutting context — focus on switching costs, 10-year data migration risk, and customization investment.</td><td>AE</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Propose an Agentforce trial aligned with BT's AI-replacement strategy — position Agentforce as the path to achieving BT's AI headcount reduction goals within the existing Salesforce platform.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Salesforce champions at BT. The only 2 Sales Cloud cases found (Org <code>00DQH00000LWlcP</code>) are from Aug 2026 and Feb 2025 — the account team managing Premier at $2.1M AOV should be named and confirmed post-restructuring.</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Investigate the Aug 2026 account deletion test scenario case — signals an internal QA team. Engage that team directly: they are likely the actual Salesforce power users and can provide renewal intelligence from the ground level.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a utilization review meeting with BT IT leadership. Present a value realization report — 10 years of Sales Cloud data and customization investment has significant switching cost. Focus on data migration risk to Dynamics 365.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a defensive brief against Dynamics 365 for BT's cost-cutting context. The Feb 2025 Enablement case confirms BT is running internal training programs — position Agentforce as the AI-first enablement evolution BT's headcount-reduction strategy requires.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Propose an Agentforce trial aligned with BT's AI-replacement strategy. With only 2 Sales Cloud cases filed in 2+ years, there is no active CSG engagement — an Agentforce SE-led session would re-establish value delivery ahead of renewal.</td><td>CSM + SE</td></tr>
       </tbody>
     </table>
   </div>

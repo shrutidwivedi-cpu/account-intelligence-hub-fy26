@@ -121,24 +121,32 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">Total Cases</div><div class="kpi-sub-red">OrgCS not matched</div></div>
-    <div class="kpi-card"><div class="kpi-val">N/A</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-red">Cannot confirm</div></div>
-    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">Last Case Date</div><div class="kpi-sub-amber">Manual lookup needed</div></div>
+    <div class="kpi-card"><div class="kpi-val">20+</div><div class="kpi-label">Sales Cloud Cases</div><div class="kpi-sub">OrgCS `0013000001LD1nJAAT`</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-green">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Mar 2026</div><div class="kpi-label">Last Technical Case</div><div class="kpi-sub-amber">9 months ago</div></div>
+    <div class="kpi-card"><div class="kpi-val">Basic</div><div class="kpi-label">OrgCS Support Level</div><div class="kpi-sub-red">Model says Premier — verify</div></div>
   </div>
+
   <div class="risk-box">
-    <strong>No OrgCS Data Available — Manual Lookup Required</strong>
-    Cox Corporate Services could not be matched in OrgCS because the Org ID is missing from the attrition model CSV. The account must be located manually in OrgCS by searching "Cox Corporate Services" by name. Without OrgCS data, case history, Red Account flags, and engagement evidence are all unknown. This is itself a risk signal — a $5.6M AOV account that cannot be found in the standard matching process may have an ownership gap.
+    <strong>OrgCS Identity Gap — Support Level Mismatch Requires Verification</strong>
+    The closest OrgCS match for Cox Corporate Services is account <strong>0013000001LD1nJAAT</strong> (Org ID <code>00Dj00000029eK9</code>, LastActivity 2026-11-17), but it shows <strong>Basic</strong> support, while the attrition model classifies this as a Premier account. This likely means the Premier account uses a different Org ID not represented in OrgCS under this record. The 20+ Sales Cloud cases retrieved span 2022–2026 and confirm active Salesforce use — but the Premier record and its CSM owner need to be confirmed separately.
   </div>
-  <div class="section">
-    <div class="section-title">Recommended Manual Lookup Steps</div>
-    <ol style="font-size:.82rem;color:#374151;padding-left:18px">
-      <li>Search OrgCS for Account Name contains "Cox Corporate" — may return multiple records</li>
-      <li>Identify the record with Premier entitlement and Sales Cloud AOV in the $5M range</li>
-      <li>Retrieve Org ID (CustomerOrgId15__c) and validate against the model CSV</li>
-      <li>Check cases from last 24 months — focus on recency and volume</li>
-      <li>Confirm Red Account status and any escalation history</li>
-      <li>Identify current CSM owner and last engagement touchpoint</li>
-    </ol>
+
+  <div class="info-box">
+    <strong>Sales Cloud Case History (OrgCS `0013000001LD1nJAAT`, Org `00Dj00000029eK9`)</strong>
+    <ul class="signal-list">
+      <li><strong>Mar 2026 — Re-enabling connected apps for legacy third-party connection</strong> (<code>500Hx000016w7YFIAY</code>) — Sales-Developer Support, Closed. Most recent technical case.</li>
+      <li><strong>Jan 2026 — Enable API Access Control</strong> (<code>500Hx000012ThzBIAS</code>) — Sales-Developer Support, Closed.</li>
+      <li><strong>Dec 2025 — Login issue</strong> (<code>500Hx00000zytZZIAY</code>) — Sales-Feature Activation &amp; Limits, Closed.</li>
+      <li><strong>Oct–Dec 2023 — Email integrations</strong> (3 cases: Outlook recurring events, Salesforce for Outlook sync, Okta SSO email reset) — Sales-Email Delivery &amp; Desktop Integrations, all Closed.</li>
+      <li><strong>2022–2023 — Configuration &amp; developer support</strong> (10+ cases: list views, Opportunity data, campaign fields, Apex limits, flow access) — Sales-How-to / Developer Support, all Closed.</li>
+      <li><strong>No Red Account records</strong> and no open cases as of Nov 2026 — engagement has gone quiet since Mar 2026.</li>
+    </ul>
+  </div>
+
+  <div class="risk-box">
+    <strong>Engagement Gap: Last Technical Case 9 Months Ago</strong>
+    For a $5.6M AOV account, the absence of any new Sales Cloud cases since March 2026 is a risk signal. The case pattern 2022–2026 shows consistent developer support and configuration activity — but it has stopped. This may indicate the account has become self-sufficient (positive) or is disengaging from the platform (risk). The Nov 2026 LastActivityDate on the OrgCS record suggests some activity occurred, but its nature is unknown.
   </div>
 </div>
 
@@ -244,11 +252,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Manually locate Cox Corporate Services in OrgCS by name. Retrieve Org ID, CSM owner, case history, Red Account status. Assign ownership if CSM is not identified.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Add Org ID to the attrition model dataset. Close the data gap immediately so this account can be tracked going forward.</td><td>Analyst</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a discovery call with the Cox IT/procurement leader. Understand current utilization, internal champions, upcoming renewal timeline, and competitive threats.</td><td>CSM + AE</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a Salesforce value realization deck specific to Cox's telecommunications and auto services business — tie to Cox Communications AI initiatives and Cox Automotive CRM use.</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Execute a formal Success Plan review. With $5.6M AOV, this account should have a named SE and health metrics on the CSG dashboard.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Confirm whether OrgCS account <strong>0013000001LD1nJAAT</strong> (Org <code>00Dj00000029eK9</code>) is the correct Premier record. The model shows Premier support but OrgCS shows Basic — identify the actual Premier Org ID and confirm CSM owner.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Today</span></td><td>Add correct Org ID to the attrition model CSV. The model CSV has this field blank — the gap breaks all future automated matching and tracking.</td><td>Analyst</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Investigate the engagement gap since March 2026 (case <code>500Hx000016w7YFIAY</code> — Re-enabling connected apps). Nine months of silence on a $5.6M AOV account is unusual. Determine if the account team has been managing via other channels or if there is a true engagement void.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a discovery call with Cox IT/procurement leader. Understand current utilization of Sales Cloud (confirmed developer and config use 2022–2026), upcoming renewal timeline, and whether the connected apps / API integrations raised in recent cases are still in active use.</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Build a Salesforce value realization narrative tied to Cox's multi-division structure (Communications, Media, Auto) — the connected apps and API activity suggests integration work. Present Agentforce as next logical investment.</td><td>AE + CSM</td></tr>
       </tbody>
     </table>
   </div>
@@ -256,11 +264,9 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="info-box">
     <strong>Data Gaps Summary</strong>
     <ul class="signal-list">
-      <li>Org ID blank in attrition model CSV — cannot match to OrgCS</li>
-      <li>OrgCS case history, Red Account status, CSM owner: all unknown</li>
-      <li>License Activation %, License Utilization %: not retrieved (Tableau Account Drill-Down unavailable without Org ID)</li>
-      <li>CSS Health Score: estimated only (~44/100)</li>
-      <li>Market Intelligence: based on public sources only; Cox Enterprises is private, limited public financials</li>
+      <li>OrgCS account match is by name only — Org ID in attrition model CSV is blank. The matched record (Org <code>00Dj00000029eK9</code>) shows Basic support; the Premier record may be a different OrgCS entry.</li>
+      <li>License Activation %, License Utilization %: not retrieved — requires Tableau Account Drill-Down with confirmed Org ID</li>
+      <li>CSS Health Score: estimated only (~44/100) — confirm once Premier record is identified</li>
     </ul>
   </div>
 </div>

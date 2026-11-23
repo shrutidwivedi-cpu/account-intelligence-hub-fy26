@@ -108,20 +108,24 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
-    <div class="kpi-card"><div class="kpi-val">Canceled</div><div class="kpi-label">ADR Status</div><div class="kpi-sub-red">Was in progress</div></div>
+    <div class="kpi-card"><div class="kpi-val">4</div><div class="kpi-label">Sales Cloud Cases Found</div><div class="kpi-sub-amber">Apr 2025 – May 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-green">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">May 2026</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub-amber">6 months ago</div></div>
+    <div class="kpi-card"><div class="kpi-val">Canceled</div><div class="kpi-label">ADR Status</div><div class="kpi-sub-red">Expansion abandoned</div></div>
   </div>
   <div class="risk-box">
-    <strong>ADR Cancellation is the Primary Risk Signal</strong>
-    An ADR (Additional Deployment Recommendation or Account Development Record) that was in progress but then canceled is a significant negative signal. It indicates a planned expansion or deepened engagement was initiated but then abandoned by the account — either because:
+    <strong>ADR Cancellation Remains the Primary Risk Signal</strong>
+    A planned expansion ADR that was initiated and then canceled signals that Dubai Holding considered deepening the Salesforce relationship but abandoned the effort — budget freeze, champion change, or competitive evaluation. Combined with 4 Sales Cloud cases (all administrative/security) and no cases since May 2026, the account is in disengagement mode.
+  </div>
+  <div class="info-box">
+    <strong>Sales Cloud Case Detail (OrgCS Org <code>00DfL000000fyi0</code>)</strong>
     <ul class="signal-list">
-      <li>Internal budget was frozen or reallocated</li>
-      <li>The champion advocating for expansion left or changed role</li>
-      <li>A procurement review raised concerns about Salesforce's value</li>
-      <li>A competing vendor (Oracle, SAP, or local Middle East alternatives) was evaluated</li>
+      <li><strong>May 2026 — GUI not showing Daily Threat Detection Alert</strong> — Sales Cloud (security/admin), Closed. Latest case — a security monitoring UI issue.</li>
+      <li><strong>Jun 2025 — Customer needs access org</strong> — Sales Cloud (org access), Closed. Admin provisioning request.</li>
+      <li><strong>Apr 2025 — Org Access</strong> — Sales Cloud (org access), Closed. Admin access request.</li>
+      <li><strong>Apr 2025 — Login credentials to be resent</strong> — Sales Cloud (org access / feature activation), Closed. Basic credential management.</li>
     </ul>
-    A canceled ADR on an account with zero cases and 42.9% attrition probability is a strong early warning that the renewal is at risk.
+    All 4 cases are administrative (org access, credential management, security UI) — no technical product cases, no enablement, no strategic engagement. The pattern is consistent with a small IT admin team managing Salesforce as an operational system, not a strategic platform.
   </div>
 </div>
 
@@ -223,11 +227,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Investigate why the ADR was canceled. Retrieve ADR details from OrgCS and contact the account owner. Understanding the cancellation reason is the most critical intelligence for this account.</td><td>CSM + AE</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Assign a CSM with EMEA Middle East / GCC experience who understands government-linked entity procurement dynamics. Relationship management in this territory is fundamentally different from AMER or EMEA EU.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct an executive-level engagement at Dubai Holding. For a state-linked entity, the relationship must be maintained at the C-suite / MD level, not just the IT department.</td><td>AE + Executive Sponsor</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a Dubai Holding-specific Agentforce demo for Jumeirah Group (hospitality) and Dubai Properties (real estate) — these are concrete multi-billion dollar business units where Agentforce for client servicing, booking, and tenant management has immediate ROI.</td><td>SE + AE</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Confirm Salesforce UAE data residency compliance with TDRA (Telecommunications and Digital Government Regulatory Authority) — this may be the actual blockers behind the ADR cancellation.</td><td>SE + Legal</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Investigate why the ADR was canceled. The 4 Sales Cloud cases (Org <code>00DfL000000fyi0</code>) are all administrative — org access and credential management — with no strategic engagement. The ADR cancellation may reveal a stalled Agentforce or expansion initiative. Retrieve ADR details from OrgCS.</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Determine whether the May 2026 security case (GUI not showing Daily Threat Detection Alert) is a symptom of a deeper platform issue. Security monitoring visibility is a critical concern for a state-linked entity — if unresolved, it erodes trust in the platform.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Assign a CSM with EMEA Middle East / GCC experience. The 4 cases are managed by an internal IT admin team — not a strategic Salesforce champion. The relationship must be elevated to C-suite / MD level before renewal. For a state-linked entity, procurement decisions require executive alignment.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a Dubai Holding-specific Agentforce demo for Jumeirah Group (hospitality) and Dubai Properties (real estate) — the case history shows admin-only use; there is a clear opportunity to position Agentforce for client servicing and tenant management with concrete ROI.</td><td>SE + AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Confirm Salesforce UAE data residency compliance with TDRA. The 3 org-access and credential cases in Apr–Jun 2025 may indicate compliance-related access restrictions. Data residency concerns are a known blocker for GCC state-linked entities and may explain the ADR cancellation.</td><td>SE + Legal</td></tr>
       </tbody>
     </table>
   </div>

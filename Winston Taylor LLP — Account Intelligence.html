@@ -110,12 +110,28 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
+    <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">Sales Cloud Cases Found</div><div class="kpi-sub-amber">Both from Oct 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-green">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oct 2026</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub-amber">~1 month ago</div></div>
+  </div>
+  <div class="info-box">
+    <strong>New Client Onboarding Activity — 2 Admin Cases in Oct 2026</strong>
+    OrgCS (Org <code>00Dfn00000KgnLy</code>) returns 2 Sales Cloud cases, both from October 2026 — confirming this is a recently onboarded client actively getting set up:
+    <ul class="signal-list">
+      <li><strong>Oct 2026 — Provision Admin Access</strong> — Sales Cloud (admin provisioning), Status unknown. Classic new-customer setup request.</li>
+      <li><strong>Oct 2026 — New Client — Please Send Welcome / Password Reset Email</strong> — Sales Cloud onboarding, Status unknown. Confirms this is a brand-new account in onboarding phase.</li>
+    </ul>
   </div>
   <div class="risk-box">
-    <strong>No OrgCS Engagement — Law Firms Typically Self-Manage</strong>
-    Zero cases filed is consistent with professional services firms — law firms often implement Salesforce through third-party partners and manage it internally without engaging Premier support. However, zero engagement for a "&lt;1 year" entity with 43.7% attrition risk means there is no demonstrable CSG value delivery in the relationship. If the subscription was recently signed, the onboarding may have been entirely partner-led without Salesforce CSG involvement.
+    <strong>Early Attrition Risk: Onboarding Phase With No CSG Engagement</strong>
+    Both cases are administrative onboarding requests, not technical or strategic engagement. For a "&lt;1 year" account at 43.7% attrition risk, these cases confirm the account is newly live but show no evidence of:
+    <ul class="signal-list">
+      <li>A Premier Success Plan being activated</li>
+      <li>A CSM-led onboarding or health check</li>
+      <li>Any enablement, training, or Agentforce positioning</li>
+      <li>A named CSM or SE assigned</li>
+    </ul>
+    Law firms often implement via partners and go quiet post-launch — without proactive CSG engagement in the first 90 days, the renewal risk will compound.
   </div>
 </div>
 
@@ -215,10 +231,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Assign a CSM with professional services / legal industry experience to Winston Taylor LLP. Identify the BD director or practice group leader who is the internal Salesforce champion.</td><td>CSM Lead</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct an onboarding or health check call. If the subscription is &lt;1 year old, understand the current deployment status and whether Professional Services engagement was included.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Follow up on both Oct 2026 onboarding cases (Provision Admin Access + Welcome/Password Reset). Confirm admin setup is complete and that the account is now live. These cases confirm the account is in early onboarding — a CSM-led check-in now is essential to prevent silent disengagement.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Assign a CSM with professional services / legal industry experience to Winston Taylor LLP (Org <code>00Dfn00000KgnLy</code>). The 2 OrgCS cases confirm this is a new client — there is a window in the next 30–60 days to establish a strong relationship before the platform becomes an orphaned subscription.</td><td>CSM Lead</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct a Premier onboarding kickoff call. The admin provisioning activity in Oct 2026 means the account is newly live — present the Premier Success Plan, introduce the CSM, and set 90-day success milestones. Without this, the subscription will reach renewal with zero demonstrable CSG value.</td><td>CSM</td></tr>
         <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Develop a legal-industry-specific positioning deck — Agentforce for legal BD (relationship intelligence, meeting prep, deal tracking), comparison vs. InterAction, and ROI for $1.6M subscription.</td><td>SE + AE</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Identify whether Salesforce has other law firm Premier accounts in the US EAST territory — use those as reference customers for the Winston Taylor renewal narrative.</td><td>AE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Identify the BD director or practice group leader who initiated the Salesforce subscription. For LLP governance, renewal requires partnership committee support — the champion needs to be identified and briefed early.</td><td>AE</td></tr>
       </tbody>
     </table>
   </div>

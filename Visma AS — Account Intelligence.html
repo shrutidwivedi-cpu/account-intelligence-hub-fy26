@@ -108,13 +108,21 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">~5–10</div><div class="kpi-label">Total Cases (est.)</div><div class="kpi-sub-amber">Minimal support</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub">None confirmed</div></div>
-    <div class="kpi-card"><div class="kpi-val">Low</div><div class="kpi-label">Technical Engagement</div><div class="kpi-sub-amber">Moderate segment, 10yr</div></div>
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Sales Cloud Case Found</div><div class="kpi-sub-red">Critically low for 10yr Premier</div></div>
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Open Red Account Flag</div><div class="kpi-sub-red">On closed case — needs clearing</div></div>
+    <div class="kpi-card"><div class="kpi-val">May 2023</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub-red">3+ years dormant</div></div>
   </div>
   <div class="risk-box">
-    <strong>Low Technical Engagement Pattern — Tech Company Using External CRM</strong>
-    Visma is a technology company with significant in-house software engineering capability. As a Nordics ERP/SaaS leader, Visma has the technical resources to build internal tooling or evaluate alternative CRM solutions. The pattern of minimal Salesforce support cases over a 10-year tenure suggests the platform may be used in a maintenance-only capacity by a small internal sales team, rather than deeply integrated across the enterprise.
+    <strong>Critical: Open Red Account Flag on 3-Year-Old Closed Case</strong>
+    OrgCS (Org <code>00Dw0000000DG2L</code>) returns only 1 Sales Cloud case: <strong>"Can't connect Salesforce to Slack"</strong> (<code>500...</code>, May 2023, Sales-Sales Cloud for Slack). The case is <strong>Closed</strong> but <code>Open_Red_Account__c = true</code>. A Red Account flag left open on a closed case from 3 years ago is a data quality issue — the flag should have been cleared at case resolution. This may also indicate the Slack integration failure was never fully resolved from the customer's perspective, or the flag was placed during an escalation and forgotten.
+  </div>
+  <div class="info-box">
+    <strong>Sales Cloud Case Detail</strong>
+    <ul class="signal-list">
+      <li><strong>May 2023 — Can't connect Salesforce to Slack</strong> — Sales-Sales Cloud for Slack, <strong>Closed</strong>, <code>Open_Red_Account__c: true</code>. Only Sales Cloud case in OrgCS for this account.</li>
+      <li>No Sales Cloud cases filed since May 2023 — 3.5 years of silence on a $2.0M AOV Premier account.</li>
+      <li>Visma is a technology company with its own CRM/ERP products — likely manages Salesforce internally without needing support, but this level of disengagement increases attrition risk as internal alternatives are evaluated.</li>
+    </ul>
   </div>
 </div>
 
@@ -208,10 +216,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Visma executive sponsor for Salesforce. Confirm whether the Sales Cloud subscription covers the Visma AS global sales team or a specific business unit.</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a "competitive coexistence" brief — articulate why Salesforce Sales Cloud complements (rather than competes with) Visma's ERP/CRM product portfolio. Focus on the global enterprise sales use case that Visma's own products don't serve.</td><td>AE + SE</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Conduct utilization review. If &lt;20% license utilization confirmed, propose a right-sizing discussion before renewal — a reduced but renewed contract is better than full attrition.</td><td>AE</td></tr>
-        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Position Agentforce as the AI capability Visma's own products don't offer yet — differentiating on AI-first CRM capabilities may justify continued Premium subscription vs. in-house replacement.</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Clear the stale Red Account flag on the closed Salesforce-to-Slack case (May 2023, Org <code>00Dw0000000DG2L</code>). Verify with the account whether the Slack integration issue was fully resolved or if it represents an unaddressed gap from 3 years ago.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify current Visma executive sponsor for Salesforce. The last Sales Cloud case was May 2023 — 3.5 years of silence on a $2.0M Premier account means the relationship has gone dark. Confirm ownership and sponsorship before renewal approaches.</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Determine whether the Salesforce-to-Slack integration (blocked since May 2023) is now working or was abandoned. If abandoned, understand why — this may reveal the internal Salesforce champion's level of engagement and product commitment.</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — This week</span></td><td>Build a "competitive coexistence" brief — articulate why Salesforce Sales Cloud complements Visma's own CRM/ERP products. Focus on the global enterprise sales use case that Visma's own tools don't cover, and position Agentforce as the AI-first differentiator.</td><td>AE + SE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — This month</span></td><td>Conduct utilization review. If &lt;20% license utilization confirmed, propose a right-sizing discussion — a reduced but renewed contract is better than full attrition from a PE-backed company evaluating every subscription line item.</td><td>AE</td></tr>
       </tbody>
     </table>
   </div>

@@ -116,12 +116,19 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">Feb 2023</div><div class="kpi-label">Last Activity Date</div><div class="kpi-sub-red">3.5 years ago</div></div>
   </div>
   <div class="risk-box">
-    <strong>Complete Disengagement — Zero Interaction Since February 2023</strong>
-    OrgCS confirms the last activity on the Edison SpA account was February 2023. No cases, no support requests, no escalations, no engagement events have been recorded in the 3.5 years since. This is the most extreme disengagement signal in the 12-account cohort. An account paying $1.8M/year in Sales Cloud subscription with zero technical interaction for 3.5 years either has deeply siloed self-service capability or has effectively stopped using the product.
+    <strong>Complete Disengagement — Zero Sales Cloud Cases Since 2022</strong>
+    OrgCS (Org <code>00Dbl000004ngqL</code>, account <code>0013000001MY0qsAAD</code>) confirms the last Sales Cloud case was in <strong>2022</strong>. The 5 Sales Cloud cases retrieved are all from 2022: developer support (code management, Azure AD federation, data transfer), email delivery (undelivered report subscription), and a configuration question. No Sales Cloud cases exist in 2023, 2024, or 2026. LastActivityDate on the OrgCS record is Feb 2023. This is the most extreme disengagement signal in the 12-account cohort.
   </div>
   <div class="info-box">
-    <strong>Absence of Support ≠ Absence of Risk</strong>
-    Zero cases on a Premier account is not a "healthy no-news" signal — it indicates either an internal support model that never escalates to Salesforce (self-sufficient but not engaged), or more likely, a dormant org where licenses are paid but utilization is minimal. Combined with the highest attrition probability in the cohort (54.44%), this pattern strongly suggests the subscription is being passively maintained while leadership evaluates alternatives.
+    <strong>Historical Sales Cloud Cases (2022 — now dormant)</strong>
+    <ul class="signal-list">
+      <li><strong>Jul 2022 — Code Management</strong> (<code>500Hx000005EVkDIAW</code>) — Sales-Developer Support, Closed.</li>
+      <li><strong>Jul 2022 — Data transfer to Enterprise Data Platform</strong> (<code>500Hx000005C7E9IAK</code>) — Sales-Developer Support, Closed.</li>
+      <li><strong>Jul 2022 — Salesforce/Azure AD Federation</strong> (<code>500Hx0000043pOfIAI</code>) — Sales-Developer Support, Closed.</li>
+      <li><strong>Jun 2022 — Undelivered report subscription</strong> (<code>500Hx000004LoM6IAK</code>) — Sales-Email Delivery, Closed.</li>
+      <li><strong>Feb 2022 — Quote creation in Word/PPT (Italian language)</strong> (<code>500Hx000001FjyjIAC</code>) — Sales-Developer Support, Closed.</li>
+      <li>No Sales Cloud cases in 2023, 2024, or 2026 — 3.5+ years of silence. Combined with the highest attrition probability in the cohort (54.44%), this indicates the subscription is passively maintained while leadership evaluates alternatives.</li>
+    </ul>
   </div>
 </div>
 
@@ -221,11 +228,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="opp-box">
-    <strong>Recommended Actions — Based on OrgCS Deep Dive (Zero Cases Confirmed)</strong>
+    <strong>Recommended Actions — Based on OrgCS Deep Dive (Sales Cloud Dormant Since 2022)</strong>
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Emergency outreach to identify any living contact at Edison SpA</strong>: OrgCS queried directly confirms zero cases filed since Feb 2023 — not a single support request, escalation, or health check in 3.5 years. There is no open case history to build from. First task: find who owns the Salesforce relationship at Edison today (IT director, procurement lead, or admin contact). Search CRM for the original deal contacts and confirm whether they are still at the company.</td><td>CSM Lead + AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Emergency outreach to identify any living contact at Edison SpA</strong>: OrgCS (Org <code>00Dbl000004ngqL</code>) confirms the last 5 Sales Cloud cases all date from 2022 (developer support, Azure AD federation, data transfer, email delivery). No cases filed since Feb 2023 — 3.5 years of silence. The 2022 contact who filed <code>500Hx0000043pOfIAI</code> (Azure AD Federation) or <code>500Hx000005EVkDIAW</code> (Code Management) is the last known technical contact — search OrgCS for the case contact and reach out if still at Edison.</td><td>CSM Lead + AE</td></tr>
         <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td><strong>Run Tableau Account Drill-Down</strong> for Org <code>00D61000003UJjU</code>: License Activation % and Utilization % will reveal whether users are even logging in. If utilization is &lt;10%, this is a save-or-let-go decision — not a retention play. Take the data into the first contact meeting.</td><td>Analyst</td></tr>
         <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Escalate to EDF Group Salesforce account team</strong>: As a wholly owned EDF subsidiary, any Salesforce renewal decision for Edison likely requires sign-off from EDF IT/procurement in Paris. Identify the EDF Group AE/CSM team and brief them on Edison's risk. A coordinated EDF-level account play (bundling Edison into an EDF Group renewal) may be the only viable retention path.</td><td>AE</td></tr>
         <tr><td><span class="pill pill-amber">P1 — This week</span></td><td><strong>Clarify the "&lt;1 Year" model flag</strong>: Confirm whether Edison underwent a contract restructure, re-signed under a new entity, or was freshly enrolled in the Premier entitlement model. If this is a recently renewed Premier subscription on a dormant org, the renewal team needs to know urgently — an auto-renewal on a zero-usage account is both a financial risk and a poor customer experience.</td><td>Analyst</td></tr>
