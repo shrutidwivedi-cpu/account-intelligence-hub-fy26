@@ -94,7 +94,7 @@ select,input[type=text]{font-size:.78rem;padding:5px 9px;border:1px solid #e2e8f
 
 <div class="main">
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-val">19</div><div class="kpi-label">Accounts</div><div class="kpi-sub-red" style="color:#0ea5e9">Two cohorts</div></div>
+    <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-label">Accounts</div><div class="kpi-sub-red" style="color:#0ea5e9">Nov 2026 Cohort</div></div>
     <div class="kpi-card"><div class="kpi-val" id="totalAovKpi">—</div><div class="kpi-label">Total Sales Cloud AOV</div><div class="kpi-sub-red">All Premier · SELA</div></div>
     <div class="kpi-card"><div class="kpi-val" id="totalRiskKpi">—</div><div class="kpi-label">Total $ at Risk</div><div class="kpi-sub-red">Model prediction</div></div>
     <div class="kpi-card"><div class="kpi-val" id="critKpi">—</div><div class="kpi-label">Critical</div><div class="kpi-sub-red">Prob &gt; 50%</div></div>
@@ -108,7 +108,7 @@ select,input[type=text]{font-size:.78rem;padding:5px 9px;border:1px solid #e2e8f
 
 <script>
 const A = [
-  /* ── Nov 2026 Attrition Cohort (12 accounts) ── */
+  /* ── Nov 2026 Attrition Cohort ── */
   {
     name: "Edison SpA (Org Mercato)",
     meta: "EMEA ITALY &nbsp;·&nbsp; 00D61000003UJjU &nbsp;·&nbsp; Premier &nbsp;·&nbsp; EDF Subsidiary",
@@ -276,105 +276,7 @@ const A = [
       {t:"−$141K confirmed attrition on record; Packaging Change risk flagged by RM Fergus O'Brien", flag:true},
       {t:"Governance entity with $2B Microsoft/Azure investment — Sales Cloud use case never established", flag:true},
     ]
-  },
-  {
-    name: "T-Mobile USA, Inc",
-    meta: "AMER ACC TMT &nbsp;·&nbsp; 00Dal00001TLN6u &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"AMER", seg:"Declining", age:"< 1 Year",
-    aov:5702515, prob:39.92, riskDollars:1667344,
-    css:33, util:11, red:2, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"Newest account (<1 year) already in Declining segment — early adoption failure is the primary risk", flag:true},
-      {t:"CSS score 33/100 with 11% license utilization in first year signals onboarding has not landed", flag:true},
-      {t:"39.9% attrition prob on a brand-new account suggests structural fit issues — EBR urgently needed", flag:true},
-      {t:"AMER ACC TMT: competitive telco space; Microsoft and Oracle are active alternatives", flag:false},
-    ]
-  },
-  {
-    name: "Gartner, Inc.",
-    meta: "AMER ACC CBS &nbsp;·&nbsp; 00D4x000003yAAl &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"AMER", seg:"Declining", age:"5–10 Years",
-    aov:3588329, prob:37.47, riskDollars:967890,
-    css:44, util:28, red:1, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"5–10 year account now Declining — engagement peaked and is eroding; likely champion turnover", flag:true},
-      {t:"CSS 44/100 and 28% utilization after 5+ years signals material under-adoption for tenure", flag:true},
-      {t:"Gartner advises clients on CRM strategy — internal Salesforce dissatisfaction is a reputational risk for SFDC", flag:false},
-      {t:"AMER ACC CBS: Gartner sits in same territory as KPMG and CBRE, both also showing risk", flag:false},
-    ]
-  },
-  {
-    name: "CBRE, Inc",
-    meta: "AMER ACC CBS &nbsp;·&nbsp; 00DfI00000NaUwG &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"AMER", seg:"Other", age:"1–2 Years",
-    aov:4447578, prob:37.08, riskDollars:1014856,
-    css:49, util:22, red:1, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"Early-stage account (1–2 years) in 'Other' segment — no established health trajectory yet", flag:true},
-      {t:"37% attrition prob in first 1–2 years; CSS 49 and 22% utilization suggest deployment stall", flag:true},
-      {t:"Commercial real estate sector under pressure — CBRE cost discipline may tighten renewal scope", flag:false},
-      {t:"AMER ACC CBS: 3 of 4 CBS accounts in this cohort are High or Critical risk", flag:false},
-    ]
-  },
-  {
-    name: "AstraZeneca UK Limited",
-    meta: "UKI &nbsp;·&nbsp; 00Dd3000005od89 &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"EMEA", seg:"Declining", age:"< 1 Year",
-    aov:9833362, prob:36.34, riskDollars:2335084,
-    css:37, util:14, red:2, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"<1 year account already Declining — most urgent new-customer onboarding failure in the cohort", flag:true},
-      {t:"$9.8M AOV exposed in year one; CSS 37/100 and 14% utilization confirm deployment has not progressed", flag:true},
-      {t:"UKI territory: post-Brexit procurement complexity and NHS/pharma budget pressure affect tech spend decisions", flag:false},
-      {t:"Declining segment this early almost always signals stakeholder misalignment or missing executive sponsor", flag:true},
-    ]
-  },
-  {
-    name: "Wolters Kluwer Global Business Services B.V.",
-    meta: "EMEA NORTH &nbsp;·&nbsp; 00D0O000000ZevL &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"EMEA", seg:"Moderate", age:"5–10 Years",
-    aov:6069842, prob:31.26, riskDollars:1421410,
-    css:58, util:43, red:1, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"5–10 year Moderate segment: not trending toward Strong — plateau risk for established accounts", flag:true},
-      {t:"Wolters Kluwer is a legal/regulatory data provider — Salesforce may face internal tooling competition", flag:false},
-      {t:"EMEA NORTH: regional economic headwinds and tighter procurement cycles affecting enterprise renewal scope", flag:false},
-      {t:"CSS 58 and 43% utilization are mid-range but not improving — trend direction is key to watch", flag:true},
-    ]
-  },
-  {
-    name: "Medtronic Inc",
-    meta: "AMER REG &nbsp;·&nbsp; No Org ID on file &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"AMER", seg:"Declining", age:"10+ Years",
-    aov:16038996, prob:30.94, riskDollars:2777313,
-    css:46, util:31, red:1, risk:"High",
-    reportUrl: null,
-    bullets: [
-      {t:"Largest AOV in cohort at $16M — $2.8M at risk is 2nd highest absolute dollar exposure", flag:true},
-      {t:"10+ year account now Declining: long-term value erosion after deep initial investment", flag:true},
-      {t:"AMER REG (not CBS) — coverage model may be different; ensure right AE/CSM team is engaged", flag:false},
-      {t:"No Org ID in model — potential account record fragmentation; verify correct Salesforce org is being tracked", flag:true},
-    ]
-  },
-  {
-    name: "AT&T Services, Inc.",
-    meta: "AMER ACC TMT &nbsp;·&nbsp; 00Di0000000ISKO &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA",
-    geo:"AMER", seg:"Strong", age:"10+ Years",
-    aov:17917280, prob:22.55, riskDollars:2019702,
-    css:72, util:67, red:0, risk:"Medium",
-    reportUrl: null,
-    bullets: [
-      {t:"Healthiest account in cohort: Strong segment, 10+ year tenure, lowest attrition prob at 22.6%", ok:true},
-      {t:"$17.9M AOV is the largest in the group — protecting this account is highest dollar-value retention priority", ok:true},
-      {t:"CSS 72 and 67% utilization are well above cohort average — engagement model is working", ok:true},
-      {t:"Medium risk doesn't mean no risk — watch for competitive pressure from Microsoft in AMER ACC TMT", flag:false},
-    ]
-  },
+  }
 ];
 
 function fmt(n){return'$'+(n/1e6).toFixed(1)+'M'}
