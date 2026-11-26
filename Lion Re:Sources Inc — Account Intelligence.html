@@ -174,17 +174,93 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     </table>
   </div>
 
-  <div class="info-box">
-    <strong>Sales/Platform Case Pattern Analysis — 100 Cases in 2026</strong>
-    <ul class="signal-list">
-      <li><strong>Developer Support (32 cases) — highest volume area:</strong> Persistent DevOps Center pipeline deployment errors (Apex limit exceptions during Lead conversion, flow deployment failures, connected app auth). Apex limit increase requests are recurring — QE6 sandbox is regularly hitting Salesforce governor limits, indicating an active, complex in-house development team. Cases: <code>500hi000009crDsAAI</code>, <code>500hi000009G1PZAA0</code>, <code>500hi00000939cfAAA</code>, <code>500hi000001T7qLAAS</code>, <code>500hi000001Sp73AAC</code>, <code>500hi000001OTxxAAG</code>, and 26 more.</li>
-      <li><strong>CRM Analytics (12 cases) — critical dependency:</strong> Dataflow runtime regression from 5→8.5 hours (<code>500hi000004yVppAAE</code>, Sep 7 2026, logged as "Documentation" cause — likely misclassified), dataflow killed due to inactivity (<code>500hi000003XXXX</code>), file size limit errors, EdgeMart deletion after sandbox sync (<code>500hi00000AvhldAAB</code>, still Working), CRMA datasets missing post-sandbox refresh (<code>500hi000009GiXmAAK</code>, Need More Info since Oct 30). Also: Azure Data Lake Output Connector hidden in recipe tool (<code>500hi000006A4JqAAK</code>), CRMA→IBI data setup guidance, currency conversion query. CRMA is embedded as a core analytics pipeline — not a peripheral product.</li>
-      <li><strong>Email / Einstein Activity Capture (13 cases) — recurring friction:</strong> EAC syncing fails in sandbox (cases in Mar, May, Jun, Sep 2026 — same pattern repeatedly). Email-to-Salesforce functionality issues. DKIM sandbox refresh (<code>500hi0000000XXXX</code>). The EWS retirement warning case in Mar 2026 suggests Outlook integration dependency. This is a repeated pattern rather than a one-off.</li>
-      <li><strong>Security / Activations (12 cases):</strong> Passkey SSO behavior inconsistent between incognito/normal browser sessions (<code>500hi000003XVkrAAG</code>, Aug 12) — two separate tickets for same issue. Multiple login failures, MFA exemption requests, email limit increases for bulk operations. Anomalous login behavior alert (Jun 8). Suggests a large user base with varied device/browser configurations across Publicis offices.</li>
-      <li><strong>Reports &amp; Dashboards (8 cases):</strong> Revenue mismatch in "With or Without" report type (<code>500Hx00001I9VkrIAF</code>), report export returning old cached filters, Opportunity Contact Role IsPrimary field not populating in reports, report subscription issue when table border applied in CRMA. Points to complex reporting requirements and possible data model customizations.</li>
-      <li><strong>Currently open Sales/Platform cases (5 open):</strong> Duplicate Contact Merge (<code>500hi00000Bn8saAAB</code>, Working, Nov 26), Support case creation (<code>500hi00000BiHDKAA3</code>, Need More Info, Nov 25), Sales Engagement Cadence (<code>500hi00000AwLUXAA3</code>, Need More Info, Nov 17), Sandbox Dataflow EdgeMart (<code>500hi00000AvhldAAB</code>, Working, Nov 17), CRMA Datasets Missing (<code>500hi000009GiXmAAK</code>, Need More Info, Oct 30).</li>
-    </ul>
-  </div>
+  <!-- SALES/PLATFORM DEEP DIVE -->
+  <div class="section">
+    <div class="section-title">Sales/Platform Deep-Dive — 100 Cases in 2026 (Confirmed OrgCS)</div>
+
+    <div class="risk-box" style="margin-top:14px">
+      <strong>5 Currently Open Cases — Require Immediate Attention</strong>
+      <table style="margin-top:8px">
+        <thead><tr><th>Case ID</th><th>Subject</th><th>Area</th><th>Status</th><th>Open Since</th></tr></thead>
+        <tbody>
+          <tr><td><code>500hi00000Bn8saAAB</code></td><td>Duplicate Contact Merge: Sales</td><td>Sales Engagement</td><td><span class="pill pill-amber">Working</span></td><td>Nov 26</td></tr>
+          <tr><td><code>500hi00000BiHDKAA3</code></td><td>Support case creation: Sales</td><td>Reports &amp; Dashboards</td><td><span class="pill pill-amber">Need More Info</span></td><td>Nov 25</td></tr>
+          <tr><td><code>500hi00000AwLUXAA3</code></td><td>Sales Engagement Cadence Support</td><td>Sales Engagement</td><td><span class="pill pill-amber">Need More Info</span></td><td>Nov 17</td></tr>
+          <tr><td><code>500hi00000AvhldAAB</code></td><td>Sandbox Dataflow Failure – EdgeMart Deleted from Parent Org</td><td>CRM Analytics</td><td><span class="pill pill-amber">Working</span></td><td>Nov 17</td></tr>
+          <tr><td><code>500hi000009GiXmAAK</code></td><td>CRM Analytics Datasets Missing After Sandbox Refresh</td><td>CRM Analytics</td><td><span class="pill pill-amber">Need More Info</span></td><td>Oct 30</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col" style="margin-top:16px">
+
+      <div class="info-box">
+        <strong>Developer Support — 32 cases (#1 by volume)</strong>
+        <ul class="signal-list">
+          <li><strong>DevOps Center / deployment pipeline</strong> is a primary use case. 8+ cases around pipeline errors, deployment failures (flow, metadata, package.xml retrieval), and DevOps Center org authentication failures for QE6 sandbox. The team is running a CI/CD pipeline through Salesforce DevOps Center — a relatively advanced platform adoption.</li>
+          <li><strong>Apex governor limits</strong> are a recurring ceiling hit: <code>500hi000009crDsAAI</code> (Nov 3), <code>500hi000009G1PZAA0</code> (Oct 30), <code>500hi00000939cfAAA</code> (Oct 28), <code>500hi000001Sp73AAC</code> (Jul 9), <code>500hi000001T7qLAAS</code> (Jul 9), <code>500hi000001kwrdAAA</code> (Jul 14) — 6 Apex limit cases in 5 months. QE6 sandbox is hitting governor limits repeatedly, indicating a complex customization layer with potential debt.</li>
+          <li><strong>Flow / trigger issues:</strong> Schedule-triggered flow fails with "Probably Limit Exceeded" (<code>500hi000006NXr5AAG</code>), Apex trigger not firing on Cadence-generated tasks with duplicate task creation (<code>500hi000005RpTNAA0</code>), Lead Conversion fails with Too many queueable jobs (<code>500hi000002QQTxAAO</code>). These are all inter-related automation complexity issues.</li>
+          <li><strong>Encryption &amp; auth:</strong> Enable PKCE for OAuth (<code>500Hx00001HFeCYIA1</code>), Bulk API encryption model (<code>500hi000003H9GTAA0</code>), connected app best practices — indicates an integration-heavy architecture with external systems consuming Salesforce APIs.</li>
+          <li><strong>Root cause pattern:</strong> 18/32 classified as "Documentation or User Knowledge Issue" but 8 as "Product/Infrastructure Issue" — the product issues are the more significant ones (Apex limits, trigger misfires, deployment errors). The documentation classification likely reflects support team routing rather than actual nature.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>CRM Analytics — 12 cases (core dependency)</strong>
+        <ul class="signal-list">
+          <li><strong>Dataflow performance regression:</strong> Runtime increased from 5h to 8.5h since Aug 27 (<code>500hi000004yVppAAE</code>, Sep 7). Separate case for dataflow killed due to inactivity (<code>500hi000003XXX</code>). CRMA recipes and dataflows are mission-critical for this account — these are analytics pipelines, not vanity reports.</li>
+          <li><strong>Sandbox sync issues (2 open):</strong> EdgeMart deleted from parent org after sandbox sync (<code>500hi00000AvhldAAB</code>, Working); datasets missing after sandbox refresh (<code>500hi000009GiXmAAK</code>, Need More Info since Oct 30). Both suggest the CRMA environment is coupled tightly to the production org and sandbox management is fragile.</li>
+          <li><strong>CRMA Contact Connection Failure — API change:</strong> Contact field API change broke the CRMA connector (<code>500hi000006GSbBAAW</code>, Sep 29, Closed). This is a platform-induced breakage, not user error — indicates CRMA recipes reference production object fields directly with no abstraction layer.</li>
+          <li><strong>Azure Data Lake integration:</strong> Output connector option hidden in recipe tool (<code>500hi000006A4JqAAK</code>, Sep 28). The team is building CRMA → Azure Data Lake pipelines, confirming a hybrid cloud analytics architecture (Salesforce CRMA + Azure).</li>
+          <li><strong>Currency conversion issue</strong> (<code>500hi000000ZXKVAA4</code>, Jun 24) — multi-currency CRMA setup, consistent with EMEA FRANCE territory and Publicis global footprint.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>Email / Einstein Activity Capture — 13 cases (persistent friction)</strong>
+        <ul class="signal-list">
+          <li><strong>EAC sandbox syncing failure — recurring 4× in 2026:</strong> Cases in Mar (<code>500hi000003wKr4AAE</code>), May (<code>500hi000003syGnAAI</code>), Jun (<code>500Hx00001Hpn4PIAR</code>), Sep 2026 (<code>500hi0000062JW9AAM</code>). Same symptom each time: EAC emails not syncing on Contacts in sandbox. This is a known EAC limitation in sandboxes — the team is likely refreshing sandboxes frequently and re-encountering the same issue, suggesting they haven't been told EAC doesn't fully function in sandbox.</li>
+          <li><strong>EWS retirement awareness:</strong> Mar 2026 case about EWS retirement warning (<code>500hi000003wKr4AAE</code>) — the team was aware of Microsoft's EWS deprecation and sought Salesforce guidance. They likely rely on Outlook/Exchange integration for email capture.</li>
+          <li><strong>DKIM setup after sandbox refresh</strong> (<code>500hi0000000XXXX</code>, Apr 21) — email infrastructure is re-configured after each sandbox refresh. Manual rework is adding admin overhead.</li>
+          <li><strong>Email to Salesforce (2 cases, Jul 24):</strong> Core email logging functionality issue, suggesting the sales team actively uses email-to-case or email-to-lead features.</li>
+          <li><strong>EAC selective sync clarification</strong> (<code>500Hx00001Hpn4PIAR</code>, Jun 15) — the team is trying to configure selective email/calendar sync and understanding EAC sharing settings for personal configurations, suggesting a rollout or expansion of EAC to new user groups.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>Security &amp; Activations — 16 cases</strong>
+        <ul class="signal-list">
+          <li><strong>Passkey SSO enforcement — clustered Aug 2026:</strong> Two identical tickets (Aug 12) for inconsistent passkey behavior in incognito vs. normal browser sessions (<code>500hi000003XVkrAAG</code>, <code>500hi000003XVCzAAO</code>). Oct 1 case to enable passkey enforcement for QE6 sandbox. Publicis is rolling out passkey/MFA enforcement across their org — possibly driven by a Salesforce mandatory security release.</li>
+          <li><strong>Multiple login failures (Aug 11–14):</strong> Users unable to log in to production (<code>500hi000003gRlGAAU</code>, <code>500hi000003dW37AAE</code>). Likely related to MFA enforcement rollout — users not set up for new auth method. Affects multiple users simultaneously, suggesting a wide-scale rollout event.</li>
+          <li><strong>Email sending limit increases (Jul 27–28):</strong> Two back-to-back cases to increase daily email limit and then revert it (<code>500hi000002aAZBAA2</code>, <code>500hi000002e2BdAAI</code>). Suggests a bulk email send was planned, limit hit, increase requested, and then undone. Pardot/Account Engagement is their primary email platform so this may have been a test from Sales Cloud directly.</li>
+          <li><strong>Anomalous login alert (Jun 8):</strong> Security alert for anomalous login behavior detected (<code>500Hx00001GzA3yIAF</code>). Closed as documentation issue — security team likely needed guidance on how to interpret and respond to the alert.</li>
+          <li><strong>MFA exemption request for report export (Jul 22):</strong> Two users needed MFA exemption to export reports (<code>500hi000002Hxc1AAC</code>). Classified out of scope, suggesting MFA exemptions are not supported in their entitlement but users expect them for specific workflows.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>Reports &amp; Dashboards — 8 cases</strong>
+        <ul class="signal-list">
+          <li><strong>Revenue mismatch — "With or Without" report type</strong> (<code>500Hx00001I9VkrIAF</code>, Jun 17): Lightning Dashboard showing different revenue figures from the underlying report. This is a data trust issue — if the sales team can't reconcile dashboard numbers to report numbers, it erodes confidence in the reporting layer.</li>
+          <li><strong>Report filter caching bug (Aug 20):</strong> Two duplicate cases (<code>500hi0000042BDBAA2</code>, <code>500hi00000429w9AAA</code>) for report download showing old/stale filter values. Product issue.</li>
+          <li><strong>Opportunity Contact Role "IsPrimary" not in reports</strong> (<code>500hi000003XXXX</code>, Mar 19): Standard field not appearing in report builder. Likely a report type limitation — but signals the account runs opportunity-driven reporting with contact role data.</li>
+          <li><strong>Dashboard user management issue</strong> (<code>500hi00000816jWAAQ</code>, Oct 16, Closed) — access/sharing controls on dashboards. Suggests dashboard governance is in place (not everyone can see all dashboards).</li>
+          <li><strong>Internal server error on report export</strong> (<code>500hi000004yZOnAAM</code>, Sep 7, Closed) — classified as documentation/training but subject indicates a platform error. Reports being exported at scale (server error threshold).</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <strong>Sales Engagement — 7 cases</strong>
+        <ul class="signal-list">
+          <li><strong>Cadence automation issues (recurring):</strong> Automated email step not sent after target assignee change (<code>500hi000005BL34AAG</code>, Sep 10), "Add to Cadence" not working from Campaign Members report (<code>500hi000003XXXX</code>, Mar 23), Cadence Out of Office/Reporting/LinkedIn Mail Automation query (<code>500hi000004zKcDAAU</code>, Sep 7). The sales team actively uses Sales Engagement cadences for outreach automation — these are operational workflow issues, not setup questions.</li>
+          <li><strong>Sales Engagement Cadence Support (open, <code>500hi00000AwLUXAA3</code>, Nov 17):</strong> Status "Need More Information" — awaiting customer response. This is likely a cadence configuration or behavior question similar to the Sep 10 case.</li>
+          <li><strong>Custom Link not visible in Lightning Experience</strong> (<code>500hi000003XXXX</code>, Mar 6): Sales UI customization issue — their Lightning pages have custom links that need to function for the sales reps.</li>
+          <li><strong>Duplicate Contact Merge (open, <code>500hi00000Bn8saAAB</code>, Nov 26):</strong> Filed today, Status Working. Contact deduplication is an ongoing data quality concern — given the account's Publicis Sapient BU context, contacts likely come from multiple data sources (Pardot, EAC, Outlook sync), creating duplicates.</li>
+        </ul>
+      </div>
+
+    </div><!-- end two-col -->
+  </div><!-- end Sales/Platform Deep-Dive section -->
 
   <div class="section">
     <div class="section-title">Red Account Cases — Detail (all 8 from Apr 2025)</div>
