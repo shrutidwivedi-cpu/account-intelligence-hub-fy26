@@ -85,8 +85,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales &amp; Service Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
     <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
-    <div class="kpi-card"><div class="kpi-val">3.81% / 0.32%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Sales &amp; Service Cloud — low</div></div>
-    <div class="kpi-card"><div class="kpi-val">66.2%</div><div class="kpi-label">True Login %</div><div class="kpi-sub-amber">Sales &amp; Service Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76% / 1.08%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Sales &amp; Service Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login %</div><div class="kpi-sub-amber">Sales &amp; Service Cloud</div></div>
     <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Historical Red Account Cases</div><div class="kpi-sub-amber">All closed Apr 2025</div></div>
   </div>
 
@@ -94,9 +94,9 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <strong>Paradox Signal: High Case Volume + Very Low License Activation + High Attrition Risk</strong>
     <ul class="signal-list">
       <li>Lion Re:Sources filed <strong>100+ support cases in 2026</strong> (confirmed OrgCS) across Developer Support (32), CRM Analytics (12), Email/EAC (13), Security (12), Account Engagement (13+), Reports (8) — one of the most active accounts in this cohort.</li>
-      <li>Sales &amp; Service Cloud (Force.com subscription, org <code>0013000001IeqZf</code>) shows LA <strong>3.81%</strong> and EU <strong>0.32%</strong> — low for a $3.8M Premier account. TLP is 66.2%, meaning the majority of licensed users do log in. Best explanation: users are licensed and logging in, but deep feature activation is limited — likely a configuration or adoption coaching gap rather than org fragmentation.</li>
+      <li>Sales &amp; Service Cloud license data (org <code>0013y00001ck1Cx</code>) shows LA <strong>0.76%</strong> and EU <strong>1.08%</strong> — extremely low for a $3.8M Premier account with 100+ annual support cases. Best explanation: active users sit on other Publicis Groupe org IDs; this org likely functions as a developer/shared services org.</li>
       <li>Despite Strong segment classification, the model assigns 47.47% attrition probability — the risk is most likely <strong>external/structural</strong>: Publicis group-level procurement decisions, org consolidation, or license migration. No active Red Account cases (8 historical cases all closed Apr 2025).</li>
-      <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction. <strong>Renewal date: not confirmed</strong> (AV App shows placeholder date for the S&amp;S Cloud subscription).</li>
+      <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction. <strong>Next S&amp;S Cloud renewal: 2027-02-19 — 85 days away.</strong></li>
     </ul>
   </div>
 
@@ -126,7 +126,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         <tr><td><strong>Primary Cloud Usage</strong></td><td>Sales &amp; Service Cloud, CRM Analytics, Account Engagement, Agentforce, Data Cloud</td></tr>
         <tr><td><strong>Historical Red Account Cases</strong></td><td>8 (all closed Apr 2025)</td></tr>
         <tr><td><strong>Last Active Engagement</strong></td><td>Nov 26, 2026 (Duplicate Contact Merge case)</td></tr>
-        <tr><td><strong>Next Renewal Date</strong></td><td>Not confirmed — AV App shows placeholder date for S&amp;S Cloud subscription (<code>0013000001IeqZf</code>)</td></tr>
+        <tr><td><strong>Next Renewal Date</strong></td><td>2027-02-19 (<strong style="color:#dc2626">85 days away</strong>) — Sales &amp; Service Cloud subscription</td></tr>
         <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
       </tbody></table>
     </div>
@@ -292,19 +292,19 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <!-- TAB 3: LICENSE & ADOPTION -->
 <div id="t3" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">3.81%</div><div class="kpi-label">License Activation (LA)</div><div class="kpi-sub-red">Sales &amp; Service Cloud — low</div></div>
-    <div class="kpi-card"><div class="kpi-val">0.32%</div><div class="kpi-label">Entitlement Utilization (EU)</div><div class="kpi-sub-red">Sales &amp; Service Cloud — very low</div></div>
-    <div class="kpi-card"><div class="kpi-val">66.2%</div><div class="kpi-label">True Login % (TLP)</div><div class="kpi-sub-amber">Sales &amp; Service Cloud</div></div>
-    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">Next Renewal</div><div class="kpi-sub-amber">Confirm with AE</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76%</div><div class="kpi-label">License Activation (LA)</div><div class="kpi-sub-red">Sales &amp; Service Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">1.08%</div><div class="kpi-label">Entitlement Utilization (EU)</div><div class="kpi-sub-red">Sales &amp; Service Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login % (TLP)</div><div class="kpi-sub-amber">Sales &amp; Service Cloud</div></div>
+    <div class="kpi-card"><div class="kpi-val">2027-02-19</div><div class="kpi-label">Next Renewal</div><div class="kpi-sub-red">85 days — urgent</div></div>
   </div>
 
   <div class="risk-box">
     <strong>Critical: Low License Adoption Despite High Case Volume — Contradiction Explained</strong>
     <ul class="signal-list">
-      <li>Sales &amp; Service Cloud (Force.com subscription, org <code>0013000001IeqZf</code>) shows LA <strong>3.81%</strong> and EU <strong>0.32%</strong> — low feature activation for a $3.8M Premier account, but TLP is <strong>66.2%</strong>, meaning most licensed users do log in. The gap between TLP (66.2%) and LA (3.81%) suggests users are accessing the platform but not activating core Sales Cloud features.</li>
-      <li>The earlier figures of 0.76% / 1.08% were from the <strong>Tableau subscription</strong> record (<code>0013y00001ck1Cx</code>) — not the Sales &amp; Service Cloud subscription. The correct S&amp;S Cloud data is from the Force.com record.</li>
-      <li>The high TLP (66.2%) combined with 100+ annual support cases is consistent — the development and admin team is active. The low feature activation (LA 3.81%) points to a configuration/adoption gap rather than org fragmentation.</li>
-      <li><strong>Renewal date is not confirmed</strong> — the AV App shows a placeholder (2999-02-01) for the S&amp;S Cloud subscription. Confirm with AE before the renewal conversation.</li>
+      <li>Sales &amp; Service Cloud license data (org <code>0013y00001ck1Cx</code>) shows LA <strong>0.76%</strong> and EU <strong>1.08%</strong> — extremely low for a $3.8M Premier account with 100+ annual support cases. TLP of 24.3% is more credible given case activity but still low for a $3.8M investment.</li>
+      <li>Likely explanation: Lion Re:Sources is a <strong>shared services entity</strong> for Publicis Groupe. Active users (Pardot marketers, CRMA developers, sales reps) may sit on <em>other Publicis org IDs</em>, making this org appear under-utilized.</li>
+      <li>A second qualifying subscription exists: <strong>Force.com - Unlimited Edition</strong> (Platform, org <code>0013000001IeqZf</code>) with LA 3.81%, TLP 66.2% — higher login activity, placeholder renewal date.</li>
+      <li><strong>S&amp;S Cloud renewal: 2027-02-19</strong> — 85 days away. Group-level Publicis procurement decisions are often made 3–6 months ahead, meaning this renewal may already be in flight.</li>
     </ul>
   </div>
 
@@ -424,16 +424,16 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
     <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Historical Red Account Cases</div><div class="kpi-sub-amber">All closed Apr 2025</div></div>
     <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Overall Risk Rating</div><div class="kpi-sub-amber">Paradox account</div></div>
-    <div class="kpi-card"><div class="kpi-val">30%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-red">Low — renewal date unknown</div></div>
+    <div class="kpi-card"><div class="kpi-val">40%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-amber">Moderate — renewal in 85 days</div></div>
   </div>
 
   <div class="section">
     <div class="section-title">Save Probability Breakdown</div>
     <div class="kpi-grid" style="margin-top:12px">
-      <div class="kpi-card"><div class="kpi-val">0/40</div><div class="kpi-label">Renewal Runway</div><div class="kpi-sub-red">Renewal date unknown — confirm with AE</div></div>
-      <div class="kpi-card"><div class="kpi-val">10/30</div><div class="kpi-label">Adoption Footprint</div><div class="kpi-sub-amber">LA 3.81% — 1–5% range</div></div>
+      <div class="kpi-card"><div class="kpi-val">15/40</div><div class="kpi-label">Renewal Runway</div><div class="kpi-sub-red">2027-02-19 — only 85 days</div></div>
+      <div class="kpi-card"><div class="kpi-val">5/30</div><div class="kpi-label">Adoption Footprint</div><div class="kpi-sub-red">LA 0.76% — 0.1–1% range</div></div>
       <div class="kpi-card"><div class="kpi-val">20/30</div><div class="kpi-label">Addressability</div><div class="kpi-sub-amber">Open technical blockers — fixable</div></div>
-      <div class="kpi-card"><div class="kpi-val">30/100</div><div class="kpi-label">Total Save Score</div><div class="kpi-sub-red">Low — renewal urgency unknown</div></div>
+      <div class="kpi-card"><div class="kpi-val">40/100</div><div class="kpi-label">Total Save Score</div><div class="kpi-sub-amber">Moderate — act now</div></div>
     </div>
   </div>
 
@@ -454,8 +454,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="risk-box">
     <strong>#2 — Low License Activation &amp; Utilization (High)</strong>
     <ul class="signal-list">
-      <li>Sales &amp; Service Cloud license data (Force.com subscription, org <code>0013000001IeqZf</code>) shows LA <strong>3.81%</strong>, EU <strong>0.32%</strong>, TLP <strong>66.2%</strong>. The high TLP vs low LA gap means users log in but aren't activating core Sales Cloud features — an adoption coaching opportunity.</li>
-      <li>Previously reported figures of 0.76% / 1.08% were from the <strong>Tableau subscription</strong> (<code>0013y00001ck1Cx</code>) and have been corrected throughout this report.</li>
+      <li>Sales &amp; Service Cloud license data (org <code>0013y00001ck1Cx</code>): LA <strong>0.76%</strong>, EU <strong>1.08%</strong>, TLP <strong>24.3%</strong>. Very low activation for a $3.8M account — likely reflects org fragmentation across Publicis entities.</li>
+      <li>A second qualifying subscription (Force.com / Platform, org <code>0013000001IeqZf</code>) shows higher TLP (66.2%) but its renewal date is a placeholder (2999-02-01). This is a separate subscription tracked independently.</li>
       <li>8 cases were historically flagged as Red Account (all closed April 2025, all documentation/training issues) — not active escalations. The account has <strong>no currently open Red Account cases</strong>.</li>
     </ul>
   </div>
@@ -485,7 +485,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
       <li><strong>CRMA performance SLA:</strong> Address the dataflow performance regression proactively with an engineering review — this is a quick win that directly protects the most-used product.</li>
       <li><strong>Publicis group alignment:</strong> Identify the Publicis Groupe-level Salesforce account team. Ensure Lion Re:Sources' Premier relationship is known and valued at the group level before renewal negotiations begin.</li>
       <li><strong>CNIL compliance roadmap:</strong> Provide a formal roadmap for per-recipient email tracking controls in Account Engagement — resolves the EMEA regulatory blocker and demonstrates Salesforce's commitment to GDPR-compliant operation.</li>
-      <li><strong>Confirm renewal date:</strong> The AV App shows a placeholder renewal date (2999-02-01) for the S&amp;S Cloud subscription (<code>0013000001IeqZf</code>). The actual renewal date must be confirmed with the AE before any intervention planning — Save Probability is capped at Low until this is resolved.</li>
+      <li><strong>Confirm org fragmentation:</strong> Determine how many Publicis Groupe users are on other Salesforce org IDs. The 0.76% LA on this org combined with 100+ annual cases is a contradiction that must be resolved before the renewal conversation.</li>
     </ul>
   </div>
 
@@ -495,8 +495,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
       <thead><tr><th>Priority</th><th>Action</th><th>Signal Addressed</th><th>Owner</th></tr></thead>
       <tbody>
         <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Resolve 5 currently-open Sales/Platform cases: Duplicate Contact Merge <code>500hi00000Bn8saAAB</code> (Working), Sales Engagement Cadence <code>500hi00000AwLUXAA3</code> (Need More Info — requires response from customer), Sandbox Dataflow EdgeMart <code>500hi00000AvhldAAB</code> (Working), CRMA Datasets Missing <code>500hi000009GiXmAAK</code> (Need More Info since Oct 30).</td><td>5 open cases</td><td>CSM</td></tr>
-        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Confirm the actual renewal date with the AE — the AV App shows a placeholder (2999-02-01) for the Sales &amp; Service Cloud subscription (<code>0013000001IeqZf</code>). Without a confirmed date, Save Probability stays Low and intervention urgency cannot be scoped. Identify the Publicis Groupe-level AE; group-level procurement decisions are often made 3–6 months ahead and may already be in flight.</td><td>Renewal / external risk</td><td>AE + CSM</td></tr>
-        <tr><td><span class="pill pill-amber">P1 — Urgent</span></td><td>Address the LA/TLP gap: TLP is 66.2% (users do log in) but LA is only 3.81% (core features not activated). This is an adoption coaching opportunity — users are present but not using Sales Cloud features deeply. Run a feature activation session targeting the highest-gap capabilities from the CSS Scorecard: Activity Management (9/100), Agent Automation (0/100).</td><td>Adoption gap</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify Publicis Groupe-level Salesforce AE/account team. S&amp;S Cloud renewal is 2027-02-19 — <strong>only 85 days away</strong>. Group-level contract decisions for Publicis entities are often made 3–6 months ahead, meaning this renewal may already be in flight without CSM visibility. Lion Re:Sources LA of 0.76% may reflect org fragmentation: confirm whether users are on other Publicis org IDs to protect the renewal narrative.</td><td>Renewal / external risk</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — Urgent</span></td><td>Investigate why License Activation is 0.76% and EU is 1.08% despite 100+ support cases in 2026. Confirm whether active users are licensed on a different Publicis org. If confirmed fragmented, document the full Publicis Salesforce footprint before the renewal conversation — low LA/EU is a vulnerability if the customer uses it to negotiate down AOV.</td><td>Adoption anomaly</td><td>CSM + AE</td></tr>
         <tr><td><span class="pill pill-amber">P1 — Urgent</span></td><td>Address recurring CRMA issues: dataflow runtime 5→8.5h regression (<code>500hi000004yVppAAE</code>), inactivity-killed dataflows (<code>500Hx000017sWpZIAU</code>), datasets missing after sandbox refresh (<code>500hi000009GiXmAAK</code>). 12 CRMA cases in 2026 is a signal that the pipeline is fragile. Engage SE for a CRMA architecture review.</td><td>CRMA stability</td><td>CSM + SE</td></tr>
         <tr><td><span class="pill pill-blue">P2 — Short-term</span></td><td>Leverage the Agentforce Coworker adoption case (<code>500hi00000AaUt5AAF</code>, New since Nov 12) and the active developer team (32 Developer Support cases in 2026, including DevOps Center pipeline work) to position Agentforce for sales/developer productivity use cases.</td><td>Expansion</td><td>CSM + AE</td></tr>
       </tbody>
@@ -509,8 +509,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
       <li><strong>CSS Product Adoption score (58/100)</strong> is confirmed from the Customer Success Scorecard (Internal), data as of Oct 31, 2026, Sales and Service Cloud subscription.</li>
       <li><strong>Publicis Groupe parent relationship is unconfirmed.</strong> The assumption that Lion Re:Sources' low LA/EU reflects org fragmentation across a larger Publicis footprint is a hypothesis — not verified in internal data. Do not assert this in a customer or AE conversation without first confirming the account structure.</li>
       <li><strong>Market research stops at Aug 2025</strong> (model knowledge cutoff). Any competitive positioning, company news, or market context in the Market Intelligence tab may be outdated.</li>
-      <li><strong>License Activation (3.81%) and Entitlement Utilization (0.32%)</strong> are from the Sales &amp; Service Cloud (Force.com) subscription, org <code>0013000001IeqZf</code>, sourced from AV Adoption Visibility App. TLP 66.2%. Note: an earlier version of this report showed 0.76%/1.08% — those were from the Tableau subscription record (<code>0013y00001ck1Cx</code>) and have been corrected.</li>
-      <li><strong>Renewal date: not confirmed.</strong> The AV App shows a placeholder date (2999-02-01) for the S&amp;S Cloud subscription. The 2027-02-19 date seen in some views belongs to the Tableau subscription. Confirm with AE.</li>
+      <li><strong>License Activation (0.76%) and Entitlement Utilization (1.08%)</strong> are from the Sales &amp; Service Cloud subscription (org <code>0013y00001ck1Cx</code>), sourced from AV Adoption Visibility App. A separate Force.com / Platform subscription (org <code>0013000001IeqZf</code>) shows LA 3.81% / TLP 66.2% but has a placeholder renewal date.</li>
+      <li><strong>Renewal date (2027-02-19 — 85 days away)</strong> is the confirmed Sales &amp; Service Cloud subscription renewal for org <code>0013y00001ck1Cx</code>. Cloud classification sourced from <code>Subscription Check for PE Pilot.xlsx</code>: Sales &amp; Service Cloud - Unlimited Edition → Sales &amp; Service Cloud; Force.com - Unlimited Edition → Platform.</li>
     </ul>
   </div>
 
@@ -525,7 +525,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         </tr>
         <tr>
           <td><strong>Renewal</strong></td>
-          <td>What is the actual renewal date for the Sales &amp; Service Cloud subscription? The AV App shows a placeholder (2999-02-01) — this needs to be confirmed with the AE. What is the current AOV expectation? Is there any signal from the customer on budget pressure, consolidation, or a competitor evaluation? Has a renewal conversation been initiated?</td>
+          <td>Is the 2027-02-19 renewal date confirmed with the AE? What is the current AOV expectation — is there any signal from the customer on budget pressure, consolidation, or a competitor evaluation? Is the AE already engaged for this renewal cycle? Given only 85 days remain, has a renewal conversation been initiated?</td>
         </tr>
         <tr>
           <td><strong>Account Structure</strong></td>
@@ -533,7 +533,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         </tr>
         <tr>
           <td><strong>Adoption</strong></td>
-          <td>TLP is 66.2% (users do log in) but License Activation is only 3.81% — which Sales Cloud features are the users actually using day-to-day? Which teams are provisioned on this org vs other Publicis orgs? Has the customer raised adoption as a concern or identified specific features they want to enable?</td>
+          <td>Why is License Activation at only 0.76% when the account generates 100+ support cases per year? Which teams or business units actually use this org? Have users been provisioned on a different Publicis org ID? Has the customer raised this as a concern or is it invisible to them?</td>
         </tr>
         <tr>
           <td><strong>Pain Points</strong></td>
@@ -554,7 +554,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="opp-box">
     <strong>What CSM / Support Engineering Can Offer</strong>
     <ul class="signal-list" style="margin-top:8px">
-      <li><strong>Chase the 5 open cases — prioritize now:</strong> Two cases are in <em>Need More Info</em> status awaiting customer response (Sales Engagement Cadence <code>500hi00000AwLUXAA3</code> and CRMA Datasets Missing <code>500hi000009GiXmAAK</code> — open since Oct 30). With renewal date unconfirmed and attrition risk at 47.5%, unresolved cases are a contract risk. CSM should proactively follow up to unblock these before the renewal conversation starts.</li>
+      <li><strong>Chase the 5 open cases — prioritize now:</strong> Two cases are in <em>Need More Info</em> status awaiting customer response (Sales Engagement Cadence <code>500hi00000AwLUXAA3</code> and CRMA Datasets Missing <code>500hi000009GiXmAAK</code> — open since Oct 30). With renewal 85 days out, unresolved cases are a contract risk. CSM should proactively follow up with the customer contact to unblock these before the renewal conversation starts.</li>
       <li><strong>Escalate or review the CRMA dataflow regression with engineering:</strong> The dataflow runtime growing from 5h to 8.5h (<code>500hi000004yVppAAE</code>) combined with inactivity-killed dataflows and missing sandbox datasets points to a systemic CRMA pipeline fragility issue, not isolated incidents. SE should review the account's CRMA architecture and confirm whether a known bug or platform regression explains the runtime growth.</li>
       <li><strong>Join a customer call or build a joint account plan:</strong> The combination of a near-term renewal, low adoption metrics, and 100+ cases signals a customer that is technically engaged but commercially at risk. A CSM-led joint account plan with the AE — covering the adoption hypothesis, the CRMA regression resolution, and the Agentforce expansion path — would directly address all three risk dimensions before the renewal window closes.</li>
     </ul>
@@ -563,8 +563,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="info-box">
     <strong>Data Uncertainty Notes</strong>
     <ul class="signal-list">
-      <li><strong>License Activation (3.81%) and Utilization (0.32%)</strong> are from the Sales &amp; Service Cloud (Force.com) subscription, org <code>0013000001IeqZf</code>. TLP 66.2%. CSS Product Adoption score (58/100) confirmed from Customer Success Scorecard as of Oct 31, 2026.</li>
-      <li><strong>Renewal date: not confirmed.</strong> The AV App shows placeholder date 2999-02-01 for the S&amp;S Cloud subscription (<code>0013000001IeqZf</code>). The 2027-02-19 date is for the Tableau subscription record (<code>0013y00001ck1Cx</code>). Actual S&amp;S Cloud renewal date must be confirmed with AE.</li>
+      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are confirmed Sales &amp; Service Cloud license metrics (org <code>0013y00001ck1Cx</code>). CSS Product Adoption score (58/100) confirmed from Customer Success Scorecard as of Oct 31, 2026.</li>
+      <li><strong>Renewal date (2027-02-19)</strong> confirmed for the Sales &amp; Service Cloud subscription (org <code>0013y00001ck1Cx</code>). A second Platform subscription (Force.com, org <code>0013000001IeqZf</code>) has a placeholder renewal date. Cloud classification per <code>Subscription Check for PE Pilot.xlsx</code>.</li>
       <li><strong>Publicis Groupe relationship</strong> — entity structure and group-level contract details not confirmed from internal data.</li>
       <li><strong>Red Account descriptions</strong> — full context of all 8 Red Account records not retrieved; severity levels not individually confirmed.</li>
     </ul>
@@ -609,10 +609,10 @@ Plotly.newPlot('chartCasesByType',[{
 Plotly.newPlot('chartRisk',[{
   type:'bar',
   x:[10,9,7,6],
-  y:['#1 External Parent-Level Risk','#2 Low Feature Activation (3.81% LA)','#3 CRMA Perf Degradation','#4 EMEA Regulatory Friction'],
+  y:['#1 External Parent-Level Risk','#2 Low License Adoption (0.76% LA)','#3 CRMA Perf Degradation','#4 EMEA Regulatory Friction'],
   orientation:'h',
   marker:{color:['#dc2626','#ef4444','#f59e0b','#f59e0b']},
-  text:['Publicis group procurement centralization','LA 3.81%, TLP 66.2% — feature activation gap','Dataflow 5→8.5h, 12 CRMA cases in 2026','CNIL email tracking, GDPR friction'],
+  text:['Publicis group procurement centralization','LA 0.76%, EU 1.08% — fragmentation risk','Dataflow 5→8.5h, 12 CRMA cases in 2026','CNIL email tracking, GDPR friction'],
   textposition:'outside'
 }],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:260,r:10,t:20,b:30},height:250,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
 </script>
