@@ -85,8 +85,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
     <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
-    <div class="kpi-card"><div class="kpi-val">0.76% / 1.08%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
-    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login %</div><div class="kpi-sub-amber">Tableau AV App</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76% / 1.08%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Sales Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login %</div><div class="kpi-sub-amber">Sales Cloud</div></div>
     <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Historical Red Account Cases</div><div class="kpi-sub-amber">All closed Apr 2025</div></div>
   </div>
 
@@ -94,7 +94,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <strong>Paradox Signal: High Case Volume + Very Low License Activation + High Attrition Risk</strong>
     <ul class="signal-list">
       <li>Lion Re:Sources filed <strong>100+ support cases in 2026</strong> (confirmed OrgCS) across Developer Support (32), CRM Analytics (12), Email/EAC (13), Security (12), Account Engagement (13+), Reports (8) — one of the most active accounts in this cohort.</li>
-      <li>Yet Tableau AV App shows <strong>LA 0.76% and EU 1.08%</strong> — extremely low for a $3.8M Premier account. Best explanation: active users sit on other Publicis Groupe org IDs; this org likely functions as a developer/shared services org, not the primary user org.</li>
+      <li>Yet Sales Cloud license data shows <strong>LA 0.76% and EU 1.08%</strong> — extremely low for a $3.8M Premier account. Best explanation: active users sit on other Publicis Groupe org IDs; this org likely functions as a developer/shared services org, not the primary user org.</li>
       <li>Despite Strong segment classification, the model assigns 47.47% attrition probability — the paradox is most likely <strong>external/structural</strong>: Publicis group-level procurement decisions, org consolidation, or license migration. No active Red Account cases (8 historical cases all closed Apr 2025).</li>
       <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction. <strong>Next renewal: 2027-02-19.</strong></li>
     </ul>
@@ -292,16 +292,16 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <!-- TAB 3: LICENSE & ADOPTION -->
 <div id="t3" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">0.76%</div><div class="kpi-label">License Activation (LA)</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
-    <div class="kpi-card"><div class="kpi-val">1.08%</div><div class="kpi-label">Entitlement Utilization (EU)</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
-    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login % (TLP)</div><div class="kpi-sub-amber">Tableau AV App</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76%</div><div class="kpi-label">License Activation (LA)</div><div class="kpi-sub-red">Sales Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">1.08%</div><div class="kpi-label">Entitlement Utilization (EU)</div><div class="kpi-sub-red">Sales Cloud — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login % (TLP)</div><div class="kpi-sub-amber">Sales Cloud</div></div>
     <div class="kpi-card"><div class="kpi-val">2027-02-19</div><div class="kpi-label">Next Renewal</div><div class="kpi-sub-red">85 days — urgent</div></div>
   </div>
 
   <div class="risk-box">
     <strong>Critical: Low License Adoption Despite High Case Volume — Contradiction Explained</strong>
     <ul class="signal-list">
-      <li>Tableau AV App shows LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account with 100+ annual support cases.</li>
+      <li>Sales Cloud license data shows LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account with 100+ annual support cases.</li>
       <li>Likely explanation: Lion Re:Sources is a <strong>shared services entity</strong> for Publicis Groupe. The active Salesforce users (Pardot marketers, CRM Analytics developers, Sales Engagement users) may sit on <em>different Publicis org IDs</em>, making the linked org appear under-utilized while actual usage is distributed across the Publicis estate.</li>
       <li>This is a <strong>data fragmentation risk</strong> for the attrition model — the 47.47% risk score may partly reflect the low utilization signal even if real usage is higher when consolidated across Publicis entities.</li>
       <li>TLP of 24.3% (logins by licensed users) is more credible given the case activity — but still low for a $3.8M investment.</li>
@@ -322,8 +322,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
           <tr><td>CRM Analytics / CRMA</td><td>15+ dataflow/recipe/dataset cases</td><td><span class="pill pill-green">Heavy Use</span></td></tr>
           <tr><td>Account Engagement (Pardot)</td><td>CNIL compliance, prospect sync, BU management</td><td><span class="pill pill-green">Active</span></td></tr>
           <tr><td>Agentforce</td><td>Coworker adoption case open Nov 2026</td><td><span class="pill pill-amber">In Progress</span></td></tr>
-          <tr><td>Data Cloud</td><td>User data stream, Tableau Next deployments</td><td><span class="pill pill-green">Active</span></td></tr>
-          <tr><td>Tableau Next</td><td>Upload issues, metric display cases</td><td><span class="pill pill-amber">Early Adoption</span></td></tr>
+          <tr><td>Data Cloud</td><td>User data stream deployments</td><td><span class="pill pill-green">Active</span></td></tr>
           <tr><td>DevOps Center</td><td>Multiple deployment pipeline cases</td><td><span class="pill pill-green">Active</span></td></tr>
           <tr><td>Einstein Activity Capture</td><td>EAC sync/sandbox cases throughout 2026</td><td><span class="pill pill-green">Active</span></td></tr>
           <tr><td>Security Controls</td><td>MFA passkey enforcement, PKCE, SSO cases</td><td><span class="pill pill-green">Configured</span></td></tr>
@@ -453,7 +452,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="risk-box">
     <strong>#2 — Low License Activation &amp; Utilization (High)</strong>
     <ul class="signal-list">
-      <li>Tableau AV App confirms LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account. This contradicts the case-evidence picture of a heavily engaged development team.</li>
+      <li>Sales Cloud license data confirms LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account. This contradicts the case-evidence picture of a heavily engaged development team.</li>
       <li>Most likely explanation: Lion Re:Sources is a Publicis Groupe shared services entity. Active users (Pardot marketers, CRMA developers, sales reps) may be licensed on <em>other Publicis org IDs</em>, making this org appear under-utilized. TLP (24.3%) is higher, suggesting some real users do log in.</li>
       <li>8 cases were historically flagged as Red Account (all closed April 2025, all documentation/training issues) — not active escalations. The account has <strong>no currently open Red Account cases</strong>.</li>
     </ul>
@@ -502,11 +501,68 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     </table>
   </div>
 
+  <div class="risk-box" style="border-left:4px solid #d97706;background:#fffbeb">
+    <strong style="color:#92400e">⚠ Caveats — Read Before Sharing This Report</strong>
+    <ul class="signal-list" style="margin-top:8px">
+      <li><strong>CSS score (72/100) is estimated</strong>, not system data. The Account Drill-Down view in Tableau is not MCP-queryable; sub-scores (Product Adoption 75, Customer Expertise 68, Technical Health 73) are approximations derived from case pattern analysis.</li>
+      <li><strong>Publicis Groupe parent relationship is unconfirmed.</strong> The assumption that Lion Re:Sources' low LA/EU reflects org fragmentation across a larger Publicis footprint is a hypothesis — not verified in internal data. Do not assert this in a customer or AE conversation without first confirming the account structure.</li>
+      <li><strong>Market research stops at Aug 2025</strong> (model knowledge cutoff). Any competitive positioning, company news, or market context in the Market Intelligence tab may be outdated.</li>
+      <li><strong>License Activation (0.76%) and Entitlement Utilization (1.08%)</strong> are confirmed Sales Cloud license metrics as of Nov 2026. These are pre-aggregated figures for the org; individual team-level or product-level breakdowns are not available.</li>
+      <li><strong>Renewal date (2027-02-19 — 85 days away)</strong> is the confirmed Sales Cloud subscription renewal for primary org <code>0013y00001ck1Cx</code>. A second linked record shows <code>2999-02-01</code> (placeholder date — not operative).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Questions for the Lead SM</div>
+    <table>
+      <thead><tr><th style="width:18%">Topic</th><th>Questions to Ask</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Relationship</strong></td>
+          <td>Who are the executive sponsor and day-to-day contacts at Lion Re:Sources? When was the last QBR or formal success review? Is there an active cadence with the customer or has the relationship gone dark?</td>
+        </tr>
+        <tr>
+          <td><strong>Renewal</strong></td>
+          <td>Is the 2027-02-19 renewal date confirmed with the AE? What is the current AOV expectation — is there any signal from the customer on budget pressure, consolidation, or a competitor evaluation? Is the AE already engaged for this renewal cycle? Given only 85 days remain, has a renewal conversation been initiated?</td>
+        </tr>
+        <tr>
+          <td><strong>Account Structure</strong></td>
+          <td>Is Lion Re:Sources a Publicis Groupe entity? Are there other Publicis org IDs that share the same user base or Salesforce footprint? Is there a group-level contract that would make a renewal decision above the Lion Re:Sources team's authority? Understanding this is critical before the AE engages on price.</td>
+        </tr>
+        <tr>
+          <td><strong>Adoption</strong></td>
+          <td>Why is License Activation at only 0.76% when the account generates 100+ support cases per year? Which teams or business units actually use the org? Have users been provisioned on a different org ID? Has the customer raised this as a concern or is it invisible to them?</td>
+        </tr>
+        <tr>
+          <td><strong>Pain Points</strong></td>
+          <td>Is there exec-level frustration beyond what the cases show — particularly around CRMA performance (the 5→8.5h dataflow regression) or sandbox reliability? Have any cases escalated to exec attention or generated formal complaints?</td>
+        </tr>
+        <tr>
+          <td><strong>Red Account History</strong></td>
+          <td>What drove the 8 Red Account cases in April 2025? The case subjects are on record (DKIM Sandbox, IsPrimary Reports, Cadence/Campaign, Custom Link Lightning, etc.) but the root causes and resolution paths are unclear from OrgCS data alone. Were these fully resolved, or did any of the underlying issues recur in the 2026 case volume?</td>
+        </tr>
+        <tr>
+          <td><strong>Expansion &amp; Support</strong></td>
+          <td>What is the status of the Agentforce Coworker adoption case opened Nov 12 (<code>500hi00000AaUt5AAF</code>)? Is this a formal pilot or exploratory? Where can Support Engineering help — particularly on the CRMA architecture given 12 CRMA cases this year?</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="opp-box">
+    <strong>What CSM / Support Engineering Can Offer</strong>
+    <ul class="signal-list" style="margin-top:8px">
+      <li><strong>Chase the 5 open cases — prioritize now:</strong> Two cases are in <em>Need More Info</em> status awaiting customer response (Sales Engagement Cadence <code>500hi00000AwLUXAA3</code> and CRMA Datasets Missing <code>500hi000009GiXmAAK</code> — open since Oct 30). With renewal 85 days out, unresolved cases are a contract risk. CSM should proactively follow up with the customer contact to unblock these before the renewal conversation starts.</li>
+      <li><strong>Escalate or review the CRMA dataflow regression with engineering:</strong> The dataflow runtime growing from 5h to 8.5h (<code>500hi000004yVppAAE</code>) combined with inactivity-killed dataflows and missing sandbox datasets points to a systemic CRMA pipeline fragility issue, not isolated incidents. SE should review the account's CRMA architecture and confirm whether a known bug or platform regression explains the runtime growth.</li>
+      <li><strong>Join a customer call or build a joint account plan:</strong> The combination of a near-term renewal, low adoption metrics, and 100+ cases signals a customer that is technically engaged but commercially at risk. A CSM-led joint account plan with the AE — covering the adoption hypothesis, the CRMA regression resolution, and the Agentforce expansion path — would directly address all three risk dimensions before the renewal window closes.</li>
+    </ul>
+  </div>
+
   <div class="info-box">
     <strong>Data Uncertainty Notes</strong>
     <ul class="signal-list">
-      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are from the Tableau AV Adoption App (confirmed). CSS health score (72/100) is estimated — the Account Drill-Down view is not MCP-queryable.</li>
-      <li><strong>Renewal date (2027-02-19)</strong> confirmed from Tableau AV Adoption App for primary org <code>0013y00001ck1Cx</code>. A second record <code>0013000001IeqZf</code> shows <code>2999-02-01</code> (placeholder) — the 2027-02-19 date is the operative one.</li>
+      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are confirmed Sales Cloud license metrics. CSS health score (72/100) is estimated — the Account Drill-Down view is not MCP-queryable.</li>
+      <li><strong>Renewal date (2027-02-19)</strong> confirmed Sales Cloud subscription renewal for primary org <code>0013y00001ck1Cx</code>. A second record <code>0013000001IeqZf</code> shows <code>2999-02-01</code> (placeholder) — the 2027-02-19 date is the operative one.</li>
       <li><strong>Publicis Groupe relationship</strong> — entity structure and group-level contract details not confirmed from internal data.</li>
       <li><strong>Red Account descriptions</strong> — full context of all 8 Red Account records not retrieved; severity levels not individually confirmed.</li>
     </ul>
