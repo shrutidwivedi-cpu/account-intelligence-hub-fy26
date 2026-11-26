@@ -82,7 +82,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <!-- TAB 1: ACCOUNT OVERVIEW -->
 <div id="t1" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
+    <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales &amp; Service Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
     <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
     <div class="kpi-card"><div class="kpi-val">0.76% / 1.08%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Sales Cloud — very low</div></div>
@@ -120,10 +120,10 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="section">
       <div class="section-title">Commercial &amp; Risk Summary</div>
       <table><tbody>
-        <tr><td><strong>Sales Cloud AOV</strong></td><td>$3,806,083</td></tr>
+        <tr><td><strong>Sales &amp; Service Cloud AOV</strong></td><td>$3,806,083</td></tr>
         <tr><td><strong>Attrition Probability</strong></td><td>47.47%</td></tr>
         <tr><td><strong>Predicted $ at Risk</strong></td><td>~$1,351,101</td></tr>
-        <tr><td><strong>Primary Cloud Usage</strong></td><td>Sales Cloud, CRM Analytics, Account Engagement, Agentforce, Data Cloud</td></tr>
+        <tr><td><strong>Primary Cloud Usage</strong></td><td>Sales &amp; Service Cloud, CRM Analytics, Account Engagement, Agentforce, Data Cloud</td></tr>
         <tr><td><strong>Historical Red Account Cases</strong></td><td>8 (all closed Apr 2025)</td></tr>
         <tr><td><strong>Last Active Engagement</strong></td><td>Nov 26, 2026 (Duplicate Contact Merge case)</td></tr>
         <tr><td><strong>Next Renewal Date</strong></td><td>2027-02-19 (<strong style="color:#dc2626">85 days away</strong>)</td></tr>
@@ -334,15 +334,18 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <!-- TAB 4: CSS HEALTH -->
 <div id="t4" class="tab-pane">
+  <div class="info-box" style="margin-bottom:16px">
+    Source: Customer Success Scorecard (Internal) — Sales and Service Cloud, data as of Oct 31, 2026. Tenant: force.com (<code>00DU000000098UZ</code>), Account: Lion Re:Sources Inc (<code>0013000001IeqZf</code>).
+  </div>
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">72</div><div class="kpi-label">Overall CSS Score</div><div class="kpi-sub">est. — Out of 100</div></div>
-    <div class="kpi-card"><div class="kpi-val">~75</div><div class="kpi-label">Product Adoption</div><div class="kpi-sub">Multi-cloud active use</div></div>
-    <div class="kpi-card"><div class="kpi-val">~68</div><div class="kpi-label">Customer Expertise</div><div class="kpi-sub">Agentforce engagement</div></div>
-    <div class="kpi-card"><div class="kpi-val">~73</div><div class="kpi-label">Technical Health</div><div class="kpi-sub-amber">Security gaps flagged</div></div>
+    <div class="kpi-card"><div class="kpi-val">58</div><div class="kpi-label">Product Adoption Score</div><div class="kpi-sub-amber">↓2 — Good (Sales &amp; Service Cloud)</div></div>
+    <div class="kpi-card"><div class="kpi-val">73</div><div class="kpi-label">Consumption</div><div class="kpi-sub">License/entitlement usage</div></div>
+    <div class="kpi-card"><div class="kpi-val">88</div><div class="kpi-label">Connect with Prospects</div><div class="kpi-sub-amber">Highest capability</div></div>
+    <div class="kpi-card"><div class="kpi-val">0 / 1 / 9</div><div class="kpi-label">Agent Auto / Agent Exp / Activity</div><div class="kpi-sub-red">Critical gaps</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">CSS Category Scores (est. — based on case evidence)</div>
+    <div class="section-title">Sales and Service Cloud — Capability Scores (Customer Success Scorecard, Oct 2026)</div>
     <div id="chartCSS" class="chart-container"></div>
   </div>
 
@@ -350,22 +353,21 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="section">
       <div class="section-title">Strengths</div>
       <ul class="signal-list">
-        <li><span class="signal-ok">Multi-cloud active deployment</span> — Sales, Analytics, Pardot, Agentforce, Data Cloud all in use</li>
-        <li><span class="signal-ok">DevOps Center adoption</span> — CI/CD pipeline management indicates mature development practice</li>
-        <li><span class="signal-ok">CRMA deeply embedded</span> — dataflow recipes, datasets, subscriptions all actively used</li>
-        <li><span class="signal-ok">CNIL/GDPR compliance engagement</span> — proactive data privacy work for EMEA</li>
-        <li><span class="signal-ok">Agentforce adoption begun</span> — coworker case open Nov 2026 indicates forward progress</li>
+        <li><span class="signal-ok">Connect with Prospects: 88</span> — highest capability score; Pardot/Account Engagement and email outreach are actively driving pipeline-top activity</li>
+        <li><span class="signal-ok">Consumption: 73</span> — license/entitlement usage is solid; org is being provisioned and accessed despite low activation %</li>
+        <li><span class="signal-ok">Case Management: 49</span> — service layer is configured and in use; CRMA deeply embedded, DevOps pipeline active</li>
+        <li><span class="signal-ok">Multi-cloud active deployment</span> — Sales, CRM Analytics, Account Engagement, Agentforce (nascent), Data Cloud all in use</li>
       </ul>
     </div>
     <div class="section">
       <div class="section-title">Gaps / Risk Signals</div>
       <ul class="signal-list">
-        <li><span class="signal-critical">Very low license activation (0.76%) and utilization (1.08%)</span> — unexpectedly low for account size; likely reflects org fragmentation across Publicis entities</li>
-        <li><span class="signal-warn">8 historical Red Account cases (all closed Apr 2025)</span> — documentation/training issues, not active escalations, but indicate a knowledge gap period</li>
+        <li><span class="signal-critical">Agent Automation: 0 — no adoption whatsoever.</span> Flow-based automation, approval processes, and Einstein automation capabilities are entirely unused. For a $3.8M Sales + Service account this is a major under-utilization gap.</li>
+        <li><span class="signal-critical">Agent Experience: 1 — near-zero.</span> Lightning Experience, console productivity, or service agent tooling is not being used meaningfully.</li>
+        <li><span class="signal-critical">Activity Management: 9</span> — tasks, events, email logging, and Einstein Activity Capture are barely configured. Despite 7 Sales Engagement cases, the core activity capture motion isn't running.</li>
+        <li><span class="signal-warn">Account &amp; Contact Management: 52</span> — basic CRM hygiene is mid-range; no strong signal of territory management, opportunity management depth, or contact hierarchy use.</li>
+        <li><span class="signal-warn">CRMA dataflow performance degrading</span> — run time increased 5→8.5 hours; directly impacts Case Management and analytics workflows</li>
         <li><span class="signal-warn">Pardot CNIL compliance friction</span> — per-recipient email tracking an open blocker for EMEA marketing teams</li>
-        <li><span class="signal-warn">CRMA dataflow performance degrading</span> — run time increased 5→8.5 hours; recipe failures reported</li>
-        <li><span class="signal-warn">MFA passkey inconsistencies</span> — SSO passkey behavior differs between incognito/normal browser sessions</li>
-        <li><span class="signal-warn">Apex limit requests recurring</span> — multiple requests to increase limits suggest hitting governor boundaries</li>
       </ul>
     </div>
   </div>
@@ -504,7 +506,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="risk-box" style="border-left:4px solid #d97706;background:#fffbeb">
     <strong style="color:#92400e">⚠ Caveats — Read Before Sharing This Report</strong>
     <ul class="signal-list" style="margin-top:8px">
-      <li><strong>CSS score (72/100) is estimated</strong>, not system data. The Account Drill-Down view in Tableau is not MCP-queryable; sub-scores (Product Adoption 75, Customer Expertise 68, Technical Health 73) are approximations derived from case pattern analysis.</li>
+      <li><strong>CSS Product Adoption score (58/100)</strong> is confirmed from the Customer Success Scorecard (Internal), data as of Oct 31, 2026, Sales and Service Cloud subscription.</li>
       <li><strong>Publicis Groupe parent relationship is unconfirmed.</strong> The assumption that Lion Re:Sources' low LA/EU reflects org fragmentation across a larger Publicis footprint is a hypothesis — not verified in internal data. Do not assert this in a customer or AE conversation without first confirming the account structure.</li>
       <li><strong>Market research stops at Aug 2025</strong> (model knowledge cutoff). Any competitive positioning, company news, or market context in the Market Intelligence tab may be outdated.</li>
       <li><strong>License Activation (0.76%) and Entitlement Utilization (1.08%)</strong> are confirmed Sales Cloud license metrics as of Nov 2026. These are pre-aggregated figures for the org; individual team-level or product-level breakdowns are not available.</li>
@@ -561,7 +563,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="info-box">
     <strong>Data Uncertainty Notes</strong>
     <ul class="signal-list">
-      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are confirmed Sales Cloud license metrics. CSS health score (72/100) is estimated — the Account Drill-Down view is not MCP-queryable.</li>
+      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are confirmed Sales and Service Cloud license metrics. CSS Product Adoption score (58/100) confirmed from Customer Success Scorecard as of Oct 31, 2026.</li>
       <li><strong>Renewal date (2027-02-19)</strong> confirmed Sales Cloud subscription renewal for primary org <code>0013y00001ck1Cx</code>. A second record <code>0013000001IeqZf</code> shows <code>2999-02-01</code> (placeholder) — the 2027-02-19 date is the operative one.</li>
       <li><strong>Publicis Groupe relationship</strong> — entity structure and group-level contract details not confirmed from internal data.</li>
       <li><strong>Red Account descriptions</strong> — full context of all 8 Red Account records not retrieved; severity levels not individually confirmed.</li>
@@ -579,9 +581,13 @@ function showTab(id,btn){
 }
 
 Plotly.newPlot('chartCSS',[{
-  type:'bar',x:[75,68,73],y:['Product Adoption','Customer Expertise','Technical Health'],orientation:'h',
-  marker:{color:['#22c55e','#22c55e','#22c55e']},text:['~75/100','~68/100','~73/100'],textposition:'outside'
-}],{xaxis:{range:[0,110],title:'Score'},yaxis:{automargin:true},margin:{l:160,r:80,t:20,b:50},height:200,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:12,color:'#374151'}},{responsive:true});
+  type:'bar',
+  x:[88,73,52,49,9,1,0,1],
+  y:['Connect with Prospects','Consumption','Acct &amp; Contact Mgmt','Case Management','Activity Management','Channel Management','Agent Experience','Agent Automation'],
+  orientation:'h',
+  marker:{color:['#22c55e','#22c55e','#f59e0b','#f59e0b','#ef4444','#94a3b8','#ef4444','#ef4444']},
+  text:[88,73,52,49,9,1,0,1],textposition:'outside'
+}],{xaxis:{range:[0,110],title:'Capability Score'},yaxis:{automargin:true},margin:{l:200,r:80,t:20,b:50},height:300,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:12,color:'#374151'}},{responsive:true});
 
 Plotly.newPlot('chartAdoption',[{
   type:'bar',
