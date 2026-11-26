@@ -85,18 +85,18 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">$3.8M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
     <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
-    <div class="kpi-card"><div class="kpi-val">72/100</div><div class="kpi-label">CSS Health Score</div><div class="kpi-sub-amber">est. — Oct 2026</div></div>
-    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub-red">No utilization</div></div>
-    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-red">Confirmed in OrgCS</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76% / 1.08%</div><div class="kpi-label">License Activation / Utilization</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login %</div><div class="kpi-sub-amber">Tableau AV App</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Historical Red Account Cases</div><div class="kpi-sub-amber">All closed Apr 2025</div></div>
   </div>
 
   <div class="risk-box">
-    <strong>Paradox Signal: High Engagement + High Attrition Risk</strong>
+    <strong>Paradox Signal: High Case Volume + Very Low License Activation + High Attrition Risk</strong>
     <ul class="signal-list">
-      <li>Lion Re:Sources is the <strong>most technically engaged account in this cohort</strong> — 150+ support cases in the past 12 months across Sales, CRM Analytics, Pardot/Account Engagement, Agentforce, Data Cloud, and Tableau Next.</li>
-      <li>Despite Strong segment classification and high product usage, the model assigns 47.47% attrition probability — the paradox suggests risk is <strong>external rather than product-driven</strong>: M&A activity, restructuring, or budget centralization at the Publicis Groupe parent.</li>
-      <li>8 open Red Account records in OrgCS — the highest Red Account count in this cohort — indicating ongoing escalation monitoring despite active engagement.</li>
-      <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction.</li>
+      <li>Lion Re:Sources filed <strong>100+ support cases in 2026</strong> (confirmed OrgCS) across Developer Support (32), CRM Analytics (12), Email/EAC (13), Security (12), Account Engagement (13+), Reports (8) — one of the most active accounts in this cohort.</li>
+      <li>Yet Tableau AV App shows <strong>LA 0.76% and EU 1.08%</strong> — extremely low for a $3.8M Premier account. Best explanation: active users sit on other Publicis Groupe org IDs; this org likely functions as a developer/shared services org, not the primary user org.</li>
+      <li>Despite Strong segment classification, the model assigns 47.47% attrition probability — the paradox is most likely <strong>external/structural</strong>: Publicis group-level procurement decisions, org consolidation, or license migration. No active Red Account cases (8 historical cases all closed Apr 2025).</li>
+      <li>EMEA FRANCE territory: French enterprise procurement cycles and Publicis internal cost rationalization programs create renewal uncertainty independent of product satisfaction. <strong>Next renewal: 2027-02-19.</strong></li>
     </ul>
   </div>
 
@@ -124,8 +124,9 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
         <tr><td><strong>Attrition Probability</strong></td><td>47.47%</td></tr>
         <tr><td><strong>Predicted $ at Risk</strong></td><td>~$1,351,101</td></tr>
         <tr><td><strong>Primary Cloud Usage</strong></td><td>Sales Cloud, CRM Analytics, Account Engagement, Agentforce, Data Cloud</td></tr>
-        <tr><td><strong>Red Accounts Open</strong></td><td>8 (confirmed OrgCS)</td></tr>
-        <tr><td><strong>Last Active Engagement</strong></td><td>Nov 2026 (Agentforce Coworker case open)</td></tr>
+        <tr><td><strong>Historical Red Account Cases</strong></td><td>8 (all closed Apr 2025)</td></tr>
+        <tr><td><strong>Last Active Engagement</strong></td><td>Nov 26, 2026 (Duplicate Contact Merge case)</td></tr>
+        <tr><td><strong>Next Renewal Date</strong></td><td>2027-02-19 (~450 days)</td></tr>
         <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
       </tbody></table>
     </div>
@@ -141,15 +142,15 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <!-- TAB 2: SUPPORT & CASES -->
 <div id="t2" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">20+</div><div class="kpi-label">Sales Cloud Cases</div><div class="kpi-sub">OrgCS — Sales Cloud only</div></div>
-    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-green">None in Sales Cloud</div></div>
-    <div class="kpi-card"><div class="kpi-val">Nov 2026</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub">Active engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">100+</div><div class="kpi-label">Total Cases (2026)</div><div class="kpi-sub">All clouds — OrgCS confirmed</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Active Red Account Cases</div><div class="kpi-sub-green">None currently open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Nov 26, 2026</div><div class="kpi-label">Last Case Filed</div><div class="kpi-sub">Active engagement today</div></div>
     <div class="kpi-card"><div class="kpi-val">Premier</div><div class="kpi-label">Support Level</div><div class="kpi-sub-green">Confirmed OrgCS</div></div>
   </div>
 
   <div class="opp-box">
     <strong>Active Sales Cloud Engagement — 20+ Cases Across Multiple Areas</strong>
-    Lion Re:Sources (OrgCS <code>0013000001Ik04WAAR</code>, Org <code>00DU000000098UZ</code>, Premier) has 20+ Sales Cloud cases covering CRM Analytics, Developer Support, Email Delivery, Reports &amp; Dashboards, Setup/Configuration, and Feature Activation. The account is actively using multiple Sales Cloud product areas. Last case was filed Nov 20, 2026 — the account is still engaged with Salesforce support. No Red Account records on the Sales Cloud side.
+    Lion Re:Sources (OrgCS <code>0013000001Ik04WAAR</code>, Org <code>00DU000000098UZ</code>, Premier) has <strong>100+ cases in 2026</strong> across Developer Support (25), Sales Cloud Core (19), Security/Activations (14), Account Engagement/Pardot (13), Email/EAC (12), CRM Analytics (9), Agentforce (2), Tableau Next (2). The last case was filed <strong>Nov 26, 2026</strong> (today). There are no currently-open Red Account cases; 8 historical Red Account flags were all closed in April 2025.
   </div>
 
   <div class="section">
@@ -157,8 +158,10 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table>
       <thead><tr><th>Date</th><th>Subject</th><th>Area</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Nov 2026</td><td>Salesforce Data Export Not Completed – Download Files and Email Not Received (<code>500hi00000BD8W5AAL</code>)</td><td><span class="pill pill-grey">Setup / Data Mgmt</span></td><td><span class="pill pill-green">Closed</span></td></tr>
-        <tr><td>Nov 2026</td><td>Sales Engagement Cadence Support (<code>500hi00000AwLUXAA3</code>)</td><td><span class="pill pill-blue">Sales Engagement</span></td><td><span class="pill pill-amber">Call/Mtg Scheduled</span></td></tr>
+        <tr><td>Nov 26, 2026</td><td>Duplicate Contact Merge (<code>500hi00000Bn8saAAB</code>)</td><td><span class="pill pill-blue">Sales Engagement</span></td><td><span class="pill pill-amber">Working</span></td></tr>
+        <tr><td>Nov 25, 2026</td><td>Support case creation: Sales (<code>500hi00000BiHDKAA3</code>)</td><td><span class="pill pill-grey">Reports &amp; Dashboards</span></td><td><span class="pill pill-amber">Need More Info</span></td></tr>
+        <tr><td>Nov 20, 2026</td><td>Salesforce Data Export Not Completed – Download Files and Email Not Received (<code>500hi00000BD8W5AAL</code>)</td><td><span class="pill pill-grey">Setup / Data Mgmt</span></td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Nov 17, 2026</td><td>Sales Engagement Cadence Support (<code>500hi00000AwLUXAA3</code>)</td><td><span class="pill pill-blue">Sales Engagement</span></td><td><span class="pill pill-amber">Need More Info</span></td></tr>
         <tr><td>Nov 2026</td><td>Sandbox Dataflow Failure – EdgeMart Deleted from Parent Org (<code>500hi00000AvhldAAB</code>)</td><td><span class="pill pill-grey">CRM Analytics</span></td><td><span class="pill pill-amber">Working</span></td></tr>
         <tr><td>Nov 2026</td><td>Support Case Creation issue (<code>500hi00000ArB4QAAV</code>)</td><td><span class="pill pill-blue">Sales Engagement</span></td><td><span class="pill pill-amber">Need More Info</span></td></tr>
         <tr><td>Nov 2026</td><td>Issue during data import via import wizard (<code>500hi00000A0RthAAF</code>)</td><td><span class="pill pill-grey">Setup / Data Mgmt</span></td><td><span class="pill pill-green">Closed</span></td></tr>
@@ -172,28 +175,61 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="info-box">
-    <strong>Key Patterns in Sales Cloud Case History</strong>
+    <strong>Sales/Platform Case Pattern Analysis — 100 Cases in 2026</strong>
     <ul class="signal-list">
-      <li><strong>CRM Analytics is a primary product:</strong> Multiple CRMA cases (dataflow failures, dataset issues, Azure connector, recipe performance) — confirm this is a core dependency and ensure the Spring 26 regression (Oct case) is fully resolved.</li>
-      <li><strong>Active developer usage:</strong> Apex limit increase requests, Flow access issues, and schedule-triggered flow errors indicate in-house development team actively customizing the platform.</li>
-      <li><strong>Email delivery &amp; integrations:</strong> Einstein Activity Capture syncing issues and Salesforce-to-Outlook cases across 2023–2026 suggest email/calendar integration is business-critical.</li>
-      <li><strong>Open cases requiring follow-up:</strong> Sales Engagement Cadence (<code>500hi00000AwLUXAA3</code>, Call Scheduled) and CRM Analytics Sandbox Dataflow (<code>500hi00000AvhldAAB</code>, Working) need active resolution.</li>
+      <li><strong>Developer Support (32 cases) — highest volume area:</strong> Persistent DevOps Center pipeline deployment errors (Apex limit exceptions during Lead conversion, flow deployment failures, connected app auth). Apex limit increase requests are recurring — QE6 sandbox is regularly hitting Salesforce governor limits, indicating an active, complex in-house development team. Cases: <code>500hi000009crDsAAI</code>, <code>500hi000009G1PZAA0</code>, <code>500hi00000939cfAAA</code>, <code>500hi000001T7qLAAS</code>, <code>500hi000001Sp73AAC</code>, <code>500hi000001OTxxAAG</code>, and 26 more.</li>
+      <li><strong>CRM Analytics (12 cases) — critical dependency:</strong> Dataflow runtime regression from 5→8.5 hours (<code>500hi000004yVppAAE</code>, Sep 7 2026, logged as "Documentation" cause — likely misclassified), dataflow killed due to inactivity (<code>500hi000003XXXX</code>), file size limit errors, EdgeMart deletion after sandbox sync (<code>500hi00000AvhldAAB</code>, still Working), CRMA datasets missing post-sandbox refresh (<code>500hi000009GiXmAAK</code>, Need More Info since Oct 30). Also: Azure Data Lake Output Connector hidden in recipe tool (<code>500hi000006A4JqAAK</code>), CRMA→IBI data setup guidance, currency conversion query. CRMA is embedded as a core analytics pipeline — not a peripheral product.</li>
+      <li><strong>Email / Einstein Activity Capture (13 cases) — recurring friction:</strong> EAC syncing fails in sandbox (cases in Mar, May, Jun, Sep 2026 — same pattern repeatedly). Email-to-Salesforce functionality issues. DKIM sandbox refresh (<code>500hi0000000XXXX</code>). The EWS retirement warning case in Mar 2026 suggests Outlook integration dependency. This is a repeated pattern rather than a one-off.</li>
+      <li><strong>Security / Activations (12 cases):</strong> Passkey SSO behavior inconsistent between incognito/normal browser sessions (<code>500hi000003XVkrAAG</code>, Aug 12) — two separate tickets for same issue. Multiple login failures, MFA exemption requests, email limit increases for bulk operations. Anomalous login behavior alert (Jun 8). Suggests a large user base with varied device/browser configurations across Publicis offices.</li>
+      <li><strong>Reports &amp; Dashboards (8 cases):</strong> Revenue mismatch in "With or Without" report type (<code>500Hx00001I9VkrIAF</code>), report export returning old cached filters, Opportunity Contact Role IsPrimary field not populating in reports, report subscription issue when table border applied in CRMA. Points to complex reporting requirements and possible data model customizations.</li>
+      <li><strong>Currently open Sales/Platform cases (5 open):</strong> Duplicate Contact Merge (<code>500hi00000Bn8saAAB</code>, Working, Nov 26), Support case creation (<code>500hi00000BiHDKAA3</code>, Need More Info, Nov 25), Sales Engagement Cadence (<code>500hi00000AwLUXAA3</code>, Need More Info, Nov 17), Sandbox Dataflow EdgeMart (<code>500hi00000AvhldAAB</code>, Working, Nov 17), CRMA Datasets Missing (<code>500hi000009GiXmAAK</code>, Need More Info, Oct 30).</li>
     </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Red Account Cases — Detail (all 8 from Apr 2025)</div>
+    <table>
+      <thead><tr><th>Date</th><th>Subject</th><th>Cloud</th><th>Cause</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Apr 15, 2025</td><td>Pardot Impact When Consolidating Contact Records (<code>500Hx00000nNAIbIAO</code>)</td><td><span class="pill pill-grey">Acct Engagement</span></td><td>Documentation gap</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 9, 2025</td><td>Prospect Score not syncing (<code>500Hx00000n43XmIAI</code>)</td><td><span class="pill pill-grey">Acct Engagement</span></td><td>Not classified</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 8, 2025</td><td>Reporting Opportunity Stage Duration in 360° Report (<code>500Hx00000n0k54IAA</code>)</td><td><span class="pill pill-blue">Sales — Reports</span></td><td>Documentation/Training</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 8, 2025</td><td>Not able to create Action Plan Template (<code>500Hx00000n0JOEIA2</code>)</td><td><span class="pill pill-grey">Industry-FinServ</span></td><td>Documentation/Training</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 4, 2025</td><td>Approval History missing for some records (<code>500Hx00000mqU81IAE</code>)</td><td><span class="pill pill-blue">Sales — Config</span></td><td>Out of scope</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 4, 2025</td><td>Salesforce Release Update Enforcement (<code>500Hx00000mphSJIAY</code>)</td><td><span class="pill pill-blue">Sales — Developer</span></td><td>Documentation/Training</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Apr 1, 2025</td><td>Marketing Cloud Campaigns Queries (<code>500Hx00000mfEcrIAE</code>)</td><td><span class="pill pill-grey">Engagement Connector</span></td><td>Documentation/Training</td><td><span class="pill pill-green">Closed</span></td></tr>
+        <tr><td>Mar 26, 2025</td><td>Prospect able to unsubscribe from email (<code>500Hx00000mO1s9IAC</code>)</td><td><span class="pill pill-grey">Acct Engagement</span></td><td>Documentation/Training</td><td><span class="pill pill-green">Closed</span></td></tr>
+      </tbody>
+    </table>
+    <div class="info-box" style="margin-top:12px">
+      <strong>Red Account Interpretation</strong>
+      <ul class="signal-list">
+        <li><strong>All 8 are closed and from April 2025 — not currently open escalations.</strong> The red account flag was set at case creation (Mar–Apr 2025) and not cleared, but the accounts themselves were resolved. This is a data quality artifact, not an active escalation risk.</li>
+        <li><strong>Sales/Platform red accounts (2 of 8):</strong> Reports and Dashboards (stage duration reporting) and Sales Config (Approval History gap — classified as out-of-scope). Both are low severity training/documentation issues.</li>
+        <li><strong>Dominant pattern across all 8:</strong> "Documentation or User Knowledge Issue" — these were primarily cases where users needed guidance on existing functionality, not product bugs or data loss events.</li>
+        <li><strong>No currently open Red Account cases exist in OrgCS</strong> for this account as of Nov 26, 2026.</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <!-- TAB 3: LICENSE & ADOPTION -->
 <div id="t3" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Activation</div><div class="kpi-sub-red">No users activated</div></div>
-    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub-red">No utilization</div></div>
-    <div class="kpi-card"><div class="kpi-val">Active</div><div class="kpi-label">Agentforce</div><div class="kpi-sub-amber">Adoption case open</div></div>
-    <div class="kpi-card"><div class="kpi-val">Active</div><div class="kpi-label">Data Cloud</div><div class="kpi-sub">Multiple cases</div></div>
+    <div class="kpi-card"><div class="kpi-val">0.76%</div><div class="kpi-label">License Activation (LA)</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">1.08%</div><div class="kpi-label">Entitlement Utilization (EU)</div><div class="kpi-sub-red">Tableau AV App — very low</div></div>
+    <div class="kpi-card"><div class="kpi-val">24.3%</div><div class="kpi-label">True Login % (TLP)</div><div class="kpi-sub-amber">Tableau AV App</div></div>
+    <div class="kpi-card"><div class="kpi-val">2027-02-19</div><div class="kpi-label">Next Renewal</div><div class="kpi-sub-amber">~450 days</div></div>
   </div>
 
-  <div class="opp-box">
-    <strong>Broad Multi-Cloud Deployment Active</strong>
-    Case evidence confirms active use of: Sales Cloud, Service Cloud, CRM Analytics, Account Engagement (Pardot), Agentforce, Data Cloud, Tableau Next, DevOps Center, and Einstein Activity Capture. This is one of the most fully-deployed Salesforce footprints in the cohort. The risk is not adoption failure but external business factors.
+  <div class="risk-box">
+    <strong>Critical: Low License Adoption Despite High Case Volume — Contradiction Explained</strong>
+    <ul class="signal-list">
+      <li>Tableau AV App shows LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account with 100+ annual support cases.</li>
+      <li>Likely explanation: Lion Re:Sources is a <strong>shared services entity</strong> for Publicis Groupe. The active Salesforce users (Pardot marketers, CRM Analytics developers, Sales Engagement users) may sit on <em>different Publicis org IDs</em>, making the linked org appear under-utilized while actual usage is distributed across the Publicis estate.</li>
+      <li>This is a <strong>data fragmentation risk</strong> for the attrition model — the 47.47% risk score may partly reflect the low utilization signal even if real usage is higher when consolidated across Publicis entities.</li>
+      <li>TLP of 24.3% (logins by licensed users) is more credible given the case activity — but still low for a $3.8M investment.</li>
+    </ul>
   </div>
 
   <div class="two-col">
@@ -249,7 +285,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="section">
       <div class="section-title">Gaps / Risk Signals</div>
       <ul class="signal-list">
-        <li><span class="signal-critical">8 Open Red Accounts</span> — persistent escalation pattern across multiple products</li>
+        <li><span class="signal-critical">Very low license activation (0.76%) and utilization (1.08%)</span> — unexpectedly low for account size; likely reflects org fragmentation across Publicis entities</li>
+        <li><span class="signal-warn">8 historical Red Account cases (all closed Apr 2025)</span> — documentation/training issues, not active escalations, but indicate a knowledge gap period</li>
         <li><span class="signal-warn">Pardot CNIL compliance friction</span> — per-recipient email tracking an open blocker for EMEA marketing teams</li>
         <li><span class="signal-warn">CRMA dataflow performance degrading</span> — run time increased 5→8.5 hours; recipe failures reported</li>
         <li><span class="signal-warn">MFA passkey inconsistencies</span> — SSO passkey behavior differs between incognito/normal browser sessions</li>
@@ -308,23 +345,22 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-val">47.5%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Premier+Sig model</div></div>
     <div class="kpi-card"><div class="kpi-val">$1.4M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $3.8M AOV</div></div>
-    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-red">Highest in cohort</div></div>
+    <div class="kpi-card"><div class="kpi-val">8</div><div class="kpi-label">Historical Red Account Cases</div><div class="kpi-sub-amber">All closed Apr 2025</div></div>
     <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Overall Risk Rating</div><div class="kpi-sub-amber">Paradox account</div></div>
-    <div class="kpi-card"><div class="kpi-val">50%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-amber">Moderate</div></div>
+    <div class="kpi-card"><div class="kpi-val">70%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-amber">High — renewal 450 days out</div></div>
   </div>
-
 
   <div class="section">
     <div class="section-title">Save Probability Breakdown</div>
     <div class="kpi-grid" style="margin-top:12px">
-      <div class="kpi-card"><div class="kpi-val">40/40</div><div class="kpi-label">Renewal Runway</div><div class="kpi-sub-amber">2027-02-19 renewal</div></div>
-      <div class="kpi-card"><div class="kpi-val">0/30</div><div class="kpi-label">Adoption Footprint</div><div class="kpi-sub-red">Zero adoption detected</div></div>
-      <div class="kpi-card"><div class="kpi-val">10/30</div><div class="kpi-label">Addressability</div><div class="kpi-sub-amber">Budget risk — addressable</div></div>
-      <div class="kpi-card"><div class="kpi-val">50/100</div><div class="kpi-label">Total Save Score</div><div class="kpi-sub-amber">Moderate</div></div>
+      <div class="kpi-card"><div class="kpi-val">40/40</div><div class="kpi-label">Renewal Runway</div><div class="kpi-sub-amber">2027-02-19 — 450 days</div></div>
+      <div class="kpi-card"><div class="kpi-val">10/30</div><div class="kpi-label">Adoption Footprint</div><div class="kpi-sub-red">LA 0.76%, EU 1.08% — very low</div></div>
+      <div class="kpi-card"><div class="kpi-val">20/30</div><div class="kpi-label">Addressability</div><div class="kpi-sub-amber">Open technical blockers — fixable</div></div>
+      <div class="kpi-card"><div class="kpi-val">70/100</div><div class="kpi-label">Total Save Score</div><div class="kpi-sub-amber">High — intervention recommended</div></div>
     </div>
   </div>
 
-    <div class="section">
+  <div class="section">
     <div class="section-title">Attrition Risk Signals — Ranked by Severity</div>
     <div id="chartRisk" class="chart-container"></div>
   </div>
@@ -339,11 +375,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
 
   <div class="risk-box">
-    <strong>#2 — 8 Open Red Accounts (High)</strong>
+    <strong>#2 — Low License Activation &amp; Utilization (High)</strong>
     <ul class="signal-list">
-      <li>8 cases in OrgCS flagged as Open Red Account — the highest count in this 12-account cohort. Cases involve Pardot prospect sync, Approval History gaps, contact consolidation issues.</li>
-      <li>Persistent multi-product instability across Account Engagement and Sales Cloud suggests unresolved platform configuration issues that could be affecting user confidence.</li>
-      <li>Red Accounts without documented recovery plans are an ongoing retention risk signal.</li>
+      <li>Tableau AV App confirms LA <strong>0.76%</strong> and EU <strong>1.08%</strong> for the primary org (<code>0013y00001ck1Cx</code>) — extremely low for a $3.8M Premier account. This contradicts the case-evidence picture of a heavily engaged development team.</li>
+      <li>Most likely explanation: Lion Re:Sources is a Publicis Groupe shared services entity. Active users (Pardot marketers, CRMA developers, sales reps) may be licensed on <em>other Publicis org IDs</em>, making this org appear under-utilized. TLP (24.3%) is higher, suggesting some real users do log in.</li>
+      <li>8 cases were historically flagged as Red Account (all closed April 2025, all documentation/training issues) — not active escalations. The account has <strong>no currently open Red Account cases</strong>.</li>
     </ul>
   </div>
 
@@ -372,7 +408,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
       <li><strong>CRMA performance SLA:</strong> Address the dataflow performance regression proactively with an engineering review — this is a quick win that directly protects the most-used product.</li>
       <li><strong>Publicis group alignment:</strong> Identify the Publicis Groupe-level Salesforce account team. Ensure Lion Re:Sources' Premier relationship is known and valued at the group level before renewal negotiations begin.</li>
       <li><strong>CNIL compliance roadmap:</strong> Provide a formal roadmap for per-recipient email tracking controls in Account Engagement — resolves the EMEA regulatory blocker and demonstrates Salesforce's commitment to GDPR-compliant operation.</li>
-      <li><strong>Red Account resolution sprint:</strong> Conduct a 30-day structured resolution of all 8 open Red Accounts with documented recovery milestones — prevents compounding escalation.</li>
+      <li><strong>Confirm org fragmentation:</strong> Determine how many Publicis Groupe users are on other Salesforce org IDs. The 0.76% LA on this org combined with 100+ annual cases is a contradiction that must be resolved before the renewal conversation.</li>
     </ul>
   </div>
 
@@ -381,11 +417,11 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <table style="margin-top:8px">
       <thead><tr><th>Priority</th><th>Action</th><th>Signal Addressed</th><th>Owner</th></tr></thead>
       <tbody>
-        <tr><td><span class="pill pill-red">Immediate</span></td><td>Resolve open Sales Engagement Cadence case <code>500hi00000AwLUXAA3</code> (Call/Meeting Scheduled — ensure it completes and outcome is documented) and Sandbox Dataflow Failure case <code>500hi00000AvhldAAB</code> (Working — confirm resolution timeline with engineering).</td><td>Open cases</td><td>CSM</td></tr>
-        <tr><td><span class="pill pill-red">Immediate</span></td><td>Identify Publicis Groupe-level Salesforce AE/account team. Align Premier relationship visibility at group level before next renewal cycle. Lion Re:Sources is a Publicis subsidiary — group-level attrition risk is elevated.</td><td>#1 External risk</td><td>AE</td></tr>
-        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Close the loop on CRM Analytics Sandbox Dataflow case <code>500hi000009GiXmAAK</code> (Need More Info status since Oct 30). CRMA is a primary product with 6+ cases in 2026 — persistent dataflow issues risk this dependency.</td><td>CRMA stability</td><td>CSM + SE</td></tr>
-        <tr><td><span class="pill pill-amber">Urgent</span></td><td>Review the Oct 2026 CRM Analytics Datasets Missing After Sandbox Refresh (<code>500hi000009GiXmAAK</code>) and Sep 2026 Contact Connection Failure (<code>500hi000006GSbBAAW</code>) — confirm whether these are related to the same underlying API/dataflow change and whether a permanent fix was applied.</td><td>CRMA root cause</td><td>SE</td></tr>
-        <tr><td><span class="pill pill-blue">Short-term</span></td><td>Leverage the Nov 2026 Sales Engagement Cadence engagement to position Agentforce for sales productivity. Active development team (Apex limit cases) and data export usage suggest readiness for AI-assisted workflows.</td><td>Expansion</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Resolve 5 currently-open Sales/Platform cases: Duplicate Contact Merge <code>500hi00000Bn8saAAB</code> (Working), Sales Engagement Cadence <code>500hi00000AwLUXAA3</code> (Need More Info — requires response from customer), Sandbox Dataflow EdgeMart <code>500hi00000AvhldAAB</code> (Working), CRMA Datasets Missing <code>500hi000009GiXmAAK</code> (Need More Info since Oct 30).</td><td>5 open cases</td><td>CSM</td></tr>
+        <tr><td><span class="pill pill-red">P0 — Immediate</span></td><td>Identify Publicis Groupe-level Salesforce AE/account team. Renewal is 2027-02-19 (~450 days). Engage now — group-level contract decisions for Publicis entities often made 6–12 months before renewal. Lion Re:Sources LA of 0.76% may reflect org fragmentation: confirm whether users are on other Publicis org IDs to protect the renewal narrative.</td><td>Renewal / external risk</td><td>AE + CSM</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — Urgent</span></td><td>Investigate why License Activation is 0.76% and EU is 1.08% despite 100+ support cases in 2026. Confirm whether active users are licensed on a different Publicis org. If confirmed fragmented, document the full Publicis Salesforce footprint before the renewal conversation — low LA/EU is a vulnerability if the customer uses it to negotiate down AOV.</td><td>Adoption anomaly</td><td>CSM + AE</td></tr>
+        <tr><td><span class="pill pill-amber">P1 — Urgent</span></td><td>Address recurring CRMA issues: dataflow runtime 5→8.5h regression (<code>500hi000004yVppAAE</code>), inactivity-killed dataflows (<code>500hi000003XXXX</code>), datasets missing after sandbox refresh (<code>500hi000009GiXmAAK</code>). 12 CRMA cases in 2026 is a signal that the pipeline is fragile. Engage SE for a CRMA architecture review.</td><td>CRMA stability</td><td>CSM + SE</td></tr>
+        <tr><td><span class="pill pill-blue">P2 — Short-term</span></td><td>Leverage the Agentforce Coworker adoption case (<code>500hi00000AaUt5AAF</code>, New since Nov 12) and the active developer team (32 Developer Support cases in 2026, including DevOps Center pipeline work) to position Agentforce for sales/developer productivity use cases.</td><td>Expansion</td><td>CSM + AE</td></tr>
       </tbody>
     </table>
   </div>
@@ -393,7 +429,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   <div class="info-box">
     <strong>Data Uncertainty Notes</strong>
     <ul class="signal-list">
-      <li><strong>CSS score and License Utilization</strong> are estimated from case evidence — the Account Drill-Down Tableau view is not MCP-queryable. Actual scores may differ.</li>
+      <li><strong>License Activation (0.76%) and Utilization (1.08%)</strong> are from the Tableau AV Adoption App (confirmed). CSS health score (72/100) is estimated — the Account Drill-Down view is not MCP-queryable.</li>
+      <li><strong>Renewal date (2027-02-19)</strong> confirmed from Tableau AV Adoption App for primary org <code>0013y00001ck1Cx</code>. A second record <code>0013000001IeqZf</code> shows <code>2999-02-01</code> (placeholder) — the 2027-02-19 date is the operative one.</li>
       <li><strong>Publicis Groupe relationship</strong> — entity structure and group-level contract details not confirmed from internal data.</li>
       <li><strong>Red Account descriptions</strong> — full context of all 8 Red Account records not retrieved; severity levels not individually confirmed.</li>
     </ul>
@@ -434,10 +471,10 @@ Plotly.newPlot('chartCasesByType',[{
 Plotly.newPlot('chartRisk',[{
   type:'bar',
   x:[10,9,7,6],
-  y:['#1 External Parent-Level Risk','#2 8 Open Red Accounts','#3 CRMA Perf Degradation','#4 EMEA Regulatory Friction'],
+  y:['#1 External Parent-Level Risk','#2 Low License Adoption (0.76% LA)','#3 CRMA Perf Degradation','#4 EMEA Regulatory Friction'],
   orientation:'h',
   marker:{color:['#dc2626','#ef4444','#f59e0b','#f59e0b']},
-  text:['Publicis group procurement centralization','Highest Red Account count in cohort','Dataflow 5→8.5h, recipe failures','CNIL email tracking, GDPR friction'],
+  text:['Publicis group procurement centralization','LA 0.76%, EU 1.08% — fragmentation risk','Dataflow 5→8.5h, 12 CRMA cases in 2026','CNIL email tracking, GDPR friction'],
   textposition:'outside'
 }],{xaxis:{range:[0,14],showticklabels:false,showgrid:false},yaxis:{automargin:true},margin:{l:260,r:10,t:20,b:30},height:250,paper_bgcolor:'#fff',plot_bgcolor:'#f8fafc',font:{family:'"Segoe UI",system-ui,sans-serif',size:11,color:'#374151'}},{responsive:true});
 </script>
