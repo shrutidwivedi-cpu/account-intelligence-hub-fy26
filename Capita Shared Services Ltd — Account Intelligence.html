@@ -55,7 +55,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <div class="hero">
   <h1>Capita Shared Services Ltd — Account Intelligence</h1>
   <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA UK &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
-  <div class="hero-meta">Org ID: 00DG0000000kVIZ &nbsp;·&nbsp; OrgCS Account ID: 0013000000BMOte &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: UK outsourcer, BPO under financial stress</div>
+  <div class="hero-meta">Org ID: 00DG0000000kVIZ &nbsp;·&nbsp; OrgCS Account ID: 0013000000vSqc5AAC &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: UK outsourcer, BPO under financial stress</div>
 </div>
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
@@ -68,7 +68,208 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t1" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val"><span class="pill pill-blue">Medium</span></div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$1.7M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">36.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Medium tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$630K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~48</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">10yr Strong, no cases</div></div>
+    <div class="kpi-card"><div class="kpi-val">4.4%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">Near-zero utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">10+ yrs</div><div class="kpi-label">Customer Age</div><div class="kpi-sub">Strong segment</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Capita Shared Services Ltd</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqc5AAC</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVIZ</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA UK</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Strong</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>10+ Years — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this contradicts the engagement data below:</strong> The model matched Org <code>00DG0000000kVIZ</code> (OrgCS ID: <code>0013000000vSqc5AAC</code>), which shows null LastActivityDate. However, a broader OrgCS search identifies "Capita Shared Services Ltd" (OrgCS ID: <code>001Hx000018MhdyIAC</code>, Org <code>00Dd30000059tP0</code>) as an active Premier account with 13 cases including an Agentforce implementation in progress (Apr 2026 Completed) and multiple Agentforce Service/Digital Engagement cases through 2026. The "10+ Years" tenure is accurate — but the right record may not have been used. Confirm the correct Org ID with the Capita CSM.
+        </td></tr>
+        <tr><td><strong>Industry</strong></td><td>Business Process Outsourcing / Government Services</td></tr>
+        <tr><td><strong>Parent</strong></td><td>Capita plc (UK, LSE: CPI)</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        <tr><td><strong>SELA Context</strong></td><td>Capita PLC — 10 accounts under global ID</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$1,710,519</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>36.79%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$630,000</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Strong</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-grey">MEDIUM (&lt;40%)</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div class="info-box">
+    <strong>SELA Context — Capita PLC (10 Salesforce accounts)</strong>
+    Capita Shared Services Ltd is part of the Capita PLC SELA cluster with 10 accounts globally. Capita plc (LSE: CPI) is a UK-based business process outsourcing and professional services company operating in government, healthcare, telecoms, and financial services. The company has been undergoing significant restructuring and disposal of non-core assets since 2022, reducing its size from ~£3.4B to ~£2B revenue. While this creates attrition risk, Capita's active Agentforce deployment (confirmed in t2) and Salesforce-driven digital transformation work suggest the relationship is strategically important to their BPO modernization program. The SELA relationship means account decisions at the parent level could affect all 10 Capita accounts.
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Sales Cloud Cases</div><div class="kpi-sub-amber">License expiry Mar 2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">13+</div><div class="kpi-label">Total Cases (all clouds)</div><div class="kpi-sub">Agentforce / Service / DC</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div><div class="kpi-sub-green">None open</div></div>
+    <div class="kpi-card"><div class="kpi-val">Nov 2026</div><div class="kpi-label">Last Activity Date</div><div class="kpi-sub">Active</div></div>
+  </div>
+  <div class="info-box">
+    <strong>OrgCS Deep Dive — Active Engagement on Org <code>00Dd30000059tP0</code> (Capita Shared Services Ltd)</strong>
+    OrgCS on "Capita Shared Services Ltd" (OrgCS ID <code>001Hx000018MhdyIAC</code>) shows 13 cases with active Agentforce deployment underway:
+    <ul class="signal-list">
+      <li><strong>Agentforce implementation completed</strong>: "Agentforce Implementation Tracking" (Apr 2026, Status: Completed) — Capita completed an Agentforce milestone.</li>
+      <li><strong>Agentforce Service bugs</strong>: "Agentforce reporting metrics" (May 2026, product bug), "Agentforce analytics agent health score stuck at 0" (Apr 2026), "Lost ability to use old service agent after license reinstatement" (Mar 2026) — Agentforce Service Cloud in live use.</li>
+      <li><strong>Digital Engagement</strong>: Multiple cases on "Missing Feedback Management feature for A1E licence" and "Missing Configure Survey option in messaging channel" (Mar 2026) — Capita is deploying Digital Engagement / messaging channels.</li>
+      <li><strong>License expiry incident</strong>: Mar 2026 "Licenses expired causing service interruption" — a Sales Cloud license lapse that interrupted Agentforce operations, resolved quickly.</li>
+      <li><strong>High Flex Credits consumption issue</strong>: Jan 2026 — Capita raised a question about Flex Credits consumption in Agentforce, indicating active usage monitoring.</li>
+      <li><strong>Proactive outreach</strong>: "Proactive TMP: Agentforce adoption outreach" (Jan 2026) and "Service: Proactive Adoption Outreach" (Jul 2026).</li>
+      <li><strong>Data Cloud</strong>: "Customer unable to login to Org" (Dec 2025, Industry: Public Sector Solutions) — suggests Capita has Public Sector Solutions or Data Cloud alongside Sales Cloud.</li>
+    </ul>
+  </div>
+  <div class="info-box">
+    <strong>Important: The Model's Org ID May Not Match the Active Account</strong>
+    The model's Org ID <code>00DG0000000kVIZ</code> (matched OrgCS ID <code>0013000000vSqc5AAC</code>) shows null LastActivityDate and no cases. The active Capita Premier account uses Org <code>00Dd30000059tP0</code>. These may be two different Capita legal entities (the shared services portfolio includes multiple orgs), or the model matched an inactive/legacy org. The CSM should confirm which org the $1.7M subscription belongs to.
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">0.0%</div><div class="kpi-label">License Activation (Sales Cloud)</div><div class="kpi-sub-red">0 of 3 seats — critically low</div></div>
+<div class="kpi-card"><div class="kpi-val">44.76%</div><div class="kpi-label">License Activation (Service Cloud)</div><div class="kpi-sub-amber">175 of 391 seats — moderate</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Adoption Likely Declining with Capita Headcount Cuts</strong>
+    Capita plc has been cutting headcount significantly as part of its turnaround plan. Fewer employees using the platform means lower utilization. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~48</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Stale Strong classification</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>CSS Score Likely Stale</strong>
+    "Strong" segment on a 10-year account that has had no recent case activity and whose parent company is in financial distress suggests the CSS health score may not reflect current reality. The 48% attrition probability while classified as "Strong" is a model flag for stale segmentation. Manual refresh recommended.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+<div class="section">
+  <div class="section-title">Company Overview</div>
+  <p style="font-size:.88rem;line-height:1.6;color:#374151">Capita plc is a UK-based business process outsourcing (BPO) and professional services company, serving UK government, public sector, and corporate clients. It manages back-office administration, customer services, HR, finance, and IT outsourcing. Capita has undergone a prolonged and difficult transformation since 2018, divesting non-core assets and attempting to stabilize its balance sheet — but remains under financial and operational pressure.</p>
+  <div class="kpi-grid" style="margin-top:12px">
+    <div class="kpi-card"><div class="kpi-val">£2.31bn</div><div class="kpi-label">Annual Revenue</div><div class="kpi-sub">2025</div></div>
+    <div class="kpi-card"><div class="kpi-val">34,000</div><div class="kpi-label">Employees</div><div class="kpi-sub">2026</div></div>
+    <div class="kpi-card"><div class="kpi-val">London, UK</div><div class="kpi-label">Headquarters</div><div class="kpi-sub">LSE-listed</div></div>
+    <div class="kpi-card"><div class="kpi-val">Stressed</div><div class="kpi-label">Financial Health</div><div class="kpi-sub">Transformation ongoing</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Financial Performance</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Metric</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Prior Year</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Latest</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Trend</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Revenue</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">~£2.5bn (2024 est.)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">£2.31bn (2025)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">↓</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Operating Profit</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — see AE</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — see AE</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Under pressure</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Net Profit / Debt</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — see AE</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Debt reduction ongoing</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">—</td></tr>
+  </table>
+  <p style="font-size:.78rem;color:#6b7280;margin-top:8px">Capita has been in continuous transformation since a near-collapse in 2018, requiring a £700M rights issue. It has divested numerous non-core businesses. CEO Adolfo Hernandez resigned Nov 2026 amid the civil service pension scheme crisis; CFO Pablo Andres assumed the role.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Strategic Priorities &amp; Investment</div>
+  <ul class="signal-list">
+    <li>Stabilise balance sheet and reduce debt — ongoing since 2018 crisis</li>
+    <li>Divest non-core business units to focus on core BPO and government contracts</li>
+    <li>Invest in digital transformation to improve service delivery margins</li>
+    <li>Retain and grow UK government outsourcing contracts (key revenue base)</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">M&amp;A, Restructuring &amp; Risk Signals</div>
+  <ul class="signal-list">
+    <li>2018–present: Prolonged divestiture programme raising ~£700M from non-core asset sales</li>
+    <li>Nov 2026: CEO Adolfo Hernandez resigned following civil service pension scheme crisis; CFO Pablo Andres assumed CEO role</li>
+    <li>2024: Pay freeze for staff as part of cost-reduction measures — employee relations risk</li>
+    <li>Ongoing: Pension deficit management — significant ongoing financial obligation</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Salesforce Commercial Assessment</div>
+  <div class="two-col">
+    <div>
+      <div class="risk-box">
+        <strong>Risks</strong>
+        <ul class="signal-list">
+    <li>Customer concentration risk — <span class="pill pill-red">High</span> (UK government contract dependency)</li>
+    <li>Financial distress signals — <span class="pill pill-red">High</span> (ongoing transformation, CEO departure)</li>
+    <li>Licence reduction — <span class="pill pill-amber">Medium</span> (ongoing headcount and contract rationalisation)</li>
+    <li>Leadership instability — <span class="pill pill-amber">Medium</span> (new CEO, uncertain priorities)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="opp-box">
+        <strong>Opportunities</strong>
+        <ul class="signal-list">
+    <li>Service Cloud — government services automation; Capita manages millions of citizen interactions</li>
+    <li>Agentforce — cost per interaction reduction is existential for a margin-pressured BPO</li>
+    <li>MuleSoft — integration of legacy government systems within BPO delivery</li>
+    <li>Tableau — SLA monitoring, contract performance reporting for government clients</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Key Executives</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Name</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Role</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Likely Area of Interest</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Pablo Andres</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">CEO (since Nov 2026)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Financial stabilisation, contract retention</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — see AE</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">CFO</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Cost reduction, debt management</td></tr>
+  </table>
+</div>
+
+<div class="section" style="border-left:4px solid #0b5394;background:#eff6ff">
+  <div class="section-title" style="color:#1e40af">Questions for Account Executive &mdash; Toby Harris</div>
+  <p style="font-size:.82rem;color:#374151;margin-bottom:8px"><em>Gather these before renewal engagement:</em></p>
+  <ol style="font-size:.82rem;line-height:1.8;color:#374151;padding-left:1.2rem">
+    <li>What is Pablo Andres's (new CEO since Nov 2026) posture toward the existing Salesforce footprint — is a vendor review likely?</li>
+    <li>Is the civil service pension scheme crisis affecting Capita's IT budget or Salesforce contract terms?</li>
+    <li>Are any Salesforce users tied to business units being sold or wound down in the ongoing divestiture programme?</li>
+    <li>What is Capita's digital transformation roadmap for the next 12 months — is Salesforce central to it?</li>
+    <li>Has the pay freeze and cost-reduction drive impacted the Salesforce admin/adoption team internally?</li>
+    <li>Are any Salesforce users linked to recently restructured or divested entities?</li>
+    <li>Is there an Agentforce/AI cost-reduction conversation happening — particularly for contact centre BPO delivery?</li>
+  </ol>
+  <p style="font-size:.75rem;color:#6b7280;margin-top:8px">Source: Capita investor relations, Companies House, Wikipedia, public reporting (Nov 2026). Internal account data not included.</p>
+</div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">36.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Medium tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$630K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">MEDIUM</div><div class="kpi-label">Risk Tier</div><div class="kpi-sub-amber">&lt;40% range</div></div>
     <div class="kpi-card"><div class="kpi-val">Financial Distress</div><div class="kpi-label">Parent Company Status</div><div class="kpi-sub-red">Capita plc turnaround</div></div>
     <div class="kpi-card"><div class="kpi-val">15%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-red">Low</div></div>
   </div>

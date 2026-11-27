@@ -55,7 +55,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <div class="hero">
   <h1>Disney Worldwide Services Inc — Account Intelligence</h1>
   <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; AMER US WEST &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
-  <div class="hero-meta">Org ID: 00Dhm000002APBJ &nbsp;·&nbsp; OrgCS Account ID: 0013y00001cawou &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; NYSE: DIS</div>
+  <div class="hero-meta">Org ID: 00Dhm000002APBJ &nbsp;·&nbsp; OrgCS Account ID: 0013000000vSqd0AAC &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; NYSE: DIS</div>
 </div>
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
@@ -68,7 +68,203 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t1" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val"><span class="pill pill-amber">High</span></div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$1.5M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">41.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$635K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~31</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Zero engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">&lt;1 yr</div><div class="kpi-label">Customer Age (model)</div><div class="kpi-sub-amber">New subscription window</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Disney Worldwide Services Inc</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000000vSqd0AAC</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00DG0000000kVH2</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>AMER</td></tr>
+        <tr><td><strong>Territory</strong></td><td>US WEST</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age (Model)</strong></td><td>&lt;1 Year — <span style="color:#b45309;font-weight:600">⚠ Data Note</span></td></tr>
+        <tr><td colspan="2" style="background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;font-size:.78rem;color:#78350f;line-height:1.5">
+          <strong>Why this needs investigation:</strong> OrgCS confirms Org <code>00Dhm000002APBJ</code> (OrgCS: <code>001Hx00000hF2qNIAS</code>) has only 1 case ever — a proactive outreach in Nov 2026, no Sales Cloud cases, null LastActivityDate. However, there are 10+ other "Disney Worldwide Services, Inc" Premier records in OrgCS with active Sales Cloud history. The model is tracking this specific org, which appears to be a recently-enrolled or dormant entity within a larger Disney Salesforce footprint. The engagement you may be aware of likely belongs to a sibling org. Confirm with the Disney account team which org carries the active $1.5M subscription.
+        </td></tr>
+        <tr><td><strong>Industry</strong></td><td>Entertainment / Media</td></tr>
+        <tr><td><strong>Parent</strong></td><td>The Walt Disney Company</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        <tr><td><strong>SELA Context</strong></td><td>Walt Disney — 53 accounts under global ID</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$1,518,405</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>41.81%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$635,000</td></tr>
+        <tr><td><strong>Open Cases</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Red Account Records</strong></td><td>0 confirmed</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-amber">HIGH (40–50%)</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div class="info-box">
+    <strong>SELA Context — Walt Disney Company (53 Salesforce accounts)</strong>
+    Disney Worldwide Services Inc is part of the Walt Disney SELA cluster with 53 accounts globally. The Walt Disney Company uses Salesforce across multiple subsidiaries and business units (parks, media, streaming, studios). This specific entity ("Disney Worldwide Services") is the IT shared services / procurement arm. With 53 accounts under the global ID, there are significant cross-sell and enterprise relationship management opportunities — but also risk that a decision to consolidate or change licensing could affect multiple accounts simultaneously. Coordinate with Walt Disney's enterprise account team before initiating any renewal or expansion conversation.
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Total Cases (12mo)</div><div class="kpi-sub-red">Zero engagement</div></div>
+    <div class="kpi-card"><div class="kpi-val">0</div><div class="kpi-label">Red Account Records</div></div>
+    <div class="kpi-card"><div class="kpi-val">None</div><div class="kpi-label">Last Recorded Activity</div><div class="kpi-sub-red">No OrgCS history</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Zero Sales Cloud Cases on This Org — Confirmed via OrgCS Deep Dive</strong>
+    OrgCS queried directly on Org <code>00Dhm000002APBJ</code>: only 1 case total — a proactive outreach case (Nov 18, 2026, Status: New, no Cloud assigned). Zero Sales Cloud cases ever filed. This is not a data gap — this specific org has never raised a Sales Cloud support case.
+  </div>
+  <div class="info-box">
+    <strong>Important: Multiple Disney Worldwide Services Orgs Exist in OrgCS</strong>
+    OrgCS contains 10+ Premier records named "Disney Worldwide Services, Inc" across different Org IDs. Several have active Sales Cloud case history (MFA compliance, Developer Support, CRM Analytics, Security). The cases you may be seeing in OrgCS belong to those sibling orgs — not this specific Org ID. To find this account in OrgCS, search by Org ID <code>00Dhm000002APBJ</code> or navigate directly to Account ID <code>001Hx00000hF2qNIAS</code>. The key question for the CSM: which of the Disney Worldwide Services orgs actually holds the $1.5M Premier subscription being tracked in the attrition model?
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">94.85%</div><div class="kpi-label">License Activation (Sales Cloud)</div><div class="kpi-sub">47 of 50 seats — healthy</div></div>
+<div class="kpi-card"><div class="kpi-val">89.31%</div><div class="kpi-label">License Activation (Service Cloud)</div><div class="kpi-sub">764 of 855 seats — healthy</div></div>
+<div class="kpi-card"><div class="kpi-val">est.</div><div class="kpi-label">License Activation</div><div class="kpi-sub-amber">Fragmented account — see t3 for detail</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Minimal Utilization Estimated</strong>
+    Zero case evidence + &lt;1 year entity + no engagement history = estimated ~5% license utilization. Disney's internal Salesforce teams likely operate under separate org IDs (Disney+, ESPN, Parks) — this entity may be a corporate overhead subscription with low active use. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~31</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Low</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>CSS Score ~31/100 Estimated</strong>
+    Zero case activity and no engagement history point to a very low CSS score. Manual dashboard confirmation required. If score is confirmed at &lt;35, emergency outreach protocols apply.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+<div class="section">
+  <div class="section-title">Company Overview</div>
+  <p style="font-size:.88rem;line-height:1.6;color:#374151">Disney Worldwide Services, Inc. is The Walt Disney Company's shared services entity, centralising HR, finance, procurement, IT, and legal functions across Disney's global operations. The Walt Disney Company (parent) is a $102bn revenue entertainment, media, and experiences conglomerate operating Disney Entertainment, Disney Experiences (theme parks), and ESPN (72% ownership). Josh D'Amaro became CEO in March 2026 following Bob Iger's planned departure.</p>
+  <div class="kpi-grid" style="margin-top:12px">
+    <div class="kpi-card"><div class="kpi-val">$102.3bn</div><div class="kpi-label">Disney Revenue (FY2026)</div><div class="kpi-sub">FY ended Sep 2025</div></div>
+    <div class="kpi-card"><div class="kpi-val">203,280</div><div class="kpi-label">Employees</div><div class="kpi-sub">FY2025</div></div>
+    <div class="kpi-card"><div class="kpi-val">Burbank, CA</div><div class="kpi-label">Headquarters</div><div class="kpi-sub">NYSE: DIS</div></div>
+    <div class="kpi-card"><div class="kpi-val">Strong</div><div class="kpi-label">Financial Health</div><div class="kpi-sub">High revenue, strong cash flow</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Financial Performance</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Metric</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Prior Year</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Latest</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Trend</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Revenue</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">~$91bn (FY2024 est.)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">$102.3bn (FY2026)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">↑ significantly</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Operating Income</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">$19.7bn (FY2026)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Strong</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Net Income</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">$9.9bn (FY2026)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Strong</td></tr>
+  </table>
+  <p style="font-size:.78rem;color:#6b7280;margin-top:8px">Disney's FY2026 results (fiscal year ended September 2025) show strong recovery. The streaming business (Disney+) returned to profitability. CEO transition from Bob Iger to Josh D'Amaro (March 2026) brings new strategic emphasis on experiences and AI.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Strategic Priorities &amp; Investment</div>
+  <ul class="signal-list">
+    <li>Disney+ streaming profitability and content investment — $25bn+ annual content spend</li>
+    <li>Theme parks expansion (Disney Experiences) — new lands, resort investments globally</li>
+    <li>ESPN direct-to-consumer launch — separating ESPN from traditional cable bundle</li>
+    <li>AI and technology modernisation — cost reduction across shared services</li>
+    <li>Franchise strategy: Marvel, Star Wars, Pixar, National Geographic content pipeline</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">M&amp;A, Restructuring &amp; Risk Signals</div>
+  <ul class="signal-list">
+    <li>March 2026: CEO transition from Bob Iger to Josh D'Amaro — potential strategic reprioritisation</li>
+    <li>ESPN restructuring — exploring partial sale or JV (NFL, NBA rights negotiations)</li>
+    <li>2024: Merger with Hulu completed (Disney acquired Comcast's 33% stake for ~$8.6bn)</li>
+    <li>Ongoing: Linear TV decline driving structural transformation of media segment</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Salesforce Commercial Assessment</div>
+  <div class="two-col">
+    <div>
+      <div class="risk-box">
+        <strong>Risks</strong>
+        <ul class="signal-list">
+    <li>CEO transition uncertainty — <span class="pill pill-amber">Medium</span> (new CEO may reprioritise tech investments)</li>
+    <li>Shared services scope — <span class="pill pill-amber">Medium</span> (ESPN restructuring may affect user count)</li>
+    <li>Cost-cut pressure on corporate functions — <span class="pill pill-amber">Medium</span> (content cost controls tightening)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="opp-box">
+        <strong>Opportunities</strong>
+        <ul class="signal-list">
+    <li>Service Cloud — Disney consumer experiences and park guest services at scale (millions of interactions)</li>
+    <li>Sales Cloud — B2B advertising, licensing, and merchandise partner management</li>
+    <li>Agentforce — cast member and guest services automation across Disney Experiences</li>
+    <li>Data Cloud — unified guest data across parks, streaming, and merchandise</li>
+    <li>Tableau — park capacity, content ROI, and streaming churn analytics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Key Executives</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Name</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Role</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Likely Area of Interest</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Josh D'Amaro</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">CEO (since March 2026)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Disney Experiences, AI, strategic priorities</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Kevin Lansberry</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">CFO</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Cost discipline, streaming profitability, ESPN restructuring</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">James Gorman</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Chairman</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Corporate governance, strategic transactions</td></tr>
+  </table>
+</div>
+
+<div class="section" style="border-left:4px solid #0b5394;background:#eff6ff">
+  <div class="section-title" style="color:#1e40af">Questions for Account Executive &mdash; Felicia Kaplan</div>
+  <p style="font-size:.82rem;color:#374151;margin-bottom:8px"><em>Gather these before renewal engagement:</em></p>
+  <ol style="font-size:.82rem;line-height:1.8;color:#374151;padding-left:1.2rem">
+    <li>How has the CEO transition from Bob Iger to Josh D'Amaro affected technology investment priorities for 2026–2027?</li>
+    <li>Is the ESPN restructuring (potential JV or sale) affecting any shared services Salesforce users?</li>
+    <li>What is the shared services digital transformation roadmap post-Hulu integration?</li>
+    <li>Is there a CIO-led vendor rationalisation initiative across Disney corporate functions?</li>
+    <li>Is Disney Worldwide Services expanding Salesforce use for procurement or HR automation?</li>
+    <li>Are any Salesforce users linked to recently restructured or divested entities?</li>
+    <li>Is there an Agentforce/AI cost-reduction conversation happening — particularly for guest services or contact centre?</li>
+  </ol>
+  <p style="font-size:.75rem;color:#6b7280;margin-top:8px">Source: The Walt Disney Company annual report, Wikipedia, public press releases (Nov 2026). Internal account data not included.</p>
+</div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">41.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$635K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Risk Tier</div><div class="kpi-sub-amber">40–50% range</div></div>
     <div class="kpi-card"><div class="kpi-val">Zero</div><div class="kpi-label">CSG Engagement Visible</div><div class="kpi-sub-red">No cases on file</div></div>
     <div class="kpi-card"><div class="kpi-val">40%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-amber">Moderate</div></div>
   </div>

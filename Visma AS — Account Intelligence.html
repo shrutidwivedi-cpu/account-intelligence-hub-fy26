@@ -55,7 +55,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <div class="hero">
   <h1>Visma AS — Account Intelligence</h1>
   <div class="hero-sub">Salesforce CSG &nbsp;·&nbsp; EMEA NORDICS &nbsp;·&nbsp; Premier Support &nbsp;·&nbsp; <span style="background:rgba(255,255,255,.15);padding:2px 8px;border-radius:4px">Generated: November 2026</span></div>
-  <div class="hero-meta">Org ID: 00Dw0000000DG2L &nbsp;·&nbsp; OrgCS Account ID: 0013000000B2QQA &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: Tech company using CRM it also competes with</div>
+  <div class="hero-meta">Org ID: 00Dw0000000DG2L &nbsp;·&nbsp; OrgCS Account ID: 0013000001OQNmBAAX &nbsp;·&nbsp; Attrition Model: Premier+Sig Regression &nbsp;·&nbsp; Context: Tech company using CRM it also competes with</div>
 </div>
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('t6',this)">Attrition Risk Profile</button>
@@ -68,7 +68,196 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t1" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val"><span class="pill pill-blue">Medium</span></div><div class="kpi-label">Risk Tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$2.2M</div><div class="kpi-label">Sales Cloud AOV</div></div>
+    <div class="kpi-card"><div class="kpi-val">31.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Medium tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$692K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">~45</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Moderate stagnation</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">10+ yrs</div><div class="kpi-label">Customer Age</div><div class="kpi-sub">Moderate segment</div></div>
+  </div>
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Account Profile</div>
+      <table><tbody>
+        <tr><td><strong>Legal Entity</strong></td><td>Visma AS</td></tr>
+        <tr><td><strong>OrgCS Account ID</strong></td><td><code>0013000001OQNmBAAX</code></td></tr>
+        <tr><td><strong>Org ID</strong></td><td><code>00D30000000YrGy</code></td></tr>
+        <tr><td><strong>Region</strong></td><td>EMEA</td></tr>
+        <tr><td><strong>Territory</strong></td><td>EMEA NORDICS</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Entitlement</strong></td><td><span class="pill pill-blue">Premier</span></td></tr>
+        <tr><td><strong>Customer Age</strong></td><td>10+ Years</td></tr>
+        <tr><td><strong>Industry</strong></td><td>Technology / SaaS / ERP</td></tr>
+        <tr><td><strong>SELA Flag</strong></td><td><span class="pill pill-purple">SELA Account</span></td></tr>
+        <tr><td><strong>HQ</strong></td><td>Oslo, Norway</td></tr>
+      </tbody></table>
+    </div>
+    <div class="section">
+      <div class="section-title">Commercial Summary</div>
+      <table><tbody>
+        <tr><td><strong>Sales Cloud AOV</strong></td><td>$2,174,484</td></tr>
+        <tr><td><strong>Attrition Probability</strong></td><td>31.8%</td></tr>
+        <tr><td><strong>Predicted $ at Risk</strong></td><td>~$692,000</td></tr>
+        <tr><td><strong>Success Segment</strong></td><td>Moderate</td></tr>
+        <tr><td><strong>Risk Tier</strong></td><td><span class="pill pill-grey">MEDIUM (&lt;40%)</span></td></tr>
+        <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="t2" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Sales Cloud Case Found</div><div class="kpi-sub-red">Critically low for 10yr Premier</div></div>
+    <div class="kpi-card"><div class="kpi-val">1</div><div class="kpi-label">Open Red Account Flag</div><div class="kpi-sub-red">On closed case — needs clearing</div></div>
+    <div class="kpi-card"><div class="kpi-val">May 2023</div><div class="kpi-label">Last Sales Cloud Case</div><div class="kpi-sub-red">3+ years dormant</div></div>
+  </div>
+  <div class="risk-box">
+    <strong>Critical: Open Red Account Flag on 3-Year-Old Closed Case</strong>
+    OrgCS (Org <code>00Dw0000000DG2L</code>) returns only 1 Sales Cloud case: <strong>"Can't connect Salesforce to Slack"</strong> (<code>500...</code>, May 2023, Sales-Sales Cloud for Slack). The case is <strong>Closed</strong> but <code>Open_Red_Account__c = true</code>. A Red Account flag left open on a closed case from 3 years ago is a data quality issue — the flag should have been cleared at case resolution. This may also indicate the Slack integration failure was never fully resolved from the customer's perspective, or the flag was placed during an escalation and forgotten.
+  </div>
+  <div class="info-box">
+    <strong>Sales Cloud Case Detail</strong>
+    <ul class="signal-list">
+      <li><strong>May 2023 — Can't connect Salesforce to Slack</strong> — Sales-Sales Cloud for Slack, <strong>Closed</strong>, <code>Open_Red_Account__c: true</code>. Only Sales Cloud case in OrgCS for this account.</li>
+      <li>No Sales Cloud cases filed since May 2023 — 3.5 years of silence on a $2.0M AOV Premier account.</li>
+      <li>Visma is a technology company with its own CRM/ERP products — likely manages Salesforce internally without needing support, but this level of disengagement increases attrition risk as internal alternatives are evaluated.</li>
+    </ul>
+  </div>
+</div>
+
+<div id="t3" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">est.</div><div class="kpi-label">License Activation</div><div class="kpi-sub-amber">Fragmented account — see t3 for detail</div></div>
+    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">Unknown</div><div class="kpi-label">AI Adoption</div></div>
+  </div>
+  <div class="info-box">
+    <strong>Adoption Assessment</strong>
+    Visma is a CRM competitor — they build ERP and business management software. It is likely they use Salesforce Sales Cloud for specific functions (e.g., global enterprise sales team) while using their own tools for other processes. The ~18% utilization estimate reflects this selective deployment pattern. Confirm via Tableau Account Drill-Down.
+  </div>
+</div>
+
+<div id="t4" class="tab-pane">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">~45</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-amber">Moderate stagnation</div></div>
+  </div>
+  <div class="info-box">
+    <strong>CSS Score ~45/100 Estimated</strong>
+    Moderate segment, 10+ year tenure, low engagement. No Red Accounts is a slight positive signal. Manual CSS dashboard confirmation recommended.
+  </div>
+</div>
+
+<div id="t5" class="tab-pane">
+<div class="section">
+  <div class="section-title">Company Overview</div>
+  <p style="font-size:.88rem;line-height:1.6;color:#374151">Visma AS is a Norwegian software company and one of Europe's largest providers of business software (accounting, ERP, payroll, HR) for SMEs and public sector organisations. Headquartered in Oslo, Visma owns 150+ software companies serving 2.4 million customers across Europe and Latin America. It is majority-owned by HgCapital (70.2%), a PE firm, with GIC (Singapore sovereign wealth) holding 14.2%. Visma has maintained double-digit revenue growth for over two decades through aggressive acquisition.</p>
+  <div class="kpi-grid" style="margin-top:12px">
+    <div class="kpi-card"><div class="kpi-val">€2,804m</div><div class="kpi-label">Annual Revenue</div><div class="kpi-sub">FY2024</div></div>
+    <div class="kpi-card"><div class="kpi-val">17,500</div><div class="kpi-label">Employees</div><div class="kpi-sub">2025</div></div>
+    <div class="kpi-card"><div class="kpi-val">Oslo, Norway</div><div class="kpi-label">Headquarters</div><div class="kpi-sub">HgCapital-owned (PE)</div></div>
+    <div class="kpi-card"><div class="kpi-val">Strong</div><div class="kpi-label">Financial Health</div><div class="kpi-sub">PE-backed growth; high-debt model typical</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Financial Performance</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Metric</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Prior Year</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Latest</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Trend</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Revenue</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">~€2.4bn (FY2023)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">€2,804m (FY2024)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">↑ ~17%</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">EBITDA</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — private</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">N/A — private</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Growing</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Customer Base</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">2.0M (2023)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">2.4M (2025)</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">↑ 20%</td></tr>
+  </table>
+  <p style="font-size:.78rem;color:#6b7280;margin-top:8px">Visma is PE-backed by HgCapital and not publicly listed; it does not disclose detailed financials. Revenue growth is driven by acquisitions (10–15 per year) and organic SaaS expansion. The company is preparing for a potential future IPO, which would significantly increase scrutiny.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Strategic Priorities &amp; Investment</div>
+  <ul class="signal-list">
+    <li>AI-driven product innovation — hundreds of AI features across the 150+ software companies</li>
+    <li>Geographic expansion — entered Brazil (2025), Italy, Croatia (2024)</li>
+    <li>Nordic cloud ERP consolidation — created Visma Software Nordic in 2024</li>
+    <li>Potential IPO preparation — HgCapital holding since 2006; exit options being evaluated</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">M&amp;A, Restructuring &amp; Risk Signals</div>
+  <ul class="signal-list">
+    <li>2025: Acquired minority stake in Accountable (German-Belgian AI tax fintech)</li>
+    <li>2024: Created Visma Software Nordic (merger of Norwegian, Swedish, NextGen operations)</li>
+    <li>2023: Acquired Silverfin (Belgian cloud accounting) for €300M</li>
+    <li>10–15 acquisitions per year — ongoing M&amp;A integration workload</li>
+    <li>PE ownership (HgCapital 70.2%) means periodic portfolio review and potential exit</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Salesforce Commercial Assessment</div>
+  <div class="two-col">
+    <div>
+      <div class="risk-box">
+        <strong>Risks</strong>
+        <ul class="signal-list">
+    <li>PE ownership exit uncertainty — <span class="pill pill-amber">Medium</span> (IPO or secondary sale could reset vendor decisions)</li>
+    <li>Acquisition fragmentation — <span class="pill pill-amber">Medium</span> (150+ companies; Salesforce deployment may vary)</li>
+    <li>SME market sensitivity — <span class="pill pill-amber">Medium</span> (European SME economic pressure affects customer base)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="opp-box">
+        <strong>Opportunities</strong>
+        <ul class="signal-list">
+    <li>Sales Cloud — managing partner/reseller networks and enterprise prospect pipeline</li>
+    <li>Agentforce — customer onboarding and product support automation across 2.4M customers</li>
+    <li>Service Cloud — technical support for 150+ software products at scale</li>
+    <li>Tableau — revenue analytics across the portfolio of acquired companies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Key Executives</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+    <tr style="background:#f8fafc">
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Name</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Role</th>
+      <th style="padding:8px;text-align:left;border-bottom:1px solid #e2e8f0">Likely Area of Interest</th>
+    </tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Merete Hverven</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">CEO</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Portfolio strategy, AI innovation, geographic expansion</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #f1f5f9">Ron Kalifa</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">Non-Executive Chair</td><td style="padding:8px;border-bottom:1px solid #f1f5f9">PE governance, potential IPO preparation</td></tr>
+  </table>
+</div>
+
+<div class="section" style="border-left:4px solid #0b5394;background:#eff6ff">
+  <div class="section-title" style="color:#1e40af">Questions for Account Executive &mdash; Ørjan Jakobsen</div>
+  <p style="font-size:.82rem;color:#374151;margin-bottom:8px"><em>Gather these before renewal engagement:</em></p>
+  <ol style="font-size:.82rem;line-height:1.8;color:#374151;padding-left:1.2rem">
+    <li>Is Salesforce used at the Visma AS parent/HQ level, or deployed across individual portfolio companies — and how are licences counted?</li>
+    <li>Is HgCapital's potential exit (IPO or secondary sale) creating pressure to rationalise or standardise enterprise software across the portfolio?</li>
+    <li>Has the Visma Software Nordic merger (2024) driven Salesforce consolidation across the Norwegian, Swedish, and NextGen entities?</li>
+    <li>Is Visma expanding Salesforce to manage its reseller/channel partner network across 20+ countries?</li>
+    <li>What is Visma's AI product strategy — could Visma's internal AI tools displace Salesforce Agentforce use cases?</li>
+    <li>Are any Salesforce users linked to recently restructured or divested entities?</li>
+    <li>Is there an Agentforce/AI cost-reduction conversation happening — particularly for customer onboarding across the 2.4M customer base?</li>
+  </ol>
+  <p style="font-size:.75rem;color:#6b7280;margin-top:8px">Source: Visma company website, Wikipedia, Visma annual report excerpts (Nov 2026). Internal account data not included.</p>
+</div>
+</div>
+
+<div id="t6" class="tab-pane active">
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-val">31.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Medium tier</div></div>
+    <div class="kpi-card"><div class="kpi-val">$692K</div><div class="kpi-label">Predicted $ at Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">MEDIUM</div><div class="kpi-label">Risk Tier</div><div class="kpi-sub-amber">&lt;40% range</div></div>
     <div class="kpi-card"><div class="kpi-val">CRM Competitor</div><div class="kpi-label">Unique Dynamic</div><div class="kpi-sub-red">Builds competing software</div></div>
     <div class="kpi-card"><div class="kpi-val">45%</div><div class="kpi-label">Save Probability</div><div class="kpi-sub-amber">Moderate</div></div>
   </div>
