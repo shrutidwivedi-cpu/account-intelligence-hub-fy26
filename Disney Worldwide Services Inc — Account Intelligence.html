@@ -72,7 +72,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <div class="kpi-card"><div class="kpi-val">41.8%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">High tier</div></div>
     <div class="kpi-card"><div class="kpi-val">$635K</div><div class="kpi-label">Predicted $ at Risk</div></div>
     <div class="kpi-card"><div class="kpi-val">~31</div><div class="kpi-label">CSS Health Score (est.)</div><div class="kpi-sub-red">Zero engagement</div></div>
-    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">94.85%</div><div class="kpi-label">License Activation (Sales Cloud)</div><div class="kpi-sub-green">47 of 50 seats</div></div>
     <div class="kpi-card"><div class="kpi-val">&lt;1 yr</div><div class="kpi-label">Customer Age (model)</div><div class="kpi-sub-amber">New subscription window</div></div>
   </div>
   <div class="two-col">
@@ -132,14 +132,12 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 
 <div id="t3" class="tab-pane">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">94.85%</div><div class="kpi-label">License Activation (Sales Cloud)</div><div class="kpi-sub">47 of 50 seats — healthy</div></div>
-<div class="kpi-card"><div class="kpi-val">89.31%</div><div class="kpi-label">License Activation (Service Cloud)</div><div class="kpi-sub">764 of 855 seats — healthy</div></div>
-<div class="kpi-card"><div class="kpi-val">est.</div><div class="kpi-label">License Activation</div><div class="kpi-sub-amber">Fragmented account — see t3 for detail</div></div>
-    <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">Utilization (est.)</div><div class="kpi-sub-red">No utilization</div></div>
+    <div class="kpi-card"><div class="kpi-val">94.85%</div><div class="kpi-label">License Activation (Sales Cloud)</div><div class="kpi-sub-green">47 of 50 seats — healthy</div></div>
+    <div class="kpi-card"><div class="kpi-val">89.31%</div><div class="kpi-label">License Activation (Service Cloud)</div><div class="kpi-sub-green">764 of 855 seats — healthy</div></div>
   </div>
-  <div class="risk-box">
-    <strong>Minimal Utilization Estimated</strong>
-    Zero case evidence + &lt;1 year entity + no engagement history = estimated ~5% license utilization. Disney's internal Salesforce teams likely operate under separate org IDs (Disney+, ESPN, Parks) — this entity may be a corporate overhead subscription with low active use. Confirm via Tableau Account Drill-Down.
+  <div class="info-box">
+    <strong>License Activation sourced from AV Adoption Visibility App (Tableau)</strong>
+    Sales Cloud LA 94.85% (47/50 seats) and Service Cloud LA 89.31% (764/855 seats) are confirmed from the AV App on Org <code>00Dhm000002APBJ</code>. License activation is high for this org. The attrition risk is driven by zero case engagement and lack of strategic champion — not by license underutilization. Tableau Account Drill-Down confirmation recommended to validate utilization depth (active usage vs. logged-in users).
   </div>
 </div>
 

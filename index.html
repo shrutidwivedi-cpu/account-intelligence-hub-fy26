@@ -94,7 +94,7 @@ select,input[type=text]{font-size:.78rem;padding:5px 9px;border:1px solid #e2e8f
 
 <div class="main">
   <div class="kpi-row">
-    <div class="kpi-card"><div class="kpi-val">10</div><div class="kpi-label">Accounts</div><div class="kpi-sub-red" style="color:#0ea5e9">Nov 2026 Cohort</div></div>
+    <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-label">Accounts</div><div class="kpi-sub-red" style="color:#0ea5e9">Nov 2026 Cohort</div></div>
     <div class="kpi-card"><div class="kpi-val" id="totalAovKpi">—</div><div class="kpi-label">Total Sales Cloud AOV</div><div class="kpi-sub-red">All Premier · SELA</div></div>
     <div class="kpi-card"><div class="kpi-val" id="totalRiskKpi">—</div><div class="kpi-label">Total $ at Risk</div><div class="kpi-sub-red">Model prediction</div></div>
     <div class="kpi-card"><div class="kpi-val" id="critKpi">—</div><div class="kpi-label">Critical</div><div class="kpi-sub-red">Prob &gt; 50%</div></div>
@@ -142,7 +142,7 @@ const A = [
     meta: "EMEA NORDICS &nbsp;·&nbsp; 00Dd100000EUjeo &nbsp;·&nbsp; Premier (model) / Basic (OrgCS) &nbsp;·&nbsp; GN Group",
     geo:"EMEA", seg:"Moderate", age:"< 1 Year",
     aov:1326037, prob:42.4, riskDollars:562270,
-    css:33, util:0, red:0, risk:"High", save:20, saveLabel:"Low",
+    css:33, util:0, red:0, risk:"High", save:50, saveLabel:"Moderate",
     reportUrl: "GN Hearing — Account Intelligence.html",
     bullets: [
       {t:"CRITICAL DATA QUALITY: OrgCS shows Basic support; model shows Premier — must resolve before action", flag:true},
@@ -184,11 +184,11 @@ const A = [
     meta: "EMEA FRANCE &nbsp;·&nbsp; 00DU000000098UZ &nbsp;·&nbsp; Premier &nbsp;·&nbsp; SELA &nbsp;·&nbsp; Publicis Groupe",
     geo:"EMEA", seg:"Strong", age:"10+ Years",
     aov:3806083, prob:35.5, riskDollars:1351101,
-    css:72, util:0, red:8, risk:"Medium", save:50, saveLabel:"Moderate",
+    css:72, util:0, red:8, risk:"Medium", save:65, saveLabel:"Moderate",
     reportUrl: "Lion Re:Sources Inc — Account Intelligence.html",
     bullets: [
       {t:"Paradox: highest engagement in cohort (150+ cases) but 47.5% attrition — risk is external not product-driven", flag:true},
-      {t:"8 open Red Accounts — highest escalation count in cohort; multi-product instability across Pardot + Sales Cloud", flag:true},
+      {t:"8 historical Red Account cases (all closed Apr 2025) — multi-product instability across Pardot + Sales Cloud", flag:true},
       {t:"Publicis Groupe parent may centralize Salesforce spend at holding company level — override local renewal", flag:true},
       {t:"CRMA dataflow performance regression (5→8.5 hr) is an urgent technical issue on the most-used product", flag:true},
     ]
@@ -247,6 +247,34 @@ const A = [
       {t:"Onboarding ADR canceled Mar 2026 with no description; no champion identified, no follow-up engagement", flag:true},
       {t:"−$141K confirmed attrition on record; Packaging Change risk flagged by RM Fergus O'Brien", flag:true},
       {t:"Governance entity with $2B Microsoft/Azure investment — Sales Cloud use case never established", flag:true},
+    ]
+  },
+  {
+    name: "Dubai Holding Corporate LLC",
+    meta: "EMEA MIDDLE EAST &nbsp;·&nbsp; 00DG0000000kVjB &nbsp;·&nbsp; Premier &nbsp;·&nbsp; State-linked, UAE",
+    geo:"EMEA", seg:"Moderate", age:"< 1 Year",
+    aov:1641053, prob:42.94, riskDollars:528700,
+    css:38, util:0, red:0, risk:"High", save:75, saveLabel:"High",
+    reportUrl: "Dubai Holding Corporate LLC — Account Intelligence.html",
+    bullets: [
+      {t:"Canceled ADR — expansion was in progress then abandoned: signals active disengagement, not passive stagnation", flag:true},
+      {t:"Only 4 cases (all administrative: org access, credentials, security UI) — no strategic engagement", flag:true},
+      {t:"State-linked entity: government procurement complexity + Microsoft UAE presence create renewal friction", flag:true},
+      {t:"Zero Agentforce footprint on a Jumeirah/real estate/hospitality conglomerate — strong expansion opportunity", flag:false},
+    ]
+  },
+  {
+    name: "Winston Taylor LLP",
+    meta: "AMER US EAST &nbsp;·&nbsp; 00Dfn00000KgnLy &nbsp;·&nbsp; Premier &nbsp;·&nbsp; Law Firm — LLP",
+    geo:"AMER", seg:"Moderate", age:"< 1 Year",
+    aov:1578550, prob:43.74, riskDollars:517900,
+    css:36, util:0, red:0, risk:"High", save:10, saveLabel:"Low",
+    reportUrl: "Winston Taylor LLP — Account Intelligence.html",
+    bullets: [
+      {t:"New onboarding with 0.27% Sales Cloud LA (6 of 2247 seats) — zero demonstrable Premier value delivered yet", flag:true},
+      {t:"Legal-specific CRM competitors (InterAction, Intapp) offer better law firm fit at lower cost — natural alternatives at renewal", flag:true},
+      {t:"Winston Taylor International LLP (US entity) closed Aug 2026 — potential parent restructuring or international exit", flag:true},
+      {t:"LLP partnership governance: renewal requires multi-partner committee; no internal champion identified", flag:true},
     ]
   }
 ];
