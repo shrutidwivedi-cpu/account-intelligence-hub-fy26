@@ -156,7 +156,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
   </div>
   <div class="risk-box">
     <strong>CSS Score Likely Stale</strong>
-    "Strong" segment on a 10-year account that has had no recent case activity and whose parent company is in financial distress suggests the CSS health score may not reflect current reality. The 48% attrition probability while classified as "Strong" is a model flag for stale segmentation. Manual refresh recommended.
+    "Strong" segment on a 10-year account that has had no recent case activity and whose parent company is in financial distress suggests the CSS health score may not reflect current reality. The 36.8% attrition probability (Predicted 12-Month Risk) while classified as "Strong" is a model flag for stale segmentation. Manual refresh recommended.
   </div>
 </div>
 
@@ -295,14 +295,14 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <ul class="signal-list">
       <li>Capita plc (parent) raised emergency capital in 2023, issued multiple profit warnings, and is undergoing a full strategic review. A company in this financial state cannot prioritize a $1.7M Premier subscription renewal.</li>
       <li>If Capita Shared Services is sold or dissolved as part of the restructuring, the subscription disappears regardless of product satisfaction.</li>
-      <li>The 48.2% attrition probability likely understates the true risk given events after the model's training data cutoff.</li>
+      <li>The 36.8% attrition probability (Predicted 12-Month Risk) likely understates the true risk given events after the model's training data cutoff.</li>
     </ul>
   </div>
 
   <div class="risk-box">
     <strong>#2 — OrgCS Org ID Mismatch — Model May Misidentify the Account (High)</strong>
     <ul class="signal-list">
-      <li>Model Org <code>00DG0000000kVIZ</code> (inactive) differs from the active Capita Premier account Org <code>00Dd30000059tP0</code>. If the model is tracking an inactive org, its 48.2% attrition signal is measuring the wrong entity.</li>
+      <li>Model Org <code>00DG0000000kVIZ</code> (inactive) differs from the active Capita Premier account Org <code>00Dd30000059tP0</code>. If the model is tracking an inactive org, its 36.8% attrition signal is measuring the wrong entity.</li>
       <li>Until the correct Org ID is confirmed, the model's attrition signal for Capita should be treated as uncertain. The active account may be in better shape than the model implies.</li>
     </ul>
   </div>

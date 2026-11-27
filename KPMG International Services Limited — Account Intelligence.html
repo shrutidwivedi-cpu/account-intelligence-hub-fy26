@@ -89,8 +89,8 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <div id="t1" class="tab-pane">
   <div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-val">$11.2M</div><div class="kpi-label">Sales Cloud AOV</div><div class="kpi-sub">Subscription only</div></div>
-    <div class="kpi-card"><div class="kpi-val">43.89%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Model: Premier+Sig</div></div>
-    <div class="kpi-card"><div class="kpi-val">$3.3M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">29.6th percentile</div></div>
+    <div class="kpi-card"><div class="kpi-val">29.6%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Predicted 12-Month Risk</div></div>
+    <div class="kpi-card"><div class="kpi-val">$3.3M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $11.2M Sales Cloud AOV</div></div>
     <div class="kpi-card"><div class="kpi-val">41/100</div><div class="kpi-label">CSS Health Score</div><div class="kpi-sub-red">Oct 2026 snapshot</div></div>
     <div class="kpi-card"><div class="kpi-val">0%</div><div class="kpi-label">License Utilization</div><div class="kpi-sub-red">No utilization</div></div>
     <div class="kpi-card"><div class="kpi-val">2</div><div class="kpi-label">Open Red Accounts</div><div class="kpi-sub-amber">Both Adoption-type</div></div>
@@ -145,7 +145,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
           <tr><td><strong>Confirmed Attrition $</strong></td><td>−$141,029 (net −$72,322)</td></tr>
           <tr><td><strong>On-Cycle Forecast Attrition</strong></td><td>$0 (not flagged on-cycle)</td></tr>
           <tr><td><strong>Model Used</strong></td><td>Premier+Sig Regression</td></tr>
-          <tr><td><strong>Attrition Probability</strong></td><td>43.89%</td></tr>
+          <tr><td><strong>Attrition Probability</strong></td><td>29.59% (Predicted 12-Month Risk)</td></tr>
         </tbody>
       </table>
     </div>
@@ -494,7 +494,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
 <!-- TAB 6: ATTRITION RISK -->
 <div id="t6" class="tab-pane active">
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-val">43.89%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-red">Premier+Sig model</div></div>
+    <div class="kpi-card"><div class="kpi-val">29.6%</div><div class="kpi-label">Attrition Probability</div><div class="kpi-sub-amber">Predicted 12-Month Risk</div></div>
     <div class="kpi-card"><div class="kpi-val">$3.3M</div><div class="kpi-label">Predicted $ at Risk</div><div class="kpi-sub-red">of $11.2M Sales Cloud AOV</div></div>
     <div class="kpi-card"><div class="kpi-val">−$141K</div><div class="kpi-label">Confirmed Attrition</div><div class="kpi-sub-red">Already realized</div></div>
     <div class="kpi-card"><div class="kpi-val">HIGH</div><div class="kpi-label">Overall Risk Rating</div><div class="kpi-sub-red">Multiple converging signals</div></div>
@@ -629,7 +629,7 @@ code{background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:.77rem}
     <ul class="signal-list">
       <li><strong>License seat counts (Activation % / Utilization %)</strong> — Account Drill-Down Tableau view (LUID: 3f9d0ded) is not MCP-queryable. CSS signals confirm utilization = 0 but seat count denominator is unknown.</li>
       <li><strong>NPS score</strong> — No NPS data found in OrgCS. May exist in a separate NPS platform or not yet surveyed.</li>
-      <li><strong>Renewal date</strong> — Not confirmed in the data pulled. Attrition Forecast shows $0 on-cycle forecast attrition, suggesting the renewal may not be imminent.</li>
+      <li><strong>Renewal date</strong> — 2027-09-30 per AV Adoption Visibility App (Org 00DHu00000699dV). Approximately 306 days away. The $0 on-cycle forecast attrition is consistent with this — the renewal is not imminent but is within the planning horizon.</li>
       <li><strong>Market research</strong> — Based on training data to Aug 2025. KPMG FY2025 results and any news after Aug 2025 not reflected. Live web search was unavailable.</li>
     </ul>
   </div>
